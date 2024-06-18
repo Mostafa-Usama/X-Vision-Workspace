@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\New folder (2)\\Center_Maneger\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\new folder (2)\\center_maneger\\view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\new folder (2)\\center_maneger\\view\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\login.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "login.xaml.cs",
+              "DocumentMoniker": "D:\\New folder (2)\\Center_Maneger\\View\\login.xaml.cs",
+              "RelativeDocumentMoniker": "View\\login.xaml.cs",
+              "ToolTip": "D:\\New folder (2)\\Center_Maneger\\View\\login.xaml.cs",
+              "RelativeToolTip": "View\\login.xaml.cs",
+              "ViewState": "AQIAAFoAAAAAAAAAAAD4v2kAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-16T19:16:26.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "login.xaml",
+              "DocumentMoniker": "D:\\New folder (2)\\Center_Maneger\\View\\login.xaml",
+              "RelativeDocumentMoniker": "View\\login.xaml",
+              "ToolTip": "D:\\New folder (2)\\Center_Maneger\\View\\login.xaml",
+              "RelativeToolTip": "View\\login.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-06-16T19:03:10.449Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
