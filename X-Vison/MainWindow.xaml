@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Center_Maneger"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+        Title="X-Vison">
         
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+              
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            
+            <TabControl> <!-- افتكر الباسورد وحوار الادمن-->
+                <TabItem Header="Options">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="تغيير كلمة السر"/>
+                        <Button Margin="5 0" Content="نسخة احتياطية"/>
+                        
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="الاعدادات">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="اعدادات المقاعد"/>
+                        <Button Margin="5 0" Content="اعدادات الغرف"/>
+                        <Button Content="الكليات"/>
+                        <Button Margin="5 0" Content="الوظائف"/>
+                        <Button Content="أسعار الزيارات"/>
+                        <Button Margin="5 0 0 0" Content="العروض"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="الاستقبال">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="اعدادات المقاعد"/>
+                        <Button Margin="5 0" Content="اعدادات الغرف"/>
+                        <Button Content="الكليات"/>
+                        <Button Margin="5 0" Content="الوظائف"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+           
+       
+       
+        </StackPanel>
     </Grid>
 </Window>

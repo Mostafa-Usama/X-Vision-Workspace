@@ -53,7 +53,9 @@ namespace Center_Maneger.View
 
             if (ValidateLogin(username, password))
             {
-                MessageBox.Show("Login successful!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                MainWindow main = new MainWindow();
+                this.Close();
+                main.Show();
 
             }
             else
