@@ -166,6 +166,25 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Chair icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\settings icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\meeting icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\faculty icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\job icon.png" />
+    <Resource Include="img\offer icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\price icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

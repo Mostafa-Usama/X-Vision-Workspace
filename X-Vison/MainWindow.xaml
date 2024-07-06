@@ -8,46 +8,100 @@
         WindowState="Maximized"
         ResizeMode="NoResize"
         Title="X-Vison">
-        
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.25*"/>
-            
+            <RowDefinition Height="0.3*"/>
+
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-              
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Height="38" VerticalAlignment="Top">
+                <Button Content="تغيير كلمة المرور" Background="#00DDDDDD" BorderBrush="#00707070" />
+                <Button Content="نسخة احتياطية " Background="#00DDDDDD" BorderBrush="#00707070"/>
+            </ComboBox>
             
-            <TabControl> <!-- افتكر الباسورد وحوار الادمن-->
-                <TabItem Header="Options">
+            <TabControl Padding="0" Grid.Row="0" >
+                <!--فتكر الباسورد وحوار الادمن-->
+                <!--<TabItem Padding="0" Margin="-3 -3 -3 0">
+                <TabItem.Header>
+                    <Menu>
+                        <MenuItem Header="icon" BorderBrush="#FFC3BDBD">
+                            <MenuItem Header="تغيير كلمة المرور"/>
+                            <MenuItem Header="نسخة احتياطية"/>
+                        </MenuItem>
+
+                    </Menu>
+                </TabItem.Header>
+            </TabItem>-->
+
+
+                <TabItem Header="الاعدادات" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="تغيير كلمة السر"/>
-                        <Button Margin="5 0" Content="نسخة احتياطية"/>
-                        
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
+                                <TextBlock Text="اعدادات المقاعد"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/meeting icon.png" Width="40" Height="35" />
+                                <TextBlock Text="اعدادات الغرف"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/faculty icon.png" Width="40" Height="35" />
+                                <TextBlock Text="الكليات"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/job icon.png" Width="40" Height="35" />
+                                <TextBlock Text="الوظائف"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/price icon.png" Width="40" Height="35" />
+                                <TextBlock Text="أسعار الزيارات"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0 0 0" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/offer icon.png" Width="40" Height="35" />
+                                <TextBlock Text="العروض"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="الاعدادات">
+                <TabItem Header="الاستقبال" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="اعدادات المقاعد"/>
-                        <Button Margin="5 0" Content="اعدادات الغرف"/>
-                        <Button Content="الكليات"/>
-                        <Button Margin="5 0" Content="الوظائف"/>
-                        <Button Content="أسعار الزيارات"/>
-                        <Button Margin="5 0 0 0" Content="العروض"/>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="الاستقبال">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="اعدادات المقاعد"/>
-                        <Button Margin="5 0" Content="اعدادات الغرف"/>
-                        <Button Content="الكليات"/>
-                        <Button Margin="5 0" Content="الوظائف"/>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
+                                <TextBlock Text="اعدادات المقاعد"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
+                                <TextBlock Text="اعدادات الغرف"/>
+                            </StackPanel>
+                        </Button>
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                            <StackPanel>
+                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
+                                <TextBlock Text="الكليات"/>
+                            </StackPanel>
+                        </Button>
                     </StackPanel>
                 </TabItem>
             </TabControl>
-           
-       
-       
+
         </StackPanel>
+
+
     </Grid>
 </Window>
