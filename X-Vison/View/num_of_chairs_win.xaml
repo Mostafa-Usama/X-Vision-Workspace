@@ -1,0 +1,11 @@
+﻿<Window x:Class="Center_Maneger.View.num_of_chairs_win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         ResizeMode="NoResize"
+        Title="اعدادات المقاعد" Height="300" Width="500">
+    <Grid>
+        <TextBlock Text="أدخل عدد المقاعد" HorizontalAlignment="Center" Margin="0 50 0 0" FontSize="25" FontWeight="Bold"/>
+        <TextBox x:Name="num_chairs_input" Width="180" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0"/>
+        <Button Click="Save_num_chairs" Content="حفظ" Height="30" Width="80" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0 0 0 50"/>
+    </Grid>
+</Window>

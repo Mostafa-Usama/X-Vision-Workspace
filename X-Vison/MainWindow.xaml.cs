@@ -23,6 +23,12 @@ namespace Center_Maneger
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void num_chairs_btn(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

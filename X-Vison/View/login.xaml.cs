@@ -56,6 +56,7 @@ namespace Center_Maneger.View
                 MainWindow main = new MainWindow();
                 this.Close();
                 main.Show();
+                
 
             }
             else

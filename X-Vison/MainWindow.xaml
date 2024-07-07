@@ -15,11 +15,8 @@
 
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <ComboBox Height="38" VerticalAlignment="Top">
-                <Button Content="تغيير كلمة المرور" Background="#00DDDDDD" BorderBrush="#00707070" />
-                <Button Content="نسخة احتياطية " Background="#00DDDDDD" BorderBrush="#00707070"/>
-            </ComboBox>
+        <DockPanel>
+           
             
             <TabControl Padding="0" Grid.Row="0" >
                 <!--فتكر الباسورد وحوار الادمن-->
@@ -38,9 +35,9 @@
 
                 <TabItem Header="الاعدادات" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="num_chairs_btn">
                             <StackPanel>
-                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
+                                <Image Source="img/Chair icon.png" Width="40" Height="35" RenderTransformOrigin="0.562,0.5" />
                                 <TextBlock Text="اعدادات المقاعد"/>
                             </StackPanel>
                         </Button>
@@ -99,8 +96,11 @@
                     </StackPanel>
                 </TabItem>
             </TabControl>
-
-        </StackPanel>
+            <ComboBox Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" >
+                <Button Content="تغيير كلمة المرور" Background="#00DDDDDD" BorderBrush="#00707070" />
+                <Button Content="نسخة احتياطية " Background="#00DDDDDD" BorderBrush="#00707070"/>
+            </ComboBox>
+        </DockPanel>
 
 
     </Grid>
