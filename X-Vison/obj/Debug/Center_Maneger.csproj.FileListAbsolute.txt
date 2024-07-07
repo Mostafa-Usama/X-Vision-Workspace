@@ -74,3 +74,31 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\MainWind
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\MainWindow.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\num_of_chairs_win.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\num_of_chairs_win.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\Center_Maneger.exe.config
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\Center_Maneger.exe
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\Center_Maneger.pdb
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.dll
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.SqlServer.dll
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.Data.SQLite.dll
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.Data.SQLite.EF6.dll
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.Data.SQLite.Linq.dll
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.xml
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.SqlServer.xml
+D:\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.Data.SQLite.xml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csproj.AssemblyReference.cache
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\num_of_chairs_win.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\MainWindow.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\login.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\num_of_chairs_win.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\App.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger_MarkupCompile.cache
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger_MarkupCompile.lref
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\MainWindow.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\login.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.g.resources
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.Properties.Resources.resources
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csproj.GenerateResource.cache
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csproj.CoreCompileInputs.cache
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_M.5CCC8328.Up2Date
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.exe
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.pdb

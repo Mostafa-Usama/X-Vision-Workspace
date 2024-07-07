@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Center_Maneger.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,8 @@ namespace Center_Maneger
 
         private void num_chairs_btn(object sender, RoutedEventArgs e)
         {
-            
+           num_of_chairs_win Chair =   new num_of_chairs_win(); 
+            Chair.Show();
         }
     }
 }
