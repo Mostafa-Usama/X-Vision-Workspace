@@ -43,8 +43,13 @@ namespace Center_Maneger.View
                         
                     }
                 }
+                this.Close();
             }
-            this.Close();
+            else
+            {
+                MessageBox.Show("برجاء اداخل ارقام صحيحة "," خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
     }
 }

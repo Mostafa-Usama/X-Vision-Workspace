@@ -102,3 +102,7 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csproj.CoreCompileInput
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_M.5CCC8328.Up2Date
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.exe
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.pdb
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.baml

@@ -12,7 +12,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"/>
-
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <DockPanel>
@@ -41,13 +40,13 @@
                                 <TextBlock Text="اعدادات المقاعد"/>
                             </StackPanel>
                         </Button>
-                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5" Click="class_setting_btn">
                             <StackPanel>
                                 <Image Source="img/meeting icon.png" Width="40" Height="35" />
                                 <TextBlock Text="اعدادات الغرف"/>
                             </StackPanel>
                         </Button>
-                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="Faculty_Settings">
                             <StackPanel>
                                 <Image Source="img/faculty icon.png" Width="40" Height="35" />
                                 <TextBlock Text="الكليات"/>
@@ -101,7 +100,8 @@
                 <Button Content="نسخة احتياطية " Background="#00DDDDDD" BorderBrush="#00707070"/>
             </ComboBox>
         </DockPanel>
-
-
+        <TabControl Grid.Row="1" Name="settings_controls">
+            
+        </TabControl>
     </Grid>
 </Window>
