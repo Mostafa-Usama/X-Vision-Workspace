@@ -47,7 +47,7 @@ namespace Center_Maneger.View
             }
             else
             {
-                MessageBox.Show("برجاء اداخل ارقام صحيحة "," خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("برجاء ادخال ارقام صحيحة "," خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
         }

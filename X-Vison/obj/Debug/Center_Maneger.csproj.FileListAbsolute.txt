@@ -106,3 +106,7 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Class_Settings.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Faculty_Settings.baml
