@@ -25,7 +25,7 @@ namespace Center_Maneger.View
         public login()
         {
             InitializeComponent();
-            
+            txtUser.Focus();
         }
       
         private void Mouse_Drag(object sender, MouseButtonEventArgs e)

@@ -22,39 +22,47 @@ namespace Center_Maneger
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UserControl[] userControls;
+
         public MainWindow()
         {
             InitializeComponent();
             
+            userControls = new UserControl [] {
+                new Class_Settings(),
+                new Faculty_Settings(),
+                new Job_Settings(),
+                new Prices_Settings(),
+                new Offer_Settings()
+            };   
         }
 
         private void num_chairs_btn(object sender, RoutedEventArgs e)
         {
            num_of_chairs_win Chair =   new num_of_chairs_win(); 
-            Chair.Show();
+            Chair.ShowDialog(); // so user cant interact with the app unless he closes this window
         }
 
-        private void class_setting_btn(object sender, RoutedEventArgs e)
+
+
+        private void openUserControl (object sender, RoutedEventArgs e)
         {
+            Button clickedBtn = sender as Button;
+            
+
+            int idx = int.Parse(clickedBtn.Name.Remove(0, 3));
+            string header = Convert.ToString(clickedBtn.Tag);
             TabItem newTab = new TabItem
             {// افتكر الفنكشن الواحدة للكل الزراير
-                Header = "اعدادات الغرفة",
-                Content = new Class_Settings()
+                Header = header,
+                Content = userControls[idx]
             };
             settings_controls.Items.Add(newTab);
             settings_controls.SelectedItem = newTab;
         }
 
-        private void Faculty_Settings(object sender, RoutedEventArgs e)
-        {
-            TabItem newTab = new TabItem
-            {// افتكر الفنكشن الواحدة للكل الزراير
-                // كملن افتكر الاراي بتاعت اليوزر كونترول
-                Header = "الكليات",
-                Content = new Faculty_Settings()
-            };
-            settings_controls.Items.Add(newTab);
-            settings_controls.SelectedItem = newTab;
-        }
+       
+      
+        
     }
 }

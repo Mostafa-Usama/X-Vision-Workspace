@@ -22,31 +22,21 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class Class_Settings : UserControl
     {
-        private string _connectionString = "Data Source=database.db;Version=3;";
+        
 
         private DataRowView selectedRow; // store cuurent selected row if i wanted to delete
 
         public Class_Settings()
         {
             InitializeComponent();
-            load_data();
 
+            load_data();
            
         }
 
         public void load_data() // display classes data in grid
         {
-            string query = "SELECT class_name, cost FROM classes";
-            using (var connection = new SQLiteConnection(_connectionString))
-            {
-
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-                data_grid.ItemsSource = dataTable.DefaultView;
-               
-            }
-        
+            data_grid.ItemsSource = databaseLoader.LoadData("classes").DefaultView;   
         }
         
 
@@ -67,19 +57,20 @@ namespace Center_Maneger.UesrControls
             bool isNumber = int.TryParse(cost_of_class_input.Text, out classCost); // make sure cost of class is a number larger than 0
             if (isNumber && classCost > 0)
             {
-                using (var connection = new SQLiteConnection(_connectionString))
+                Dictionary<string, object> data = new Dictionary<string, object>
                 {
-                    string query = "INSERT INTO classes (class_name, cost) VALUES (@name, @cost)";
-                    connection.Open();
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@name", name_of_class_input.Text);
-                        command.Parameters.AddWithValue("@cost", classCost);
-                        command.ExecuteScalar();
-                    }
+                    {"class_name", name_of_class_input.Text},
+                    {"cost", classCost}
+                };
+                try
+                {
+                    databaseLoader.InsertRecord("classes", data);
+                    load_data();
                 }
-               
-                load_data();
+                catch
+                {
+                    MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 
             }
             else
@@ -89,11 +80,7 @@ namespace Center_Maneger.UesrControls
         }
 
 
-        private void change_selected_record(object sender, SelectionChangedEventArgs e) // this event is called whenever you select a record (row) from the grid
-        {
-            selectedRow = data_grid.SelectedItem as DataRowView; // store the current selected row in the variable 
-        }
-
+        
 
         private void remove_class_record(object sender, RoutedEventArgs e) // reomve class record from grid and database
         {
@@ -104,27 +91,21 @@ namespace Center_Maneger.UesrControls
                 if (result == MessageBoxResult.Yes) // if he chooses YES
                 {
                     string className = Convert.ToString((selectedRow["class_name"])); // بجيب اسم العمود اللي واقف عليه تقاطعا مع الصف اللي انا مختاره عشان اعرف أجيب اسم الكلاس
-
-                    using (var connection = new SQLiteConnection(_connectionString))
-                    {
-                        string query = "DELETE FROM classes WHERE class_name = @name";
-                        connection.Open();
-                        using (var command = new SQLiteCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@name", className);
-                            command.ExecuteScalar();
-
-                        }
-                    }
-
+                    databaseLoader.DeleteRecord("classes", "class_name", className);
                     load_data();
-
                 }
             }
+          
             else
             {
                 MessageBox.Show("برجاء اختيار الصف الذي تريد حذفه ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void change_selected_record(object sender, SelectionChangedEventArgs e) // this event is called whenever you select a record (row) from the grid
+        {
+            selectedRow = data_grid.SelectedItem as DataRowView; // store the current selected row in the variable 
+
         }
 
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e) //Becuase the grid is dynamically generated in runtime (asynchronous) مقدرش أغير اسم العمود بالكود مباشرة لكن الفنكشن دي بتشتغل لما العمود يتم انشاءه وبعدها بقدر أغير الاسم 
