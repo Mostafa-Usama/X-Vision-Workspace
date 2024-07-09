@@ -43,7 +43,7 @@ namespace Center_Maneger
                     string parameterNames = string.Join(", ", columns.Keys.Select(k => "@" + k).ToArray());
 
                     command.CommandText = String.Format("INSERT INTO {0} ({1}) VALUES ({2})",tableName, columnNames, parameterNames);
-
+                                                        // INSERT INTO classes (class_name, cost) VALUES (@class_name, @cost )
                     foreach (var column in columns)
                     {
                         command.Parameters.AddWithValue("@" + column.Key, column.Value);

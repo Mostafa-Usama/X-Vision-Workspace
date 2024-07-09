@@ -106,6 +106,9 @@
     <Compile Include="UesrControls\Prices_Settings.xaml.cs">
       <DependentUpon>Prices_Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\checkPassword.xaml.cs">
+      <DependentUpon>checkPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UesrControls\Prices_Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\checkPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

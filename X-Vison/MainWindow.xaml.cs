@@ -61,6 +61,25 @@ namespace Center_Maneger
             settings_controls.SelectedItem = newTab;
         }
 
+        private void settings_clicked(object sender, MouseButtonEventArgs e)
+        {
+            
+            checkPassword checkPass = new checkPassword();
+            checkPass.ShowDialog();
+            string pass = checkPass.password_input.Password;
+            if (pass == "osama")
+            {
+                settings_tab.SelectedIndex = 0;
+            }
+            else
+            {
+                settings_tab.SelectedIndex = 1;
+            }
+
+            
+        }
+
+        
        
       
         
