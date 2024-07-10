@@ -44,6 +44,7 @@ namespace Center_Maneger.View
                     }
                 }
                 this.Close();
+
             }
             else
             {

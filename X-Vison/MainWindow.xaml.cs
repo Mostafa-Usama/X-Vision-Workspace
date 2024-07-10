@@ -33,7 +33,8 @@ namespace Center_Maneger
                 new Faculty_Settings(),
                 new Job_Settings(),
                 new Prices_Settings(),
-                new Offer_Settings()
+                new Offer_Settings(),
+                new grid_of_chairs()
             };   
         }
 
@@ -67,7 +68,7 @@ namespace Center_Maneger
             checkPassword checkPass = new checkPassword();
             checkPass.ShowDialog();
             string pass = checkPass.password_input.Password;
-            if (pass == "osama")
+            if (pass == "1234")
             {
                 settings_tab.SelectedIndex = 0;
             }
@@ -76,9 +77,9 @@ namespace Center_Maneger
                 settings_tab.SelectedIndex = 1;
             }
 
-            
+           
         }
-
+        
         
        
       

@@ -97,6 +97,9 @@
     <Compile Include="UesrControls\Faculty_Settings.xaml.cs">
       <DependentUpon>Faculty_Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UesrControls\grid_of_chairs.xaml.cs">
+      <DependentUpon>grid_of_chairs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UesrControls\Job_Settings.xaml.cs">
       <DependentUpon>Job_Settings.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UesrControls\Faculty_Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UesrControls\grid_of_chairs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
