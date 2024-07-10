@@ -33,7 +33,8 @@ namespace Center_Maneger
                 new Faculty_Settings(),
                 new Job_Settings(),
                 new Prices_Settings(),
-                new Offer_Settings()
+                new Offer_Settings(),
+                new grid_of_chairs()
             };   
         }
 
@@ -69,6 +70,7 @@ namespace Center_Maneger
         private void settings_clicked(object sender, MouseButtonEventArgs e)
         {
             
+
             //checkPassword checkPass = new checkPassword();
             //checkPass.ShowDialog();
           
@@ -81,7 +83,6 @@ namespace Center_Maneger
             //    settings_tab.SelectedIndex = 1;
             //}
 
-            
         }
 
         private void close_tab(object sender, RoutedEventArgs e)
@@ -100,10 +101,6 @@ namespace Center_Maneger
             settings_controls.Items.Remove(tab);
       
         }
-
-        
-       
-      
         
     }
 }

@@ -91,10 +91,10 @@
                 </TabItem>
                 <TabItem IsSelected="True" Header="الاستقبال" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button Tag="المقاعد" Click="openUserControl" Name="btn5" BorderThickness="0" Background="#00DDDDDD" Padding="5">
                             <StackPanel>
                                 <Image Source="img/Chair icon.png" Width="40" Height="35" />
-                                <TextBlock Text="اعدادات المقاعد"/>
+                                <TextBlock Text="المقاعد"/>
                             </StackPanel>
                         </Button>
                         <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
