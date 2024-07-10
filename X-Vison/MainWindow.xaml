@@ -8,6 +8,23 @@
         WindowState="Maximized"
         ResizeMode="NoResize"
         Title="X-Vison">
+    <Window.Resources>
+        <Style TargetType="TabItem" x:Key="dynamic_tabs">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
+                            <Button Content="X" Width="20" Height="20" Margin="5,0,0,0" Background="Transparent" Click="close_tab" BorderBrush="#00707070" />
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>

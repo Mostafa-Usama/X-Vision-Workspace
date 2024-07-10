@@ -19,6 +19,7 @@ namespace Center_Maneger.View
     /// </summary>
     public partial class checkPassword : Window
     {
+        public bool correct = false;
         public checkPassword()
         {
             InitializeComponent();
@@ -26,8 +27,16 @@ namespace Center_Maneger.View
 
         private void check_passowrd(object sender, RoutedEventArgs e)
         {
-            
+
+            if (password_input.Password == "osama")
+            {
+                correct = true;
                 this.Close();
+            }
+            else{
+                MessageBox.Show("كلمة المرور خطأ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                password_input.Clear();
+            }
           
         }
     }

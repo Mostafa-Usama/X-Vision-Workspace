@@ -21,14 +21,33 @@ namespace Center_Maneger.View
     public partial class num_of_chairs_win : Window
     {
         private string _connectionString = "Data Source=database.db;Version=3;";
+
         public num_of_chairs_win()
         {
+
             InitializeComponent();
+            load_old();
         }
-        
+
+        private void load_old()
+        {
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT num_chairs FROM chairs";
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                 
+                    string num = Convert.ToString(command.ExecuteScalar());
+                    num_chairs_input.Text = num;
+
+                }
+            }
+        }
+
         private void Save_num_chairs(object sender, RoutedEventArgs e)
         {
-             int chairs;
+            int chairs;
             bool isNumber = int.TryParse(num_chairs_input.Text , out chairs);
             if (isNumber && chairs > 0)
             {

@@ -55,8 +55,13 @@ namespace Center_Maneger
             TabItem newTab = new TabItem
             {// افتكر الفنكشن الواحدة للكل الزراير
                 Header = header,
-                Content = userControls[idx]
+                Content = userControls[idx],
+              
             };
+           
+        
+            newTab.Style = (Style)Resources["dynamic_tabs"];
+            
             settings_controls.Items.Add(newTab);
             settings_controls.SelectedItem = newTab;
         }
@@ -64,19 +69,36 @@ namespace Center_Maneger
         private void settings_clicked(object sender, MouseButtonEventArgs e)
         {
             
-            checkPassword checkPass = new checkPassword();
-            checkPass.ShowDialog();
-            string pass = checkPass.password_input.Password;
-            if (pass == "osama")
-            {
-                settings_tab.SelectedIndex = 0;
-            }
-            else
-            {
-                settings_tab.SelectedIndex = 1;
-            }
+            //checkPassword checkPass = new checkPassword();
+            //checkPass.ShowDialog();
+          
+            //if (checkPass.correct)
+            //{
+            //    settings_tab.SelectedIndex = 0;
+            //}
+            //else
+            //{
+            //    settings_tab.SelectedIndex = 1;
+            //}
 
             
+        }
+
+        private void close_tab(object sender, RoutedEventArgs e)
+        {
+            Button clickedBtn = sender as Button; // pressed btn
+            StackPanel stack = clickedBtn.Parent as StackPanel; // parent stackpanel
+            TabItem tab = null;
+            foreach (TabItem item in settings_controls.Items) // loop over all taps 
+            {
+                if (item.Header == ((TextBlock)stack.Children[0]).Text) // if the header is the same as the textbox then this is the tab we want to close
+                {
+                    tab = item;
+                    break;
+                }
+            }
+            settings_controls.Items.Remove(tab);
+      
         }
 
         
