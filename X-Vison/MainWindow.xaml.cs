@@ -34,6 +34,7 @@ namespace Center_Maneger
                 new Job_Settings(),
                 new Prices_Settings(),
                 new Offer_Settings(),
+                new Members(),
                 new grid_of_chairs()
             };   
         }
@@ -54,7 +55,7 @@ namespace Center_Maneger
             int idx = int.Parse(clickedBtn.Name.Remove(0, 3));
             string header = Convert.ToString(clickedBtn.Tag);
             TabItem newTab = new TabItem
-            {// افتكر الفنكشن الواحدة للكل الزراير
+            {
                 Header = header,
                 Content = userControls[idx],
               
@@ -69,19 +70,19 @@ namespace Center_Maneger
 
         private void settings_clicked(object sender, MouseButtonEventArgs e)
         {
-            
 
-            //checkPassword checkPass = new checkPassword();
-            //checkPass.ShowDialog();
-          
-            //if (checkPass.correct)
-            //{
-            //    settings_tab.SelectedIndex = 0;
-            //}
-            //else
-            //{
-            //    settings_tab.SelectedIndex = 1;
-            //}
+
+            checkPassword checkPass = new checkPassword();
+            checkPass.ShowDialog();
+
+            if (checkPass.correct)
+            {
+                settings_tab.SelectedIndex = 0;
+            }
+            else
+            {
+                settings_tab.SelectedIndex = 1;
+            }
 
         }
 
@@ -92,7 +93,7 @@ namespace Center_Maneger
             TabItem tab = null;
             foreach (TabItem item in settings_controls.Items) // loop over all taps 
             {
-                if (item.Header == ((TextBlock)stack.Children[0]).Text) // if the header is the same as the textbox then this is the tab we want to close
+                if (Convert.ToString(item.Header)== ((TextBlock)stack.Children[0]).Text) // if the header is the same as the textbox then this is the tab we want to close
                 {
                     tab = item;
                     break;

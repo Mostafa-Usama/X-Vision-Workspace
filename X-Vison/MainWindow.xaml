@@ -91,22 +91,28 @@
                 </TabItem>
                 <TabItem IsSelected="True" Header="الاستقبال" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                        <Button Tag="المقاعد" Click="openUserControl" Name="btn5" BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                       <Button Tag="الاعضاء" Click="openUserControl" Name="btn5" BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <StackPanel>
+                            <Image Source="img/members-icon.png" Width="40" Height="35" />
+                                <TextBlock Text="الاعضاء"/>
+                        </StackPanel>
+                        </Button>
+                        <Button Tag="المقاعد" Click="openUserControl" Name="btn6" BorderThickness="0" Background="#00DDDDDD" Padding="5">
                             <StackPanel>
                                 <Image Source="img/Chair icon.png" Width="40" Height="35" />
                                 <TextBlock Text="المقاعد"/>
                             </StackPanel>
                         </Button>
-                        <Button BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                        <Button Tag="الغرف" Name="btn7" BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
                             <StackPanel>
-                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
-                                <TextBlock Text="اعدادات الغرف"/>
+                                <Image Source="img/meeting icon.png" Width="40" Height="35" />
+                                <TextBlock Text=" الغرف"/>
                             </StackPanel>
                         </Button>
-                        <Button BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button Tag="العروض" Name="btn8" BorderThickness="0" Background="#00DDDDDD" Padding="5">
                             <StackPanel>
-                                <Image Source="img/Chair icon.png" Width="40" Height="35" />
-                                <TextBlock Text="الكليات"/>
+                                <Image Source="img/Offer icon.png" Width="40" Height="35" />
+                                <TextBlock Text="العروض"/>
                             </StackPanel>
                         </Button>
                     </StackPanel>

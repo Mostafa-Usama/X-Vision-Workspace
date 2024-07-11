@@ -11,6 +11,7 @@ namespace Center_Maneger
     public static class databaseLoader
     {
         private static string _connectionString = "Data Source=database.db;Version=3;";
+
          public static DataTable LoadData(string tableName)
         {
             string query = String.Format("SELECT * FROM {0}",tableName);
@@ -68,5 +69,35 @@ namespace Center_Maneger
                 }
             }
         }
+
+
+    //     public static DataTable SelectData(string tableName, List<string> columns, string whereClause = "")
+    //{
+    //    DataTable dataTable = new DataTable();
+
+    //    using (var connection = new SQLiteConnection(_connectionString))
+    //    {
+    //        connection.Open();
+    //        string columnNames = string.Join(", ", columns);
+    //        string query = String.Format("SELECT {0} FROM {1}",columnNames,tableName);
+
+    //        if (!string.IsNullOrEmpty(whereClause))
+    //        {
+    //            query += String.Format(" WHERE {0}",whereClause);
+    //        }
+
+    //        using (var command = new SQLiteCommand(query, connection))
+    //        {
+    //            using (var adapter = new SQLiteDataAdapter(command))
+    //            {
+    //                adapter.Fill(dataTable);
+    //            }
+    //        }
+    //    }
+
+    //    return dataTable;
+    //}
+
+
     }
 }

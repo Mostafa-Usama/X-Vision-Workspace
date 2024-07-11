@@ -58,6 +58,7 @@ namespace Center_Maneger.View
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@chairs", chairs);
+
                         command.ExecuteScalar();
                         
                     }

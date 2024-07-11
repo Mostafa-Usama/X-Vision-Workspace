@@ -20,8 +20,9 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class grid_of_chairs : UserControl
     {
-        private DateTime currenttime = DateTime.Now;
-        public int numberOfCells;
+        private string connectionString = "Data Source=database.db;Version=3;";
+        int numberOfCells;
+
         public grid_of_chairs()
         {
             InitializeComponent();
@@ -31,7 +32,6 @@ namespace Center_Maneger.UesrControls
 
         public void CreateDynamicGrid()
         {
-            string connectionString = "Data Source=database.db;Version=3;";
             try
             {
                 using (var connection = new SQLiteConnection(connectionString))
@@ -59,10 +59,7 @@ namespace Center_Maneger.UesrControls
             }
             
             
-            int hours = currenttime.Hour;
-            int min = currenttime.Minute;
-            int sec = currenttime.Second;
-            string date = String.Format("{0}:{1}:{2}", hours, min, sec);
+            
             // Clear any existing children
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
@@ -90,58 +87,67 @@ namespace Center_Maneger.UesrControls
                 int row = i / columns;
                 int column = i % columns;
 
-                Button mainbtn = new Button();
-                mainbtn.Content = "clickme";
+                Button mainbtn = new Button();              
                 mainbtn.Click += mainbtn_click;
                 mainbtn.Margin = new Thickness(5);
                 mainbtn.Width = DynamicGrid.Width * 0.23;
                 mainbtn.Height = 150;
 
                 // Create a border with a TextBlock inside
-                Border border = new Border
-                {
-                    BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(1),
-                    Margin = new Thickness(5)
-                };
+                //Border border = new Border
+                //{
+                //    BorderBrush = Brushes.Black,
+                //    BorderThickness = new Thickness(1),
+                //    Margin = new Thickness(5)
+                //};
 
                 StackPanel stackPanel = new StackPanel
                 {
-                    Background = Brushes.LightGreen,
-                    Margin = new Thickness(5)
+                    //Background = Brushes.LightGreen,
+                    Margin = new Thickness(5),
+                    
+
                 };
 
                 TextBlock chair_ind = new TextBlock
                 {
-                    Text = String.Format("Cell {0}", i+1),
+                    Text = Convert.ToString(i+1),
                     HorizontalAlignment = HorizontalAlignment.Left,
                     VerticalAlignment = VerticalAlignment.Top,
                     FontWeight = FontWeights.Bold,
                     Margin = new Thickness(5)
                 };
-                TextBlock name_of_gest = new TextBlock
-                {
-                    Text = "شوكت مدحت محسن",
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold,
-                    Margin = new Thickness(5)
-                };
-                TextBlock time = new TextBlock
-                {
-
-                    Text = date,
-                    HorizontalAlignment = HorizontalAlignment.Center,
-                    VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold,
-                    Margin = new Thickness(5)
-                };
 
                 stackPanel.Children.Add(chair_ind);
-                stackPanel.Children.Add(name_of_gest);
-                stackPanel.Children.Add(time);
-                border.Child = stackPanel;
-                mainbtn.Content = border;
+                Dictionary<int, Tuple<string, string>> activeUsers = GetActiveUsers();
+
+                if (activeUsers.ContainsKey(i+1))
+                {
+
+                    TextBlock name_of_gest = new TextBlock
+                    {
+                        Text = activeUsers[i+1].Item1,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        FontWeight = FontWeights.Bold,
+                        Margin = new Thickness(5)
+                    };
+                    TextBlock time = new TextBlock
+                    {
+
+                        Text = activeUsers[i + 1].Item2,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        FontWeight = FontWeights.Bold,
+                        Margin = new Thickness(5)
+                    };
+
+                    stackPanel.Children.Add(name_of_gest);
+                    stackPanel.Children.Add(time);
+                    mainbtn.Background = Brushes.LightGreen;
+                }
+               // border.Child = stackPanel;
+                mainbtn.Content = stackPanel;
 
                 // Add to the grid
                 Grid.SetRow(mainbtn, row);
@@ -150,15 +156,49 @@ namespace Center_Maneger.UesrControls
             }
 
         }
+
+
+        private Dictionary<int, Tuple<string, string>> GetActiveUsers()
+        {
+            var activeUsers = new Dictionary<int, Tuple<string, string>>();
+
+            using (var connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+                string query = "SELECT a.chair_num, u.Name, a.enter_date FROM active_users a JOIN users u ON a.user_id = u.id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int chairNum = reader.GetInt32(0);
+                    string userName = reader.GetString(1);
+                    string enterDate = reader.GetString(2);
+                    activeUsers.Add(chairNum, Tuple.Create(userName, enterDate));
+                }
+                reader.Close();
+            }
+
+            return activeUsers;
+        }
+
+
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {
-            // Handle the button click event
-            MessageBox.Show("Button Clicked!");
+            Button btn = sender as Button;
+            if (btn.Background == Brushes.LightGreen)
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
         private void load_grid_of_chair(object sender, RoutedEventArgs e)
         {
             CreateDynamicGrid();
         }
+
     }
 }

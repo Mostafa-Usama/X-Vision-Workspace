@@ -130,3 +130,5 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_chairs.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_chairs.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_chairs.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_chairs.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Members.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Members.g.cs
