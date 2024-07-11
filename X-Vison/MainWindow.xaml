@@ -18,7 +18,11 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
-                            <Button Content="X" Width="20" Height="20" Margin="5,0,0,0" Background="Transparent" Click="close_tab" BorderBrush="#00707070" />
+                            <Button Width="20" Height="20" Margin="5,0,0,0" Background="Transparent" Click="close_tab" BorderBrush="#00707070">
+                                <Button.Content>
+                                    <Image Source="/img/close.png"/>
+                                </Button.Content>
+                            </Button>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>

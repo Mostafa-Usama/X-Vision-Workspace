@@ -259,6 +259,9 @@
   <ItemGroup>
     <Resource Include="img\members-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

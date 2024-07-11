@@ -1,0 +1,103 @@
+[33mcommit 0dacf3994e8147cc5bfa74cdb6fc3ce270e66b0c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 3e3ec42 047c937
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Thu Jul 11 20:06:41 2024 +0300
+
+    add icon for close tab button ^_^!
+
+[33mcommit 3e3ec42ef06c69370267fcdde8769d15e7e53956[m
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Thu Jul 11 19:56:28 2024 +0300
+
+    add image for close tab button ^_^
+
+[33mcommit 047c937e72200e3674fb74d46b9eae88a43659a0[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Thu Jul 11 03:50:51 2024 +0300
+
+    worked on grid
+
+[33mcommit 1aa1f46f8305440d9ec3d69a0f6a058ffeb949c9[m
+Merge: f52ce85 b07be3f
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Wed Jul 10 20:30:00 2024 +0300
+
+    fixed merge conflict
+
+[33mcommit f52ce853e54b166aa552eb4e96c2ca8ff3937b10[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Wed Jul 10 20:10:05 2024 +0300
+
+    added close tab buttons, fixed password box bug
+
+[33mcommit b07be3f2392ddc0d690c4d2d9cdad3f0e7e1fe53[m
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Wed Jul 10 20:06:42 2024 +0300
+
+    add_grid_of_chairs
+
+[33mcommit b2328ac2a01f0bc35220ef5eefd99bea3fe225d6[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Tue Jul 9 22:32:39 2024 +0300
+
+    added password box
+
+[33mcommit e02084b887f427ad32857bc12eded8b6c094f97a[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Tue Jul 9 20:57:18 2024 +0300
+
+    finished first section, added utility class
+
+[33mcommit 8ec34b5efad991ca20359908ce6faa191bca17ef[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Mon Jul 8 19:22:51 2024 +0300
+
+    added adding and removing classes
+
+[33mcommit e1623d97956dd21ed9ed11bef664af7f76d561a8[m
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Mon Jul 8 02:41:33 2024 +0300
+
+    add_user_controls
+
+[33mcommit a2cfefeeef67424e87f69d5b6909379b7aa14ea6[m
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Sun Jul 7 23:02:18 2024 +0300
+
+    fix_error
+
+[33mcommit 76ccd53a4b6f22964e5495a1ec5dcaff71ece81e[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Sun Jul 7 22:35:54 2024 +0300
+
+    chairs
+
+[33mcommit 6f516c5e64d098ecab12e519729724a15280e0a9[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Sat Jul 6 23:27:46 2024 +0300
+
+    wokred on layout and added some icons
+
+[33mcommit b391a3a6934097dc596edca9cd028c173a788a0f[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Fri Jul 5 23:24:45 2024 +0300
+
+    worked on layout
+
+[33mcommit d6d7901a540fe9c1cd1ca9973cf2c98d7a8b21f3[m
+Author: Mostafa-Usama <mostafa.usama286@gmail.com>
+Date:   Wed Jun 19 01:22:17 2024 +0300
+
+    worked on database
+
+[33mcommit 6b7304212d3788dc7b2b1607b06ad43d1ad853ff[m
+Author: Abanoub Atef Ebeid Attia <abanoub.atef083@gmail.com>
+Date:   Tue Jun 18 13:20:45 2024 +0300
+
+    Login window and connect sqlite
+
+[33mcommit 24b29b437f055afd4bd2f7dfa0dd3c32e200dc14[m
+Author: Abanoub Atef Ebeid Attia <114786337+AbanoubAtef4@users.noreply.github.com>
+Date:   Tue Jun 18 13:02:28 2024 +0300
+
+    Initial commit
