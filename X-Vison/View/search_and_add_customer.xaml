@@ -1,0 +1,79 @@
+﻿<Window x:Class="Center_Maneger.View.search_and_add_customer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Center_Maneger.View"
+        mc:Ignorable="d"
+        Title="بحث و اضافة العملاء" Height="400" Width="400">
+    <Grid Margin="10" AutomationProperties.IsOffscreenBehavior="Offscreen" FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <!-- GroupBox for Existing Members -->
+        <GroupBox Grid.Row="0" VerticalAlignment="Center">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="بحث الأعضاء" Name="ExistingCustomerRadioButton"  GroupName="CustomerType"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid Margin="10" Name="Section1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    
+                </Grid.RowDefinitions>
+
+                <RadioButton Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="CustomerCodeTextBox"/>
+
+                <RadioButton Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="SubscriptionNumberTextBox"/>
+
+                <Button Content="بحث" Grid.Row="2" Grid.Column="2" Margin="5" Name="SearchButton"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- GroupBox for New Members -->
+        <GroupBox Grid.Row="1" VerticalAlignment="Center">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Content="عضو جديد" Name="NewCustomerRadioButton"  GroupName="CustomerType"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid Margin="10" Name="Section2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="اسم المشترك:" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="NameTextBox"/>
+
+                <Label Content="رقم المشترك:" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="SubscriptionNumberNewTextBox"/>
+
+                <Label Content="الكليه المعنية:" Grid.Row="2" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyTextBox"/>
+
+                <Label Content="الوظيفة:" Grid.Row="3" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="PositionTextBox"/>
+
+                <Button Content="حفظ" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" Name="SaveButton"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

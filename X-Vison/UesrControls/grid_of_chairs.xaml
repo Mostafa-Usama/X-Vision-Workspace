@@ -14,5 +14,7 @@
             <Grid  x:Name="DynamicGrid" Margin="5"/>
 
         </ScrollViewer>
+        
     </Grid>
+    
 </UserControl>

@@ -95,21 +95,24 @@ namespace Center_Maneger.UesrControls
                 mainbtn.Margin = new Thickness(5);
                 mainbtn.Width = DynamicGrid.Width * 0.23;
                 mainbtn.Height = 150;
+                mainbtn.BorderThickness = new Thickness(0);
+                mainbtn.Background = Brushes.LightGray;
                 mainbtn.Tag = Convert.ToString(i + 1);
                 // Create a border with a TextBlock inside
-                //Border border = new Border
-                //{
-                //    BorderBrush = Brushes.Black,
-                //    BorderThickness = new Thickness(1),
-                //    Margin = new Thickness(5)
-                //};
+                Border border = new Border
+                {
+                    BorderBrush = Brushes.Black,
+                    Background = Brushes.LightGray,
+                    BorderThickness = new Thickness(1),
+                    Margin = new Thickness(5),
+                    CornerRadius = new CornerRadius(10)
+                };
 
                 StackPanel stackPanel = new StackPanel
                 {
                     //Background = Brushes.LightGreen,
                     Margin = new Thickness(5),
                     
-
                 };
 
                 TextBlock chair_ind = new TextBlock
@@ -156,11 +159,11 @@ namespace Center_Maneger.UesrControls
                 }
                // border.Child = stackPanel;
                 mainbtn.Content = stackPanel;
-
+                border.Child = mainbtn;
                 // Add to the grid
-                Grid.SetRow(mainbtn, row);
-                Grid.SetColumn(mainbtn, column);
-                DynamicGrid.Children.Add(mainbtn);
+                Grid.SetRow(border, row);
+                Grid.SetColumn(border, column);
+                DynamicGrid.Children.Add(border);
             }
 
         }
