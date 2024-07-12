@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
+using Center_Maneger.View;
+using System.Globalization;
+
 namespace Center_Maneger.UesrControls
 {
     /// <summary>
@@ -92,7 +95,7 @@ namespace Center_Maneger.UesrControls
                 mainbtn.Margin = new Thickness(5);
                 mainbtn.Width = DynamicGrid.Width * 0.23;
                 mainbtn.Height = 150;
-
+                mainbtn.Tag = Convert.ToString(i + 1);
                 // Create a border with a TextBlock inside
                 //Border border = new Border
                 //{
@@ -119,7 +122,7 @@ namespace Center_Maneger.UesrControls
                 };
 
                 stackPanel.Children.Add(chair_ind);
-                Dictionary<int, Tuple<string, string>> activeUsers = GetActiveUsers();
+                Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
                 if (activeUsers.ContainsKey(i+1))
                 {
@@ -132,10 +135,13 @@ namespace Center_Maneger.UesrControls
                         FontWeight = FontWeights.Bold,
                         Margin = new Thickness(5)
                     };
+
+                    string now = DateTime.Parse(activeUsers[i + 1].Item2).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
+                    
                     TextBlock time = new TextBlock
                     {
 
-                        Text = activeUsers[i + 1].Item2,
+                        Text = now,
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
                         FontWeight = FontWeights.Bold,
@@ -145,6 +151,8 @@ namespace Center_Maneger.UesrControls
                     stackPanel.Children.Add(name_of_gest);
                     stackPanel.Children.Add(time);
                     mainbtn.Background = Brushes.LightGreen;
+                    mainbtn.Name = "user" + activeUsers[i + 1].Item3;
+                    
                 }
                // border.Child = stackPanel;
                 mainbtn.Content = stackPanel;
@@ -158,28 +166,6 @@ namespace Center_Maneger.UesrControls
         }
 
 
-        private Dictionary<int, Tuple<string, string>> GetActiveUsers()
-        {
-            var activeUsers = new Dictionary<int, Tuple<string, string>>();
-
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                connection.Open();
-                string query = "SELECT a.chair_num, u.Name, a.enter_date FROM active_users a JOIN users u ON a.user_id = u.id";
-                SQLiteCommand command = new SQLiteCommand(query, connection);
-                SQLiteDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int chairNum = reader.GetInt32(0);
-                    string userName = reader.GetString(1);
-                    string enterDate = reader.GetString(2);
-                    activeUsers.Add(chairNum, Tuple.Create(userName, enterDate));
-                }
-                reader.Close();
-            }
-
-            return activeUsers;
-        }
 
 
         private void mainbtn_click(object sender, RoutedEventArgs e)
@@ -187,15 +173,22 @@ namespace Center_Maneger.UesrControls
             Button btn = sender as Button;
             if (btn.Background == Brushes.LightGreen)
             {
-                
+                logout logoutWindow = new logout();
+                logoutWindow.chairNum = int.Parse(Convert.ToString(btn.Tag));
+                logoutWindow.user_id = int.Parse(btn.Name.Remove(0,4));
+                logoutWindow.ShowDialog();
+                if (logoutWindow.isClicked)
+                {
+                    CreateDynamicGrid();
+                }
             }
             else
             {
-
+                // open add_user window
             }
         }
 
-        private void load_grid_of_chair(object sender, RoutedEventArgs e)
+        private void load_grid_of_chair(object sender, RoutedEventArgs e) // called when window loads
         {
             CreateDynamicGrid();
         }

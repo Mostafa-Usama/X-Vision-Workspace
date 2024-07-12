@@ -11,7 +11,7 @@
         
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="60 0">
 
-            <Grid x:Name="DynamicGrid" Margin="5"/>
+            <Grid  x:Name="DynamicGrid" Margin="5"/>
 
         </ScrollViewer>
     </Grid>

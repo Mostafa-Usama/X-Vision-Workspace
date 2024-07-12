@@ -134,3 +134,5 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrCont
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Members.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Members.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Members.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\logout.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\logout.g.cs

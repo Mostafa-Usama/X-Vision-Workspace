@@ -1,0 +1,47 @@
+﻿<Window x:Class="Center_Maneger.View.logout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Loaded="load_data"
+        ResizeMode="NoResize"
+        Title="logout" Height="auto" Width="450">
+    <StackPanel  Margin="15">
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="الاسم:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="userName"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="توقيت الدخول:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="enterDate"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="توقيت الخروج:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="leaveDate"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="المدة الكلية:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="duration_stayed"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="التكلفة:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="cost"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="العرض:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="offer"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="البوفيه:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="kitchen"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Text="الاجمالي:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="total"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 30">
+            <TextBlock Text="المدفوع:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBox Name="paid"  FontSize="16" FontWeight="Bold" Width="200" VerticalContentAlignment="Center" Padding="3 0 0 0"  />
+        </StackPanel> 
+        <Button Width="80" Height="25" Content="تسجيل خروج" Click="logout_user"/>
+    </StackPanel>
+</Window>

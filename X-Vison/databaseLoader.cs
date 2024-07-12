@@ -98,6 +98,130 @@ namespace Center_Maneger
     //    return dataTable;
     //}
 
+        public static DataTable GetUserData()
+        {
+            DataTable dataTable = new DataTable();
 
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name
+                             FROM users u
+                             JOIN faculties f ON u.faculty_id = f.id
+                             JOIN jobs j ON u.job_id = j.id";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+
+
+
+        public static Dictionary<int, Tuple<string, string, int>> GetActiveUsers()
+        {
+            var activeUsers = new Dictionary<int, Tuple<string, string, int>>();
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = "SELECT a.chair_num, u.name, a.enter_date, a.user_id FROM active_users a JOIN users u ON a.user_id = u.id";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int chairNum = reader.GetInt32(0);
+                    string userName = reader.GetString(1);
+                    string enterDate = reader.GetString(2);
+                    int user_id = reader.GetInt32(3);
+                    activeUsers.Add(chairNum, Tuple.Create(userName, enterDate, user_id));
+                }
+                reader.Close();
+            }
+
+            return activeUsers;
+        }
+
+
+
+        public static Tuple<string, string, bool> GetUserDataByChairNum(int chairNum)
+         {
+            string userName = string.Empty;
+            string enterDate = string.Empty;
+            bool hasActiveOffer = false;
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                string query = @"
+                    SELECT 
+                        u.name, 
+                        a.enter_date,
+                        CASE WHEN uo.user_id IS NOT NULL THEN 1 ELSE 0 END AS HasActiveOffer
+                    FROM 
+                        active_users a
+                    JOIN 
+                        users u ON a.user_id = u.id
+                    LEFT JOIN 
+                        user_offer uo ON u.id = uo.user_id AND uo.start_date <= CURRENT_DATE AND uo.end_date >= CURRENT_DATE
+                    WHERE 
+                        a.chair_num = @ChairNum";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ChairNum", chairNum);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            userName = reader.GetString(0);
+                            enterDate = reader.GetString(1);
+                            hasActiveOffer = reader.GetInt32(2) == 1;
+                        }
+                    }
+                }
+            }
+            Tuple<string, string, bool> data = new Tuple<string, string, bool>(userName, enterDate, hasActiveOffer);
+
+            return data;
+        }
+
+
+
+
+        public static int GetPriceByDuration(int hours)
+        {
+            int price = 0;
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"
+                SELECT 
+                    cost 
+                FROM 
+                    prices 
+                WHERE 
+                    @Duration BETWEEN from_date AND to_date
+                LIMIT 1";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Duration", hours);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            price = reader.GetInt32(0);
+                        }
+                    }
+                }
+            }
+
+            return price;
+        }
     }
 }

@@ -28,7 +28,8 @@ namespace Center_Maneger.UesrControls
 
         public void load_data() // display classes data in grid
         {
-            data_grid.ItemsSource = databaseLoader.LoadData("users").DefaultView;
+           
+            data_grid.ItemsSource = databaseLoader.GetUserData().DefaultView;
         }
 
 
@@ -42,11 +43,11 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "رقم الهاتف";
             }
-            else if (e.PropertyName == "faculty_id")
+            else if (e.PropertyName == "faculty_name")
             {
                 e.Column.Header = "الكلية";
             }
-            else if (e.PropertyName == "job_id")
+            else if (e.PropertyName == "job_name")
             {
                 e.Column.Header = "الوظيفة";
             }
