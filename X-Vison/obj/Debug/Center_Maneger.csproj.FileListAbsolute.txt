@@ -140,3 +140,5 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\logout.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\logout.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\search_and_add_customer.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\search_and_add_customer.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\search_and_add_customer.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\search_and_add_customer.baml

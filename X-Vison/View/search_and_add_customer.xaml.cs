@@ -22,6 +22,40 @@ namespace Center_Maneger.View
         public search_and_add_customer()
         {
             InitializeComponent();
+
+            Section1.IsEnabled = true;
+            Section2.IsEnabled = false;
+        }
+
+        private void search_checkbox(object sender, RoutedEventArgs e)
+        {
+            Section1.IsEnabled = true;
+            Section2.IsEnabled = false;
+        }
+
+        private void new_checkbox(object sender, RoutedEventArgs e)
+        {
+            Section1.IsEnabled = false;
+            Section2.IsEnabled = true;
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            string query = nameTextBox.Text.ToLower();
+            var data = databaseLoader.GetUserNames(query,"name" );
+            nameListBox.ItemsSource = data;
+
+            nameListBox.Visibility = data.Any() ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void SuggestionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (nameListBox.SelectedItem != null)
+            {
+                nameTextBox.Text = nameListBox.SelectedItem.ToString();
+                nameListBox.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

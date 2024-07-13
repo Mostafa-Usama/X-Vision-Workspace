@@ -223,5 +223,32 @@ namespace Center_Maneger
 
             return price;
         }
+
+
+
+        public static List<string> GetUserNames(string filter, string col)
+    {
+        List<string> userNames = new List<string>();
+        
+        using (var connection = new SQLiteConnection(_connectionString))
+        {
+            connection.Open();
+            string query = String.Format("SELECT {0} FROM users WHERE {0} LIKE @filter LIMIT 5",col);
+            using (var command = new SQLiteCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@filter", String.Format("{0}%",filter));
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        userNames.Add(reader.GetString(0));
+                    }
+                }
+            }
+        }
+        return userNames;
+    }
+
+
     }
 }

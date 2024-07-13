@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Center_Maneger.View"
         mc:Ignorable="d"
-        Title="بحث و اضافة العملاء" Height="400" Width="400">
-    <Grid Margin="10" AutomationProperties.IsOffscreenBehavior="Offscreen" FlowDirection="RightToLeft">
+        ResizeMode="NoResize"
+        Title="بحث و اضافة العملاء" Height="450" Width="400">
+    <Grid Margin="10" FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <!-- GroupBox for Existing Members -->
-        <GroupBox Grid.Row="0" VerticalAlignment="Center">
+        <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="بحث الأعضاء" Name="ExistingCustomerRadioButton"  GroupName="CustomerType"/>
+                    <RadioButton Checked="search_checkbox" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton"  GroupName="CustomerType"/>
                 </StackPanel>
             </GroupBox.Header>
             <Grid Margin="10" Name="Section1">
@@ -31,11 +32,18 @@
                     
                 </Grid.RowDefinitions>
 
-                <RadioButton Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="CustomerCodeTextBox"/>
+                <Label Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBox x:Name="nameTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
+                    <ListBox Tag="name"   x:Name="nameListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
+                </StackPanel>
 
-                <RadioButton Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="SubscriptionNumberTextBox"/>
+
+                <Label Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <TextBox x:Name="phoneTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
+                    <ListBox Tag="phone"   x:Name="phoneListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
+                </StackPanel>
 
                 <Button Content="بحث" Grid.Row="2" Grid.Column="2" Margin="5" Name="SearchButton"/>
             </Grid>
@@ -45,7 +53,7 @@
         <GroupBox Grid.Row="1" VerticalAlignment="Center">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="عضو جديد" Name="NewCustomerRadioButton"  GroupName="CustomerType"/>
+                    <RadioButton Checked="new_checkbox" Content="عضو جديد" Name="NewCustomerRadioButton"  GroupName="CustomerType"/>
                 </StackPanel>
             </GroupBox.Header>
             <Grid Margin="10" Name="Section2">
@@ -58,21 +66,26 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Label Content="اسم المشترك:" Grid.Row="0" Grid.Column="0" Margin="5"/>
+                <Label Content="اسم العضو:" Grid.Row="0" Grid.Column="0" Margin="5"/>
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="NameTextBox"/>
 
-                <Label Content="رقم المشترك:" Grid.Row="1" Grid.Column="0" Margin="5"/>
+                <Label Content="رقم الهاتف:" Grid.Row="1" Grid.Column="0" Margin="5"/>
                 <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="SubscriptionNumberNewTextBox"/>
 
                 <Label Content="الكليه المعنية:" Grid.Row="2" Grid.Column="0" Margin="5"/>
                 <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyTextBox"/>
 
-                <Label Content="الوظيفة:" Grid.Row="3" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="PositionTextBox"/>
+                <Label Content="السنة الدراسية:" Grid.Row="3" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="levelTextBox"/>
+                
+                <Label Content="الوظيفة:" Grid.Row="4" Grid.Column="0" Margin="5"/>
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="PositionTextBox"/>
 
-                <Button Content="حفظ" Grid.Row="4" Grid.ColumnSpan="2" Margin="5" Name="SaveButton"/>
+                <Button Content="حفظ" Grid.Row="5" Grid.ColumnSpan="2" Margin="5" Name="SaveButton"/>
             </Grid>
         </GroupBox>
     </Grid>
