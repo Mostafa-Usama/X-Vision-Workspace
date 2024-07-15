@@ -48,7 +48,7 @@ namespace Center_Maneger {
         public void InitializeComponent() {
             
             #line 5 "..\..\App.xaml"
-            this.StartupUri = new System.Uri("View/search_and_add_customer.xaml", System.UriKind.Relative);
+            this.StartupUri = new System.Uri("MainWindow.xaml", System.UriKind.Relative);
             
             #line default
             #line hidden

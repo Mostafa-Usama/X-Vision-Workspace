@@ -12,7 +12,7 @@ namespace Center_Maneger
     {
         private static string _connectionString = "Data Source=database.db;Version=3;";
 
-         public static DataTable LoadData(string tableName)
+         public static DataTable LoadData(string tableName) // used to fill tabs in settings
         {
             string query = String.Format("SELECT * FROM {0}",tableName);
             using (var connection = new SQLiteConnection(_connectionString))
@@ -32,7 +32,7 @@ namespace Center_Maneger
         }
 
 
-        public static void InsertRecord(string tableName, Dictionary<string, object> columns)
+        public static void InsertRecord(string tableName, Dictionary<string, object> columns) // insert new record
         {
             
             using (var connection = new SQLiteConnection(_connectionString))
@@ -55,7 +55,7 @@ namespace Center_Maneger
             }
         }
 
-        public static void DeleteRecord(string tableName, string keyColumn, string keyValue)
+        public static void DeleteRecord(string tableName, string keyColumn, string keyValue) // delete record
         {
             using (var connection = new SQLiteConnection(_connectionString))
             {
@@ -71,41 +71,45 @@ namespace Center_Maneger
         }
 
 
-    //     public static DataTable SelectData(string tableName, List<string> columns, string whereClause = "")
-    //{
-    //    DataTable dataTable = new DataTable();
+        public static List<object> SelectData(string tableName, string column, string whereClause = "")
+        {
+           List <object> data = new List<object>();
 
-    //    using (var connection = new SQLiteConnection(_connectionString))
-    //    {
-    //        connection.Open();
-    //        string columnNames = string.Join(", ", columns);
-    //        string query = String.Format("SELECT {0} FROM {1}",columnNames,tableName);
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string columnNames = string.Join(", ", column);
+                string query = String.Format("SELECT {0} FROM {1}",columnNames, tableName);
 
-    //        if (!string.IsNullOrEmpty(whereClause))
-    //        {
-    //            query += String.Format(" WHERE {0}",whereClause);
-    //        }
+                if (!string.IsNullOrEmpty(whereClause))
+                {
+                    query += String.Format(" WHERE {0}", whereClause);
+                }
 
-    //        using (var command = new SQLiteCommand(query, connection))
-    //        {
-    //            using (var adapter = new SQLiteDataAdapter(command))
-    //            {
-    //                adapter.Fill(dataTable);
-    //            }
-    //        }
-    //    }
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            
+                            data.Add(reader.GetValue(0));
+                        }
+                    }
+                }
+            }
 
-    //    return dataTable;
-    //}
+            return data;
+        }
 
-        public static DataTable GetUserData()
+        public static DataTable GetUserData() // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name
+                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, level
                              FROM users u
                              JOIN faculties f ON u.faculty_id = f.id
                              JOIN jobs j ON u.job_id = j.id";
@@ -119,7 +123,7 @@ namespace Center_Maneger
 
 
 
-        public static Dictionary<int, Tuple<string, string, int>> GetActiveUsers()
+        public static Dictionary<int, Tuple<string, string, int>> GetActiveUsers() // get active users data to fill grid of chairs
         {
             var activeUsers = new Dictionary<int, Tuple<string, string, int>>();
 
@@ -145,7 +149,7 @@ namespace Center_Maneger
 
 
 
-        public static Tuple<string, string, bool> GetUserDataByChairNum(int chairNum)
+        public static Tuple<string, string, bool> GetUserDataByChairNum(int chairNum) // gets data about user to fill logout window
          {
             string userName = string.Empty;
             string enterDate = string.Empty;
@@ -191,7 +195,7 @@ namespace Center_Maneger
 
 
 
-        public static int GetPriceByDuration(int hours)
+        public static int GetPriceByDuration(int hours) // gets the price based on the time the uer spent
         {
             int price = 0;
 
@@ -226,7 +230,7 @@ namespace Center_Maneger
 
 
 
-        public static List<string> GetUserNames(string filter, string col)
+        public static List<string> GetUserNames(string filter, string col) // used to filter combo boxes when searching for existing users
     {
         List<string> userNames = new List<string>();
         
@@ -248,6 +252,35 @@ namespace Center_Maneger
         }
         return userNames;
     }
+
+        public static int GetUserId(string col, string value)// gets existing user id from his name or phone to add as a new record
+        {
+            int id = new int();
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = String.Format("SELECT id FROM users WHERE {0} = @value", col);
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@value", value);
+                    using (var reader = command.ExecuteReader())
+                    {
+                   
+                        if(reader.Read())
+                        {
+                            id = reader.GetInt32(0);
+                        }
+                        if (reader.Read())
+                        {
+                            id = 0;
+                        }
+                    }
+                }
+            }
+            return id;
+        }
+
 
 
     }

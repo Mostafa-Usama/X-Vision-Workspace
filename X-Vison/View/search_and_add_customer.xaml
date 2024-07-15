@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Center_Maneger.View"
+        WindowStartupLocation="CenterScreen"
+        Loaded="fill_combobox"
         mc:Ignorable="d"
         ResizeMode="NoResize"
+       
         Title="بحث و اضافة العملاء" Height="450" Width="400">
     <Grid Margin="10" FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
@@ -20,7 +23,7 @@
                     <RadioButton Checked="search_checkbox" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton"  GroupName="CustomerType"/>
                 </StackPanel>
             </GroupBox.Header>
-            <Grid Margin="10" Name="Section1">
+                <Grid Margin="10" Name="Section1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -33,19 +36,17 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
-                <StackPanel Grid.Row="0" Grid.Column="1">
-                    <TextBox x:Name="nameTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
-                    <ComboBox Tag="name"   x:Name="nameListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
-                </StackPanel>
+                
+                <ComboBox Tag="name" Name="UserComboBox" Height="25" IsTextSearchEnabled="False"  Grid.Row="0" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
 
 
                 <Label Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <TextBox x:Name="phoneTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
-                    <ComboBox Tag="phone"   x:Name="phoneListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
-                </StackPanel>
+                <ComboBox Tag="phone" Name="PhoneComboBox" Height="25" IsTextSearchEnabled="False"  Grid.Row="1" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
 
-                <Button Content="بحث" Grid.Row="2" Grid.Column="2" Margin="5" Name="SearchButton"/>
+
+
+
+                <Button Content="بحث" Grid.Row="2" Grid.Column="2" Margin="5" Name="SearchButton" Click="existing_user" />
             </Grid>
         </GroupBox>
 
@@ -74,18 +75,18 @@
                 <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="NameTextBox"/>
 
                 <Label Content="رقم الهاتف:" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="SubscriptionNumberNewTextBox"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="new_phoneTextBox"/>
 
                 <Label Content="الكليه المعنية:" Grid.Row="2" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyTextBox"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,5,10,5" Name="FacultyComboBox"/>
 
                 <Label Content="السنة الدراسية:" Grid.Row="3" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="levelTextBox"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="LevelTextBox"/>
                 
                 <Label Content="الوظيفة:" Grid.Row="4" Grid.Column="0" Margin="5"/>
-                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Name="PositionTextBox"/>
+                <ComboBox Grid.Row="4" Grid.Column="1" Margin="5" Name="jobComboBox"/>
 
-                <Button Content="حفظ" Grid.Row="5" Grid.ColumnSpan="2" Margin="5" Name="SaveButton"/>
+                <Button Content="حفظ" Grid.Row="5" Grid.ColumnSpan="2" Margin="5" Name="SaveButton" Click="new_user" />
             </Grid>
         </GroupBox>
     </Grid>

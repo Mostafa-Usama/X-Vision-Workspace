@@ -51,6 +51,15 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "الوظيفة";
             }
+            else if (e.PropertyName == "level")
+            {
+                e.Column.Header = "السنة الدراسية";
+            }
+        }
+
+        private void load(object sender, RoutedEventArgs e)
+        {
+            load_data();
         }
 
         private void remove_member_record(object sender, RoutedEventArgs e)
