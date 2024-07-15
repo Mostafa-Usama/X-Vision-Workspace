@@ -4,8 +4,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <DataGrid  AutoGeneratingColumn="change_header_name"  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"  Grid.Row="1" ColumnWidth="0.5*"/>
+             d:DesignHeight="550" d:DesignWidth="800">
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.45*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" >
+            <Border Width="150" BorderBrush="LightGray" Background="DarkGray" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="DarkCyan" HorizontalAlignment="Center"/>
+            </Border>
+            <Grid Margin="20 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition Width="0.2*"/>
+                    <ColumnDefinition Width="0.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0" >
+                    <TextBlock Text="اسم العضو :"     
+                    FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+
+                    <TextBlock Text="الكلية : "    
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    <TextBlock Text="الوظيفة :"      
+                    FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical"  Margin="10" Grid.Column="1">
+
+
+                    <TextBox x:Name="member_name" Width="200"   HorizontalAlignment="Left" 
+                    FontSize="16" Height="30" Padding="2" />
+
+                    <TextBox Width="200" x:Name="member_college" HorizontalAlignment="Left"
+                    FontSize="16" Height="30" Padding="2" Margin="0 30"/>
+
+                    <TextBox Width="200" x:Name="member_job" HorizontalAlignment="Left"
+                    FontSize="16" Height="30" Padding="2" />
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="10" Grid.Column="2" >
+                    <TextBlock Text="رقم الهاتف :"     
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+
+                    <TextBlock Text="السنة الدراسية :"    
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    
+                    
+
+                </StackPanel>
+                <StackPanel Orientation="Vertical"  Margin="10" Grid.Column="3">
+
+
+                    <TextBox  Width="200" Margin="0 20" x:Name="member_phone" HorizontalAlignment="Left" 
+                    FontSize="16" Height="30" Padding="2" />
+
+                    <TextBox Width="200" x:Name="member_level"  HorizontalAlignment="Left"
+                     FontSize="16" Height="30" Padding="2" Margin="0 20"/>
+
+                    
+                </StackPanel>
+            </Grid>
+            
+        </StackPanel>
+
+        <StackPanel Margin="0 20"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button Click="remove_member_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/img/delete.png" Width="40" Height="35" />
+                        <TextBlock Text="حذف" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="save_member_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                    <StackPanel Orientation="Horizontal" >
+                        <Image Source="/img/save.png" Width="40" Height="35" />
+                        <TextBlock Text="حفظ" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+                <Button Width="100" Height="40" Click="new_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/img/new_record.png" Width="40" Height="35" />
+                        <TextBlock Text="جديد" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+        <DataGrid Grid.Row="2" AutoGeneratingColumn="change_header_name"  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"   ColumnWidth="0.5*"/>
     </Grid>
 </UserControl>

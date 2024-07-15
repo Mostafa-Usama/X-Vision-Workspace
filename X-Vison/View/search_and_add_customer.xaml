@@ -35,14 +35,14 @@
                 <Label Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <TextBox x:Name="nameTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
-                    <ListBox Tag="name"   x:Name="nameListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
+                    <ComboBox Tag="name"   x:Name="nameListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
                 </StackPanel>
 
 
                 <Label Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
                 <StackPanel Grid.Row="1" Grid.Column="1">
                     <TextBox x:Name="phoneTextBox" Height="30"  TextChanged="SearchBox_TextChanged"/>
-                    <ListBox Tag="phone"   x:Name="phoneListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
+                    <ComboBox Tag="phone"   x:Name="phoneListBox" ScrollViewer.VerticalScrollBarVisibility="Disabled" Visibility="Collapsed" SelectionChanged="SuggestionListBox_SelectionChanged"/>
                 </StackPanel>
 
                 <Button Content="بحث" Grid.Row="2" Grid.Column="2" Margin="5" Name="SearchButton"/>

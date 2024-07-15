@@ -92,12 +92,15 @@ namespace Center_Maneger.UesrControls
 
                 Button mainbtn = new Button();              
                 mainbtn.Click += mainbtn_click;
+                mainbtn.MouseEnter += MouseEnter_event;
+                mainbtn.MouseLeave += MouseLeave_event;
                 mainbtn.Margin = new Thickness(5);
                 mainbtn.Width = DynamicGrid.Width * 0.23;
                 mainbtn.Height = 150;
                 mainbtn.BorderThickness = new Thickness(0);
                 mainbtn.Background = Brushes.LightGray;
                 mainbtn.Tag = Convert.ToString(i + 1);
+
                 // Create a border with a TextBlock inside
                 Border border = new Border
                 {
@@ -115,6 +118,29 @@ namespace Center_Maneger.UesrControls
                     
                 };
 
+                StackPanel hover_stackpanel = new StackPanel
+                {   
+                   
+                    Height = stackPanel.Height*0.2,
+                    Background = Brushes.LightGray,
+                    Opacity = 0.7,
+                    IsEnabled = false,
+                    VerticalAlignment = VerticalAlignment.Top,
+                };
+                
+
+
+                Image icon_infoUser = new Image();
+                icon_infoUser.Source = new BitmapImage(new Uri("D:\\Share-Yard-WORKSPACE\\X-Vison\\img/info.png"));
+                Button info_user = new Button() 
+                {
+                    Width = 25,
+                    Height = 20,
+                    Content = icon_infoUser,
+                    Margin = new Thickness(5),
+                    HorizontalAlignment = HorizontalAlignment.Right,
+
+                };
                 TextBlock chair_ind = new TextBlock
                 {
                     Text = Convert.ToString(i+1),
@@ -123,7 +149,8 @@ namespace Center_Maneger.UesrControls
                     FontWeight = FontWeights.Bold,
                     Margin = new Thickness(5)
                 };
-
+                //hover_stackpanel.Children.Add(info_user);
+                //stackPanel.Children.Add(hover_stackpanel);
                 stackPanel.Children.Add(chair_ind);
                 Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
@@ -160,6 +187,7 @@ namespace Center_Maneger.UesrControls
                // border.Child = stackPanel;
                 mainbtn.Content = stackPanel;
                 border.Child = mainbtn;
+                //mainbtn.Tag = hover_stackpanel;
                 // Add to the grid
                 Grid.SetRow(border, row);
                 Grid.SetColumn(border, column);
@@ -168,8 +196,25 @@ namespace Center_Maneger.UesrControls
 
         }
 
+        private void MouseLeave_event(object sender, MouseEventArgs e)
+        {
+            //Button btn = sender as Button;
+            //StackPanel hover_stackpanel = btn.Tag as StackPanel;
+            //if (hover_stackpanel != null)
+            //{
+            //    hover_stackpanel.Visibility = Visibility.Collapsed;
+            //}
+        }
 
-
+        private void MouseEnter_event(object sender, MouseEventArgs e)
+        {
+            //Button btn = sender as Button;
+            //StackPanel hover_stackpanel = btn.Tag as StackPanel;
+            //if (hover_stackpanel != null)
+            //{
+            //    hover_stackpanel.Visibility = Visibility.Visible;
+            //}
+        }
 
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {

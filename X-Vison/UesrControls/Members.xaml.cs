@@ -53,5 +53,19 @@ namespace Center_Maneger.UesrControls
             }
         }
 
+        private void remove_member_record(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void save_member_record(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void new_member_record(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

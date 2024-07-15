@@ -13,7 +13,7 @@
 
         <StackPanel Grid.Row="0">
             <StackPanel  >
-                <Border CornerRadius="5" BorderThickness="2 2 2 2" BorderBrush="White" Grid.Row="0" >
+                <Border Width="150" BorderBrush="LightGray" Background="DarkGray" CornerRadius="7" BorderThickness="5">
                     <TextBlock Grid.Row="0" Text="العروض" FontWeight="Bold" Foreground="DarkCyan" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5" FontSize="20"/>
                 </Border>
             </StackPanel>
