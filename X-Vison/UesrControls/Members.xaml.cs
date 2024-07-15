@@ -23,7 +23,7 @@ namespace Center_Maneger.UesrControls
         public Members()
         {
             InitializeComponent();
-            load_data();
+            
         }
 
         public void load_data() // display classes data in grid
@@ -51,6 +51,15 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "الوظيفة";
             }
+            else if (e.PropertyName == "level")
+            {
+                e.Column.Header = "السنة الدراسية";
+            }
+        }
+
+        private void load(object sender, RoutedEventArgs e)
+        {
+            load_data();
         }
 
     }

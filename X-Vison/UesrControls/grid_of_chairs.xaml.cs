@@ -92,7 +92,7 @@ namespace Center_Maneger.UesrControls
 
                 Button mainbtn = new Button();              
                 mainbtn.Click += mainbtn_click;
-                mainbtn.Margin = new Thickness(5);
+                mainbtn.Margin = new Thickness(1);
                 mainbtn.Width = DynamicGrid.Width * 0.23;
                 mainbtn.Height = 150;
                 mainbtn.BorderThickness = new Thickness(0);
@@ -187,7 +187,13 @@ namespace Center_Maneger.UesrControls
             }
             else
             {
-                // open add_user window
+                search_and_add_customer addWin = new search_and_add_customer();
+                addWin.chairNum = int.Parse(Convert.ToString(btn.Tag));
+                addWin.ShowDialog();
+                if (addWin.clickBtn)
+                {
+                    CreateDynamicGrid();
+                }
             }
         }
 
