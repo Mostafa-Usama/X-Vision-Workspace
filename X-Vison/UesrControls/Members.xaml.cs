@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace Center_Maneger.UesrControls
 {
@@ -20,6 +21,8 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class Members : UserControl
     {
+        private DataRowView selectedRow;
+
         public Members()
         {
             InitializeComponent();
@@ -32,6 +35,11 @@ namespace Center_Maneger.UesrControls
             data_grid.ItemsSource = databaseLoader.GetUserData().DefaultView;
         }
 
+        private void change_selected_record(object sender, SelectionChangedEventArgs e) // this event is called whenever you select a record (row) from the grid
+        {
+            selectedRow = data_grid.SelectedItem as DataRowView; // store the current selected row in the variable 
+
+        }
 
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e) //Becuase the grid is dynamically generated in runtime (asynchronous) مقدرش أغير اسم العمود بالكود مباشرة لكن الفنكشن دي بتشتغل لما العمود يتم انشاءه وبعدها بقدر أغير الاسم 
         {
@@ -60,11 +68,32 @@ namespace Center_Maneger.UesrControls
         private void load(object sender, RoutedEventArgs e)
         {
             load_data();
+            List<object> faculties = databaseLoader.SelectData("faculties", "faculty_name", "");
+            List<object> jobs = databaseLoader.SelectData("jobs", "job_name", "");
+            member_college.ItemsSource = faculties; 
+            member_job.ItemsSource = jobs;
         }
+
+
+
 
         private void remove_member_record(object sender, RoutedEventArgs e)
         {
+            if (selectedRow != null) // if a record is selected 
+            {
 
+                var result = MessageBox.Show("هل أنت متأكد من حذف هذا الصف؟", "تأكيد", MessageBoxButton.YesNo); // رسالة تأكيد
+                if (result == MessageBoxResult.Yes) // if he chooses YES
+                {
+                    string phone = Convert.ToString((selectedRow["phone"])); // بجيب اسم العمود اللي واقف عليه تقاطعا مع الصف اللي انا مختاره عشان اعرف أجيب اسم الكلاس
+                    databaseLoader.DeleteRecord("users", "phone", phone);
+                    load_data();
+                }
+            }
+            else
+            {
+                MessageBox.Show("برجاء اختيار الصف الذي تريد حذفه ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void save_member_record(object sender, RoutedEventArgs e)
@@ -73,7 +102,7 @@ namespace Center_Maneger.UesrControls
             string phone = member_phone.Text;
             string faculty = member_college.SelectedItem == null ? "" : member_college.SelectedItem.ToString(); ;
             string level = member_level.Text;
-            string job = member_job.SelectedItem == null ? "" : member_college .SelectedItem.ToString();
+            string job = member_job.SelectedItem == null ? "" : member_job.SelectedItem.ToString();
             
 
             if (name.Trim() == "" || phone.Trim() == "" || faculty.Trim() == "" || level.Trim() == "" || job.Trim() == "")
@@ -94,12 +123,24 @@ namespace Center_Maneger.UesrControls
                   {"level", level}
             };
 
-            databaseLoader.InsertRecord("users", data);
+            try
+            {
+                databaseLoader.InsertRecord("users", data);
+                load_data();
+            }
+            catch
+            {
+                MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void new_member_record(object sender, RoutedEventArgs e)
         {
-
+            member_name.Clear();
+            member_college.SelectedItem= null;
+            member_job.SelectedItem =null;
+            member_phone.Clear();
+            member_level.Clear();
         }
     }
 }

@@ -130,10 +130,17 @@ namespace Center_Maneger.View
                     {"chair_num", chairNum}
                 };
                 clickBtn = true;
-                databaseLoader.InsertRecord("active_users", data);
-                this.Close();
-                return;
+                try
+                {
+                    databaseLoader.InsertRecord("active_users", data);
+                    this.Close();
+                    return;
+                }
+                catch
+                {
+                    MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
 
+                }
             }
             if (name != "")
             {
@@ -150,9 +157,17 @@ namespace Center_Maneger.View
                     {"chair_num", chairNum}
                 };
                 clickBtn = true;
-                databaseLoader.InsertRecord("active_users", data);
-                this.Close();
-                return;
+                try
+                {
+                    databaseLoader.InsertRecord("active_users", data);
+                    this.Close();
+                    return;
+                }
+                catch
+                {
+                    MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
             }
             // add to active users;
             // reserve his chair

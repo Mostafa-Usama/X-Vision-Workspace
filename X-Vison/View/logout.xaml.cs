@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Globalization;
 namespace Center_Maneger.View
 {
     /// <summary>
@@ -47,8 +47,8 @@ namespace Center_Maneger.View
             leave_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
             //MessageBox.Show(start_date+"\n"+ now);
             TimeSpan duration = DateTime.Parse(leave_date) - DateTime.Parse(start_date);
-            string hours = duration.Hours.ToString();
-            string mintues = duration.Minutes.ToString();
+            string hours = ((int)duration.TotalHours).ToString();
+            string mintues = ( (int)((duration.TotalHours - (int)duration.TotalHours) * 60) ).ToString();
            // MessageBox.Show(duration);
             price = databaseLoader.GetPriceByDuration(int.Parse(hours));
             kitchen_cost = 0;// لحد دلوقتي بس 
@@ -56,8 +56,8 @@ namespace Center_Maneger.View
 
 
             userName.Text = name;
-            enterDate.Text = DateTime.Parse(start_date).ToString("h:mm tt");
-            leaveDate.Text = DateTime.Parse(leave_date).ToString("h:mm tt");
+            enterDate.Text = DateTime.Parse(start_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
+            leaveDate.Text = DateTime.Parse(leave_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             duration_stayed.Text = hours + "  ساعة    " + mintues + "  دقيقة" ;
             cost.Text = price.ToString();
             offer.Text = hasOffer ? "يوجد" : "لا يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SQLite;
 using Center_Maneger.View;
 using System.Globalization;
 
@@ -23,46 +22,19 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class grid_of_chairs : UserControl
     {
-        private string connectionString = "Data Source=database.db;Version=3;";
         int numberOfCells;
-        StackPanel hover_stackpanel = new StackPanel();
+
+        
         public grid_of_chairs()
         {
             InitializeComponent();
-            hover_stackpanel.Visibility = Visibility.Collapsed;
+            
         }
 
 
         public void CreateDynamicGrid()
         {
-            try
-            {
-                using (var connection = new SQLiteConnection(connectionString))
-                    {
-                        connection.Open();
-                        string query = String.Format("SELECT num_chairs FROM chairs");
-                        SQLiteCommand command = new SQLiteCommand(query, connection);
-                        SQLiteDataReader reader = command.ExecuteReader();
-                        if (reader.Read()) 
-                        {
-                            numberOfCells = reader.GetInt32(0);
-                        }
-                        else 
-                        {
-                            numberOfCells = 0;
-                        }
-                        reader.Close();
-                    
-                    }
-            }
-            catch 
-            {
-
-                MessageBox.Show("An error occurred");
-            }
-            
-            
-            
+            numberOfCells = Convert.ToInt32(databaseLoader.SelectData("chairs", "num_chairs")[0]);
             // Clear any existing children
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
@@ -92,15 +64,7 @@ namespace Center_Maneger.UesrControls
 
                 Button mainbtn = new Button();              
                 mainbtn.Click += mainbtn_click;
-
-                mainbtn.MouseEnter += MouseEnter_event;
-                mainbtn.MouseLeave += MouseLeave_event;
-                mainbtn.Margin = new Thickness(5);
-
                 mainbtn.Margin = new Thickness(1);
-
-                mainbtn.Width = DynamicGrid.Width * 0.23;
-                mainbtn.Height = 150;
                 mainbtn.BorderThickness = new Thickness(0);
                 mainbtn.Background = Brushes.LightGray;
                 mainbtn.Tag = Convert.ToString(i + 1);
@@ -108,88 +72,156 @@ namespace Center_Maneger.UesrControls
                 // Create a border with a TextBlock inside
                 Border border = new Border
                 {
+                    Height = 150,
+                    Width = DynamicGrid.Width * 0.23,
                     BorderBrush = Brushes.Black,
                     Background = Brushes.LightGray,
                     BorderThickness = new Thickness(1),
                     Margin = new Thickness(5),
-                    CornerRadius = new CornerRadius(10)
-                };
+                    CornerRadius = new CornerRadius(5),
+                    HorizontalAlignment = HorizontalAlignment.Stretch,
 
+                };
+                //new
+                Grid inside = new Grid();
+                RowDefinition firstRow = new RowDefinition { Height = new GridLength(border.Height) };
+                inside.RowDefinitions.Add(firstRow);
+                border.Child = inside;
+                Grid.SetRow(mainbtn, 0);
+                //new
                 StackPanel stackPanel = new StackPanel
                 {
-                    //Background = Brushes.LightGreen,
-                    Orientation = Orientation.Vertical,
-                    Margin = new Thickness(5),
-                    Width =border.Width,
-                    Height = border.Height,
-                    
+                   
                 };
        
                 TextBlock chair_ind = new TextBlock
                 {
                     Text = Convert.ToString(i+1),
-                    HorizontalAlignment = HorizontalAlignment.Left,
-                    VerticalAlignment = VerticalAlignment.Top,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
-                    Margin = new Thickness(5)
+                    FontSize = 18,
+                    Foreground = Brushes.OrangeRed,
+
                 };
-                //hover_stackpanel.Children.Add(info_user);
-                //stackPanel.Children.Add(hover_stackpanel);
-                
+                Image chairIcon = new Image {
+                    Width = border.Width * 0.3,
+                    Height= border.Height * 0.3,
+                    Source = new BitmapImage(new Uri("pack://application:,,,/img/grid chair icon.png")),
+                };
+                 
+                stackPanel.Children.Add(chairIcon);
+
                 Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
                 if (activeUsers.ContainsKey(i+1))
                 {
+                    stackPanel.Children.Remove(chairIcon);
+                    border.Background = Brushes.LightGreen;
+
+                    firstRow.Height = new GridLength(border.Height * 0.3);
+                    RowDefinition secondRow = new RowDefinition { Height = new GridLength(1, GridUnitType.Star)};
+                    inside.RowDefinitions.Add(secondRow);
+                    Grid.SetRow(mainbtn, 1);
+
+                    border.MouseEnter += MouseEnter_event;
+                    border.MouseLeave += MouseLeave_event;
 
                     TextBlock name_of_gest = new TextBlock
                     {
                         Text = activeUsers[i+1].Item1,
+                        Foreground = Brushes.DarkBlue,
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
                         FontWeight = FontWeights.Bold,
-                        Margin = new Thickness(5)
+                        FontSize = 18,
                     };
 
                     string now = DateTime.Parse(activeUsers[i + 1].Item2).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
                     
                     TextBlock time = new TextBlock
                     {
-
                         Text = now,
-                        HorizontalAlignment = HorizontalAlignment.Right,
-                        VerticalAlignment = VerticalAlignment.Bottom,
                         FontWeight = FontWeights.Bold,
-                        Margin = new Thickness(5)
+                        FontSize = 16,
+                        Margin = new Thickness(5),
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                        VerticalAlignment = VerticalAlignment.Center,
+
+                    };
+                   
+                    StackPanel infoStack = new StackPanel
+                    {  
+                        Background = new SolidColorBrush(Color.FromArgb(200, 5, 5, 5)),
+                        Orientation = Orientation.Horizontal,
+                        Visibility = Visibility.Hidden,
+                        FlowDirection = FlowDirection.RightToLeft,
                     };
 
+                    Grid.SetRow(infoStack, 0);
+
+
+                    Image infoIcon = new Image
+                    {
+                       
+                        Source = new BitmapImage(new Uri("pack://application:,,,/img/user info.png")),
+                    };
+                    Image notesIcon = new Image
+                    {
+                        
+                        Source = new BitmapImage(new Uri("pack://application:,,,/img/user notes.png")),
+                    };
+                    Image kitchenIcon = new Image
+                    {
+                       
+                        Source = new BitmapImage(new Uri("pack://application:,,,/img/kitchen icon2.png")),
+                    };
                     Button info_member = new Button
                     {
-                        Content = "info",
-                        Tag = "hover_btn_" + i,
-                        Width = 30,
-                        Height = 25,
-                        Margin = new Thickness(5),
-                        VerticalAlignment= VerticalAlignment.Top,
-                        HorizontalAlignment= HorizontalAlignment.Right,
-                        Visibility = Visibility.Collapsed,
+                        Margin = new Thickness(5, 0, 0, 0),
+                        Content = infoIcon,
+                        Height = infoStack.Height * .9,
+                        Background = null,
+                        BorderThickness = new Thickness(0),
                     };
-                    stackPanel.Children.Add(info_member);
-                    //stackPanel.Children.Add(hover_stackpanel);
+                    Button notes = new Button
+                    {
+                        Content = notesIcon,
+                        Height = infoStack.Height * .9,
+                        Margin = new Thickness(5, 0, 5, 0),
+                        Background = null,
+                        BorderThickness = new Thickness(0),
+                    };
+                    Button kitchen = new Button
+                    {
+                        Content = kitchenIcon,
+                        Height = infoStack.Height * .9 ,
+                        Background = null,
+                        BorderThickness = new Thickness(0),
+                    };
+
+                    infoStack.Children.Add(info_member);
+                    infoStack.Children.Add(notes);
+                    infoStack.Children.Add(kitchen);
+                    
+
                     stackPanel.Children.Add(name_of_gest);
                     stackPanel.Children.Add(time);
+
                     mainbtn.Background = Brushes.LightGreen;
                     mainbtn.Name = "user" + activeUsers[i + 1].Item3;
+                    inside.Children.Add(infoStack);
                     
                 }
-                // border.Child = stackPanel;
+                inside.Children.Add(mainbtn);
+
                 stackPanel.Children.Add(chair_ind);
                 mainbtn.Content = stackPanel;
-                border.Child = mainbtn;
-                //mainbtn.Tag = hover_stackpanel;
-                // Add to the grid
+              
                 Grid.SetRow(border, row);
                 Grid.SetColumn(border, column);
                 DynamicGrid.Children.Add(border);
+                
             }
 
         }
@@ -197,44 +229,29 @@ namespace Center_Maneger.UesrControls
         private void MouseLeave_event(object sender, MouseEventArgs e)
         {
 
-            Button button = sender as Button;
-            if (button != null)
+            Border border = sender as Border;
+            if (border != null)
             {
-                StackPanel stackPanel = button.Content as StackPanel;
-                if (stackPanel != null)
-                {
-                    Button hoverBtn = stackPanel.Children
-                        .OfType<Button>()
-                        .FirstOrDefault(sp => sp.Tag != null && sp.Tag.ToString().StartsWith("hover_btn_"));
-
-                    if (hoverBtn != null)
-                    {
-                        hoverBtn.Visibility = Visibility.Collapsed;
-                    }
-                }
+                Grid grid = border.Child as Grid;
+                StackPanel hoverStack = grid.Children[0] as StackPanel;
+               
+                hoverStack.Visibility = Visibility.Hidden;
+                    
             }
-
-
-        }
+         }
 
         private void MouseEnter_event(object sender, MouseEventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null)
-            {
-                StackPanel stackPanel = button.Content as StackPanel;
-                if (stackPanel != null)
-                {
-                    Button hoverBtn = stackPanel.Children
-                        .OfType<Button>()
-                        .FirstOrDefault(sp => sp.Tag != null && sp.Tag.ToString().StartsWith("hover_btn_"));
+            Border border = sender as Border;
 
-                    if (hoverBtn != null)
-                    {
-                        hoverBtn.Visibility = Visibility.Visible;
-                    }
-                }
+            if (border != null)
+            {
+                Grid grid = border.Child as Grid;
+                StackPanel hoverStack = grid.Children[0] as StackPanel;
+                hoverStack.Visibility = Visibility.Visible;
+
             }
+            
 
         }
 
