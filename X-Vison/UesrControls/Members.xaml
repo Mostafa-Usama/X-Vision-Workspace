@@ -41,10 +41,10 @@
                     <TextBox x:Name="member_name" Width="200"   HorizontalAlignment="Left" 
                     FontSize="16" Height="30" Padding="2" />
 
-                    <TextBox Width="200" x:Name="member_college" HorizontalAlignment="Left"
+                    <ComboBox Width="200" x:Name="member_college" HorizontalAlignment="Left"
                     FontSize="16" Height="30" Padding="2" Margin="0 30"/>
 
-                    <TextBox Width="200" x:Name="member_job" HorizontalAlignment="Left"
+                    <ComboBox Width="200" x:Name="member_job" HorizontalAlignment="Left"
                     FontSize="16" Height="30" Padding="2" />
                 </StackPanel>
 

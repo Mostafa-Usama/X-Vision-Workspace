@@ -50,7 +50,7 @@ namespace Center_Maneger
                         command.Parameters.AddWithValue("@" + column.Key, column.Value);
                     }
 
-                    command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();///////////////    /erorr/     ///////// 
                 }
             }
         }

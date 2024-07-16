@@ -69,7 +69,32 @@ namespace Center_Maneger.UesrControls
 
         private void save_member_record(object sender, RoutedEventArgs e)
         {
+            string name = member_name.Text;
+            string phone = member_phone.Text;
+            string faculty = member_college.SelectedItem == null ? "" : member_college.SelectedItem.ToString(); ;
+            string level = member_level.Text;
+            string job = member_job.SelectedItem == null ? "" : member_college .SelectedItem.ToString();
+            
 
+            if (name.Trim() == "" || phone.Trim() == "" || faculty.Trim() == "" || level.Trim() == "" || job.Trim() == "")
+            {
+                MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            int faculty_id = Convert.ToInt32(databaseLoader.SelectData("faculties", "id", String.Format("faculty_name = \"{0}\" ", faculty))[0]);
+            int job_id = Convert.ToInt32(databaseLoader.SelectData("jobs", "id", String.Format("job_name = \"{0}\"", job))[0]);
+
+            Dictionary<string, object> data = new Dictionary<string, object>
+            {
+                  {"name", name},
+                  {"phone", phone},
+                  {"faculty_id", faculty_id},
+                  {"job_id", job_id},
+                  {"level", level}
+            };
+
+            databaseLoader.InsertRecord("users", data);
         }
 
         private void new_member_record(object sender, RoutedEventArgs e)

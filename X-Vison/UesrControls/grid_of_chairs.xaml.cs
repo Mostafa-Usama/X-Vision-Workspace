@@ -25,11 +25,11 @@ namespace Center_Maneger.UesrControls
     {
         private string connectionString = "Data Source=database.db;Version=3;";
         int numberOfCells;
-
+        StackPanel hover_stackpanel = new StackPanel();
         public grid_of_chairs()
         {
             InitializeComponent();
-            
+            hover_stackpanel.Visibility = Visibility.Collapsed;
         }
 
 
@@ -118,33 +118,13 @@ namespace Center_Maneger.UesrControls
                 StackPanel stackPanel = new StackPanel
                 {
                     //Background = Brushes.LightGreen,
+                    Orientation = Orientation.Vertical,
                     Margin = new Thickness(5),
+                    Width =border.Width,
+                    Height = border.Height,
                     
                 };
-
-                StackPanel hover_stackpanel = new StackPanel
-                {   
-                   
-                    Height = stackPanel.Height*0.2,
-                    Background = Brushes.LightGray,
-                    Opacity = 0.7,
-                    IsEnabled = false,
-                    VerticalAlignment = VerticalAlignment.Top,
-                };
-                
-
-
-                Image icon_infoUser = new Image();
-                icon_infoUser.Source = new BitmapImage(new Uri("D:\\Share-Yard-WORKSPACE\\X-Vison\\img/info.png"));
-                Button info_user = new Button() 
-                {
-                    Width = 25,
-                    Height = 20,
-                    Content = icon_infoUser,
-                    Margin = new Thickness(5),
-                    HorizontalAlignment = HorizontalAlignment.Right,
-
-                };
+       
                 TextBlock chair_ind = new TextBlock
                 {
                     Text = Convert.ToString(i+1),
@@ -155,7 +135,7 @@ namespace Center_Maneger.UesrControls
                 };
                 //hover_stackpanel.Children.Add(info_user);
                 //stackPanel.Children.Add(hover_stackpanel);
-                stackPanel.Children.Add(chair_ind);
+                
                 Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
                 if (activeUsers.ContainsKey(i+1))
@@ -176,19 +156,33 @@ namespace Center_Maneger.UesrControls
                     {
 
                         Text = now,
-                        HorizontalAlignment = HorizontalAlignment.Center,
-                        VerticalAlignment = VerticalAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Right,
+                        VerticalAlignment = VerticalAlignment.Bottom,
                         FontWeight = FontWeights.Bold,
                         Margin = new Thickness(5)
                     };
 
+                    Button info_member = new Button
+                    {
+                        Content = "info",
+                        Tag = "hover_btn_" + i,
+                        Width = 30,
+                        Height = 25,
+                        Margin = new Thickness(5),
+                        VerticalAlignment= VerticalAlignment.Top,
+                        HorizontalAlignment= HorizontalAlignment.Right,
+                        Visibility = Visibility.Collapsed,
+                    };
+                    stackPanel.Children.Add(info_member);
+                    //stackPanel.Children.Add(hover_stackpanel);
                     stackPanel.Children.Add(name_of_gest);
                     stackPanel.Children.Add(time);
                     mainbtn.Background = Brushes.LightGreen;
                     mainbtn.Name = "user" + activeUsers[i + 1].Item3;
                     
                 }
-               // border.Child = stackPanel;
+                // border.Child = stackPanel;
+                stackPanel.Children.Add(chair_ind);
                 mainbtn.Content = stackPanel;
                 border.Child = mainbtn;
                 //mainbtn.Tag = hover_stackpanel;
@@ -202,22 +196,46 @@ namespace Center_Maneger.UesrControls
 
         private void MouseLeave_event(object sender, MouseEventArgs e)
         {
-            //Button btn = sender as Button;
-            //StackPanel hover_stackpanel = btn.Tag as StackPanel;
-            //if (hover_stackpanel != null)
-            //{
-            //    hover_stackpanel.Visibility = Visibility.Collapsed;
-            //}
+
+            Button button = sender as Button;
+            if (button != null)
+            {
+                StackPanel stackPanel = button.Content as StackPanel;
+                if (stackPanel != null)
+                {
+                    Button hoverBtn = stackPanel.Children
+                        .OfType<Button>()
+                        .FirstOrDefault(sp => sp.Tag != null && sp.Tag.ToString().StartsWith("hover_btn_"));
+
+                    if (hoverBtn != null)
+                    {
+                        hoverBtn.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+
+
         }
 
         private void MouseEnter_event(object sender, MouseEventArgs e)
         {
-            //Button btn = sender as Button;
-            //StackPanel hover_stackpanel = btn.Tag as StackPanel;
-            //if (hover_stackpanel != null)
-            //{
-            //    hover_stackpanel.Visibility = Visibility.Visible;
-            //}
+            Button button = sender as Button;
+            if (button != null)
+            {
+                StackPanel stackPanel = button.Content as StackPanel;
+                if (stackPanel != null)
+                {
+                    Button hoverBtn = stackPanel.Children
+                        .OfType<Button>()
+                        .FirstOrDefault(sp => sp.Tag != null && sp.Tag.ToString().StartsWith("hover_btn_"));
+
+                    if (hoverBtn != null)
+                    {
+                        hoverBtn.Visibility = Visibility.Visible;
+                    }
+                }
+            }
+
         }
 
         private void mainbtn_click(object sender, RoutedEventArgs e)
