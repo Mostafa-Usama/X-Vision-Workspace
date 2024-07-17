@@ -123,7 +123,8 @@ namespace Center_Maneger.View
         {
             if (phone != "")
             {
-                int id = databaseLoader.GetUserId("phone", phone);
+                int id = Convert.ToInt32(databaseLoader.SelectData("users", "id",String.Format("phone = \"{0}\" ",phone))[0]);
+
                 Dictionary<string, object> data = new Dictionary<string, object>{
                     {"user_id", id},
                     {"enter_date", enter_date},
@@ -144,15 +145,15 @@ namespace Center_Maneger.View
             }
             if (name != "")
             {
-                int id = databaseLoader.GetUserId("name", name);
-                if (id == 0)
+                List <object> id = databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ",name));
+                if (id.Count > 1)
                 {
                     MessageBox.Show("يوجد تكرار في الاسم, الرجاء البحث برقم الهاتف", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
 
                 }
                 Dictionary<string, object> data = new Dictionary<string, object>{
-                    {"user_id", id},
+                    {"user_id", id[0]},
                     {"enter_date", enter_date},
                     {"chair_num", chairNum}
                 };

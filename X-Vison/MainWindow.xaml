@@ -95,25 +95,25 @@
                 </TabItem>
                 <TabItem IsSelected="True" Header="الاستقبال" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <StackPanel Orientation="Horizontal">
-                       <Button Tag="الاعضاء" Click="openUserControl" Name="btn5" BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button Tag="الاعضاء"  Padding="10" Click="openUserControl" Name="btn5" BorderThickness="0" Background="#00DDDDDD" >
                         <StackPanel>
                             <Image Source="img/members-icon.png" Width="40" Height="35" />
                                 <TextBlock Text="الاعضاء"/>
                         </StackPanel>
                         </Button>
-                        <Button Tag="المقاعد" Click="openUserControl" Name="btn6" BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button Tag="المقاعد"  Margin="8 0" Padding="10" Click="openUserControl" Name="btn6" BorderThickness="0" Background="#00DDDDDD" >
                             <StackPanel>
                                 <Image Source="img/Chair icon.png" Width="40" Height="35" />
                                 <TextBlock Text="المقاعد"/>
                             </StackPanel>
                         </Button>
-                        <Button Tag="الغرف" Name="btn7" BorderThickness="0" Background="#00DDDDDD" Margin="8 0" Padding="5">
+                        <Button Tag="الغرف"  Padding="10" Name="btn7" BorderThickness="0" Background="#00DDDDDD" Margin="8 0" >
                             <StackPanel>
                                 <Image Source="img/meeting icon.png" Width="40" Height="35" />
                                 <TextBlock Text=" الغرف"/>
                             </StackPanel>
                         </Button>
-                        <Button Tag="العروض" Name="btn8" BorderThickness="0" Background="#00DDDDDD" Padding="5">
+                        <Button Tag="العروض"  Margin="8 0 0 0" Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
                             <StackPanel>
                                 <Image Source="img/Offer icon.png" Width="40" Height="35" />
                                 <TextBlock Text="العروض"/>

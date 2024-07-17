@@ -253,35 +253,5 @@ namespace Center_Maneger
         return userNames;
     }
 
-        public static int GetUserId(string col, string value)// gets existing user id from his name or phone to add as a new record
-        {
-            int id = new int();
-
-            using (var connection = new SQLiteConnection(_connectionString))
-            {
-                connection.Open();
-                string query = String.Format("SELECT id FROM users WHERE {0} = @value", col);
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@value", value);
-                    using (var reader = command.ExecuteReader())
-                    {
-                   
-                        if(reader.Read())
-                        {
-                            id = reader.GetInt32(0);
-                        }
-                        if (reader.Read())
-                        {
-                            id = 0;
-                        }
-                    }
-                }
-            }
-            return id;
-        }
-
-
-
     }
 }
