@@ -35,7 +35,8 @@ namespace Center_Maneger
                 new Prices_Settings(),
                 new Offer_Settings(),
                 new Members(),
-                new grid_of_chairs()
+                new grid_of_chairs(),
+                new grid_of_classes(),
             };   
         }
 

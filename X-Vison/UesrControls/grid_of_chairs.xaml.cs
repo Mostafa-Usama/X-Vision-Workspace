@@ -260,7 +260,7 @@ namespace Center_Maneger.UesrControls
             Button btn = sender as Button;
             if (btn.Background == Brushes.LightGreen)
             {
-                logout logoutWindow = new logout();
+                logout logoutWindow = new logout("chair");
                 logoutWindow.chairNum = int.Parse(Convert.ToString(btn.Tag));
                 logoutWindow.user_id = int.Parse(btn.Name.Remove(0,4));
                 logoutWindow.ShowDialog();
@@ -271,7 +271,7 @@ namespace Center_Maneger.UesrControls
             }
             else
             {
-                search_and_add_customer addWin = new search_and_add_customer();
+                search_and_add_customer addWin = new search_and_add_customer("chair");
                 addWin.chairNum = int.Parse(Convert.ToString(btn.Tag));
                 addWin.ShowDialog();
                 if (addWin.clickBtn)

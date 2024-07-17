@@ -100,6 +100,9 @@
     <Compile Include="UesrControls\grid_of_chairs.xaml.cs">
       <DependentUpon>grid_of_chairs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UesrControls\grid_of_classes.xaml.cs">
+      <DependentUpon>grid_of_classes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UesrControls\Job_Settings.xaml.cs">
       <DependentUpon>Job_Settings.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UesrControls\grid_of_chairs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UesrControls\grid_of_classes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -289,6 +296,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\kitchen icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\class chair.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

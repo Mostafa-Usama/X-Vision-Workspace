@@ -71,7 +71,7 @@ namespace Center_Maneger
         }
 
 
-        public static List<object> SelectData(string tableName, string column, string whereClause = "")
+        public static List<object> SelectData(string tableName, string column, string whereClause = "", string additionalInfo = "")
         {
            List <object> data = new List<object>();
 
@@ -85,7 +85,7 @@ namespace Center_Maneger
                 {
                     query += String.Format(" WHERE {0}", whereClause);
                 }
-
+                query += additionalInfo;
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     using (var reader = command.ExecuteReader())
@@ -146,6 +146,35 @@ namespace Center_Maneger
 
             return activeUsers;
         }
+
+        public static List<Tuple<string, string, int, string>> GetActiveClasses() // get active users data to fill grid of chairs
+        {
+            var activeClasses = new List<Tuple<string, string, int, string>>();
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT u.name, uc.enter_date, uc.user_id, c.class_name 
+                                FROM user_class uc
+                                JOIN users u ON uc.user_id = u.id
+                                JOIN classes c ON c.id = uc.class_id;";
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    
+                    string userName = reader.GetString(0);
+                    string enterDate = reader.GetString(1);
+                    int user_id = reader.GetInt32(2);
+                    string className = reader.GetString(3);
+                    activeClasses.Add(Tuple.Create(userName, enterDate, user_id, className));
+                }
+                reader.Close();
+            }
+
+            return activeClasses;
+        }
+
 
 
 

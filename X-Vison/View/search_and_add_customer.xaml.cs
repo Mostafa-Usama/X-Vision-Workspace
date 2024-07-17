@@ -20,12 +20,16 @@ namespace Center_Maneger.View
     public partial class search_and_add_customer : Window
     {
         public int chairNum;
-        public bool clickBtn =false ;
+        public string className;
 
-        public search_and_add_customer()
+        public bool clickBtn =false ;
+        string window;
+
+
+        public search_and_add_customer(string win)
         {
             InitializeComponent();
-
+            window = win;
             Section1.IsEnabled = true;
             Section2.IsEnabled = false;
         }
@@ -123,28 +127,54 @@ namespace Center_Maneger.View
         {
             if (phone != "")
             {
-                int id = Convert.ToInt32(databaseLoader.SelectData("users", "id",String.Format("phone = \"{0}\" ",phone))[0]);
+            int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id",String.Format("phone = \"{0}\" ",phone))[0]);
 
-                Dictionary<string, object> data = new Dictionary<string, object>{
-                    {"user_id", id},
-                    {"enter_date", enter_date},
-                    {"chair_num", chairNum}
-                };
-                clickBtn = true;
-                try
+                if (window == "chair")
                 {
-                    databaseLoader.InsertRecord("active_users", data);
-                    this.Close();
-                    return;
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"user_id", user_id},
+                        {"enter_date", enter_date},
+                        {"chair_num", chairNum}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("active_users", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
                 }
-                catch
+                else
                 {
-                    MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
 
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"class_id", classId},
+                        {"user_id", user_id},
+                        {"enter_date", enter_date}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("active_users", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
                 }
             }
             if (name != "")
             {
+                int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ", name))[0]);
                 List <object> id = databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ",name));
                 if (id.Count > 1)
                 {
@@ -152,22 +182,47 @@ namespace Center_Maneger.View
                     return;
 
                 }
-                Dictionary<string, object> data = new Dictionary<string, object>{
-                    {"user_id", id[0]},
-                    {"enter_date", enter_date},
-                    {"chair_num", chairNum}
-                };
-                clickBtn = true;
-                try
+                if (window == "chair")
                 {
-                    databaseLoader.InsertRecord("active_users", data);
-                    this.Close();
-                    return;
-                }
-                catch
-                {
-                    MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"user_id", user_id},
+                        {"enter_date", enter_date},
+                        {"chair_num", chairNum}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("active_users", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
 
+                    }
+                }
+                else
+                {
+                    int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
+
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"class_id", classId},
+                        {"user_id", user_id},
+                        {"enter_date", enter_date}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("user_class", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
                 }
             }
             // add to active users;

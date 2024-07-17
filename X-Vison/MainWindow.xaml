@@ -107,13 +107,13 @@
                                 <TextBlock Text="المقاعد"/>
                             </StackPanel>
                         </Button>
-                        <Button Tag="الغرف"  Padding="10" Name="btn7" BorderThickness="0" Background="#00DDDDDD" Margin="8 0" >
+                        <Button Tag="الغرف" Click="openUserControl" Padding="10" Name="btn7" BorderThickness="0" Background="#00DDDDDD" Margin="8 0" >
                             <StackPanel>
                                 <Image Source="img/meeting icon.png" Width="40" Height="35" />
                                 <TextBlock Text=" الغرف"/>
                             </StackPanel>
                         </Button>
-                        <Button Tag="العروض"  Margin="8 0 0 0" Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
+                        <Button Tag="العروض"  Click="openUserControl"   Margin="8 0 0 0" Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
                             <StackPanel>
                                 <Image Source="img/Offer icon.png" Width="40" Height="35" />
                                 <TextBlock Text="العروض"/>

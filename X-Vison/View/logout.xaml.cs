@@ -22,6 +22,7 @@ namespace Center_Maneger.View
         public int chairNum;
         public int user_id;
         public bool isClicked = false;
+        public string class_name;
 
         string name;
         int price;
@@ -30,27 +31,50 @@ namespace Center_Maneger.View
         int paid_money;
         string start_date;
         string leave_date;
+        bool hasOffer;
+        string window;
 
-        public logout()
+        public logout(string win)
         {
             InitializeComponent();
-            
+            window = win;
         }
 
 
         private void load_data(object sender, RoutedEventArgs e)
-        {   
-            Tuple<string, string, bool> data = databaseLoader.GetUserDataByChairNum(chairNum);
-            name = data.Item1;
-            start_date = data.Item2;
-            bool hasOffer = data.Item3;
+        {
+            if (window == "chair")
+            {
+                Tuple<string, string, bool> data = databaseLoader.GetUserDataByChairNum(chairNum);
+                name = data.Item1;
+                start_date = data.Item2;
+                hasOffer = data.Item3;
+                start_date = Convert.ToString(databaseLoader.SelectData("active_users", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
+
+            }
+            else
+            {
+                name = Convert.ToString(databaseLoader.SelectData("users", "name", String.Format(" id = \"{0}\" ", user_id))[0]);
+                start_date = Convert.ToString(databaseLoader.SelectData("user_class", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
+
+            }
             leave_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            
             //MessageBox.Show(start_date+"\n"+ now);
             TimeSpan duration = DateTime.Parse(leave_date) - DateTime.Parse(start_date);
             string hours = ((int)duration.TotalHours).ToString();
             string mintues = ( (int)((duration.TotalHours - (int)duration.TotalHours) * 60) ).ToString();
            // MessageBox.Show(duration);
-            price = databaseLoader.GetPriceByDuration(int.Parse(hours));
+            if (window == "chair")
+            {
+                price = databaseLoader.GetPriceByDuration(int.Parse(hours));
+            }
+            else
+            {
+                int total_hours = int.Parse(hours) == 0 ? 1 : int.Parse(hours);
+                //int classId = Convert.ToInt32(databaseLoader.SelectData("user_class", "class_id", String.Format("user_id = \"{0}\"", user_id))[0]);
+                price = total_hours* (Convert.ToInt32(databaseLoader.SelectData("classes", "cost", String.Format("class_name = \"{0}\"", class_name))[0]));
+            }
             kitchen_cost = 0;// لحد دلوقتي بس 
             total_cost = price + kitchen_cost;
 
@@ -60,7 +84,10 @@ namespace Center_Maneger.View
             leaveDate.Text = DateTime.Parse(leave_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             duration_stayed.Text = hours + "  ساعة    " + mintues + "  دقيقة" ;
             cost.Text = price.ToString();
-            offer.Text = hasOffer ? "يوجد" : "لا يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه
+            if (window == "chair")
+            {
+                offer.Text = hasOffer ? "يوجد" : "لا يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه
+            }
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();
 
@@ -82,14 +109,21 @@ namespace Center_Maneger.View
                     {"user_id", user_id},
                     {"enter_date", start_date},
                     {"leave_date", leave_date},
-                    {"type", "مقعد"},
+                    {"type", window == "chair"? "مقعد": "غرفة"},
                     {"reservation_cost", price},
                     {"kitchen", kitchen_cost},
                     {"total", total_cost},
                     {"paid", paid_money},
                 };
+                if (window == "chair")
+                {
+                    databaseLoader.DeleteRecord("active_users", "user_id", user_id.ToString());
+                }
+                else
+                {
+                    databaseLoader.DeleteRecord("user_class", "user_id", user_id.ToString());
 
-                databaseLoader.DeleteRecord("active_users", "user_id", user_id.ToString());
+                }
                 databaseLoader.InsertRecord("user_records", data);
                 isClicked = true;
                 // remove record from active users
