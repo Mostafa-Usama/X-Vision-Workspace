@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
        Background="LightSteelBlue"
-        Title="بحث و اضافة العملاء" Height="auto" Width="400">
+        Title="بحث و اضافة العملاء" Height="Auto" Width="400">
     <Grid Margin="10" FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
