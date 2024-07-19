@@ -1,0 +1,31 @@
+﻿<Window x:Class="Center_Maneger.View.Edit_User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Loaded="load_data"
+        Title="Edit_User" Height="450" Width="450">
+    <StackPanel Margin="8">
+        <TextBlock FontSize="25" Margin="0 0 0 50" FontWeight="Bold" Text="تعديل بيانات العضو " HorizontalAlignment="Center" />
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Width="90" Content="اسم العضو:" Margin="0 0 10 0"/>
+            <TextBox Width="200" Name="userNameTextBox"  />
+        </StackPanel>
+        <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label  Width="90" Content="رقم الهاتف:" Margin="0 0 10 0" />
+            <TextBox Width="200"  Name="phoneTextBox"   />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label  Width="90" Content="الكلية:" Margin="0 0 10 0" />
+            <ComboBox Name="FacultyComboBox" Width="200"  />
+        </StackPanel>
+        <StackPanel  Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label  Width="90" Content="الوظيفة:" Margin="0 0 10 0" />
+            <ComboBox  Name="JobComboBox" Width="200"  />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label  Width="90" Content=":السنة الدراسية" Margin="0 0 10 0" />
+            <TextBox Width="200"  Name="levelTextBox"   />
+        </StackPanel>
+        <Button Content="حفظ" Click="edit_user" HorizontalAlignment="Center" Padding="5" Width="130" Margin="0 30"/>
+    </StackPanel>
+</Window>

@@ -69,7 +69,42 @@ namespace Center_Maneger
                 }
             }
         }
+        public static void UpdateData(string tableName, Dictionary<string, object> columnsValues, string whereClause)
+        {
+            try
+            {
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
 
+                    // Construct the SET part of the query
+                    var setParts = columnsValues.Select(kv => String.Format("{0} = @{0}",kv.Key));
+                    string setClause = string.Join(", ", setParts);
+
+                    // Construct the full query
+                    string query = String.Format("UPDATE {0} SET {1} WHERE {2}",tableName, setClause, whereClause);
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        // Add parameters to the command
+                        foreach (var kv in columnsValues)
+                        {
+                            command.Parameters.AddWithValue(String.Format("@{0}",kv.Key), kv.Value);
+                        }
+
+                        // Execute the command
+                        int rowsAffected = command.ExecuteNonQuery();
+                        //return rowsAffected > 0; // Return true if at least one row was updated
+                    }
+                }
+            }
+            catch 
+            {
+                // Handle the exception (e.g., log it)
+                //Console.WriteLine("An error occurred: " + ex.Message);
+                //return false;
+            }
+        }
 
         public static List<object> SelectData(string tableName, string column, string whereClause = "", string additionalInfo = "")
         {
@@ -109,7 +144,7 @@ namespace Center_Maneger
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, level
+                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, u.level
                              FROM users u
                              JOIN faculties f ON u.faculty_id = f.id
                              JOIN jobs j ON u.job_id = j.id";

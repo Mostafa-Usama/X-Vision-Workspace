@@ -160,7 +160,7 @@ namespace Center_Maneger.View
                     };
                     try
                     {
-                        databaseLoader.InsertRecord("active_users", data);
+                        databaseLoader.InsertRecord("user_class", data);
                         clickBtn = true;
                         this.Close();
                         return;

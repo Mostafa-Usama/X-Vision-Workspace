@@ -147,3 +147,6 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrCont
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\App.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\App.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_User.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_User.g.cs

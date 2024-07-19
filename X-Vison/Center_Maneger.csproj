@@ -118,6 +118,9 @@
     <Compile Include="View\checkPassword.xaml.cs">
       <DependentUpon>checkPassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Edit_User.xaml.cs">
+      <DependentUpon>Edit_User.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\checkPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Edit_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using Center_Maneger.View;
 
 namespace Center_Maneger.UesrControls
 {
@@ -141,6 +142,29 @@ namespace Center_Maneger.UesrControls
             member_job.SelectedItem =null;
             member_phone.Clear();
             member_level.Clear();
+        }
+
+        private void edit_member_record(object sender, RoutedEventArgs e)
+        {
+            if (selectedRow != null) // if a record is selected 
+            {
+                
+                string phone = Convert.ToString((selectedRow["phone"])); ;
+                string name = Convert.ToString((selectedRow["name"]));
+                string faculty = Convert.ToString((selectedRow["faculty_name"]));
+                string job = Convert.ToString((selectedRow["job_name"]));
+                string level = Convert.ToString((selectedRow["level"]));
+                Edit_User editWin = new Edit_User(name, phone, faculty, job, level);
+                editWin.ShowDialog();
+                if (editWin.isClicked)
+                {
+                    load_data();
+                }
+            }
+            else
+            {
+                MessageBox.Show("برجاء اختيار الصف الذي تريد تعديله ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

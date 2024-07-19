@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\
 Center_Maneger
 none
 false
 DEBUG;TRACE
-D:\Share-Yard-WORKSPACE\X-Vison\App.xaml
-14-2074996675
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\App.xaml
+15289423462
 
-20-349060262
-19-2018748733
-MainWindow.xaml;UesrControls\Class_Settings.xaml;UesrControls\Faculty_Settings.xaml;UesrControls\grid_of_chairs.xaml;UesrControls\grid_of_classes.xaml;UesrControls\Job_Settings.xaml;UesrControls\Members.xaml;UesrControls\Offer_Settings.xaml;UesrControls\Prices_Settings.xaml;View\checkPassword.xaml;View\login.xaml;View\logout.xaml;View\num_of_chairs_win.xaml;View\search_and_add_customer.xaml;
+24-174051527
+19774498251
+MainWindow.xaml;UesrControls\Class_Settings.xaml;UesrControls\Faculty_Settings.xaml;UesrControls\grid_of_chairs.xaml;UesrControls\grid_of_classes.xaml;UesrControls\Job_Settings.xaml;UesrControls\Members.xaml;UesrControls\Offer_Settings.xaml;UesrControls\Prices_Settings.xaml;View\checkPassword.xaml;View\Edit_User.xaml;View\login.xaml;View\logout.xaml;View\num_of_chairs_win.xaml;View\search_and_add_customer.xaml;
 
 False
 

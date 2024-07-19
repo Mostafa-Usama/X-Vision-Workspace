@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="800"
-        Loaded="load"
+             Loaded="load"
              Background="#FFDAC27F">
     
     <Grid FlowDirection="RightToLeft">
@@ -27,10 +27,10 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0" >
-                    <TextBlock Text="اسم العضو :"  Style="{StaticResource TextBlockStyle}"   
+                    <TextBlock Text="اسم العضو :" 
                     FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
 
-                    <TextBlock Text="الكلية : "    Style="{StaticResource TextBlockStyle}"
+                    <TextBlock Text="الكلية : "    
                     FontSize="20" FontWeight="Bold" Height="30" Margin="0 30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
                     <TextBlock Text="الوظيفة :"      Style="{StaticResource TextBlockStyle}"
                     FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
@@ -51,10 +51,10 @@
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="2" >
                     <TextBlock Text="رقم الهاتف :"     
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}"/>
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right"/>
 
                     <TextBlock Text="السنة الدراسية :"    
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right" Style="{StaticResource TextBlockStyle}"/>
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right" />
                     
                     
 
@@ -75,25 +75,31 @@
         </StackPanel>
 
         <StackPanel Margin="0 20"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="remove_member_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+            <Button  BorderThickness="0" Click="remove_member_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/delete.png" Width="40" Height="35" />
                         <TextBlock Text="حذف" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="save_member_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+            <Button BorderThickness="0" Click="save_member_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/save.png" Width="40" Height="35" />
                         <TextBlock Text="حفظ" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40" Click="new_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+                <Button  BorderThickness="0" Width="100" Height="40" Click="new_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/new_record.png" Width="40" Height="35" />
                         <TextBlock Text="جديد" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-            </StackPanel>
+            <Button  BorderThickness="0"  Margin="70 0 0 0" Width="100" Height="40" Click="edit_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/new_record.png" Width="40" Height="35" />
+                    <TextBlock Text="تعديل" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
 
         <DataGrid Grid.Row="2" SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"   ColumnWidth="0.5*"/>
     </Grid>
