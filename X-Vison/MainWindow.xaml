@@ -125,7 +125,7 @@
                                 <TextBlock Text=" الغرف"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="العروض"   Margin="8 0 0 0" Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
+                        <Button Style="{StaticResource tabbtn}" Tag="العروض" Click="offer_window"  Margin="8 0 0 0" Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
                             <StackPanel>
                                 <Image Source="img/Offer icon.png" Width="40" Height="35" />
                                 <TextBlock Text="العروض"/>

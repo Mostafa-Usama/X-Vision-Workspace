@@ -119,6 +119,12 @@ namespace Center_Maneger
             settings_controls.Items.Remove(tab);
       
         }
+
+        private void offer_window(object sender, RoutedEventArgs e)
+        {
+            search_and_add_customer win = new search_and_add_customer("offer");
+            win.ShowDialog();
+        }
         
     }
 }

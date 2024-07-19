@@ -32,18 +32,24 @@ namespace Center_Maneger.View
             window = win;
             Section1.IsEnabled = true;
             Section2.IsEnabled = false;
+
+            ExistingCustomerRadioButton.IsChecked = true;
+            //SaveButton.IsEnabled = false;
+
         }
 
         private void search_checkbox(object sender, RoutedEventArgs e)
         {
             Section1.IsEnabled = true;
             Section2.IsEnabled = false;
+            SaveButton.IsEnabled = false;
         }
 
         private void new_checkbox(object sender, RoutedEventArgs e)
         {
             Section1.IsEnabled = false;
             Section2.IsEnabled = true;
+            SaveButton.IsEnabled = true;
         }
 
         private void UserComboBox_KeyUp(object sender, KeyEventArgs e)
@@ -85,6 +91,7 @@ namespace Center_Maneger.View
             string name = UserComboBox.SelectedItem == null? "" : UserComboBox.SelectedItem.ToString();
             string phone = PhoneComboBox.SelectedItem == null? "" : PhoneComboBox.SelectedItem.ToString();
             string enter_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+
             add_active_user(name, phone, enter_date);
             
         }
@@ -149,7 +156,7 @@ namespace Center_Maneger.View
 
                     }
                 }
-                else
+                else if (window == "class")
                 {
                     int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
 
@@ -170,6 +177,23 @@ namespace Center_Maneger.View
                         MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
 
                     }
+                }
+                else
+                {
+                    int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                    int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
+                    Dictionary<string, object> data = new Dictionary<string,object>{
+                        {"offer_id", offer_id},
+                        {"user_id", user_id},
+                        {"start_date", enter_date},
+                        {"end_date", end_date},
+                        {"left_hours", hours},
+                        {"spent_hours", 0}
+                    };
+                    databaseLoader.InsertRecord("user_offer", data);
+                    this.Close();
+                    return;
                 }
             }
             if (name != "")
@@ -202,7 +226,7 @@ namespace Center_Maneger.View
 
                     }
                 }
-                else
+                else if (window == "class")
                 {
                     int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
 
@@ -224,11 +248,25 @@ namespace Center_Maneger.View
 
                     }
                 }
-            }
-            // add to active users;
-            // reserve his chair
-
-        }
+                else
+                {
+                int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
+                Dictionary<string, object> data = new Dictionary<string,object>{
+                    {"offer_id", offer_id},
+                    {"user_id", user_id},
+                    {"start_date", enter_date},
+                    {"end_date", end_date},
+                    {"left_hours", hours},
+                    {"spent_hours", 0}
+                };
+                databaseLoader.InsertRecord("user_offer", data);
+                this.Close();
+                return;
+                }
+             }
+         }
 
         private void fill_combobox(object sender, RoutedEventArgs e)
         {
@@ -236,11 +274,26 @@ namespace Center_Maneger.View
             List<object> jobs = databaseLoader.SelectData("jobs", "job_name", "");
             FacultyComboBox.ItemsSource = faculties;
             jobComboBox.ItemsSource = jobs;
+            if (window != "offer")
+            {
+                OfferSection.Visibility = Visibility.Collapsed;
+                this.Height = 485;
+            }
+            else
+            {
+                List<object> offers = databaseLoader.SelectData("offers", "offer_name");
+                offerComboBox.ItemsSource = offers;
+            }
         }
 
-        private void UserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void offer_changed(object sender, SelectionChangedEventArgs e)
         {
-
+            string cost = Convert.ToString(databaseLoader.SelectData("offers", "cost", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+            string hours = Convert.ToString(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+            costLabel.Content = cost;
+            hoursLabel.Content = hours;
         }
+
+  
     }
 }
