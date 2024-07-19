@@ -144,3 +144,6 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\sea
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\search_and_add_customer.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_classes.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\App.baml

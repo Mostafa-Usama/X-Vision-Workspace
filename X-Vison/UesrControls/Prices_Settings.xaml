@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#FFDAC27F">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.35*"/>
@@ -18,40 +19,40 @@
                 </Border>
             </StackPanel>
             <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
-                <TextBlock Text="بداية الفترة: "  DockPanel.Dock="Right" VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="بداية الفترة: "  DockPanel.Dock="Right" VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" Foreground="DarkCyan"/>
 
-                <TextBox Name="start_date_price_input" Width="70"  HorizontalAlignment="Right" 
+                <TextBox Style="{StaticResource RoundedTextBox}" Name="start_date_price_input" Width="70"  HorizontalAlignment="Right" 
                          FontSize="16" Height="25" Padding="2 0" />
 
-                <TextBlock Text="نهاية الفترة:"  VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="نهاية الفترة:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" Foreground="DarkCyan"/>
 
-                <TextBox Name="end_date_price_input" Width="70"  HorizontalAlignment="Right"
+                <TextBox Style="{StaticResource RoundedTextBox}" Name="end_date_price_input" Width="70"  HorizontalAlignment="Right"
                          FontSize="16" Height="25" Padding="2 0" />
 
-               <TextBlock Text="تكلفة الفترة:"  VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="تكلفة الفترة:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" Foreground="DarkCyan"/>
 
-                <TextBox Name="cost_price_input" Width="150"  HorizontalAlignment="Right"
+                <TextBox Style="{StaticResource RoundedTextBox}" Name="cost_price_input" Width="150"  HorizontalAlignment="Right"
                          FontSize="16" Height="25" Padding="2 0" />
 
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Click="remove_price_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="remove_price_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/delete.png" Width="40" Height="35" />
                         <TextBlock Text="حذف" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button Click="save_price_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="save_price_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/save.png" Width="40" Height="35" />
                         <TextBlock Text="حفظ" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="40" Click="new_price_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40" Click="new_price_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/new_record.png" Width="40" Height="35" />
                         <TextBlock Text="جديد" VerticalAlignment="Center"/>

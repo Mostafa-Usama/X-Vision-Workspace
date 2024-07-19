@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Center_Maneger.UesrControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#FFDAC27F">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.35*"/>
@@ -19,10 +20,10 @@
                 </Border>
             </StackPanel>
             <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
-                <TextBlock Text="اسم الكلية : "  DockPanel.Dock="Right" VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="اسم الكلية : "  DockPanel.Dock="Right" VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" Foreground="DarkCyan"/>
 
-                <TextBox Name="name_of_faculty_input" Width="200"  HorizontalAlignment="Right" 
+                <TextBox Style="{StaticResource RoundedTextBox}" Name="name_of_faculty_input" Width="200"  HorizontalAlignment="Right" 
                          FontSize="16" Height="25" Padding="2 0" />
 
                
@@ -30,19 +31,19 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Click="remove_faculty_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="remove_faculty_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/delete.png" Width="40" Height="35" />
                         <TextBlock Text="حذف" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button Click="save_faculty_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="save_faculty_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/save.png" Width="40" Height="35" />
                         <TextBlock Text="حفظ" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Width="100" Height="40" Click="new_faculty_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+                <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40" Click="new_faculty_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/new_record.png" Width="40" Height="35" />
                         <TextBlock Text="جديد" VerticalAlignment="Center"/>

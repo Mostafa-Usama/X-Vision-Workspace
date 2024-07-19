@@ -238,7 +238,9 @@ namespace Center_Maneger.View
             jobComboBox.ItemsSource = jobs;
         }
 
-       
+        private void UserComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
     }
 }

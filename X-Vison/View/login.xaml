@@ -15,44 +15,8 @@
         Background="Transparent"
         AllowsTransparency="True">
     <Window.Resources>
-        <Style x:Key="RoundedTextBox" TargetType="TextBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TextBox">
-                        <Grid>
-                            <Border x:Name="border" 
-                                    Background="{TemplateBinding Background}" 
-                                    BorderBrush="{TemplateBinding BorderBrush}" 
-                                    BorderThickness="{TemplateBinding BorderThickness}" 
-                                    CornerRadius="5">
-                                <ScrollViewer x:Name="PART_ContentHost" 
-                                              Margin="0" 
-                                              VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="RoundedPassBox" TargetType="PasswordBox">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="PasswordBox">
-                        <Grid>
-                            <Border x:Name="border" 
-                                Background="{TemplateBinding Background}" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}" 
-                                CornerRadius="5">
-                                <ScrollViewer x:Name="PART_ContentHost" 
-                                          Margin="0" 
-                                          VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        
+       
 
 
     </Window.Resources>
@@ -154,7 +118,8 @@
                             Margin="30 30 0 0"
                             HorizontalAlignment="Left">
 
-                    <TextBlock Text=" Welcome To Share Yard"
+                    <TextBlock Style="{StaticResource TextBlockStyle}"
+                                Text=" Welcome To X-Vision"
                                HorizontalAlignment="Center"
                                Foreground="#FF81AE"
                                FontWeight="Bold"
@@ -243,40 +208,16 @@
                     <Button Name="loginbtn"
                             Margin="0 50 0 0"
                             Width="150"
-                            Height="40"
-                            
+                            Height="40"                        
                             Content="Login"
                             FontSize="18" 
                             FontFamily="Arial"
                             Cursor="Hand" FontWeight="Bold" 
                             HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                                                       
-                            Click="loginbtn_Click">
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#FF0FA5D7"/>
-                                <Setter Property="Foreground" Value="White"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#278BEF"/>
-
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
-                                        CornerRadius="8"
-                                        Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
-                                                      HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-
+                            VerticalAlignment="Center"                                                       
+                            Click="loginbtn_Click"
+                            Background="LightCoral"
+                            Style="{StaticResource Roundedbtn}">
                     </Button>
                 </StackPanel>
 

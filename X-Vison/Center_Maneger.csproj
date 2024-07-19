@@ -255,9 +255,6 @@
     <Resource Include="img\Chair icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\settings icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\meeting icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -299,6 +296,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\class chair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cafe.png" />
+    <Resource Include="img\employee.png" />
+    <Resource Include="img\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Login-admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Login-admin1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Login-admin2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\Classroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
