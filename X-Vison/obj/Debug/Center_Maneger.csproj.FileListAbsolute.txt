@@ -152,3 +152,7 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edi
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_User.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Member_Offers.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Member_Offers.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Member_Offers.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_User.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Member_Offers.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_User.g.cs

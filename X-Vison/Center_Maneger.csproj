@@ -331,6 +331,21 @@
   <ItemGroup>
     <Resource Include="img\search.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\sync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\correct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\offer_user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

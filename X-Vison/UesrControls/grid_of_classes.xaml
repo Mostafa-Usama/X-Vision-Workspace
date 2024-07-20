@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Loaded="load_grid_of_classes"
-             Background="#FFDAC27F">
+             Background="{StaticResource bguc}">
     <Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="60 0">

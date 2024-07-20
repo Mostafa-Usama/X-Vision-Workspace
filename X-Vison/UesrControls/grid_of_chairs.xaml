@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="load_grid_of_chair"
-             Background="#FFDAC27F">
+             Background="{StaticResource bguc}">
     <Grid>
         
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="60 0">

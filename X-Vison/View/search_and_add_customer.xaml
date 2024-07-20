@@ -8,7 +8,7 @@
         Loaded="fill_combobox"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Background="LightSteelBlue"
+        Background="{StaticResource win}"
         Title="بحث و اضافة العملاء" Height="600" Width="400">
     
     <Grid Margin="10" FlowDirection="RightToLeft">
@@ -20,10 +20,10 @@
         </Grid.RowDefinitions>
 
         <!-- GroupBox for Existing Members -->
-        <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20" BorderBrush="DarkCyan" BorderThickness="3">
+        <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20" BorderBrush="{StaticResource text}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Checked="search_checkbox" FontWeight="Bold" FontSize="14" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton"  GroupName="CustomerType" />
+                    <RadioButton Checked="search_checkbox" FontWeight="Bold" FontSize="14" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton" Foreground="{StaticResource text}" GroupName="CustomerType" />
                 </StackPanel>
             </GroupBox.Header>
                 <Grid Margin="10" Name="Section1" IsEnabled="True">
@@ -57,7 +57,7 @@
                     <Button.Content>
                         <StackPanel>
                             <Image Source="/img/search.png" Width="40" Height="40"/>
-                            <TextBlock Text=" بحث " FontSize="14" FontWeight="Bold"/>
+                            <TextBlock Text=" بحث " FontSize="14" FontWeight="Bold" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>
@@ -65,10 +65,10 @@
         </GroupBox>
 
         <!-- GroupBox for New Members -->
-        <GroupBox  Grid.Row="1" VerticalAlignment="Center" BorderBrush="DarkCyan" BorderThickness="3">
+        <GroupBox  Grid.Row="1" VerticalAlignment="Center" BorderBrush="{StaticResource text}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Checked="new_checkbox" Content="عضو جديد" Name="NewCustomerRadioButton"  GroupName="CustomerType"/>
+                    <RadioButton Checked="new_checkbox" FontSize="14" FontWeight="Bold" Content="عضو جديد" Name="NewCustomerRadioButton" Foreground="{StaticResource text}"  GroupName="CustomerType"/>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel  >
@@ -128,7 +128,7 @@
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/img/save.png" Width="30" Height="30" VerticalAlignment="Center"/>
-                            <TextBlock Text=" حفظ " FontSize="14" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock Text=" حفظ " FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>

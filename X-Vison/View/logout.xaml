@@ -5,7 +5,7 @@
         Loaded="load_data"
         ResizeMode="NoResize"
         Title="logout" Height="auto" Width="450"
-        Background="LightSteelBlue">
+        Background="{StaticResource win}">
     <StackPanel  Margin="15">
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="الاسم:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
@@ -43,6 +43,14 @@
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="المدفوع:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
             <TextBox Style="{StaticResource RoundedTextBox}"  Name="paid"  FontSize="16" FontWeight="Bold" Width="200" VerticalContentAlignment="Center" Padding="3 0 0 0"  />
         </StackPanel>
-        <Button Background="DarkCyan"  Style="{StaticResource Roundedbtn}"  Width="120" Height="35" Content="تسجيل خروج" Click="logout_user" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" />
+        <Button Background="Transparent"  Style="{StaticResource Roundedbtn}"  
+                Width="150" Height="35" Click="logout_user" 
+                FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" 
+                BorderThickness="0">
+            <StackPanel Orientation="Horizontal" >
+                <Image Source="/img/exit.png" Width="40" Height="35" />
+                <TextBlock Text="تسجيل خروج" VerticalAlignment="Center" Style="{StaticResource TextBlockStyle}"/>
+                </StackPanel>
+        </Button>
     </StackPanel>
 </Window>

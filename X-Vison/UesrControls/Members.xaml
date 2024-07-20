@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="800"
+             d:DesignHeight="570" d:DesignWidth="800"
              Loaded="load"
-             Background="#FFDAC27F">
+             Background="{StaticResource bguc}">
     
     <Grid FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.45*"/>
             <RowDefinition Height="0.15*"/>
             <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
@@ -27,13 +27,13 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0" >
-                    <TextBlock Text="اسم العضو :" 
-                    FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    <TextBlock Text="اسم العضو :" Style="{StaticResource TextBlockStyle}"
+                    FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
 
-                    <TextBlock Text="الكلية : "    
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    <TextBlock Text="الكلية : "    Style="{StaticResource TextBlockStyle}"
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 30" HorizontalAlignment="Right"/>
                     <TextBlock Text="الوظيفة :"      Style="{StaticResource TextBlockStyle}"
-                    FontSize="20" FontWeight="Bold" Height="30" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical"  Margin="10" Grid.Column="1">
@@ -51,10 +51,10 @@
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="2" >
                     <TextBlock Text="رقم الهاتف :"     
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right"/>
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right"/>
 
                     <TextBlock Text="السنة الدراسية :"    
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Foreground="DarkCyan" HorizontalAlignment="Right" />
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right" />
                     
                     
 
@@ -75,27 +75,27 @@
         </StackPanel>
 
         <StackPanel Margin="0 20"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
-            <Button  BorderThickness="0" Click="remove_member_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+            <Button Style="{StaticResource Roundedbtn}"  BorderThickness="0" Click="remove_member_record" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
-                        <Image Source="/img/delete.png" Width="40" Height="35" />
+                        <Image Source="/img/trash.png" Width="40" Height="35" />
                         <TextBlock Text="حذف" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-            <Button BorderThickness="0" Click="save_member_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
+            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Click="save_member_record" Width="100" Height="40" Margin="70 0" FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/save.png" Width="40" Height="35" />
                         <TextBlock Text="حفظ" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button  BorderThickness="0" Width="100" Height="40" Click="new_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40" Click="new_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/img/new_record.png" Width="40" Height="35" />
+                        <Image Source="/img/correct.png" Width="40" Height="35" />
                         <TextBlock Text="جديد" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-            <Button  BorderThickness="0"  Margin="70 0 0 0" Width="100" Height="40" Click="edit_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
+            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0"  Margin="70 0 0 0" Width="100" Height="40" Click="edit_member_record"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/img/new_record.png" Width="40" Height="35" />
+                    <Image Source="/img/sync.png" Width="40" Height="35" />
                     <TextBlock Text="تعديل" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>

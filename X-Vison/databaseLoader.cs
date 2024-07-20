@@ -230,7 +230,7 @@ namespace Center_Maneger
 
 
 
-        public static Tuple<string, string, object> GetUserDataByChairNum(int chairNum) // gets data about user to fill logout window
+        public static Tuple<string, string, object> GetUserDataByChairNum(int chairNum ) // gets data about user to fill logout window
          {
             string userName = string.Empty;
             string enterDate = string.Empty;

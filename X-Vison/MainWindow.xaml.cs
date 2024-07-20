@@ -41,8 +41,6 @@ namespace Center_Maneger
                 null, 
                 new Member_Offers(),
             };
-            buttons = new Button[] {
-            btn0, btn1, btn2, btn3, btn4, btn5,btn6,btn7,btn8};
         }
 
         private void num_chairs_btn(object sender, RoutedEventArgs e)
@@ -66,18 +64,7 @@ namespace Center_Maneger
                 Content = userControls[idx],
               
             };
-            foreach (var btn in buttons)
-            {
-                if (clickedBtn == btn)
-                {
-                    clickedBtn.Background = new SolidColorBrush(Colors.LightGreen);
-                }
-                else
-                {
-                    clickedBtn.Background = new SolidColorBrush(Colors.White);
-
-                }
-            }
+           
             
 
 
@@ -127,6 +114,7 @@ namespace Center_Maneger
             search_and_add_customer win = new search_and_add_customer("offer");
             win.ShowDialog();
         }
-        
+
+       
     }
 }
