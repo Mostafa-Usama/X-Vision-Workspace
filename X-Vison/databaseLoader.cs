@@ -230,28 +230,33 @@ namespace Center_Maneger
 
 
 
-        public static Tuple<string, string, bool> GetUserDataByChairNum(int chairNum) // gets data about user to fill logout window
+        public static Tuple<string, string, object> GetUserDataByChairNum(int chairNum) // gets data about user to fill logout window
          {
             string userName = string.Empty;
             string enterDate = string.Empty;
-            bool hasActiveOffer = false;
+            object offerId= null;
+            string offerStart = string.Empty;
+            string offerEnd = string.Empty;
+            object left_hours = null;
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();// افتكر عدد الساعات الباقية من الباقة
-                string query = @"
-                    SELECT 
-                        u.name, 
-                        a.enter_date,
-                        CASE WHEN uo.user_id IS NOT NULL THEN 1 ELSE 0 END AS HasActiveOffer
-                    FROM 
-                        active_users a
-                    JOIN 
-                        users u ON a.user_id = u.id
-                    LEFT JOIN 
-                        user_offer uo ON u.id = uo.user_id AND uo.start_date <= CURRENT_DATE AND uo.end_date >= CURRENT_DATE
-                    WHERE 
-                        a.chair_num = @ChairNum";
+                string query = @" SELECT 
+                                u.name, 
+                                a.enter_date,
+                                uo.offer_id,
+                                uo.start_date,
+                                uo.end_date,
+                                uo.left_hours
+                            FROM 
+                                active_users a
+                            JOIN 
+                                users u ON a.user_id = u.id
+                            LEFT JOIN 
+                                user_offer uo ON a.user_id = uo.user_id
+                            WHERE 
+                                a.chair_num = @ChairNum";
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
@@ -263,12 +268,26 @@ namespace Center_Maneger
                         {
                             userName = reader.GetString(0);
                             enterDate = reader.GetString(1);
-                            hasActiveOffer = reader.GetInt32(2) == 1;
+                            offerId = reader.GetValue(2);
+                            offerStart = reader["start_date"] != DBNull.Value ? reader["start_date"].ToString() : null;
+                            offerEnd = reader["end_date"] != DBNull.Value ? reader["end_date"].ToString() : null;
+                            left_hours = reader["left_hours"] != DBNull.Value ? reader["left_hours"]: null; 
                         }
                     }
                 }
             }
-            Tuple<string, string, bool> data = new Tuple<string, string, bool>(userName, enterDate, hasActiveOffer);
+            if (offerId != null && offerStart != null && offerEnd != null && left_hours != null)
+            {
+                if (!(DateTime.Parse(offerStart) <= DateTime.Now && DateTime.Parse(offerEnd) >= DateTime.Now) || Convert.ToInt32(left_hours) <= 0)
+                {
+                    offerId = null;
+                }
+            }
+            else
+            {
+                offerId = null; 
+            }
+            Tuple<string, string, object> data = new Tuple<string, string, object>(userName, enterDate, offerId);
 
             return data;
         }

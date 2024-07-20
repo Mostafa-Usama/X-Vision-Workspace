@@ -31,7 +31,7 @@ namespace Center_Maneger.View
         int paid_money;
         string start_date;
         string leave_date;
-        bool hasOffer;
+        int offer_id;
         string window;
 
         public logout(string win)
@@ -45,10 +45,10 @@ namespace Center_Maneger.View
         {
             if (window == "chair")
             {
-                Tuple<string, string, bool> data = databaseLoader.GetUserDataByChairNum(chairNum);
+                Tuple<string, string, object> data = databaseLoader.GetUserDataByChairNum(chairNum);
                 name = data.Item1;
                 start_date = data.Item2;
-                hasOffer = data.Item3;
+                offer_id = data.Item3 == null? 0 : Convert.ToInt32(data.Item3);
                 start_date = Convert.ToString(databaseLoader.SelectData("active_users", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
 
             }
@@ -86,7 +86,7 @@ namespace Center_Maneger.View
             cost.Text = price.ToString();
             if (window == "chair")
             {
-                offer.Text = hasOffer ? "يوجد" : "لا يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه
+                offer.Text = offer_id == 0? "لا يوجد" : "يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه
             }
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();

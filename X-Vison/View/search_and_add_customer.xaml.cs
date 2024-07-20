@@ -250,20 +250,26 @@ namespace Center_Maneger.View
                 }
                 else
                 {
-                int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
-                Dictionary<string, object> data = new Dictionary<string,object>{
-                    {"offer_id", offer_id},
-                    {"user_id", user_id},
-                    {"start_date", enter_date},
-                    {"end_date", end_date},
-                    {"left_hours", hours},
-                    {"spent_hours", 0}
-                };
-                databaseLoader.InsertRecord("user_offer", data);
-                this.Close();
-                return;
+                    if (offerComboBox.SelectedItem == null)
+                    {
+                        MessageBox.Show("برجاء تحديد الباقة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                    int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
+                    Dictionary<string, object> data = new Dictionary<string,object>{
+                        {"offer_id", offer_id},
+                        {"user_id", user_id},
+                        {"start_date", enter_date},
+                        {"end_date", end_date},
+                        {"left_hours", hours},
+                        {"spent_hours", 0}
+                    };
+                    databaseLoader.InsertRecord("user_offer", data);
+                    //clickBtn = true;
+                    this.Close();
+                    return;
                 }
              }
          }
