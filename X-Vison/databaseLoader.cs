@@ -155,6 +155,23 @@ namespace Center_Maneger
             return dataTable;
         }
 
+        public static DataTable GetOffersData() // get user data in ألاعضاء
+        {
+            DataTable dataTable = new DataTable();
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours
+                             FROM users u
+                             JOIN user_offer uo ON u.id= uo.user_id
+                             JOIN offers o ON o.id= uo.offer_id";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
 
 
 

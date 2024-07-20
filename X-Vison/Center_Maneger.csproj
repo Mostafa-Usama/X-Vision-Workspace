@@ -109,6 +109,9 @@
     <Compile Include="UesrControls\Members.xaml.cs">
       <DependentUpon>Members.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UesrControls\Member_Offers.xaml.cs">
+      <DependentUpon>Member_Offers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UesrControls\Offer_Settings.xaml.cs">
       <DependentUpon>Offer_Settings.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UesrControls\Members.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UesrControls\Member_Offers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
