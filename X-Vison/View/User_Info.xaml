@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Center_Maneger.View.User_Info"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="بيانات العضو" Height="350" Width="400"
+        Title="بيانات العضو" Height="370" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource win}"

@@ -389,6 +389,12 @@
   <ItemGroup>
     <Resource Include="img\password.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\employee %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\cash.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
