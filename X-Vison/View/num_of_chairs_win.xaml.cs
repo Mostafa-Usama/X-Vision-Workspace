@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SQLite;
 
 namespace Center_Maneger.View
 {
@@ -31,18 +30,9 @@ namespace Center_Maneger.View
 
         private void load_old()
         {
-            using (var connection = new SQLiteConnection(_connectionString))
-            {
-                connection.Open();
-                string query = "SELECT num_chairs FROM chairs";
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                 
-                    string num = Convert.ToString(command.ExecuteScalar());
-                    num_chairs_input.Text = num;
-
-                }
-            }
+            num_chairs_input.Text = Convert.ToString(databaseLoader.SelectData("chairs", "num_chairs")[0]);
+            num_chairs_input.Focus();
+            num_chairs_input.CaretIndex = num_chairs_input.Text.Length;
         }
 
         private void Save_num_chairs(object sender, RoutedEventArgs e)
@@ -51,24 +41,20 @@ namespace Center_Maneger.View
             bool isNumber = int.TryParse(num_chairs_input.Text , out chairs);
             if (isNumber && chairs > 0)
             {
-                using (var connection = new SQLiteConnection(_connectionString))
-                {
-                    connection.Open();
-                    string query = "UPDATE chairs SET num_chairs = @chairs";
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@chairs", chairs);
-
-                        command.ExecuteScalar();
-                        
-                    }
-                }
+              
+                Dictionary<string, object> data = new Dictionary<string,object>{
+                    {"num_chairs", chairs}
+                };
+                databaseLoader.UpdateData("chairs", data, "TRUE");
+  
                 this.Close();
 
             }
             else
             {
                 MessageBox.Show("برجاء ادخال ارقام صحيحة "," خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                num_chairs_input.Focus();
+
             }
             
         }

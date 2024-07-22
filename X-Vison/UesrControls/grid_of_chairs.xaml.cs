@@ -23,7 +23,7 @@ namespace Center_Maneger.UesrControls
     public partial class grid_of_chairs : UserControl
     {
         int numberOfCells;
-
+        SolidColorBrush btnBg = new SolidColorBrush(Color.FromArgb(255, 255, 154, 92));
         
         public grid_of_chairs()
         {
@@ -72,7 +72,7 @@ namespace Center_Maneger.UesrControls
                 // Create a border with a TextBlock inside
                 Border border = new Border
                 {
-                    Height = 150,
+                    Height = 170,
                     Width = DynamicGrid.Width * 0.23,
                     BorderBrush = Brushes.Black,
                     Background = Brushes.LightGray,
@@ -117,7 +117,7 @@ namespace Center_Maneger.UesrControls
                 if (activeUsers.ContainsKey(i+1))
                 {
                     stackPanel.Children.Remove(chairIcon);
-                    border.Background = Brushes.LightGreen;
+                    border.Background = btnBg;
 
                     firstRow.Height = new GridLength(border.Height * 0.3);
                     RowDefinition secondRow = new RowDefinition { Height = new GridLength(1, GridUnitType.Star)};
@@ -130,20 +130,21 @@ namespace Center_Maneger.UesrControls
                     TextBlock name_of_gest = new TextBlock
                     {
                         Text = activeUsers[i+1].Item1,
-                        Foreground = Brushes.DarkBlue,
+                        Foreground = new SolidColorBrush(Color.FromRgb(11, 49, 66)),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
                         FontWeight = FontWeights.Bold,
-                        FontSize = 18,
+                        FontSize = 22,
                     };
 
                     string now = DateTime.Parse(activeUsers[i + 1].Item2).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
                     
                     TextBlock time = new TextBlock
                     {
+                        Foreground = Brushes.Black,
                         Text = now,
                         FontWeight = FontWeights.Bold,
-                        FontSize = 16,
+                        FontSize = 20,
                         Margin = new Thickness(5),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
@@ -183,7 +184,11 @@ namespace Center_Maneger.UesrControls
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Name = "user" + activeUsers[i + 1].Item3
+
                     };
+                    info_member.Click += info_member_Click;
+
                     Button notes = new Button
                     {
                         Content = notesIcon,
@@ -191,7 +196,11 @@ namespace Center_Maneger.UesrControls
                         Margin = new Thickness(5, 0, 5, 0),
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Tag = Convert.ToString(i + 1),
+
                     };
+                    notes.Click += notes_Click;
+
                     Button kitchen = new Button
                     {
                         Content = kitchenIcon,
@@ -199,6 +208,7 @@ namespace Center_Maneger.UesrControls
                         Background = null,
                         BorderThickness = new Thickness(0),
                     };
+                    kitchen.Click += kitchen_Click;
 
                     infoStack.Children.Add(info_member);
                     infoStack.Children.Add(notes);
@@ -208,7 +218,7 @@ namespace Center_Maneger.UesrControls
                     stackPanel.Children.Add(name_of_gest);
                     stackPanel.Children.Add(time);
 
-                    mainbtn.Background = Brushes.LightGreen;
+                    mainbtn.Background = btnBg;
                     mainbtn.Name = "user" + activeUsers[i + 1].Item3;
                     inside.Children.Add(infoStack);
                     
@@ -224,6 +234,28 @@ namespace Center_Maneger.UesrControls
                 
             }
 
+        }
+
+        void kitchen_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        void notes_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            User_Note userNoteWin = new User_Note("chair");
+            userNoteWin.chairNum = int.Parse(Convert.ToString(btn.Tag));
+            userNoteWin.ShowDialog();
+        }
+
+        void info_member_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            User_Info userInfoWin = new User_Info();
+            userInfoWin.userId = int.Parse(btn.Name.Remove(0, 4));
+
+            userInfoWin.ShowDialog();
         }
 
         private void MouseLeave_event(object sender, MouseEventArgs e)
@@ -258,7 +290,7 @@ namespace Center_Maneger.UesrControls
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            if (btn.Background == Brushes.LightGreen)
+            if (btn.Background == btnBg)
             {
                 logout logoutWindow = new logout("chair");
                 logoutWindow.chairNum = int.Parse(Convert.ToString(btn.Tag));

@@ -146,8 +146,8 @@ namespace Center_Maneger
                 connection.Open();
                 string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, u.level
                              FROM users u
-                             JOIN faculties f ON u.faculty_id = f.id
-                             JOIN jobs j ON u.job_id = j.id";
+                             LEFT JOIN faculties f ON u.faculty_id = f.id
+                             LEFT JOIN jobs j ON u.job_id = j.id";
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dataTable);
             }

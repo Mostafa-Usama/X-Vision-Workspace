@@ -15,10 +15,10 @@
         
             <StackPanel Grid.Row="0">
 
-                <Border Width="170" BorderBrush="Cyan" Background="LightSteelBlue" CornerRadius="7" BorderThickness="5" >
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Grid.Row="0" Text="عروض الاعضاء" FontWeight="Bold" Foreground="DarkCyan" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5" FontSize="20"/>
-                </Border>
-            </StackPanel>
+            <Border Width="150" BorderBrush="{StaticResource bgtab}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="عروض الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource bgtab}" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
 
         <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Center" FlowDirection="RightToLeft">
             <CheckBox FlowDirection="RightToLeft" Content="العروض المنتهية " x:Name="expired_offers" FontSize="22" FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 

@@ -5,7 +5,7 @@
         Loaded="load_data"
         ResizeMode="NoResize"
         Title="logout" Height="auto" Width="450"
-        Background="{StaticResource win}">
+        Background="{StaticResource bguc}">
     <StackPanel  Margin="15">
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="الاسم:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>

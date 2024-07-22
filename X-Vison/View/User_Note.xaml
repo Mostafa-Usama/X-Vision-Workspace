@@ -1,0 +1,20 @@
+﻿<Window x:Class="Center_Maneger.View.User_Note"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        ResizeMode="NoResize"
+        Loaded="load_date"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource bguc}"
+        Title="ملاحظات" Height="300" Width="400">
+    <Grid Margin="15 ">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*" />
+            <RowDefinition Height=".55*" />
+            <RowDefinition Height=".2*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="ملاحظات" HorizontalAlignment="Center"  Margin="0 0 0 30"  Style="{StaticResource TextBlockStyle}" Foreground="{StaticResource bgtab}" FontSize="20" />
+        <TextBox FlowDirection="RightToLeft" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"  Name="NoteTextBox" Grid.Row="1" Width="auto" Height="auto" Padding=" 2" FontSize="18" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" />
+        <Button Click="save_note" Grid.Row="2"  Background="{StaticResource bgbtn}" Style="{StaticResource Roundedbtn}" Content="حفظ" Height="30" Width="100" FontWeight="Bold" VerticalAlignment="Bottom" />
+
+    </Grid>
+</Window>

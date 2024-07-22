@@ -136,6 +136,12 @@
     <Compile Include="View\search_and_add_customer.xaml.cs">
       <DependentUpon>search_and_add_customer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\User_Info.xaml.cs">
+      <DependentUpon>User_Info.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\User_Note.xaml.cs">
+      <DependentUpon>User_Note.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -205,6 +211,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\search_and_add_customer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\User_Info.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\User_Note.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

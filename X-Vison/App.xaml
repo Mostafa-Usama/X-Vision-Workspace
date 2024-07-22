@@ -4,26 +4,28 @@
              xmlns:local="clr-namespace:Center_Maneger"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="bguc2" Color="#501f3a"/>
-        <SolidColorBrush x:Key="hoverbtn" Color="#cb2d6f"/>
-        <SolidColorBrush x:Key="text" Color="#DBCFB0"/>
-        <SolidColorBrush x:Key="bgbtn" Color="#FF087972"/>
-        <SolidColorBrush x:Key="bgtab" Color="#14A098"/>
-        <SolidColorBrush x:Key="bguc" Color="#0C6F6A"/>
-        <SolidColorBrush x:Key="win" Color="#0F292F"/>
-
-
+        <SolidColorBrush x:Key="bguc2" Color="#050517"/>
+        <SolidColorBrush x:Key="hoverbtn" Color="#1B949D"/>
+        <SolidColorBrush x:Key="text" Color="#000000"/>
+        <SolidColorBrush x:Key="Whitetext" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="bgbtn" Color="#1EA5AE"/>
+        <SolidColorBrush x:Key="bgtab" Color="#1EA5AE"/>
+        <SolidColorBrush x:Key="bguc" Color="#EFEFEF"/>
+        <SolidColorBrush x:Key="win" Color="#0B3142"/>
+        <!--BBCE8A   E2F9B8  939F5C -->
+        <!--010A13   FF9233  EE8844 -->
+        <!--0B3142   EFEFEF  1EA5AE -->
 
         <Style x:Key="RoundedTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Grid>
                             <Border x:Name="border"
                             Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderBrush="{StaticResource bgtab}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5">
                                 <ScrollViewer x:Name="PART_ContentHost" Margin="0"/>
@@ -36,14 +38,14 @@
 
         <Style x:Key="RoundedPassBox" TargetType="PasswordBox">
             <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
                         <Grid>
                             <Border x:Name="border"
                             Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderBrush="{StaticResource bgtab}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5">
                                 <ScrollViewer x:Name="PART_ContentHost" Margin="0"/>

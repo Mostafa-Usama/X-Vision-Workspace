@@ -9,22 +9,22 @@
              Background="{StaticResource bguc}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.35*"/>
-            <RowDefinition Height=".65*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height=".6*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
             <StackPanel  >
-                <Border Width="150" BorderBrush="LightGray" Background="DarkGray" CornerRadius="7" BorderThickness="5" >
-                    <TextBlock Grid.Row="0" Text="بيانات الكلية" FontWeight="Bold" Foreground="DarkCyan" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5" FontSize="20"/>
+                <Border Margin="0 5" Width="150" BorderBrush="{StaticResource bgtab}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+                    <TextBlock Text="بيانات الكليات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource bgtab}" HorizontalAlignment="Center"/>
                 </Border>
             </StackPanel>
-            <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+            <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="اسم الكلية : "  DockPanel.Dock="Right" VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="name_of_faculty_input" Width="200"  HorizontalAlignment="Right" 
-                         FontSize="16" Height="25" Padding="2 0" />
+                         FontSize="20"  Padding="2 0" />
 
                
 

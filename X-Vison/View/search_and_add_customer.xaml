@@ -8,7 +8,7 @@
         Loaded="fill_combobox"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Background="{StaticResource win}"
+        Background="{StaticResource bguc}"
         Title="بحث و اضافة العملاء" Height="600" Width="400">
     
     <Grid Margin="10" FlowDirection="RightToLeft">
@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <!-- GroupBox for Existing Members -->
-        <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20" BorderBrush="{StaticResource text}" BorderThickness="3">
+        <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20" BorderBrush="{StaticResource bgtab}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <RadioButton Checked="search_checkbox" FontWeight="Bold" FontSize="14" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton" Foreground="{StaticResource text}" GroupName="CustomerType" />
@@ -65,7 +65,7 @@
         </GroupBox>
 
         <!-- GroupBox for New Members -->
-        <GroupBox  Grid.Row="1" VerticalAlignment="Center" BorderBrush="{StaticResource text}" BorderThickness="3">
+        <GroupBox  Grid.Row="1" VerticalAlignment="Center" BorderBrush="{StaticResource bgtab}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
                     <RadioButton Checked="new_checkbox" FontSize="14" FontWeight="Bold" Content="عضو جديد" Name="NewCustomerRadioButton" Foreground="{StaticResource text}"  GroupName="CustomerType"/>

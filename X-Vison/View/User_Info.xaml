@@ -1,0 +1,35 @@
+﻿<Window x:Class="Center_Maneger.View.User_Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="بيانات العضو" Height="350" Width="400"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource bguc}"
+        Loaded="load_data">
+
+    <StackPanel  Margin="15">
+        <TextBlock Text="بيانات العضو" HorizontalAlignment="Center"  Margin="0 0 0 30"  Style="{StaticResource TextBlockStyle}" Foreground="{StaticResource bgtab}" FontSize="20" />
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="الاسم:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
+            <TextBlock Name="userName"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="رقم الهاتف:" Margin="0 0 30 0"/>
+            <TextBlock Name="phoneText"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="الكلية:" Margin="0 0 30 0" />
+            <TextBlock Name="facutlyText"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="الوظيفة:" Margin="0 0 30 0" />
+            <TextBlock Name="jobText"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
+            <TextBlock Style="{StaticResource TextBlockStyle}" Text="السنة الدراسية:" Margin="0 0 30 0" />
+            <TextBlock Name="levelText"  FontSize="16" FontWeight="Bold" />
+        </StackPanel>
+    </StackPanel>
+
+
+</Window>

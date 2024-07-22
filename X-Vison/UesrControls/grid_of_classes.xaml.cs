@@ -23,6 +23,8 @@ namespace Center_Maneger.UesrControls
     public partial class grid_of_classes : UserControl
     {
         int numberOfCells;
+        SolidColorBrush btnBg = new SolidColorBrush(Color.FromArgb(255, 255, 154, 92));
+
         public grid_of_classes()
         {
             InitializeComponent();
@@ -76,7 +78,7 @@ namespace Center_Maneger.UesrControls
                 // Create a border with a TextBlock inside
                 Border border = new Border
                 {
-                    Height = 150,
+                    Height = 170,
                     Width = DynamicGrid.Width * 0.23,
                     BorderBrush = Brushes.Black,
                     Background = Brushes.LightGray,
@@ -124,7 +126,7 @@ namespace Center_Maneger.UesrControls
                 if (idx != -1)
                 {
                     stackPanel.Children.Remove(chairIcon);
-                    border.Background = Brushes.LightGreen;
+                    border.Background = btnBg;
 
                     firstRow.Height = new GridLength(border.Height * 0.3);
                     RowDefinition secondRow = new RowDefinition { Height = new GridLength(1, GridUnitType.Star) };
@@ -137,20 +139,21 @@ namespace Center_Maneger.UesrControls
                     TextBlock name_of_gest = new TextBlock
                     {
                         Text = activeUsers[idx].Item1,
-                        Foreground = Brushes.DarkBlue,
+                        Foreground = new SolidColorBrush(Color.FromRgb(11, 49, 66)),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
                         FontWeight = FontWeights.Bold,
-                        FontSize = 18,
+                        FontSize = 22,
                     };
 
                     string now = DateTime.Parse(activeUsers[idx].Item2).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
 
                     TextBlock time = new TextBlock
                     {
+                        Foreground = Brushes.Black,
                         Text = now,
                         FontWeight = FontWeights.Bold,
-                        FontSize = 16,
+                        FontSize = 20,
                         Margin = new Thickness(5),
                         HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center,
@@ -190,7 +193,11 @@ namespace Center_Maneger.UesrControls
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Tag = activeUsers[idx].Item3,
+
                     };
+                    info_member.Click += info_member_Click;
+
                     Button notes = new Button
                     {
                         Content = notesIcon,
@@ -198,7 +205,11 @@ namespace Center_Maneger.UesrControls
                         Margin = new Thickness(5, 0, 5, 0),
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Tag = activeUsers[idx].Item3,
+
                     };
+                    notes.Click += notes_Click;
+
                     Button kitchen = new Button
                     {
                         Content = kitchenIcon,
@@ -215,7 +226,7 @@ namespace Center_Maneger.UesrControls
                     stackPanel.Children.Add(name_of_gest);
                     stackPanel.Children.Add(time);
 
-                    mainbtn.Background = Brushes.LightGreen;
+                    mainbtn.Background = btnBg;
                     mainbtn.Name = "user" + activeUsers[idx].Item3;
                     inside.Children.Add(infoStack);
 
@@ -232,10 +243,27 @@ namespace Center_Maneger.UesrControls
 
         }
 
+        void info_member_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            User_Info userInfoWin = new User_Info();
+            userInfoWin.userId = int.Parse(Convert.ToString(btn.Tag));
+
+            userInfoWin.ShowDialog();
+        }
+
+        void notes_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            User_Note userNoteWin = new User_Note("class");
+            userNoteWin.userId = int.Parse(Convert.ToString(btn.Tag));
+            userNoteWin.ShowDialog();
+        }
+
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-            if (btn.Background == Brushes.LightGreen)
+            if (btn.Background == btnBg)
             {
                 logout logoutWindow = new logout("class");
                 logoutWindow.user_id = int.Parse(btn.Name.Remove(0, 4));

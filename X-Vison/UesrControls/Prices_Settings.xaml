@@ -8,34 +8,34 @@
              Background="{StaticResource bguc}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.35*"/>
-            <RowDefinition Height=".65*"/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height=".6*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <StackPanel  >
-                <Border Width="150" BorderBrush="LightGray" Background="DarkGray" CornerRadius="7" BorderThickness="5">
-                    <TextBlock Grid.Row="0" Text="أسعار الزيارات" FontWeight="Bold" Foreground="DarkCyan" VerticalAlignment="Top" HorizontalAlignment="Center" Padding="5" FontSize="20"/>
+            <StackPanel>
+                <Border Margin="0 5" Width="150" BorderBrush="{StaticResource bgtab}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+                    <TextBlock Text="أسعار الزيارات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource bgtab}" HorizontalAlignment="Center"/>
                 </Border>
             </StackPanel>
-            <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+            <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="بداية الفترة: "  DockPanel.Dock="Right" VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="start_date_price_input" Width="70"  HorizontalAlignment="Right" 
-                         FontSize="16" Height="25" Padding="2 0" />
+                         FontSize="20"  Padding="2 0" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="نهاية الفترة:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="end_date_price_input" Width="70"  HorizontalAlignment="Right"
-                         FontSize="16" Height="25" Padding="2 0" />
+                         FontSize="20" Padding="2 0" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="تكلفة الفترة:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="cost_price_input" Width="150"  HorizontalAlignment="Right"
-                         FontSize="16" Height="25" Padding="2 0" />
+                         FontSize="20"  Padding="2 0" />
 
             </StackPanel>
 

@@ -23,11 +23,12 @@ namespace Center_Maneger.View
         public checkPassword()
         {
             InitializeComponent();
+            password_input.Focus();
         }
 
         private void check_passowrd(object sender, RoutedEventArgs e)
         {
-
+            
             if (password_input.Password == "osama")
             {
                 correct = true;
@@ -36,6 +37,8 @@ namespace Center_Maneger.View
             else{
                 MessageBox.Show("كلمة المرور خطأ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 password_input.Clear();
+                password_input.Focus();
+
             }
           
         }
