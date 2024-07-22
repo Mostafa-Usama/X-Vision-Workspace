@@ -7,19 +7,52 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         ResizeMode="NoResize"
-        Title="X-Vison"
-        Background="#FF273437">
+        Title="X-Vision"
+        Background="#FF273437"
+        Icon="/img/logo.ico">
     <Window.Resources>
         <Style TargetType="TabItem" x:Key="dynamic_tabs">
             <Setter Property="Padding" Value="5"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid>
+                            <Border x:Name="Border"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Margin="2">
+                                <ContentPresenter x:Name="ContentSite"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          ContentSource="Header"
+                                          Margin="10,2"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#FFFF9A5C"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#0f292f"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#14a098"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="#FFFF9A5C"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
-                            <Button Width="20" Height="20" Margin="5,0,0,0" Style="{StaticResource Roundedbtn}" Click="close_tab" BorderBrush="#00707070">
+                            <Button Width="20" Height="20" Margin="5,0,0,0" Background="White" Style="{StaticResource Roundedbtn}" Click="close_tab" BorderBrush="#00707070">
                                 <Button.Content>
                                     <Image Source="/img/close.png"/>
                                 </Button.Content>
@@ -32,7 +65,7 @@
 
     </Window.Resources>
 
-    <Grid Background="{StaticResource win}">
+    <Grid Background="#0B3142">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="*" />
@@ -41,7 +74,7 @@
 
 
             <TabControl Name="settings_tab" Padding="0" Grid.Row="0" BorderBrush="{StaticResource win}" >
-                <TabItem BorderThickness="0" Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+                <TabItem Style="{StaticResource roundedtabitem}" BorderThickness="0" Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/setting.png" Width="30" Height="30"/>
@@ -95,7 +128,7 @@
                     </StackPanel>
 
                 </TabItem>
-                <TabItem Background="{StaticResource bgtab}" IsSelected="True" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+                <TabItem BorderThickness="0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}" IsSelected="True" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/employee.png" Width="30" Height="30"/>

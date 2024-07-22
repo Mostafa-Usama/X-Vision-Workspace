@@ -15,20 +15,22 @@
         
             <StackPanel Grid.Row="0">
 
-            <Border Width="150" BorderBrush="{StaticResource bgtab}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
-                <TextBlock Text="عروض الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource bgtab}" HorizontalAlignment="Center"/>
-            </Border>
+            <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="عروض الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+                </Border>
         </StackPanel>
 
-        <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Center" FlowDirection="RightToLeft">
-            <CheckBox FlowDirection="RightToLeft" Content="العروض المنتهية " x:Name="expired_offers" FontSize="22" FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
-                    VerticalAlignment="Center" Margin="40" />
-            <Button Height="50" Background="Transparent" Width="150" BorderThickness="0" Style="{StaticResource Roundedbtn}">
-                <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="Transparent" >
+                <StackPanel Orientation="Horizontal" >
                     <Image Source="/img/show.png" Width="40" Height="35" />
-                    <TextBlock Text="عرض" VerticalAlignment="Center" Style="{StaticResource TextBlockStyle}" FontSize="22"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="عرض" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
+
+            <CheckBox  Content="العروض المنتهية " x:Name="expired_offers" FontSize="22" FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
+                    VerticalAlignment="Center" Margin="40" FlowDirection="LeftToRight" />
+           
         </StackPanel>
         <DataGrid  SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  
                   FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"  Grid.Row="1" ColumnWidth="0.5*"/>

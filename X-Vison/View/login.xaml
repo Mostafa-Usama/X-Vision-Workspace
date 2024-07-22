@@ -14,12 +14,7 @@
         MouseDown="Mouse_Drag"
         Background="Transparent"
         AllowsTransparency="True">
-    <Window.Resources>
-        
-       
 
-
-    </Window.Resources>
     <Border CornerRadius="33">
         <Border.Background >
             <ImageBrush ImageSource="/img/BackGround.png"/>
@@ -46,7 +41,7 @@
 
 
                     <TextBlock Text=" Login "
-                               Foreground="#FFFF81AE"
+                               Foreground="#0df6f2"
                                VerticalAlignment="Center"
                                FontSize="18"
                                FontWeight="Bold"
@@ -115,26 +110,28 @@
 
                 <StackPanel Width="300"
                             Grid.Row="1"
-                            Margin="30 30 0 0"
+                            Margin="30 10 0 0"
                             HorizontalAlignment="Left">
 
                     <TextBlock Style="{StaticResource TextBlockStyle}"
-                                Text=" Welcome To X-Vision"
+                                Text=" Welcome To "
                                HorizontalAlignment="Center"
-                               Foreground="#FF81AE"
+                               Foreground="#0df6f2"
                                FontWeight="Bold"
                                FontSize="18"
                                Margin="0 20 0 0"
                                FontFamily="Arial"/>
+                    <Image Source="/img/logo.png" Height="60" Margin="0 15"/>
                     <TextBlock Text="Username"
-                               Foreground="#FFFF81AE"
+                               Foreground="#0df6f2"
                                FontSize="12"
                                FontWeight="Medium"
                                FontFamily="Montserrat"                             
-                               Margin="0,35,0,0"/>
+                               Margin="0,5,0,0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="22.416"/>
+                            <ColumnDefinition Width="17.584"/>
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <TextBox 
@@ -149,23 +146,23 @@
                              BorderThickness="2,2,2,2"
                              Height="28"
                              VerticalContentAlignment="Center"
-                             Margin="0,10,0,0"
+                             Margin="0,11,0,1"
                              Padding="5,0,0,0"
-                            Grid.Column="1" TextChanged="txtUser_TextChanged">
+                            Grid.Column="2" TextChanged="txtUser_TextChanged">
                         </TextBox>
                         <Border Background="#EEE" CornerRadius="30"
                                 Grid.Column="0" Height="30"
                                 Width="30"
                                 Margin="0 10 10 0"
-                                BorderBrush="#FF81AE"
-                                BorderThickness="2,2,2,2">
+                                BorderBrush="#1EA5AE"
+                                BorderThickness="2,2,2,2" Grid.ColumnSpan="2">
                             <Image Source="/img/user-icon.png"                                      
                                     Stretch="None" />
                         </Border>
                     </Grid>
                     <!-- ///////////////////////////////////////////////////// -->
                     <TextBlock Text="Password"
-                   Foreground="#FFFF81AE"
+                   Foreground="#0df6f2"
                    FontSize="12"
                    FontWeight="Medium"
                    FontFamily="Arial"                             
@@ -196,7 +193,7 @@
                     Grid.Column="0" Height="30"
                     Width="30"
                     Margin="0 10 10 0"
-                            BorderBrush="#FF81AE"
+                            BorderBrush="#1EA5AE"
                             BorderThickness="2,2,2,2">
                             <Image Source="/img/key-icon.png"                                      
                         Stretch="None" />
@@ -205,19 +202,24 @@
 
 
 
-                    <Button Name="loginbtn"
-                            Margin="0 50 0 0"
-                            Width="150"
-                            Height="40"                        
-                            Content="Login"
+                    <Button IsDefault="True"
+                            Name="loginbtn"
+                            Margin="0 30 0 0"
+                            Width="120"
+                            Height="50"                        
+                            Foreground="#0df6f2"
                             FontSize="18" 
                             FontFamily="Arial"
                             Cursor="Hand" FontWeight="Bold" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"                                                       
                             Click="loginbtn_Click"
-                            Background="LightCoral"
+                            Background="Transparent"
                             Style="{StaticResource Roundedbtn}">
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <TextBlock Style="{StaticResource TextBlockStyle}" Foreground="#0df6f2" Text="Login" VerticalAlignment="Center"/>
+                            <Image Source="/img/login2.png"/>
+                        </StackPanel>
                     </Button>
                 </StackPanel>
 

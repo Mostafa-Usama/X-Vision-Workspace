@@ -360,6 +360,35 @@
   <ItemGroup>
     <Resource Include="img\offer_user.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\login2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\exit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\chair.ico" />
+    <Resource Include="img\edit.ico" />
+    <Resource Include="img\info.ico" />
+    <Resource Include="img\note.ico" />
+    <Resource Include="img\password.ico" />
+    <Resource Include="img\search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\password.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

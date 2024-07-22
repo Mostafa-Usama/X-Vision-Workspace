@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="{StaticResource bguc}"
-        Title="اعدادات المقاعد" Height="300" Width="500">
+        Background="{StaticResource win}"
+        Title="اعدادات المقاعد" Height="300" Width="500"
+        Icon="/img/chair.ico">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -12,8 +13,14 @@
         </Grid.ColumnDefinitions>
         <TextBlock Foreground="{StaticResource text}" Style="{StaticResource TextBlockStyle}" Grid.Column="0" Text="أدخل عدد المقاعد" HorizontalAlignment="Center" Margin="0 50 0 0" FontSize="25" FontWeight="Bold"/>
         <TextBox Style="{StaticResource RoundedTextBox}" Grid.Column="0" x:Name="num_chairs_input" VerticalContentAlignment="Center" Padding="3 0" FontSize="14" FontWeight="Bold" Width="120" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 20 0 0"/>
-        <Button IsDefault="True" Background="{StaticResource bgbtn}" Style="{StaticResource Roundedbtn}" Grid.Column="0" Click="Save_num_chairs" Content="حفظ" Height="30" Width="100" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0 0 0 50"/>
+        <Button IsDefault="True" Background="Transparent" Style="{StaticResource Roundedbtn}" Grid.Column="0" Click="Save_num_chairs" Height="30" Width="100" FontWeight="Bold" VerticalAlignment="Bottom" Margin="0 0 0 50">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png" />
 
+            </StackPanel>
+        </Button>
+        
         <Image Grid.Column="1" Source="/img/classroom.png"/>
     </Grid>
 </Window>

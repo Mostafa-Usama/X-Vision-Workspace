@@ -23,7 +23,7 @@ namespace Center_Maneger
     public partial class MainWindow : Window
     {
         private UserControl[] userControls;
-        private Button[] buttons;
+       
 
         public MainWindow()
         {
@@ -54,7 +54,6 @@ namespace Center_Maneger
         private void openUserControl (object sender, RoutedEventArgs e)
         {
             Button clickedBtn = sender as Button;
-            
 
             int idx = int.Parse(clickedBtn.Name.Remove(0, 3));
             string header = Convert.ToString(clickedBtn.Tag);
@@ -62,13 +61,13 @@ namespace Center_Maneger
             {
                 Header = header,
                 Content = userControls[idx],
-              
+                Style = (Style)Resources["dynamic_tabs"]
             };
-           
+
+
             
 
-
-            newTab.Style = (Style)Resources["dynamic_tabs"];
+            
             
             settings_controls.Items.Add(newTab);
             settings_controls.SelectedItem = newTab;

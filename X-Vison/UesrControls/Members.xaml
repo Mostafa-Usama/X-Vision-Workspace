@@ -15,9 +15,11 @@
             <RowDefinition Height="0.35*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" >
-            <Border Width="150" BorderBrush="{StaticResource bgtab}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
-                <TextBlock Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource bgtab}" HorizontalAlignment="Center"/>
-            </Border>
+            <StackPanel>
+                <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+                </Border>
+            </StackPanel>
             <Grid Margin="20 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*"/>

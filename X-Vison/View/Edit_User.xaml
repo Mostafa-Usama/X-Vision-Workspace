@@ -3,29 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         Loaded="load_data"
-        Title="Edit_User" Height="450" Width="450">
+        Title="Edit_User" Height="450" Width="450"
+        Background="{StaticResource win}"
+        Icon="/img/edit.ico">
     <StackPanel Margin="8">
-        <TextBlock FontSize="25" Margin="0 0 0 50" FontWeight="Bold" Text="تعديل بيانات العضو " HorizontalAlignment="Center" />
+        <StackPanel Margin="0 0 0 30">
+            <Border Margin="0 5" Width="200" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="تعديل بيانات العضو " FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Width="90" Content="اسم العضو:" Margin="0 0 10 0"/>
-            <TextBox Width="200" Name="userNameTextBox"  />
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="اسم العضو:" Margin="0 0 10 0"/>
+            <TextBox Style="{StaticResource RoundedTextBox}" Width="200" Name="userNameTextBox"  />
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label  Width="90" Content="رقم الهاتف:" Margin="0 0 10 0" />
-            <TextBox Width="200"  Name="phoneTextBox"   />
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="رقم الهاتف:" Margin="0 0 10 0" />
+            <TextBox Style="{StaticResource RoundedTextBox}" Width="200"  Name="phoneTextBox"   />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label  Width="90" Content="الكلية:" Margin="0 0 10 0" />
+            <Label Style="{StaticResource labelStyle}" Width="120" Content="الكلية:" Margin="0 0 10 0" />
             <ComboBox Name="FacultyComboBox" Width="200"  />
         </StackPanel>
         <StackPanel  Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label  Width="90" Content="الوظيفة:" Margin="0 0 10 0" />
+            <Label Style="{StaticResource labelStyle}" Width="120" Content="الوظيفة:" Margin="0 0 10 0" />
             <ComboBox  Name="JobComboBox" Width="200"  />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label  Width="90" Content=":السنة الدراسية" Margin="0 0 10 0" />
-            <TextBox Width="200"  Name="levelTextBox"   />
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="السنة الدراسية :" Margin="0 0 10 0" />
+            <TextBox Style="{StaticResource RoundedTextBox}" Width="200"  Name="levelTextBox"   />
         </StackPanel>
-        <Button Content="حفظ" Click="edit_user" HorizontalAlignment="Center" Padding="5" Width="130" Margin="0 30"/>
+        <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="edit_user" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 30">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png"/>
+            </StackPanel>
+        </Button>
     </StackPanel>
 </Window>

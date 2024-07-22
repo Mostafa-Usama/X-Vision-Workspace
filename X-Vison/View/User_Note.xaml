@@ -4,17 +4,26 @@
         ResizeMode="NoResize"
         Loaded="load_date"
         WindowStartupLocation="CenterScreen"
-        Background="{StaticResource bguc}"
-        Title="ملاحظات" Height="300" Width="400">
+        Background="{StaticResource win}"
+        Title="ملاحظات" Height="300" Width="400"
+        Icon="/img/note.ico">
     <Grid Margin="15 ">
         <Grid.RowDefinitions>
             <RowDefinition Height=".2*" />
             <RowDefinition Height=".55*" />
             <RowDefinition Height=".2*" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="ملاحظات" HorizontalAlignment="Center"  Margin="0 0 0 30"  Style="{StaticResource TextBlockStyle}" Foreground="{StaticResource bgtab}" FontSize="20" />
+        <StackPanel>
+            <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="ملاحظات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
         <TextBox FlowDirection="RightToLeft" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"  Name="NoteTextBox" Grid.Row="1" Width="auto" Height="auto" Padding=" 2" FontSize="18" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" />
-        <Button Click="save_note" Grid.Row="2"  Background="{StaticResource bgbtn}" Style="{StaticResource Roundedbtn}" Content="حفظ" Height="30" Width="100" FontWeight="Bold" VerticalAlignment="Bottom" />
-
+        <Button Grid.Row="2" Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="save_note" Height="35" HorizontalAlignment="Center" Padding="5" >
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>
