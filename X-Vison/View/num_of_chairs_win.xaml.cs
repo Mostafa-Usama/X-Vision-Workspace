@@ -19,8 +19,7 @@ namespace Center_Maneger.View
     /// </summary>
     public partial class num_of_chairs_win : Window
     {
-        private string _connectionString = "Data Source=database.db;Version=3;";
-
+        
         public num_of_chairs_win()
         {
 

@@ -40,6 +40,7 @@ namespace Center_Maneger
                 new grid_of_classes(),
                 null, 
                 new Member_Offers(),
+                new User_Records(),
             };
         }
 

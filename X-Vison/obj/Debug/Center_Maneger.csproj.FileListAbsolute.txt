@@ -164,3 +164,5 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\User_Info.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\User_Note.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\User_Info.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\User_Note.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\User_Records.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\User_Records.g.cs

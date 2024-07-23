@@ -353,5 +353,24 @@ namespace Center_Maneger
         return userNames;
     }
 
+
+        public static DataTable GetUserRecords() // get user data in ألاعضاء
+        {
+            DataTable dataTable = new DataTable();
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
+                             FROM users u
+                             JOIN user_records ur ON u.id= ur.user_id";
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                adapter.Fill(dataTable);
+            }
+            
+            return dataTable;
+        }
+
+
     }
 }
