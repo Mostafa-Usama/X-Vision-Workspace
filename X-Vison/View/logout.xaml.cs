@@ -58,7 +58,7 @@ namespace Center_Maneger.View
                 start_date = Convert.ToString(databaseLoader.SelectData("user_class", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
 
             }
-            leave_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            leave_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             
             //MessageBox.Show(start_date+"\n"+ now);
             TimeSpan duration = DateTime.Parse(leave_date) - DateTime.Parse(start_date);

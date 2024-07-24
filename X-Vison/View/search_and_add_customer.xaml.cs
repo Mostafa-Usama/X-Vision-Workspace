@@ -90,7 +90,7 @@ namespace Center_Maneger.View
             
             string name = UserComboBox.SelectedItem == null? "" : UserComboBox.SelectedItem.ToString();
             string phone = PhoneComboBox.SelectedItem == null? "" : PhoneComboBox.SelectedItem.ToString();
-            string enter_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            string enter_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             add_active_user(name, phone, enter_date);
             
@@ -103,7 +103,7 @@ namespace Center_Maneger.View
             string faculty = FacultyComboBox.SelectedItem == null ? "" : FacultyComboBox.SelectedItem.ToString(); ;
             string level = LevelTextBox.Text;
             string job = jobComboBox.SelectedItem == null ? "" : jobComboBox.SelectedItem.ToString();
-            string enter_date = DateTime.Now.ToString("MM/dd/yyyy h:mm tt");
+            string enter_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             if (name.Trim() == "" || phone.Trim() == "" || faculty.Trim() == "" || level.Trim() == "" || job.Trim() == "")
             {
@@ -153,6 +153,7 @@ namespace Center_Maneger.View
                     catch
                     {
                         MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
 
                     }
                 }
@@ -175,14 +176,14 @@ namespace Center_Maneger.View
                     catch
                     {
                         MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        return;
                     }
                 }
                 else
                 {
                     int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                     int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
+                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss"); 
                     Dictionary<string, object> data = new Dictionary<string,object>{
                         {"offer_id", offer_id},
                         {"user_id", user_id},
@@ -223,7 +224,7 @@ namespace Center_Maneger.View
                     catch
                     {
                         MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        return;
                     }
                 }
                 else if (window == "class")
@@ -245,7 +246,7 @@ namespace Center_Maneger.View
                     catch
                     {
                         MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        return;
                     }
                 }
                 else
@@ -257,7 +258,7 @@ namespace Center_Maneger.View
                     }
                     int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                     int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("MM/dd/yyyy h:mm tt"); 
+                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss"); 
                     Dictionary<string, object> data = new Dictionary<string,object>{
                         {"offer_id", offer_id},
                         {"user_id", user_id},

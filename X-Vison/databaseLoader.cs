@@ -50,7 +50,7 @@ namespace Center_Maneger
                         command.Parameters.AddWithValue("@" + column.Key, column.Value);
                     }
 
-                    command.ExecuteNonQuery();///////////////    /erorr/     ///////// 
+                    command.ExecuteNonQuery();
                 }
             }
         }
@@ -162,10 +162,11 @@ namespace Center_Maneger
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = @"SELECT u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours
+                string query = @"SELECT u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours, o.cost
                              FROM users u
                              JOIN user_offer uo ON u.id= uo.user_id
-                             JOIN offers o ON o.id= uo.offer_id";
+                             JOIN offers o ON o.id = uo.offer_id ";
+               
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dataTable);
             }
@@ -354,23 +355,59 @@ namespace Center_Maneger
     }
 
 
-        public static DataTable GetUserRecords() // get user data in ألاعضاء
+        public static DataTable GetUserRecords(DateTime fromDate, DateTime toDate) // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
 
+            string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
+                             FROM users u
+                             JOIN user_records ur ON u.id= ur.user_id
+                             WHERE ur.enter_date >= @fromDate AND ur.enter_date <= @toDate ";
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
-                             FROM users u
-                             JOIN user_records ur ON u.id= ur.user_id";
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
-                adapter.Fill(dataTable);
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    using (var adapter = new SQLiteDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
             }
             
             return dataTable;
         }
 
+        public static DataTable GetOffersData(DateTime fromDate, DateTime toDate) // get user data in ألاعضاء
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"SELECT u.name, o.offer_name, uo.start_date, o.cost
+                            FROM users u
+                            JOIN user_offer uo ON u.id= uo.user_id
+                            JOIN offers o ON o.id = uo.offer_id 
+                            WHERE uo.start_date >= @fromDate AND uo.start_date <= @toDate ";
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    using (var adapter = new SQLiteDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
 
     }
 }

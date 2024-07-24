@@ -64,12 +64,7 @@ namespace Center_Maneger
                 Content = userControls[idx],
                 Style = (Style)Resources["dynamic_tabs"]
             };
-
-
-            
-
-            
-            
+     
             settings_controls.Items.Add(newTab);
             settings_controls.SelectedItem = newTab;
         }

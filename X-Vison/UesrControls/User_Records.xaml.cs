@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data;
 namespace Center_Maneger.UesrControls
 {
     /// <summary>
@@ -20,21 +20,68 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class User_Records : UserControl
     {
+      
         public User_Records()
         {
             InitializeComponent();
         }
-
-        private void load_data(object sender, RoutedEventArgs e)
+        private void setButtonStyle()
         {
-            data_grid.ItemsSource = databaseLoader.GetUserRecords().DefaultView;
+           
+        }
+
+        private void load_data(DataTable userTable, DataTable offers)
+        {   
+            data_grid.ItemsSource = userTable.DefaultView;
             data_grid.Columns[3].Width = data_grid.Columns[4].Width = data_grid.Columns[0].Width = 200;
+
+           
+            offers_grid.ItemsSource = offers.DefaultView;
+            offers_grid.Columns[0].Width = offers_grid.Columns[2].Width = 200;
+
+            calculateCosts();
+        }
+
+        private void calculateCosts()
+        {
+            DataView userView = data_grid.ItemsSource as DataView;
+            DataTable userRecords = userView.Table;
+
+            long reservationCost = 0;
+            long kitchenCost = 0;
+            long totalCost = 0;
+            long paidCost = 0;
+            
+            foreach (DataRow row in userRecords.Rows)
+            {
+                reservationCost += Convert.ToInt64(row["reservation_cost"]);
+                kitchenCost += Convert.ToInt64(row["kitchen"]);
+                paidCost += Convert.ToInt64(row["paid"]);
+            }
+            totalCost = reservationCost + kitchenCost;
+
+            totalReservationCost.Text = "اجمالي التكلفة = " + reservationCost.ToString();
+            totalKitchenCost.Text = "اجمالي البوفيه = " + kitchenCost.ToString(); 
+            total.Text = "الاجمالي = " + totalCost.ToString();
+            totalPaid.Text = "اجمالي المدفوع = " + paidCost.ToString();
+
+
+            DataView offersView = offers_grid.ItemsSource as DataView;
+            DataTable offersRecords = offersView.Table;
+
+            long offerCost = 0;
+            foreach (DataRow row in offersRecords.Rows)
+            {
+                offerCost += Convert.ToInt64(row["cost"]);
+            }
+            totalOffer.Text = "اجمالي العروض = " + offerCost.ToString();
+
         }
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "name")
             {
-                e.Column.Header = "الاسم";
+                e.Column.Header = "اسم العضو";
             }
             else if (e.PropertyName == "phone")
             {
@@ -68,6 +115,58 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "المدفوع";
             }
+            else if (e.PropertyName == "offer_name")
+            {
+                e.Column.Header = "اسم العرض";
+            }
+            else if (e.PropertyName == "start_date")
+            {
+                e.Column.Header = "تاريخ الاشتراك";
+            }
+            else if (e.PropertyName == "cost")
+            {
+                e.Column.Header = "التكلفة";
+            }
+           
+        }
+
+        private void showRecords(object sender, RoutedEventArgs e)
+        {
+            string from_date = fromDate.Text;
+            string to_date = toDate.Text;
+            DateTime from, to;
+            if (from_date.Trim() == "" || to_date.Trim() == "")
+            {
+                MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            bool isFromDate = DateTime.TryParse(from_date, out from);
+            bool isToDate = DateTime.TryParse(to_date, out to);
+
+            if (!isFromDate || !isToDate)
+            {
+                MessageBox.Show("برجاء ادخال تواريخ صحيحة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (from > to)
+            {
+                MessageBox.Show("تاريخ البداية أكبر من تاريخ النهاية,  برجاء ادخال تواريخ صحيحة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            to = to.AddDays(1).AddSeconds(-1);
+
+            DataTable userRecordsTable = databaseLoader.GetUserRecords(from, to);
+            DataTable offers = databaseLoader.GetOffersData(from, to);
+
+
+            load_data(userRecordsTable, offers);
+        }
+
+        private void setStyle(object sender, RoutedEventArgs e)
+        {
+            //var datePickerButton = fromDate.Template.FindName("PART_Button", fromDate) as Button;
+            //datePickerButton.Style = (Style)FindResource("DatePickerButtonStyle");
         }
     }
 }

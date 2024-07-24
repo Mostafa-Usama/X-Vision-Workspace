@@ -386,7 +386,6 @@
     <Resource Include="img\exit.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\chair.ico" />
     <Resource Include="img\edit.ico" />
     <Resource Include="img\info.ico" />
     <Resource Include="img\note.ico" />
@@ -401,6 +400,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\cash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\chair.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\shifts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\meeting-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\chair.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

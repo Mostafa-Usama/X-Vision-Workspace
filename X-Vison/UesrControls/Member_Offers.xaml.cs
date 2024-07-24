@@ -61,6 +61,10 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "الساعات المتبقية ";
             }
+            else if (e.PropertyName == "cost")
+            {
+                e.Column.Header = "التكلفة";
+            }
         }
 
     }

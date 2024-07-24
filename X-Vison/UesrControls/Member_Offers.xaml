@@ -29,7 +29,7 @@
             </Button>
 
             <CheckBox  Content="العروض المنتهية " x:Name="expired_offers" FontSize="22" FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
-                    VerticalAlignment="Center" Margin="40" FlowDirection="LeftToRight" />
+                    VerticalAlignment="Center"  Margin="40" FlowDirection="LeftToRight" />
            
         </StackPanel>
         <DataGrid  SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  

@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="570" d:DesignWidth="800"
+             d:DesignHeight="510" d:DesignWidth="800"
              Loaded="load"
              Background="{StaticResource bguc}">
     
     <Grid FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.45*"/>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition Height="0.35*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" >
             <StackPanel>
@@ -20,7 +20,7 @@
                     <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
             </StackPanel>
-            <Grid Margin="20 20">
+            <Grid Margin="0 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*"/>
                     <ColumnDefinition Width="0.3*"/>
@@ -33,19 +33,19 @@
                     FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
 
                     <TextBlock Text="الكلية : "    Style="{StaticResource TextBlockStyle}"
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 30" HorizontalAlignment="Right"/>
+                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" HorizontalAlignment="Right"/>
                     <TextBlock Text="الوظيفة :"      Style="{StaticResource TextBlockStyle}"
                     FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
 
                 </StackPanel>
-                <StackPanel Orientation="Vertical"  Margin="10" Grid.Column="1">
+                <StackPanel Orientation="Vertical"  Margin="0 20" Grid.Column="1">
 
 
                     <TextBox x:Name="member_name" Width="200"   HorizontalAlignment="Left" Style="{StaticResource RoundedTextBox}"
                     FontSize="16" Height="30" Padding="2" />
 
                     <ComboBox Width="200" x:Name="member_college" HorizontalAlignment="Left" 
-                    FontSize="16" Height="30" Padding="2" Margin="0 30"/>
+                    FontSize="16" Height="30" Padding="2" Margin="0 20"/>
 
                     <ComboBox Width="200" x:Name="member_job" HorizontalAlignment="Left"
                     FontSize="16" Height="30" Padding="2" />
@@ -76,7 +76,7 @@
             
         </StackPanel>
 
-        <StackPanel Margin="0 20"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+        <StackPanel Margin="0 0 0 0"  Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
             <Button Style="{StaticResource Roundedbtn}"  BorderThickness="0" Click="remove_member_record" Width="100" Height="40" Padding="10"  FontSize="16" FontWeight="Bold" Background="#00DDDDDD" >
                     <StackPanel Orientation="Horizontal" >
                         <Image Source="/img/trash.png" Width="40" Height="35" />
