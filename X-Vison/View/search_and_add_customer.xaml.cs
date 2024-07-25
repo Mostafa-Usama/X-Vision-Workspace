@@ -91,9 +91,9 @@ namespace Center_Maneger.View
             string name = UserComboBox.SelectedItem == null? "" : UserComboBox.SelectedItem.ToString();
             string phone = PhoneComboBox.SelectedItem == null? "" : PhoneComboBox.SelectedItem.ToString();
             string enter_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-
-            add_active_user(name, phone, enter_date);
             
+            add_active_user(name, phone, enter_date);
+            MainWindow.timer_Elapsed(null, null);
         }
 
         private void new_user(object sender, RoutedEventArgs e)
@@ -111,6 +111,9 @@ namespace Center_Maneger.View
                 return;
             }
 
+            try
+            {
+
             int faculty_id = Convert.ToInt32(databaseLoader.SelectData("faculties", "id", String.Format("faculty_name = \"{0}\" ", faculty))[0]);
             int job_id = Convert.ToInt32(databaseLoader.SelectData("jobs", "id", String.Format("job_name = \"{0}\"", job))[0]);
 
@@ -125,6 +128,11 @@ namespace Center_Maneger.View
 
             databaseLoader.InsertRecord("users", data);
             add_active_user(name, phone, enter_date);
+            }
+            catch (System.Data.SQLite.SQLiteException ex)
+            {
+                MessageBox.Show("")
+            }
 
         }
 

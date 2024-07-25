@@ -45,10 +45,12 @@ namespace Center_Maneger.View
         {
             if (window == "chair")
             {
-                Tuple<string, string, object> data = databaseLoader.GetUserDataByChairNum(chairNum);
+                Tuple<string, string> data = databaseLoader.GetUserDataByChairNum(chairNum);
                 name = data.Item1;
                 start_date = data.Item2;
-                offer_id = data.Item3 == null? 0 : Convert.ToInt32(data.Item3);
+                List <object> offers = databaseLoader.SelectData("user_offer", "offer_id", String.Format("user_id = {0} AND is_expired = 0",user_id));
+                offer_id = offers.Count == 0 ? 0 : Convert.ToInt32(offers[0]);
+
                 start_date = Convert.ToString(databaseLoader.SelectData("active_users", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
 
             }
@@ -67,7 +69,8 @@ namespace Center_Maneger.View
            // MessageBox.Show(duration);
             if (window == "chair")
             {
-                price = databaseLoader.GetPriceByDuration(int.Parse(hours));
+                price = databaseLoader.GetPriceByDuration(int.Parse(hours));           
+
             }
             else
             {
@@ -86,7 +89,16 @@ namespace Center_Maneger.View
             cost.Text = price.ToString();
             if (window == "chair")
             {
-                offer.Text = offer_id == 0? "لا يوجد" : "يوجد";// هيرحع الاسم ولا الفترة المتبقية ولا ايه
+                if (offer_id != 0)
+                {
+                    int left_hours = Convert.ToInt32(databaseLoader.SelectData("user_offer", "spent_hours", String.Format("user_id = {0} AND is_expired = 0",user_id))[0]);
+                    offer.Text = "عدد الساعات المستهلكة: " + left_hours.ToString();
+                }
+                else
+                {
+                    offer.Text = "لا يوجد عرض";
+                }
+
             }
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();
