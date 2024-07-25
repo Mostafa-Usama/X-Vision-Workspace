@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data;
 namespace Center_Maneger.UesrControls
 {
     /// <summary>
@@ -20,18 +20,35 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class Member_Offers : UserControl
     {
+        private DataRowView selectedRow;
+
         public Member_Offers()
         {
             InitializeComponent();
-            load_data();
+            
         }
 
-        public void load_data() // display classes data in grid
+        public void load_data(bool isChecked = false) // display classes data in grid
         {
-            data_grid.ItemsSource = databaseLoader.GetOffersData().DefaultView;
+            data_grid.ItemsSource = databaseLoader.GetOffersData(isChecked).DefaultView;
+            data_grid.Columns[0].Visibility = Visibility.Collapsed;
+            data_grid.Columns[8].Visibility = Visibility.Collapsed;
+
+            DataView offersView = data_grid.ItemsSource as DataView;
+            DataTable offersRecords = offersView.Table;
+            foreach (DataRow row in offersRecords.Rows)
+            {
+
+                row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+                row["end_date"] = DateTime.Parse(row["end_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+
+            }
+
         }
+
         private void change_selected_record(object sender, SelectionChangedEventArgs e)
         {
+            selectedRow = data_grid.SelectedItem as DataRowView; 
 
         }
 
@@ -64,6 +81,47 @@ namespace Center_Maneger.UesrControls
             else if (e.PropertyName == "cost")
             {
                 e.Column.Header = "التكلفة";
+            }
+        }
+
+        private void loadOffers(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = Convert.ToBoolean(expired_offers.IsChecked);
+            load_data(isChecked);
+        }
+
+        private void deleteOffer(object sender, RoutedEventArgs e)
+        {
+            if (selectedRow != null) // if a record is selected 
+            {
+
+                var result = MessageBox.Show("هل أنت متأكد من الغاء هذا العرض؟", "تأكيد", MessageBoxButton.YesNo); // رسالة تأكيد
+                if (result == MessageBoxResult.Yes) // if he chooses YES
+                {
+                    int is_expired= Convert.ToInt32((selectedRow["is_expired"]));
+                    if (is_expired == 0) {
+
+                        int user_id = Convert.ToInt32((selectedRow["user_id"]));
+                        databaseLoader.DeleteRecord("user_offer", "user_id", user_id.ToString());
+                        Dictionary<string, object> resetLastHour = new Dictionary<string,object>{
+                            {"last_hour", 0}
+                        };
+                        databaseLoader.UpdateData("active_users", resetLastHour, String.Format("user_id = {0}",user_id));
+                        MainWindow.timer_Elapsed(null, null);
+                        load_data(Convert.ToBoolean(expired_offers.IsChecked));
+                        return;
+                    }
+
+                    else 
+                    {
+                        MessageBox.Show("لا يمكن الغاء عرض منتهي", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("برجاء اختيار العرض الذي تريد حذفه ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

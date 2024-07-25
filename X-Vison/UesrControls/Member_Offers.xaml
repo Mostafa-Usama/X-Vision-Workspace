@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
+             Loaded="loadOffers"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="{StaticResource bguc}">
     <Grid>
@@ -21,15 +22,21 @@
         </StackPanel>
 
         <StackPanel Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Center" >
-            <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40"   FontSize="16" FontWeight="Bold" Background="Transparent" >
+            <Button Style="{StaticResource Roundedbtn}" Click="loadOffers" BorderThickness="0" Height="40"   FontSize="16" FontWeight="Bold" Background="Transparent" >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/img/show.png" Width="40" Height="35" />
                     <TextBlock Style="{StaticResource TextBlockStyle}" Text="عرض" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
-
-            <CheckBox  Content="العروض المنتهية " x:Name="expired_offers" FontSize="22" FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
-                    VerticalAlignment="Center"  Margin="40" FlowDirection="LeftToRight" />
+            <Button Style="{StaticResource Roundedbtn}" Margin="30 0 0 0" Click="deleteOffer" BorderThickness="0"  Height="40"   FontSize="16" FontWeight="Bold" Background="Transparent" >
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="/img/delete.png" Width="40" Height="35" />
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="الغاء عرض" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+            <CheckBox   x:Name="expired_offers"  FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
+                    VerticalAlignment="Center"  Margin="30 0 5 0" FlowDirection="LeftToRight" />
+            <TextBlock Text="العروص المنتهية" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
            
         </StackPanel>
         <DataGrid  SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  

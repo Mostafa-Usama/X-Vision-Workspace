@@ -87,6 +87,16 @@ namespace Center_Maneger.UesrControls
                 if (result == MessageBoxResult.Yes) // if he chooses YES
                 {
                     string phone = Convert.ToString((selectedRow["phone"])); // بجيب اسم العمود اللي واقف عليه تقاطعا مع الصف اللي انا مختاره عشان اعرف أجيب اسم الكلاس
+                    int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id", String.Format("phone= \"{0}\" ", phone))[0]);
+
+                    List<object> class_user_id = databaseLoader.SelectData("user_class", "user_id", String.Format("user_id = {0}", user_id));
+                    List<object> active_user_id = databaseLoader.SelectData("active_users", "user_id", String.Format("user_id = {0}", user_id));
+
+                    if (class_user_id.Count != 0 || active_user_id.Count != 0)
+                    {
+                        MessageBox.Show("هذا العضو محجوز له مقعد او غرفة بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                     databaseLoader.DeleteRecord("users", "phone", phone);
                     load_data();
                 }

@@ -57,6 +57,8 @@ namespace Center_Maneger.UesrControls
                 reservationCost += Convert.ToInt64(row["reservation_cost"]);
                 kitchenCost += Convert.ToInt64(row["kitchen"]);
                 paidCost += Convert.ToInt64(row["paid"]);
+                row["enter_date"] = DateTime.Parse(row["enter_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+                row["leave_date"] = DateTime.Parse(row["leave_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
             }
             totalCost = reservationCost + kitchenCost;
 
@@ -73,6 +75,8 @@ namespace Center_Maneger.UesrControls
             foreach (DataRow row in offersRecords.Rows)
             {
                 offerCost += Convert.ToInt64(row["cost"]);
+                row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+
             }
             totalOffer.Text = "اجمالي العروض = " + offerCost.ToString();
 

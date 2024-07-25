@@ -129,9 +129,9 @@ namespace Center_Maneger.View
             databaseLoader.InsertRecord("users", data);
             add_active_user(name, phone, enter_date);
             }
-            catch (System.Data.SQLite.SQLiteException ex)
+            catch (System.Data.SQLite.SQLiteException)
             {
-                MessageBox.Show("")
+                MessageBox.Show("رقم الهاتف مسجل بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -143,9 +143,15 @@ namespace Center_Maneger.View
             if (phone != "")
             {
             int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id",String.Format("phone = \"{0}\" ",phone))[0]);
-
+           
                 if (window == "chair")
                 {
+                    List<object> class_user_id = databaseLoader.SelectData("user_class", "user_id", String.Format("user_id = {0}", user_id));
+                    if (class_user_id.Count != 0)
+                    {
+                        MessageBox.Show("هذا العضو محجوز له غرفة بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                     Dictionary<string, object> data = new Dictionary<string, object>{
                         {"user_id", user_id},
                         {"enter_date", enter_date},
@@ -167,76 +173,12 @@ namespace Center_Maneger.View
                 }
                 else if (window == "class")
                 {
-                    int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
-
-                    Dictionary<string, object> data = new Dictionary<string, object>{
-                        {"class_id", classId},
-                        {"user_id", user_id},
-                        {"enter_date", enter_date}
-                    };
-                    try
+                    List<object> active_user_id = databaseLoader.SelectData("active_users", "user_id", String.Format("user_id = {0}", user_id));
+                    if (active_user_id.Count != 0)
                     {
-                        databaseLoader.InsertRecord("user_class", data);
-                        clickBtn = true;
-                        this.Close();
+                        MessageBox.Show("هذا العضو محجوز له مقعد بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                    catch
-                    {
-                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                }
-                else
-                {
-                    int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss"); 
-                    Dictionary<string, object> data = new Dictionary<string,object>{
-                        {"offer_id", offer_id},
-                        {"user_id", user_id},
-                        {"start_date", enter_date},
-                        {"end_date", end_date},
-                        {"left_hours", hours},
-                        {"spent_hours", 0}
-                    };
-                    databaseLoader.InsertRecord("user_offer", data);
-                    this.Close();
-                    return;
-                }
-            }
-            if (name != "")
-            {
-                int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ", name))[0]);
-                List <object> id = databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ",name));
-                if (id.Count > 1)
-                {
-                    MessageBox.Show("يوجد تكرار في الاسم, الرجاء البحث برقم الهاتف", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-
-                }
-                if (window == "chair")
-                {
-                    Dictionary<string, object> data = new Dictionary<string, object>{
-                        {"user_id", user_id},
-                        {"enter_date", enter_date},
-                        {"chair_num", chairNum}
-                    };
-                    try
-                    {
-                        databaseLoader.InsertRecord("active_users", data);
-                        clickBtn = true;
-                        this.Close();
-                        return;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-                }
-                else if (window == "class")
-                {
                     int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
 
                     Dictionary<string, object> data = new Dictionary<string, object>{
@@ -264,21 +206,127 @@ namespace Center_Maneger.View
                         MessageBox.Show("برجاء تحديد الباقة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                    int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
-                    string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss"); 
-                    Dictionary<string, object> data = new Dictionary<string,object>{
-                        {"offer_id", offer_id},
-                        {"user_id", user_id},
-                        {"start_date", enter_date},
-                        {"end_date", end_date},
-                        {"left_hours", hours},
-                        {"spent_hours", 0}
-                    };
-                    databaseLoader.InsertRecord("user_offer", data);
-                    //clickBtn = true;
-                    this.Close();
+                    List<object> is_expired = databaseLoader.SelectData("user_offer", "is_expired", String.Format("user_id = {0} AND is_expired = 0", user_id));
+                    if (is_expired.Count == 0)
+                    {
+                        int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                        int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                        string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss");
+                        Dictionary<string, object> data = new Dictionary<string, object>{
+                            {"offer_id", offer_id},
+                            {"user_id", user_id},
+                            {"start_date", enter_date},
+                            {"end_date", end_date},
+                            {"left_hours", hours},
+                            {"spent_hours", 0}
+                        };
+                        databaseLoader.InsertRecord("user_offer", data);
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("هذا العضو لديه عرض جاري بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+            }
+            if (name != "")
+            {
+
+                int user_id = Convert.ToInt32(databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ", name))[0]);
+                
+                List <object> id = databaseLoader.SelectData("users", "id", String.Format("name = \"{0}\" ",name));
+                if (id.Count > 1)
+                {
+                    MessageBox.Show("يوجد تكرار في الاسم, الرجاء البحث برقم الهاتف", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
+
+                }
+                if (window == "chair")
+                {
+                    List<object> class_user_id = databaseLoader.SelectData("user_class", "user_id", String.Format("user_id = {0}", user_id));
+                    if (class_user_id.Count != 0)
+                    {
+                        MessageBox.Show("هذا العضو محجوز له غرفة بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"user_id", user_id},
+                        {"enter_date", enter_date},
+                        {"chair_num", chairNum}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("active_users", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+                else if (window == "class")
+                {
+                    int classId = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\"", className))[0]);
+                    List<object> active_user_id = databaseLoader.SelectData("active_users", "user_id", String.Format("user_id = {0}", user_id));
+                    if (active_user_id.Count != 0)
+                    {
+                        MessageBox.Show("هذا العضو محجوز له مقعد بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    Dictionary<string, object> data = new Dictionary<string, object>{
+                        {"class_id", classId},
+                        {"user_id", user_id},
+                        {"enter_date", enter_date}
+                    };
+                    try
+                    {
+                        databaseLoader.InsertRecord("user_class", data);
+                        clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("خطأ اثناء عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    if (offerComboBox.SelectedItem == null)
+                    {
+                        MessageBox.Show("برجاء تحديد الباقة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    List<object> is_expired = databaseLoader.SelectData("user_offer", "is_expired", String.Format("user_id = {0} AND is_expired = 0", user_id));
+                    if (is_expired.Count == 0)
+                    {
+                        int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                        int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
+                        string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss");
+                        Dictionary<string, object> data = new Dictionary<string, object>{
+                            {"offer_id", offer_id},
+                            {"user_id", user_id},
+                            {"start_date", enter_date},
+                            {"end_date", end_date},
+                            {"left_hours", hours},
+                            {"spent_hours", 0}
+                        };
+                        databaseLoader.InsertRecord("user_offer", data);
+                        //clickBtn = true;
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("هذا العضو لديه عرض جاري بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                 }
              }
          }

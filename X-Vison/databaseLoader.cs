@@ -155,17 +155,21 @@ namespace Center_Maneger
             return dataTable;
         }
 
-        public static DataTable GetOffersData() // get user data in ألاعضاء
+        public static DataTable GetOffersData(bool isExpired) // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
-                string query = @"SELECT u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours, o.cost
+                string query = @"SELECT uo.user_id, u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours, o.cost, uo.is_expired
                              FROM users u
                              JOIN user_offer uo ON u.id= uo.user_id
-                             JOIN offers o ON o.id = uo.offer_id ";
+                             JOIN offers o ON o.id = uo.offer_id WHERE uo.is_expired = 0 ";
+                if (isExpired)
+                {
+                    query += " OR uo.is_expired = 1";
+                }
                
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
                 adapter.Fill(dataTable);
