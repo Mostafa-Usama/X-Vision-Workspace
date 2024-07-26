@@ -41,8 +41,8 @@
                 <StackPanel Orientation="Vertical"  Margin="0 20" Grid.Column="1">
 
 
-                    <TextBox x:Name="member_name" Width="200"   HorizontalAlignment="Left" Style="{StaticResource RoundedTextBox}"
-                    FontSize="16" Height="30" Padding="2" />
+                    <TextBox x:Name="member_name" Width="200" HorizontalAlignment="Left" Style="{StaticResource RoundedTextBox}"
+                    FontSize="16" Height="30" Padding="4 2" />
 
                     <ComboBox Width="200" x:Name="member_college" HorizontalAlignment="Left" 
                     FontSize="16" Height="30" Padding="2" Margin="0 20"/>
@@ -65,10 +65,10 @@
 
 
                     <TextBox  Width="200" Margin="0 20" x:Name="member_phone" HorizontalAlignment="Left" Style="{StaticResource RoundedTextBox}"
-                    FontSize="16" Height="30" Padding="2" />
+                    FontSize="16" Height="30" Padding="4 2" />
 
                     <TextBox Width="200" x:Name="member_level"  HorizontalAlignment="Left" Style="{StaticResource RoundedTextBox}"
-                     FontSize="16" Height="30" Padding="2" Margin="0 20"/>
+                     FontSize="16" Height="30" Padding="4 2" Margin="0 20"/>
 
                     
                 </StackPanel>

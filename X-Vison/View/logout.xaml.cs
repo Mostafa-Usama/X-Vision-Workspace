@@ -86,7 +86,7 @@ namespace Center_Maneger.View
             enterDate.Text = DateTime.Parse(start_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             leaveDate.Text = DateTime.Parse(leave_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             duration_stayed.Text = hours + "  ساعة    " + mintues + "  دقيقة" ;
-            cost.Text = price.ToString();
+            
             if (window == "chair")
             {
                 if (offer_id != 0)
@@ -96,6 +96,7 @@ namespace Center_Maneger.View
                     price = 0;
                     cost.Text = price.ToString();
                     total_cost = price + kitchen_cost;
+
                 }
                 else
                 {
@@ -103,6 +104,7 @@ namespace Center_Maneger.View
                 }
 
             }
+            cost.Text = price.ToString();
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();
 
