@@ -3,40 +3,28 @@
   "WorkspaceRootPath": "D:\\Share-Yard-WORKSPACE\\X-Vison\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\user_info.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\user_info.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\member_offers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\member_offers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\view\\logout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\logout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\view\\logout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\logout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\edit_user.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\edit_user.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\checkpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\checkpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\num_of_chairs_win.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\num_of_chairs_win.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\search_and_add_customer.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\search_and_add_customer.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\user_note.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\user_note.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,110 +34,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Members.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Members.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml",
+              "RelativeToolTip": "UesrControls\\Members.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-26T21:56:03.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Member_Offers.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Member_Offers.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Member_Offers.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Member_Offers.xaml",
+              "RelativeToolTip": "UesrControls\\Member_Offers.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-07-26T21:55:39.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "logout.xaml.cs",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\logout.xaml.cs",
+              "RelativeDocumentMoniker": "View\\logout.xaml.cs",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\logout.xaml.cs",
+              "RelativeToolTip": "View\\logout.xaml.cs",
+              "ViewState": "AQIAAFIAAAAAAAAAAIAwwGcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T21:46:13.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "logout.xaml",
               "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\logout.xaml",
               "RelativeDocumentMoniker": "View\\logout.xaml",
               "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\logout.xaml",
               "RelativeToolTip": "View\\logout.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T22:37:58.68Z",
+              "WhenOpened": "2024-07-26T21:45:49.456Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\App.xaml",
+              "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T22:35:42.298Z",
+              "WhenOpened": "2024-07-25T20:49:34.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "User_Note.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\User_Note.xaml",
-              "RelativeDocumentMoniker": "View\\User_Note.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\User_Note.xaml",
-              "RelativeToolTip": "View\\User_Note.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:04:07.529Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "User_Info.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\User_Info.xaml",
-              "RelativeDocumentMoniker": "View\\User_Info.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\User_Info.xaml",
-              "RelativeToolTip": "View\\User_Info.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:04:06.377Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "search_and_add_customer.xaml",
               "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\search_and_add_customer.xaml",
               "RelativeDocumentMoniker": "View\\search_and_add_customer.xaml",
               "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\search_and_add_customer.xaml",
               "RelativeToolTip": "View\\search_and_add_customer.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:04:05.281Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "num_of_chairs_win.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\num_of_chairs_win.xaml",
-              "RelativeDocumentMoniker": "View\\num_of_chairs_win.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\num_of_chairs_win.xaml",
-              "RelativeToolTip": "View\\num_of_chairs_win.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:04:03.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "login.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\login.xaml",
-              "RelativeDocumentMoniker": "View\\login.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\login.xaml",
-              "RelativeToolTip": "View\\login.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:03:56.905Z",
+              "WhenOpened": "2024-07-25T20:49:30.782Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Edit_User.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\Edit_User.xaml",
-              "RelativeDocumentMoniker": "View\\Edit_User.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\Edit_User.xaml",
-              "RelativeToolTip": "View\\Edit_User.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:03:55.913Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "checkPassword.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml",
-              "RelativeDocumentMoniker": "View\\checkPassword.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml",
-              "RelativeToolTip": "View\\checkPassword.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-07-22T18:03:54.067Z"
             }
           ]
         }

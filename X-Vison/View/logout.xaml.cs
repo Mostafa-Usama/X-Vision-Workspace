@@ -86,13 +86,14 @@ namespace Center_Maneger.View
             enterDate.Text = DateTime.Parse(start_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             leaveDate.Text = DateTime.Parse(leave_date).ToString("h:mm tt", CultureInfo.CreateSpecificCulture("ar-EG"));
             duration_stayed.Text = hours + "  ساعة    " + mintues + "  دقيقة" ;
-            cost.Text = price.ToString();
+            
             if (window == "chair")
             {
                 if (offer_id != 0)
                 {
                     int left_hours = Convert.ToInt32(databaseLoader.SelectData("user_offer", "spent_hours", String.Format("user_id = {0} AND is_expired = 0",user_id))[0]);
                     offer.Text = "عدد الساعات المستهلكة: " + left_hours.ToString();
+                    price = 0;
                 }
                 else
                 {
@@ -100,6 +101,7 @@ namespace Center_Maneger.View
                 }
 
             }
+            cost.Text = price.ToString();
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();
 
