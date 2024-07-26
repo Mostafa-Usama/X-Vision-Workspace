@@ -83,6 +83,7 @@ namespace Center_Maneger
                 Dictionary<string, object> newLeftHours = new Dictionary<string,object>{
                     {"left_hours", left_hours - duration}
                 };
+
                 databaseLoader.UpdateData("user_offer", newLeftHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
 
 
@@ -91,6 +92,15 @@ namespace Center_Maneger
                     {"spent_hours", spent_hours + duration}
                 };
                 databaseLoader.UpdateData("user_offer", newSpentHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
+                if (left_hours - duration <= 0)
+
+                {
+                    Dictionary<string, object> expired = new Dictionary<string, object>{
+                        {"is_expired", 1}
+                    };
+                    databaseLoader.UpdateData("user_offer", expired, String.Format("user_id = {0} AND is_expired = 0", user_id));
+
+                }
 
             }
         }

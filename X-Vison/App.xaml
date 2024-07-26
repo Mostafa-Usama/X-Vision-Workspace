@@ -55,7 +55,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+    
+       
+            
         <Style x:Key="Roundedbtn" TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -83,8 +85,10 @@
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="10"/>
+            
         </Style>
-
+        
+       
         <!-- Define TextBlock Style -->
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Amiri, Cairo, 'Segoe UI', Tahoma" />
@@ -127,6 +131,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Cursor" Value="Hand"/>
+
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="Margin" Value="8"/>
@@ -134,6 +140,10 @@
             <Setter Property="Height" Value="70"/>
 
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+     
         <Style x:Key="roundedtabitem" TargetType="TabItem">
             <Setter Property="Template">
                 <Setter.Value>

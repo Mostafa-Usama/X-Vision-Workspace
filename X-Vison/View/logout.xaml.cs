@@ -93,6 +93,9 @@ namespace Center_Maneger.View
                 {
                     int left_hours = Convert.ToInt32(databaseLoader.SelectData("user_offer", "spent_hours", String.Format("user_id = {0} AND is_expired = 0",user_id))[0]);
                     offer.Text = "عدد الساعات المستهلكة: " + left_hours.ToString();
+                    price = 0;
+                    cost.Text = price.ToString();
+                    total_cost = price + kitchen_cost;
                 }
                 else
                 {
