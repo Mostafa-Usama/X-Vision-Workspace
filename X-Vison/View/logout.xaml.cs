@@ -33,6 +33,7 @@ namespace Center_Maneger.View
         string leave_date;
         int offer_id;
         string window;
+        bool expired = false;
 
         public logout(string win)
         {
@@ -48,7 +49,7 @@ namespace Center_Maneger.View
                 Tuple<string, string> data = databaseLoader.GetUserDataByChairNum(chairNum);
                 name = data.Item1;
                 start_date = data.Item2;
-                List <object> offers = databaseLoader.SelectData("user_offer", "offer_id", String.Format("user_id = {0} AND is_expired = 0",user_id));
+                List <object> offers = databaseLoader.SelectData("user_offer", "offer_id", String.Format("user_id = {0} AND is_logged_out = 0",user_id));
                 offer_id = offers.Count == 0 ? 0 : Convert.ToInt32(offers[0]);
 
                 start_date = Convert.ToString(databaseLoader.SelectData("active_users", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
@@ -91,12 +92,26 @@ namespace Center_Maneger.View
             {
                 if (offer_id != 0)
                 {
-                    int left_hours = Convert.ToInt32(databaseLoader.SelectData("user_offer", "spent_hours", String.Format("user_id = {0} AND is_expired = 0",user_id))[0]);
-                    offer.Text = "عدد الساعات المستهلكة: " + left_hours.ToString();
-                    price = 0;
-                    cost.Text = price.ToString();
-                    total_cost = price + kitchen_cost;
+                    int is_expired = Convert.ToInt32(databaseLoader.SelectData("user_offer", "is_expired",String.Format("user_id = {0} AND is_logged_out = 0",user_id))[0]);
 
+                    if (is_expired == 0)
+                    {
+                        int left_hours = Convert.ToInt32(databaseLoader.SelectData("user_offer", "spent_hours", String.Format("user_id = {0} AND is_logged_out = 0", user_id))[0]);
+                        offer.Text = "عدد الساعات المستهلكة: " + left_hours.ToString();
+                        price = 0;
+                    }
+                    else
+                    {
+                        expired = true;
+                        DateTime expireyDate = Convert.ToDateTime(databaseLoader.SelectData("user_offer", "expirey_date", String.Format("user_id = {0} AND is_logged_out = 0 AND is_expired = 1", user_id))[0]);
+                        TimeSpan durationSinceExpirey = DateTime.Parse(leave_date) - expireyDate;
+                        string hoursSinceExpirey = ((int)durationSinceExpirey.TotalHours).ToString();
+                        string mintuesSinceExpirey = ((int)((durationSinceExpirey.TotalHours - (int)durationSinceExpirey.TotalHours) * 60)).ToString();
+
+                        offer.Text = "تم استهلاك الباقة منذ   " + hoursSinceExpirey +"     ساعة     " + mintuesSinceExpirey + "    دقيقة";
+                        price = databaseLoader.GetPriceByDuration(int.Parse(hoursSinceExpirey));  
+                    }
+                
                 }
                 else
                 {
@@ -104,7 +119,13 @@ namespace Center_Maneger.View
                 }
 
             }
+            else
+            {
+                offerLabel.Visibility = Visibility.Collapsed;
+                offer.Visibility = Visibility.Collapsed;
+            }
             cost.Text = price.ToString();
+            total_cost = price + kitchen_cost;
             kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
             total.Text = total_cost.ToString();
 
@@ -135,6 +156,13 @@ namespace Center_Maneger.View
                 if (window == "chair")
                 {
                     databaseLoader.DeleteRecord("active_users", "user_id", user_id.ToString());
+                    if (expired)
+                    {
+                        Dictionary<string, object> loggedOut = new Dictionary<string,object>{
+                            {"is_logged_out", 1},
+                        };
+                        databaseLoader.UpdateData("user_offer", loggedOut, String.Format("user_id = {0} AND is_logged_out = 0", user_id));
+                    }
                 }
                 else
                 {

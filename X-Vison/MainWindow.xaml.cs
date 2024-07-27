@@ -8,12 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using System.Timers;
 
 namespace Center_Maneger
@@ -53,56 +49,80 @@ namespace Center_Maneger
        public static void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
 
-            List<Tuple<int, string, int, int, int>> userIds = databaseLoader.GetUserIdWithOffers();
+            List<Tuple<int, string, int, int, int, string>> userIds = databaseLoader.GetUserIdWithOffers();
 
             foreach (var userId in userIds)
             {
-                updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5);
+                updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6);
             }
         }
 
-        public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours)
+        public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date)
         {
 
             // ميحسبش من التكلفة طول ما الباقة شغال
             // الباقة تخلص تاريخ
 
             DateTime now = DateTime.Now;
-            int hours = Convert.ToInt32((now - DateTime.Parse(enter_date)).TotalHours);
-            int duration = hours - last_hour;
-            if (hours > last_hour)
+            DateTime endDate = DateTime.Parse(end_date);
+
+            if (now >= endDate)
             {
+                MarkOfferAsExpired(user_id, string.IsNullOrEmpty(enter_date));
+                return;
+            }
+            if (!string.IsNullOrEmpty(enter_date)) { 
+                int hours = Convert.ToInt32((now - DateTime.Parse(enter_date)).TotalHours);
+                int duration = hours - last_hour;
 
-                Dictionary<string, object> newLastHour = new Dictionary<string,object>{
-                    {"last_hour", hours}
-                };
-                databaseLoader.UpdateData("active_users", newLastHour, String.Format("user_id = {0}", user_id));
-
-
-
-                Dictionary<string, object> newLeftHours = new Dictionary<string,object>{
-                    {"left_hours", left_hours - duration}
-                };
-
-                databaseLoader.UpdateData("user_offer", newLeftHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
-
-
-
-                Dictionary<string, object> newSpentHours = new Dictionary<string, object>{
-                    {"spent_hours", spent_hours + duration}
-                };
-                databaseLoader.UpdateData("user_offer", newSpentHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
-                if (left_hours - duration <= 0)
-
+                if (hours > last_hour)
                 {
-                    Dictionary<string, object> expired = new Dictionary<string, object>{
-                        {"is_expired", 1}
+
+                    Dictionary<string, object> newLastHour = new Dictionary<string,object>{
+                        {"last_hour", hours}
                     };
-                    databaseLoader.UpdateData("user_offer", expired, String.Format("user_id = {0} AND is_expired = 0", user_id));
+                    databaseLoader.UpdateData("active_users", newLastHour, String.Format("user_id = {0}", user_id));
+
+
+
+                    Dictionary<string, object> newLeftHours = new Dictionary<string,object>{
+                        {"left_hours", left_hours - duration}
+                    };
+
+                    databaseLoader.UpdateData("user_offer", newLeftHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
+
+
+
+                    Dictionary<string, object> newSpentHours = new Dictionary<string, object>{
+                        {"spent_hours", spent_hours + duration}
+                    };
+                    databaseLoader.UpdateData("user_offer", newSpentHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
+                
 
                 }
+                if (left_hours - duration <= 0)
+                {
+                    MarkOfferAsExpired(user_id, false);
+                    return;
+                }
+            
+           }
+        }
 
+        private static void MarkOfferAsExpired(int user_id, bool isLogout)
+        {
+            Dictionary<string, object> expired = new Dictionary<string, object>
+            {
+                { "is_expired", 1 },
+                { "expirey_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }
+            };
+
+            if (isLogout)
+            {
+                expired.Add("is_logged_out", 1);
             }
+
+            databaseLoader.UpdateData("user_offer", expired, String.Format("user_id = {0} AND is_expired = 0",user_id));
         }
 
         private void num_chairs_btn(object sender, RoutedEventArgs e)

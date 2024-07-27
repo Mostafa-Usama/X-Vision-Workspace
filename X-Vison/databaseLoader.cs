@@ -391,16 +391,16 @@ namespace Center_Maneger
             return dataTable;
         }
 
-        public static List<Tuple <int, string, int, int, int>> GetUserIdWithOffers()
+        public static List<Tuple <int, string, int, int, int, string>> GetUserIdWithOffers()
         {
-            List<Tuple<int, string, int, int, int>> data = new List<Tuple<int, string, int, int, int>>();
+            List<Tuple<int, string, int, int, int, string>> data = new List<Tuple<int, string, int, int, int, string>>();
 
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
                 
-                string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours FROM user_offer uo
-                                              JOIN active_users au on uo.user_id = au.user_id 
+                string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours, uo.end_date FROM user_offer uo
+                                              LEFT JOIN active_users au on uo.user_id = au.user_id 
                                               WHERE uo.is_expired = 0");
 
                 using (var command = new SQLiteCommand(query, connection))
@@ -410,11 +410,12 @@ namespace Center_Maneger
                         while (reader.Read())
                         {
                             int user_id = reader.GetInt32(0);
-                            string enter_date = reader.GetString(1);
-                            int last_hour = reader.GetInt32(2);
+                            string enter_date = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                            int last_hour = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                             int left_hours = reader.GetInt32(3);
                             int spent_hours = reader.GetInt32(4);
-                            data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours));
+                            string end_date = reader.GetString(5);
+                            data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours, end_date));
                         }
                     }
                 }
