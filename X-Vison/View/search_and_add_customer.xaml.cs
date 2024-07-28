@@ -22,7 +22,7 @@ namespace Center_Maneger.View
         public int chairNum;
         public string className;
 
-        public bool clickBtn =false ;
+        public bool clickBtn = false;
         string window;
 
 
@@ -30,26 +30,32 @@ namespace Center_Maneger.View
         {
             InitializeComponent();
             window = win;
-            Section1.IsEnabled = true;
-            Section2.IsEnabled = false;
+            Section1.IsEnabled = false;
+            Section2.IsEnabled = true;
 
             ExistingCustomerRadioButton.IsChecked = true;
             //SaveButton.IsEnabled = false;
 
         }
 
-        private void search_checkbox(object sender, RoutedEventArgs e)
+        private void checkbox(object sender, RoutedEventArgs e)
         {
-            Section1.IsEnabled = true;
-            Section2.IsEnabled = false;
-            SaveButton.IsEnabled = false;
-        }
+            Section1.IsEnabled = !Section1.IsEnabled;
+            Section2.IsEnabled = !Section2.IsEnabled;
+            SaveButton.IsEnabled = !SaveButton.IsEnabled;
+            if (Section1.IsEnabled)
+            {
+                Section1.Opacity = 1;
+                Section2.Opacity = 0.6;
+                SaveButton.Opacity = 0.6;
+            }
+            else
+            {
+                Section1.Opacity = 0.6;
+                Section2.Opacity = 1;
+                SaveButton.Opacity = 1;
 
-        private void new_checkbox(object sender, RoutedEventArgs e)
-        {
-            Section1.IsEnabled = false;
-            Section2.IsEnabled = true;
-            SaveButton.IsEnabled = true;
+            }
         }
 
         private void UserComboBox_KeyUp(object sender, KeyEventArgs e)
@@ -83,7 +89,7 @@ namespace Center_Maneger.View
                 textBox.SelectionStart = textBox.Text.Length;
                 textBox.SelectionLength = 0;
             
-    }
+        }
 
         private void existing_user(object sender, RoutedEventArgs e)
         {
@@ -135,8 +141,6 @@ namespace Center_Maneger.View
             }
 
         }
-
-
 
         private void add_active_user(string name, string phone, string enter_date)
         {
@@ -328,8 +332,8 @@ namespace Center_Maneger.View
                         return;
                     }
                 }
-             }
-         }
+            }
+        }
 
         private void fill_combobox(object sender, RoutedEventArgs e)
         {
@@ -339,7 +343,7 @@ namespace Center_Maneger.View
             jobComboBox.ItemsSource = jobs;
             if (window != "offer")
             {
-                OfferSection.Visibility = Visibility.Collapsed;
+                add_offer.Visibility = Visibility.Collapsed;
                 this.Height = 485;
             }
             else
@@ -356,7 +360,5 @@ namespace Center_Maneger.View
             costLabel.Content = cost;
             hoursLabel.Content = hours;
         }
-
-  
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 
 using System.Timers;
+using System.Runtime.Remoting.Messaging;
 
 namespace Center_Maneger
 {
@@ -38,6 +39,7 @@ namespace Center_Maneger
                 null, 
                 new Member_Offers(),
                 new User_Records(),
+                new admin_setting(),
             };
             Timer timer = new Timer(500000);
             timer.Elapsed += timer_Elapsed;
@@ -152,18 +154,18 @@ namespace Center_Maneger
 
         private void settings_clicked(object sender, MouseButtonEventArgs e)
         {
-
-
+            var tabitem  = sender as TabItem;
+            int ind = Convert.ToInt32(tabitem.Tag);
             checkPassword checkPass = new checkPassword();
             checkPass.ShowDialog();
 
             if (checkPass.correct)
             {
-                settings_tab.SelectedIndex = 0;
+                settings_tab.SelectedIndex =ind;
             }
             else
             {
-                settings_tab.SelectedIndex = 1;
+                settings_tab.SelectedIndex = 2;
             }
 
         }
@@ -191,6 +193,16 @@ namespace Center_Maneger
             win.ShowDialog();
         }
 
-       
+   
+
+        private void backup_data(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void restore_data(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -168,3 +168,5 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrCont
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\User_Records.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\User_Records.baml
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\User_Records.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.baml

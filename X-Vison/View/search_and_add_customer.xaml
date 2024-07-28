@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="{StaticResource win}"
-        Title="بحث و اضافة العملاء" Height="600" Width="400"
+        Title="بحث و اضافة العملاء" Height="630" Width="400"
         Icon="/img/search.ico">
     
     <Grid Margin="10" FlowDirection="RightToLeft">
@@ -24,7 +24,7 @@
         <GroupBox Grid.Row="0" VerticalAlignment="Center" Margin="0 0 0 20" BorderBrush="{StaticResource bgtab}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Checked="search_checkbox" FontWeight="Bold" FontSize="14" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton" Foreground="{StaticResource text}" GroupName="CustomerType" />
+                    <RadioButton Checked="checkbox" FontWeight="Bold" FontSize="14" Content="بحث الأعضاء" Name="ExistingCustomerRadioButton" Foreground="{StaticResource text}" GroupName="CustomerType" />
                 </StackPanel>
             </GroupBox.Header>
                 <Grid Margin="10" Name="Section1" IsEnabled="True">
@@ -69,7 +69,7 @@
         <GroupBox  Grid.Row="1" VerticalAlignment="Center" BorderBrush="{StaticResource bgtab}" BorderThickness="3">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Checked="new_checkbox" FontSize="14" FontWeight="Bold" Content="عضو جديد" Name="NewCustomerRadioButton" Foreground="{StaticResource text}"  GroupName="CustomerType"/>
+                    <RadioButton Checked="checkbox" FontSize="14" FontWeight="Bold" Content="عضو جديد" Name="NewCustomerRadioButton" Foreground="{StaticResource text}"  GroupName="CustomerType"/>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel  >
@@ -104,25 +104,26 @@
                 <Label Style="{StaticResource labelStyle}" Content="الوظيفة:" Grid.Row="4" Grid.Column="0" Margin="5"/>
                     <ComboBox  Grid.Row="4" Grid.Column="1" Margin="5" Name="jobComboBox"/>
             </Grid>
-                <Grid Grid.Row="2" FlowDirection="RightToLeft" Margin="10 0" Name="OfferSection">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="127"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <GroupBox Name="add_offer" BorderBrush="{StaticResource bgtab}" BorderThickness="3" Header="اضافة عرض" FontWeight="Bold" FontSize="16" Margin="15 0">
+                    <Grid Grid.Row="2" FlowDirection="RightToLeft" Margin="10 0" Name="OfferSection">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="127"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="العرض" Style="{StaticResource labelStyle}" Margin="5"/>
-                    <ComboBox  Grid.Row="0" Grid.Column="1" Margin="5" Height="28" Name="offerComboBox"  SelectionChanged="offer_changed" />
-                    <Label Grid.Row="1" Grid.Column="1"  Name="hoursLabel" />
-                    <Label Grid.Row="2" Grid.Column="1"  Name="costLabel"/>
-                    <Label Grid.Row="1" Content="عدد الساعات:" Style="{StaticResource labelStyle}" Margin="5"/>
-                    <Label Grid.Row="2" Content="التكلفة:" Style="{StaticResource labelStyle}" Margin="5"/>
-                </Grid>
-
+                        <Label Grid.Row="0" Grid.Column="0" Content="العرض" Style="{StaticResource labelStyle}" Margin="5"/>
+                        <ComboBox  Grid.Row="0" Grid.Column="1" Margin="5" Height="28" Name="offerComboBox"  SelectionChanged="offer_changed" />
+                        <Label Grid.Row="1" Grid.Column="1"  Name="hoursLabel"  Style="{StaticResource labelStyle}"/>
+                        <Label Grid.Row="2" Grid.Column="1"  Name="costLabel" Style="{StaticResource labelStyle}"/>
+                        <Label Grid.Row="1" Content="عدد الساعات:" Style="{StaticResource labelStyle}" Margin="5"/>
+                        <Label Grid.Row="2" Content="التكلفة:" Style="{StaticResource labelStyle}" Margin="5"/>
+                    </Grid>
+                </GroupBox>
                 <Button  IsDefault="True" VerticalAlignment="Bottom" Style="{StaticResource Roundedbtn}" Grid.Row="3" Grid.ColumnSpan="2" 
                         Margin="5" Name="SaveButton" Click="new_user" Width="100" 
                         Height="35" FontSize="14" FontWeight="Bold" Background="Transparent" BorderThickness="0">

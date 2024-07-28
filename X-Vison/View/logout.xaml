@@ -30,7 +30,7 @@
         </StackPanel>
         <StackPanel  Name="offerLabel" Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="العرض:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>
-            <TextBlock Name="offer"  FontSize="16" FontWeight="Bold" />
+            <TextBlock Name="offer" FontSize="16" FontWeight="Bold" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">
             <TextBlock Style="{StaticResource TextBlockStyle}" Text="البوفيه:" Margin="0 0 30 0" FontSize="16" FontWeight="Bold"/>

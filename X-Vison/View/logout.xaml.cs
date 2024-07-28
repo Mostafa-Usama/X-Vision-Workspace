@@ -108,7 +108,7 @@ namespace Center_Maneger.View
                         string hoursSinceExpirey = ((int)durationSinceExpirey.TotalHours).ToString();
                         string mintuesSinceExpirey = ((int)((durationSinceExpirey.TotalHours - (int)durationSinceExpirey.TotalHours) * 60)).ToString();
 
-                        offer.Text = "تم استهلاك الباقة منذ   " + hoursSinceExpirey +"     ساعة     " + mintuesSinceExpirey + "    دقيقة";
+                        offer.Text = "تم استهلاك الباقة منذ  " + hoursSinceExpirey +"  ساعة  " + mintuesSinceExpirey + "  دقيقة";
                         price = databaseLoader.GetPriceByDuration(int.Parse(hoursSinceExpirey));  
                     }
                 

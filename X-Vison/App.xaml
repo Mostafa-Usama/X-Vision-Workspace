@@ -193,7 +193,8 @@
             <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Padding" Value="10"/>
-            
+            <Setter Property="Cursor" Value="Hand"/>
+
         </Style>
         
        
