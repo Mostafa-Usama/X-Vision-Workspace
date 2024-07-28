@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Background="{StaticResource win}"
-        Title="بحث و اضافة العملاء" Height="630" Width="400"
+        Title="بحث و اضافة العملاء" Height="630" Width="450"
         Icon="/img/search.ico">
     
     <Grid Margin="10" FlowDirection="RightToLeft">
@@ -45,11 +45,11 @@
                     </Grid.RowDefinitions>
                     <Label Style="{StaticResource labelStyle}" Content="الاسم :" Grid.Row="0" Grid.Column="0" Margin="5"/>
 
-                    <ComboBox  Tag="name" Name="UserComboBox" Height="25" IsTextSearchEnabled="False"  Grid.Row="0" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp" ></ComboBox>
+                    <ComboBox  Tag="name" Name="UserComboBox" Height="30" IsTextSearchEnabled="False"  Grid.Row="0" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp" FontSize="16" FontWeight="Bold"  ></ComboBox>
 
 
                 <Label Style="{StaticResource labelStyle}" Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                    <ComboBox  Tag="phone" Name="PhoneComboBox" Height="25" IsTextSearchEnabled="False"  Grid.Row="1" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
+                    <ComboBox  Tag="phone" Name="PhoneComboBox" Height="30" IsTextSearchEnabled="False"  Grid.Row="1" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
 
 
                 </Grid>
@@ -90,16 +90,16 @@
                 </Grid.RowDefinitions>
 
                 <Label Style="{StaticResource labelStyle}" Content="اسم العضو:" Grid.Row="0" Grid.Column="0" Margin="5"/>
-                <TextBox Style="{StaticResource RoundedTextBox}" Grid.Row="0" Grid.Column="1" Margin="5" Name="NameTextBox"/>
+                    <TextBox Style="{StaticResource RoundedTextBox}" Grid.Row="0" Grid.Column="1" Margin="5" Name="NameTextBox" FontWeight="Bold"  FontSize="16" Height="30" Padding="4 2"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="رقم الهاتف:" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                <TextBox Style="{StaticResource RoundedTextBox}" Grid.Row="1" Grid.Column="1" Margin="5" Name="new_phoneTextBox"/>
+                    <TextBox Style="{StaticResource RoundedTextBox}"  FontSize="16" Height="30" Padding="4 2" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Margin="5" Name="new_phoneTextBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="الكلية : " Grid.Row="2" Grid.Column="0" Margin="5"/>
                     <ComboBox   Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyComboBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="السنة الدراسية:" Grid.Row="3" Grid.Column="0" Margin="5"/>
-                <TextBox  Style="{StaticResource RoundedTextBox}" Grid.Row="3" Grid.Column="1" Margin="5" Name="LevelTextBox"/>
+                    <TextBox  Style="{StaticResource RoundedTextBox}"  FontSize="16" Height="30" Padding="4 2" FontWeight="Bold" Grid.Row="3" Grid.Column="1" Margin="5" Name="LevelTextBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="الوظيفة:" Grid.Row="4" Grid.Column="0" Margin="5"/>
                     <ComboBox  Grid.Row="4" Grid.Column="1" Margin="5" Name="jobComboBox"/>

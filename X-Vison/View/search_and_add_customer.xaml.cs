@@ -116,7 +116,13 @@ namespace Center_Maneger.View
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            int x;
+            bool isNumber = int.TryParse(phone, out x);
+            if (!isNumber || phone.Length != 11)
+            {
+                MessageBox.Show("برجاء ادخال رقم هاتف صحيح", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             try
             {
 

@@ -10,8 +10,8 @@
 
     <StackPanel  Margin="15">
         <StackPanel  >
-            <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
-                <TextBlock Text="بيانات العضو" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            <Border Padding="5" Margin="0 0 0 15" Width="150" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource  hoverbtn}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="بيانات العضو"  FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0 0 0 25">

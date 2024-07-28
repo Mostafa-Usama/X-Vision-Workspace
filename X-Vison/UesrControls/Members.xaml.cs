@@ -114,14 +114,19 @@ namespace Center_Maneger.UesrControls
             string faculty = member_college.SelectedItem == null ? "" : member_college.SelectedItem.ToString(); ;
             string level = member_level.Text;
             string job = member_job.SelectedItem == null ? "" : member_job.SelectedItem.ToString();
-            
+            int x;
+            bool isNumber = int.TryParse(phone, out x);
 
             if (name.Trim() == "" || phone.Trim() == "" || faculty.Trim() == "" || level.Trim() == "" || job.Trim() == "")
             {
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            if (!isNumber || phone.Length != 11)
+            {
+                MessageBox.Show("برجاء ادخال رقم هاتف صحيح", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             int faculty_id = Convert.ToInt32(databaseLoader.SelectData("faculties", "id", String.Format("faculty_name = \"{0}\" ", faculty))[0]);
             int job_id = Convert.ToInt32(databaseLoader.SelectData("jobs", "id", String.Format("job_name = \"{0}\"", job))[0]);
 
