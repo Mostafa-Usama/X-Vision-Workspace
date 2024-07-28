@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Center_Maneger"
         mc:Ignorable="d"
         WindowState="Maximized"
-        ResizeMode="NoResize"
+        ResizeMode="CanMinimize"
         Title="X-Vision"
         Background="#FF273437"
         Icon="/img/logo.ico">

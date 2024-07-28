@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 using System.Timers;
 using System.Runtime.Remoting.Messaging;
@@ -26,7 +28,7 @@ namespace Center_Maneger
         public MainWindow()
         {
             InitializeComponent();
-            
+            this.SourceInitialized += MainWindow_SourceInitialized;
             userControls = new UserControl [] {
                 new Class_Settings(),
                 new Faculty_Settings(),
@@ -46,6 +48,28 @@ namespace Center_Maneger
             timer.AutoReset = true;
             timer.Enabled = true;
             timer_Elapsed(null, null);   
+        }
+
+        private void MainWindow_SourceInitialized(object sender, EventArgs e)
+        {
+            var hwndSource = (HwndSource)PresentationSource.FromVisual(this);
+            if (hwndSource != null)
+            {
+                hwndSource.AddHook(WndProc);
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+             const int WM_NCLBUTTONDBLCLK = 0x00A3;
+
+            if (msg == WM_NCLBUTTONDBLCLK)
+            {
+                handled = true;
+            }
+
+            return IntPtr.Zero;
+        
         }
 
        public static void timer_Elapsed(object sender, ElapsedEventArgs e)
