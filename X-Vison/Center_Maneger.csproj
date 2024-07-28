@@ -429,6 +429,9 @@
   <ItemGroup>
     <Resource Include="img\backup.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\search %282%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

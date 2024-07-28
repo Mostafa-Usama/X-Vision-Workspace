@@ -9,8 +9,23 @@
              Loaded="load_grid_of_chair"
              Background="{StaticResource bguc}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.85*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Grid.Row="0"  HorizontalAlignment="Center">
+
+            <TextBox  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Margin="10 0" Padding="4"/>
+            <Button x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/img/search (2).png"/>
+                    <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
         
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="60 0">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="60 0">
 
             <Grid  x:Name="DynamicGrid" Margin="5"/>
 

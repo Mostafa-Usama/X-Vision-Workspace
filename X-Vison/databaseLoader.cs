@@ -313,14 +313,14 @@ namespace Center_Maneger
 
 
 
-        public static List<string> GetUserNames(string filter, string col) // used to filter combo boxes when searching for existing users
+        public static List<string> GetUserNames(string filter,string table, string col,string join="") // used to filter combo boxes when searching for existing users
     {
         List<string> userNames = new List<string>();
         
         using (var connection = new SQLiteConnection(_connectionString))
         {
             connection.Open();
-            string query = String.Format("SELECT {0} FROM users WHERE {0} LIKE @filter LIMIT 5",col);
+            string query = String.Format("SELECT {0} FROM {1} {2} WHERE {0} LIKE @filter LIMIT 5",col,table,join);
             using (var command = new SQLiteCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@filter", String.Format("{0}%",filter));

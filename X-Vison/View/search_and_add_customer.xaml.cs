@@ -77,7 +77,7 @@ namespace Center_Maneger.View
                 string filter = textBox.Text.ToLower();
 
                 // Fetch filtered list from the database
-                var filteredList = databaseLoader.GetUserNames(filter,combo.Tag.ToString());
+                var filteredList = databaseLoader.GetUserNames(filter,"users",combo.Tag.ToString());
                 if (filteredList.Count == 0)
                 {
                     combo.IsDropDownOpen = false;
