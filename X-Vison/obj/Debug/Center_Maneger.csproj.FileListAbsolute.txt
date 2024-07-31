@@ -172,3 +172,9 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.g.cs

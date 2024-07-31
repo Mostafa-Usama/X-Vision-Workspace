@@ -1,0 +1,40 @@
+﻿<Window x:Class="Center_Maneger.View.Edit_Product"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Loaded="load_data"
+        Title="Edit_User" Height="400" Width="450"
+        Background="{StaticResource win}"
+        Icon="/img/edit.ico">
+    <StackPanel Margin="8">
+        <StackPanel Margin="0 0 0 30">
+            <Border Margin="0 5" Width="200" Padding="3" BorderBrush="White" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="تعديل منتج " FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="اسم المنتج:" Margin="0 0 10 0"/>
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200" Name="product_name_input"  />
+        </StackPanel>
+        <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="الكمية:" Margin="0 0 10 0" />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="amount_input"   />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="سعر الشراء :" Margin="0 0 10 0" />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="purchase_cost_input"   />
+        </StackPanel>
+        
+        <StackPanel Margin="0 20 0 0" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="120" Content="سعر البيع :" Margin="0 0 10 0" />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="sell_cost_input"   />
+        </StackPanel>
+        <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="edit_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 30">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>

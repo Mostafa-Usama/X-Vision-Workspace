@@ -106,8 +106,14 @@
     <Compile Include="UesrControls\grid_of_classes.xaml.cs">
       <DependentUpon>grid_of_classes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UesrControls\grid_of_products.xaml.cs">
+      <DependentUpon>grid_of_products.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UesrControls\Job_Settings.xaml.cs">
       <DependentUpon>Job_Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UesrControls\Kitchen_Settings.xaml.cs">
+      <DependentUpon>Kitchen_Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="UesrControls\Members.xaml.cs">
       <DependentUpon>Members.xaml</DependentUpon>
@@ -126,6 +132,9 @@
     </Compile>
     <Compile Include="View\checkPassword.xaml.cs">
       <DependentUpon>checkPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit_Product.xaml.cs">
+      <DependentUpon>Edit_Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Edit_User.xaml.cs">
       <DependentUpon>Edit_User.xaml</DependentUpon>
@@ -180,7 +189,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UesrControls\grid_of_products.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UesrControls\Job_Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UesrControls\Kitchen_Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,6 +222,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\checkPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Edit_Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

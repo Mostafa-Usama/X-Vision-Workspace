@@ -43,15 +43,14 @@ namespace Center_Maneger.UesrControls
             {
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
+            
+            Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
             for (int i = 0; i < numberOfCells; i++)
             {
                 int row = i / columns;
                 int column = i % columns;
                 int row2 = x / columns;
                 int col2 = x % columns;
-                bool chk = false;
-                Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
@@ -96,6 +95,7 @@ namespace Center_Maneger.UesrControls
                     FontSize = 18,
                     Foreground = Brushes.OrangeRed,
                 };
+                
                 Image chairIcon = new Image
                 {
                     Width = border.Width * 0.3,

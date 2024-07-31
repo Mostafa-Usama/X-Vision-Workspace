@@ -344,7 +344,7 @@ namespace Center_Maneger
             string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
                              FROM users u
                              JOIN user_records ur ON u.id= ur.user_id
-                             WHERE ur.enter_date >= @fromDate AND ur.enter_date <= @toDate ";
+                             WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate ";
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
@@ -424,6 +424,45 @@ namespace Center_Maneger
             return data;
         }
 
+        public static List <Tuple<int, string, int, double>>GetProductsData()
+        {
+            List<Tuple<int, string, int, double>> data = new List<Tuple<int, string, int, double>>();
+            int productId = new int();
+            string productName= string.Empty;
+            int amount = new int();
+            double cost = new double();
 
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                string query = @" SELECT 
+                                    id,
+                                    product_name, 
+                                    amount,
+                                    sell_cost
+                                FROM 
+                                    kitchen
+                                ORDER BY id";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            productId = reader.GetInt32(0);
+                            productName = reader.GetString(1);
+                            amount = reader.GetInt32(2);
+                            cost = reader.GetDouble(3);
+                            data.Add(Tuple.Create(productId, productName, amount, cost));
+                        }
+                    }
+                }
+            }
+
+
+            return data;
+        }
     }
 }
