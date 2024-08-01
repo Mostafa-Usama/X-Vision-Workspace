@@ -17,7 +17,7 @@
         <StackPanel FlowDirection="RightToLeft" Orientation="Horizontal" Grid.Row="0"  HorizontalAlignment="Center">
 
             <TextBox  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Margin="10 0" Padding="4"/>
-            <Button x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+            <Button IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/img/search (2).png"/>
                     <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>

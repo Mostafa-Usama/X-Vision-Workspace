@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Center_Maneger.View
+{
+    /// <summary>
+    /// Interaction logic for Edit_Product.xaml
+    /// </summary>
+    public partial class Edit_Product : Window
+    {
+        public bool isClicked = false;
+        string productName;
+        string amount;
+        string purchaseCost;
+        string sellCost;
+      
+        public Edit_Product(string name, string am, string pCost, string sCost)
+        {
+            InitializeComponent();
+            productName = name;
+            amount = am;
+            purchaseCost = pCost;
+            sellCost = sCost;
+        }
+
+        private void load_data(object sender, RoutedEventArgs e)
+        {
+            product_name_input.Text = productName;
+            amount_input.Text = amount;
+            purchase_cost_input.Text = purchaseCost;
+            sell_cost_input.Text = sellCost;
+        }
+        private void edit_product(object sender, RoutedEventArgs e)
+        {
+            int am;
+            double purchaseCost;
+            double sellCost;
+
+            if (product_name_input.Text.Trim() == "" || purchase_cost_input.Text.Trim() == "" || sell_cost_input.Text.Trim() == "" || amount_input.Text.Trim() == "")
+            {
+                MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            bool isNumber1 = double.TryParse(purchase_cost_input.Text, out purchaseCost);
+            bool isNumber2 = double.TryParse(sell_cost_input.Text, out sellCost);
+            bool isNumber3 = int.TryParse(amount_input.Text, out am);
+            if (!isNumber1 || !isNumber2 || !isNumber3)
+            {
+                MessageBox.Show("برجاء ادخال ارقام صحيحة ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Dictionary<string, object> data = new Dictionary<string, object>{
+                {"product_name", product_name_input.Text.Trim()},
+                {"amount", am},
+                {"purchase_cost", purchaseCost},
+                {"sell_cost",  sellCost},
+            };
+            databaseLoader.UpdateData("kitchen", data, String.Format("product_name = \"{0}\" ", productName));
+            isClicked = true;
+            this.Close();
+        }
+
+    }
+}

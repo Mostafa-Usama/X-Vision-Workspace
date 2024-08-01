@@ -43,15 +43,14 @@ namespace Center_Maneger.UesrControls
             {
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
-
+            
+            Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
             for (int i = 0; i < numberOfCells; i++)
             {
                 int row = i / columns;
                 int column = i % columns;
                 int row2 = x / columns;
                 int col2 = x % columns;
-                bool chk = false;
-                Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
 
                 if (!string.IsNullOrEmpty(searchQuery))
                 {
@@ -96,6 +95,7 @@ namespace Center_Maneger.UesrControls
                     FontSize = 18,
                     Foreground = Brushes.OrangeRed,
                 };
+                
                 Image chairIcon = new Image
                 {
                     Width = border.Width * 0.3,
@@ -195,6 +195,8 @@ namespace Center_Maneger.UesrControls
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Name = "user" + activeUsers[i + 1].Item3,
+                        Tag = (i+1).ToString(),
                     };
                     kitchen.Click += kitchen_Click;
 
@@ -248,7 +250,15 @@ namespace Center_Maneger.UesrControls
             }
         }
 
-        private void kitchen_Click(object sender, RoutedEventArgs e) { }
+        private void kitchen_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+
+            int chair = Convert.ToInt32(btn.Tag);
+            int id = int.Parse(btn.Name.Remove(0, 4));
+            Add_Order addOrderWin = new Add_Order(id, chair);
+            addOrderWin.ShowDialog();
+        }
 
         private void notes_Click(object sender, RoutedEventArgs e)
         {

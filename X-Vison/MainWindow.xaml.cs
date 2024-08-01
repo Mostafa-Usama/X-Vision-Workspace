@@ -42,6 +42,8 @@ namespace Center_Maneger
                 new Member_Offers(),
                 new User_Records(),
                 new admin_setting(),
+                new Kitchen_Settings(),
+                new grid_of_products(),
             };
             Timer timer = new Timer(500000);
             timer.Elapsed += timer_Elapsed;

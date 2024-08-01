@@ -116,7 +116,7 @@ namespace Center_Maneger.UesrControls
             string job = member_job.SelectedItem == null ? "" : member_job.SelectedItem.ToString();
             int x;
             bool isNumber = int.TryParse(phone, out x);
-
+           
             if (name.Trim() == "" || phone.Trim() == "" || faculty.Trim() == "" || level.Trim() == "" || job.Trim() == "")
             {
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);

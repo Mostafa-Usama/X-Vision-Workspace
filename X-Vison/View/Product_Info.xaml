@@ -1,0 +1,41 @@
+﻿<Window x:Class="Center_Maneger.View.Product_Info"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="load_data"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="بيانات المنتج" Height="400" Width="400"
+        Background="{StaticResource win}"
+        Icon="/img/edit.ico">
+    <StackPanel Margin="8">
+        <StackPanel Margin="0 0 0 30">
+            <Border Margin="0 5" Width="200" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="بيانات المنتج" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            </Border>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="100" Content="اسم المنتج:" Margin="0 0 10 0"/>
+            <TextBlock Style="{StaticResource TextBlockStyle}"  Width="100" Name="product_name_label"  />
+        </StackPanel>
+        <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}"  Width="100" Content="الكمية:" Margin="0 0 10 0" />
+            <TextBox FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_label"   />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر الشراء:" Margin="0 0 10 0" />
+            <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="purchase_cost_label"   />
+
+        </StackPanel>
+        <StackPanel  Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
+            <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر البيع:" Margin="0 0 10 0" />
+            <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="sell_cost_label"   />
+        </StackPanel>
+        
+        <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="save_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 10">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</Window>

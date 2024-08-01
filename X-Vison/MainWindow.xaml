@@ -92,13 +92,13 @@
                                 <TextBlock  FontSize="12"  Text="تغير كلمة مرور " Style="{StaticResource TextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
-                        <Button Width="120" Style="{StaticResource tabbtn}" Tag="اعدادات الغرف" Name="btn12" BorderThickness="0" Background="#00DDDDDD" Click="backup_data">
+                        <Button Width="120" Style="{StaticResource tabbtn}" Tag="اعدادات الغرف" BorderThickness="0" Background="#00DDDDDD" Click="backup_data">
                                 <StackPanel>
                                     <Image Source="img/meeting-icon.png" Width="40" Height="35" />
                                 <TextBlock  TextWrapping="Wrap" FontSize="12" Text="حفظ نسخة احتياطية" Style="{StaticResource TextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
-                            <Button Width="140" Style="{StaticResource tabbtn}" Tag="الكليات" Name="btn13" BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="restore_data">
+                            <Button Width="140" Style="{StaticResource tabbtn}" Tag="الكليات"  BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="restore_data">
                                 <StackPanel>
                                     <Image Source="img/faculty icon.png" Width="40" Height="35" />
                                     <TextBlock FontSize="12" TextWrapping="Wrap" Text="استرجاع النسخة الاحتياظية" Style="{StaticResource TextBlockStyle}"/>
@@ -123,7 +123,7 @@
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </StackPanel.OpacityMask>
-                        <Button Width="130" Style="{StaticResource tabbtn}" BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="num_chairs_btn" Name="btn16">
+                        <Button Width="130" Style="{StaticResource tabbtn}" BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="num_chairs_btn" >
                             <StackPanel>
                                 <Image Source="img/Chair.png" Width="40" Height="35" RenderTransformOrigin="0.562,0.5" />
                                 <TextBlock Text="اعدادات المقاعد" Style="{StaticResource TextBlockStyle}"/>
@@ -208,7 +208,34 @@
                         </Button>
                     </StackPanel>
                 </TabItem>
-
+                <TabItem BorderThickness="0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+                    <TabItem.Header>
+                        <StackPanel>
+                            <Image Source="img/kitchen icon2.png" Width="40" Height="40"/>
+                            <TextBlock Text="البوفيه" Style="{StaticResource TextBlockStyle}"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <StackPanel Orientation="Horizontal" Background="{StaticResource bgtab}">
+                        <Button Style="{StaticResource tabbtn}" Tag="اعدادات البوفيه" Click="openUserControl"   Padding="10" Name="btn12" BorderThickness="0" Background="#00DDDDDD" Width="130" >
+                            <StackPanel>
+                                <Image Source="img/shifts.png" Width="40" Height="35" />
+                                <TextBlock Text="اعدادات البوفيه" Style="{StaticResource TextBlockStyle}"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource tabbtn}" Tag="المخزن" Click="openUserControl"   Padding="10" Name="btn13" BorderThickness="0" Background="#00DDDDDD" Width="120" >
+                            <StackPanel>
+                                <Image Source="img/shifts.png" Width="40" Height="35" />
+                                <TextBlock Text="المخزن" Style="{StaticResource TextBlockStyle}"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource tabbtn}" Tag="الشيفتات" Click="openUserControl"   Padding="10" Name="btn14" BorderThickness="0" Background="#00DDDDDD" Width="120" >
+                            <StackPanel>
+                                <Image Source="img/shifts.png" Width="40" Height="35" />
+                                <TextBlock Text="الشيفتات" Style="{StaticResource TextBlockStyle}"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </TabItem>
             </TabControl>
             <!--<ComboBox Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" >
                 <Button Content="تغيير كلمة المرور" Background="#00DDDDDD" BorderBrush="#00707070" />

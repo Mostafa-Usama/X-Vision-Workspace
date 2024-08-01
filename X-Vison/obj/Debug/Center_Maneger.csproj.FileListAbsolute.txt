@@ -172,3 +172,23 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\admin_setting.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.baml
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.g.cs
+D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.g.cs
