@@ -73,17 +73,22 @@
                         <RowDefinition Height="0.3*"/>
                         <RowDefinition Height="0.3*"/>
                         <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.4*"/>
                         <ColumnDefinition Width="0.6*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="كلمة السر القديمة" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="كلمة السر الجديدة" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="تاكيد كلمة السر" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
-                    <PasswordBox Name="op_login" Style="{StaticResource RoundedPassBox}" Grid.Row="0" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
-                    <PasswordBox Name="np_login" Style="{StaticResource RoundedPassBox}" Grid.Row="1" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
-                    <PasswordBox Name="cnp_login" Style="{StaticResource RoundedPassBox}" Grid.Row="2" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
+                       </Grid.ColumnDefinitions> 
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="اسم المسئول" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                    
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="كلمة السر القديمة" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="كلمة السر الجديدة" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="تاكيد كلمة السر" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+                    <TextBox Name="AdminName" Style="{StaticResource RoundedTextBox}" Grid.Row="0" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
+
+                    <PasswordBox Name="op_login" Style="{StaticResource RoundedPassBox}" Grid.Row="1" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
+                    <PasswordBox Name="np_login" Style="{StaticResource RoundedPassBox}" Grid.Row="2" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
+                    <PasswordBox Name="cnp_login" Style="{StaticResource RoundedPassBox}" Grid.Row="3" Grid.Column="1" Padding="2" Width="150"  Height="25" Margin="15 0"/>
                 </Grid>
                 <Button Grid.Row="1" Width="130" Margin="0 0 0 15" Style="{StaticResource Roundedbtn}" Background="Transparent">
                     <StackPanel Orientation="Horizontal">

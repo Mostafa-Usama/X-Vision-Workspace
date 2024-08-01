@@ -8,7 +8,7 @@
         Icon="/img/edit.ico">
     <StackPanel Margin="8">
         <StackPanel Margin="0 0 0 30">
-            <Border Margin="0 5" Width="200" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource bguc}" CornerRadius="7" BorderThickness="5">
+            <Border Margin="0 5" Width="200" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
                 <TextBlock Text="تعديل بيانات العضو " FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
             </Border>
         </StackPanel>
