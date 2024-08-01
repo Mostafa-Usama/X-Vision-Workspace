@@ -222,10 +222,10 @@
                                 <TextBlock Text="اعدادات البوفيه" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="منتجات البوفيه" Click="openUserControl"   Padding="10" Name="btn13" BorderThickness="0" Background="#00DDDDDD" Width="120" >
+                        <Button Style="{StaticResource tabbtn}" Tag="المخزن" Click="openUserControl"   Padding="10" Name="btn13" BorderThickness="0" Background="#00DDDDDD" Width="120" >
                             <StackPanel>
                                 <Image Source="img/shifts.png" Width="40" Height="35" />
-                                <TextBlock Text="منتجات البوفيه" Style="{StaticResource TextBlockStyle}"/>
+                                <TextBlock Text="المخزن" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource tabbtn}" Tag="الشيفتات" Click="openUserControl"   Padding="10" Name="btn14" BorderThickness="0" Background="#00DDDDDD" Width="120" >

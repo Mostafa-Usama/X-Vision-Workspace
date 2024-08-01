@@ -195,6 +195,8 @@ namespace Center_Maneger.UesrControls
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Name = "user" + activeUsers[i + 1].Item3,
+                        Tag = (i+1).ToString(),
                     };
                     kitchen.Click += kitchen_Click;
 
@@ -248,7 +250,15 @@ namespace Center_Maneger.UesrControls
             }
         }
 
-        private void kitchen_Click(object sender, RoutedEventArgs e) { }
+        private void kitchen_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+
+            int chair = Convert.ToInt32(btn.Tag);
+            int id = int.Parse(btn.Name.Remove(0, 4));
+            Add_Order addOrderWin = new Add_Order(id, chair);
+            addOrderWin.ShowDialog();
+        }
 
         private void notes_Click(object sender, RoutedEventArgs e)
         {

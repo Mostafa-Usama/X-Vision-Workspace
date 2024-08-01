@@ -130,6 +130,9 @@
     <Compile Include="UesrControls\User_Records.xaml.cs">
       <DependentUpon>User_Records.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Add_Order.xaml.cs">
+      <DependentUpon>Add_Order.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\checkPassword.xaml.cs">
       <DependentUpon>checkPassword.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,9 @@
     </Compile>
     <Compile Include="View\num_of_chairs_win.xaml.cs">
       <DependentUpon>num_of_chairs_win.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Product_Info.xaml.cs">
+      <DependentUpon>Product_Info.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\search_and_add_customer.xaml.cs">
       <DependentUpon>search_and_add_customer.xaml</DependentUpon>
@@ -221,6 +227,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Add_Order.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\checkPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -242,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\num_of_chairs_win.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Product_Info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

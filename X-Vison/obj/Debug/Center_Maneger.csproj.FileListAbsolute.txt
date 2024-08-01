@@ -178,3 +178,7 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edi
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.baml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\grid_of_products.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.baml
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.g.cs

@@ -464,5 +464,49 @@ namespace Center_Maneger
 
             return data;
         }
+
+
+        public static Tuple<string,int, double, double> GetProductData(int id) // gets data about user to fill logout window
+        {
+           
+            Tuple<string, int, double, double> data = null;
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                string query = @" SELECT 
+                                product_name, 
+                                amount,
+                                purchase_cost,
+                                sell_cost
+                            FROM 
+                                kitchen
+                            WHERE 
+                                id = @id";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string productName = reader.GetString(0);
+                            int amount = reader.GetInt32(1);
+                            double purchaseCost = reader.GetDouble(2);
+                            double sellCost = reader.GetDouble(3);
+                          data = new Tuple<string, int, double, double>(productName, amount, purchaseCost, sellCost);
+
+                        }
+                    }
+                }
+            }
+
+
+            return data;
+        }
+
+
+
     }
 }

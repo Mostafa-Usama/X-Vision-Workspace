@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Center_Maneger.View;
 
 namespace Center_Maneger.UesrControls
 {
@@ -58,18 +59,18 @@ namespace Center_Maneger.UesrControls
                 int row = i / columns;
                 int column = i % columns;
                 Button mainbtn = new Button();
-               // mainbtn.Click += mainbtn_click;
+                mainbtn.Click += mainbtn_click;
                 mainbtn.Margin = new Thickness(1);
                 mainbtn.BorderThickness = new Thickness(0);
-                mainbtn.Background = Brushes.LightGreen;
-                mainbtn.Tag = Convert.ToString(i + 1);
+                mainbtn.Background = products[i].Item3 != 0 ? Brushes.LightGreen : Brushes.IndianRed;
+                mainbtn.Tag = Convert.ToString(products[i].Item1);
 
                 Border border = new Border
                 {
                     Height = 170,
                     Width = DynamicGrid.Width * 0.23,
                     BorderBrush = Brushes.Black,
-                    Background = Brushes.LightGreen,
+                    Background = products[i].Item3 != 0? Brushes.LightGreen: Brushes.IndianRed,
                     BorderThickness = new Thickness(1),
                     Margin = new Thickness(5),
                     CornerRadius = new CornerRadius(5),
@@ -85,7 +86,7 @@ namespace Center_Maneger.UesrControls
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
                     FontSize = 18,
-                    Foreground = Brushes.OrangeRed,
+                    Foreground = Brushes.Black,
                 };
                 TextBlock product_cost = new TextBlock
                 {
@@ -94,7 +95,7 @@ namespace Center_Maneger.UesrControls
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
                     FontSize = 18,
-                    Foreground = Brushes.OrangeRed,
+                    Foreground = Brushes.Black,
                 };
                 TextBlock product_amount = new TextBlock
                 {
@@ -103,7 +104,7 @@ namespace Center_Maneger.UesrControls
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
                     FontSize = 18,
-                    Foreground = Brushes.OrangeRed,
+                    Foreground = Brushes.Black,
                 };
                 Image product_icon = new Image
                 {
@@ -125,6 +126,14 @@ namespace Center_Maneger.UesrControls
                 
                 
             }
+        }
+
+        private void mainbtn_click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int id = Convert.ToInt32(btn.Tag);
+            Product_Info productInfoWin = new Product_Info(id);
+            productInfoWin.ShowDialog();
         }
     }
 }

@@ -1,0 +1,72 @@
+﻿<Window x:Class="Center_Maneger.View.Add_Order"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="اضافة طلب" Height="700" Width="1200"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Loaded="load_data"
+        Background="{StaticResource bguc}">
+    <Grid Margin="15 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" FlowDirection="RightToLeft">
+            <Border Margin="0 5" Width="200" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
+                <TextBlock Text="اضافة طلب" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+            </Border>
+            <StackPanel Margin="0 20 0 0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal" >
+                    <TextBlock VerticalAlignment="Center" Margin="0 0 30 0" Text="اسم العضو:" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock VerticalAlignment="Center"  Name="username_label"  Style="{StaticResource TextBlockStyle}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock VerticalAlignment="Center" Margin="0 0 30 0" Text="رقم المقعد:" Style="{StaticResource TextBlockStyle}"/>
+                    <TextBlock VerticalAlignment="Center"  Name="chair"  Style="{StaticResource TextBlockStyle}" />
+                </StackPanel>
+                    
+                </Grid>
+            </StackPanel>
+      
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".7*"/>
+                <ColumnDefinition Width="0.02*"/>
+                <ColumnDefinition Width=".28*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="المنتجات" Grid.Column="0" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                    <Grid Name="products_grid" >
+                        
+                    </Grid>
+                </ScrollViewer>
+            </GroupBox>
+            <GroupBox Header="المشتريات" Grid.Column="2" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Name="bought_grid">
+                        
+                        <Button Margin="0 10" Height="30"></Button>
+                        <Button Margin="0 10"></Button>
+                        <Button Margin="0 10"></Button>
+                        <Button Margin="0 10"></Button>
+                        <Button Margin="0 10"></Button>
+                    </StackPanel>
+                </ScrollViewer>
+            </GroupBox>
+        </Grid>
+        <Button Grid.Row="2" Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="save_order" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 10">
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <TextBlock Text="اضافة الطلب" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                <Image Source="/img/save.png"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
