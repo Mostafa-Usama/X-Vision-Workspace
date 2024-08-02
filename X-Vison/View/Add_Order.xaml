@@ -8,8 +8,8 @@
         Background="{StaticResource bguc}">
     <Grid Margin="15 0">
         <Grid.RowDefinitions>
-            <RowDefinition Height=".2*"/>
-            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".75*"/>
             <RowDefinition Height=".1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" FlowDirection="RightToLeft">
@@ -38,18 +38,52 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".7*"/>
+                <ColumnDefinition Width="0.1*"/>
+
+                <ColumnDefinition Width=".6*"/>
                 <ColumnDefinition Width="0.02*"/>
                 <ColumnDefinition Width=".28*"/>
             </Grid.ColumnDefinitions>
-            <GroupBox Header="المنتجات" Grid.Column="0" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
+            <StackPanel Grid.Column="0" >
+                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <StackPanel>
+                        <Image Source="/img/street-food.png" Height="40" />
+                        <TextBlock TextWrapping="Wrap" Text="المنتجات" Style="{StaticResource TextBlockStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <StackPanel>
+                        <Image Source="/img/icons8-hot-drink-100 (1).png" Height="45" />
+                        <TextBlock TextWrapping="Wrap" Text="مشروبات ساخنة" Style="{StaticResource TextBlockStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <StackPanel>
+                        <Image Source="/img/coca.png" Height="45" />
+                        <TextBlock TextWrapping="Wrap" Text="مشروبات باردة" Style="{StaticResource TextBlockStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <StackPanel>
+                        <Image Source="/img/bread (3).png" Height="40" />
+                        <TextBlock TextWrapping="Wrap" Text="باتيه و بسكوت" Style="{StaticResource TextBlockStyle}"/>
+                    </StackPanel>
+                </Button>
+                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <StackPanel>
+                        <Image Source="/img/chips.png" Height="50" />
+                        <TextBlock TextWrapping="Wrap" Text="شيبسي" Style="{StaticResource TextBlockStyle}"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <GroupBox Header="المنتجات" Grid.Column="1" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
                     <Grid Name="products_grid" FlowDirection="LeftToRight" >
                         
                     </Grid>
                 </ScrollViewer>
             </GroupBox>
-            <GroupBox Header="المشتريات" Grid.Column="2" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
+            <GroupBox Header="المشتريات" Grid.Column="3" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Name="bought_stack">
                         

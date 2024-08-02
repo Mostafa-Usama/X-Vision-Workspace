@@ -34,13 +34,13 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#FFFF9A5C"/>
+                                <Setter TargetName="Border" Property="Background" Value="lightgreen"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#0f292f"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter TargetName="Border" Property="Background" Value="#14a098"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#FFFF9A5C"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="lightgreen"/>
                                 <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -65,7 +65,7 @@
 
     </Window.Resources>
 
-    <Grid Background="#0B3142">
+    <Grid Background="{StaticResource bguc2}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0.35*"/>
             <RowDefinition Height="*" />

@@ -57,7 +57,7 @@ namespace Center_Maneger.UesrControls
                 string old_pass = op_setting.Password;
                 if (!string.IsNullOrEmpty(old_pass))
                 {
-                    string pass = databaseLoader.SelectData("admin", "password", "username = setting")[0].ToString();
+                    string pass = databaseLoader.SelectData("admin", "password", "username = \"setting\"")[0].ToString();
                     if (pass == old_pass)
                     {
                         string new_pass = np_setting.Password;
@@ -70,7 +70,11 @@ namespace Center_Maneger.UesrControls
                                 {
                                     Dictionary<string, object> data = new Dictionary<string, object>{
                                     {"password", new_pass} };
-                                    databaseLoader.UpdateData("admin", data, "username = setting");
+                                    databaseLoader.UpdateData("admin", data, "username = \"setting\"");
+                                    MessageBox.Show("تم تغيير كلمة السر ","",MessageBoxButton.OK,MessageBoxImage.Information);
+                                    cnp_setting.Clear();
+                                    np_setting.Clear();
+                                    op_setting.Clear();
                                 }
                                 else
                                 {
@@ -128,6 +132,12 @@ namespace Center_Maneger.UesrControls
                                             {"username", username},
                                             {"password", new_pass} };
                                         databaseLoader.UpdateData("admin", data, "id = 1");
+                                        MessageBox.Show("تم تغيير كلمة السر ", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                                        AdminName.Clear();
+                                        cnp_login.Clear();
+                                        np_login.Clear();
+                                        op_login.Clear();
                                     }
                                     else
                                     {
@@ -172,13 +182,8 @@ namespace Center_Maneger.UesrControls
         {
             if (cleanbox)
             {
-                AdminName.Clear();
-                cnp_login.Clear();
-                np_login.Clear();
-                op_login.Clear();
-                cnp_setting.Clear();
-                np_setting.Clear();
-                op_setting.Clear();
+                
+                
                 cleanbox = false;
             }
             

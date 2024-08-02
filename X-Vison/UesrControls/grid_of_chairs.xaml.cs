@@ -15,7 +15,7 @@ namespace Center_Maneger.UesrControls
     public partial class grid_of_chairs : UserControl
     {
         int numberOfCells;
-        SolidColorBrush btnBg = new SolidColorBrush(Color.FromArgb(255, 255, 154, 92));
+        SolidColorBrush btnBg = new SolidColorBrush(Color.FromArgb(255, 144, 238, 144));
         int x = 0;
 
         public grid_of_chairs()
