@@ -20,6 +20,9 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class admin_setting : UserControl
     {
+
+        bool cleanbox;
+
         public admin_setting()
         {
             InitializeComponent();
@@ -45,6 +48,140 @@ namespace Center_Maneger.UesrControls
                 cp_setting_grid.Opacity = 0.6;
 
             }
+        }
+
+        private void change_pass(object sender, RoutedEventArgs e)
+        {
+            if (cp_setting_grid.IsEnabled)
+            {
+                string old_pass = op_setting.Password;
+                if (!string.IsNullOrEmpty(old_pass))
+                {
+                    string pass = databaseLoader.SelectData("admin", "password", "username = setting")[0].ToString();
+                    if (pass == old_pass)
+                    {
+                        string new_pass = np_setting.Password;
+                        if (!string.IsNullOrEmpty(new_pass))
+                        {
+                            string confirm_pass = cnp_setting.Password;
+                            if (!string.IsNullOrEmpty(confirm_pass))
+                            {
+                                if (confirm_pass == new_pass)
+                                {
+                                    Dictionary<string, object> data = new Dictionary<string, object>{
+                                    {"password", new_pass} };
+                                    databaseLoader.UpdateData("admin", data, "username = setting");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("كلمة السر غير متطابقة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("ادخل تأكيد كلمة السر", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("ادخل كلمة السر الجديدة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("كلمة السر القديمة غير صحيحة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ادخل كلمة السر القديمة", "خظأ",MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                
+
+            }
+            if (cp_login_grid.IsEnabled)
+            {
+                string userdb = databaseLoader.SelectData("admin", "username", "id = 1")[0].ToString();
+                string pass = databaseLoader.SelectData("admin", "password", "id = 1")[0].ToString();
+                string username = AdminName.Text.Trim();
+                
+                if (!string.IsNullOrEmpty(username))
+                {
+                    string old_pass = op_login.Password;
+                    if (!string.IsNullOrEmpty(old_pass))
+                    {
+                        if (pass == old_pass)
+                        {
+                            string new_pass = np_login.Password;
+                            if (!string.IsNullOrEmpty(new_pass))
+                            {
+                                string confirm_pass = cnp_login.Password;
+                                if (!string.IsNullOrEmpty(confirm_pass))
+                                {
+                                    if (confirm_pass == new_pass)
+                                    {
+                                        Dictionary<string, object> data = new Dictionary<string, object>{
+                                            {"username", username},
+                                            {"password", new_pass} };
+                                        databaseLoader.UpdateData("admin", data, "id = 1");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("كلمة السر غير متطابقة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("ادخل تأكيد كلمة السر", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("ادخل كلمة السر الجديدة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("كلمة السر القديمة غير صحيحة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("ادخل كلمة السر القديمة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ادخل اسم المسئول", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                }
+
+            }
+            cleanbox = true;
+        }
+
+        private void clean(object sender, RoutedEventArgs e)
+        {
+            if (cleanbox)
+            {
+                AdminName.Clear();
+                cnp_login.Clear();
+                np_login.Clear();
+                op_login.Clear();
+                cnp_setting.Clear();
+                np_setting.Clear();
+                op_setting.Clear();
+                cleanbox = false;
+            }
+            
         }
     }
 }
