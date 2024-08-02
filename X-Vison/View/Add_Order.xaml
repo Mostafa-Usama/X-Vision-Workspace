@@ -44,20 +44,16 @@
             </Grid.ColumnDefinitions>
             <GroupBox Header="المنتجات" Grid.Column="0" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
-                    <Grid Name="products_grid" >
+                    <Grid Name="products_grid" FlowDirection="LeftToRight" >
                         
                     </Grid>
                 </ScrollViewer>
             </GroupBox>
             <GroupBox Header="المشتريات" Grid.Column="2" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Name="bought_grid">
+                    <StackPanel Name="bought_stack">
                         
-                        <Button Margin="0 10" Height="30"></Button>
-                        <Button Margin="0 10"></Button>
-                        <Button Margin="0 10"></Button>
-                        <Button Margin="0 10"></Button>
-                        <Button Margin="0 10"></Button>
+                     
                     </StackPanel>
                 </ScrollViewer>
             </GroupBox>
