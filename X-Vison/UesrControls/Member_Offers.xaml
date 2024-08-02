@@ -17,7 +17,7 @@
             <StackPanel Grid.Row="0">
 
             <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="عروض الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="باقات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
         </StackPanel>
 
@@ -31,12 +31,12 @@
             <Button Style="{StaticResource Roundedbtn}" Margin="30 0 0 0" Click="deleteOffer" BorderThickness="0"  Height="40"   FontSize="16" FontWeight="Bold" Background="Transparent" >
                 <StackPanel Orientation="Horizontal" >
                     <Image Source="/img/delete.png" Width="40" Height="35" />
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="الغاء عرض" VerticalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="الغاء باقة" VerticalAlignment="Center"/>
                 </StackPanel>
             </Button>
             <CheckBox   x:Name="expired_offers"  FontWeight="Bold" Foreground="{StaticResource text}" FontFamily="Amiri, Cairo, 'Segoe UI', Tahoma" 
                     VerticalAlignment="Center"  Margin="30 0 5 0" FlowDirection="LeftToRight" />
-            <TextBlock Text="العروص المنتهية" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+            <TextBlock Text="الباقات المنتهية" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
            
         </StackPanel>
         <DataGrid  SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  

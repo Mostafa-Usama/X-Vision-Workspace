@@ -78,7 +78,7 @@ namespace Center_Maneger.UesrControls
                 row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
 
             }
-            totalOffer.Text = "اجمالي العروض = " + offerCost.ToString();
+            totalOffer.Text = "اجمالي الباقات = " + offerCost.ToString();
 
         }
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e)

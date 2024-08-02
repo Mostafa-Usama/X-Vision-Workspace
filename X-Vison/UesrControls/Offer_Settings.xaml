@@ -15,7 +15,7 @@
         <StackPanel Grid.Row="0">
             <StackPanel>
                 <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات العروض" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الباقات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
             </StackPanel>
             <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">

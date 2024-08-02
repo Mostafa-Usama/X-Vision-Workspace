@@ -67,7 +67,7 @@
                   FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="offers_grid" ColumnWidth="*" Grid.ColumnSpan="2" />
             <Border Grid.Row="1" Grid.Column="0" FlowDirection="RightToLeft" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي العروض =" Name="totalOffer" VerticalAlignment="Center" Margin="30 0"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي الباقات =" Name="totalOffer" VerticalAlignment="Center" Margin="30 0"/>
                 </StackPanel>
             </Border>
             <DataGrid AutoGeneratingColumn="change_header_name"  Grid.Row="0" Grid.Column="2" 

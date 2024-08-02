@@ -153,10 +153,10 @@
                                 <TextBlock Text="أسعار الزيارات" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="العروض" Click="openUserControl" Name="btn4" BorderThickness="0" Background="#00DDDDDD" Margin="8 0 0 0" Padding="5">
+                        <Button Style="{StaticResource tabbtn}" Tag="الباقات" Click="openUserControl" Name="btn4" BorderThickness="0" Background="#00DDDDDD" Margin="8 0 0 0" Padding="5">
                             <StackPanel>
                                 <Image Source="img/offer icon.png" Width="40" Height="35" />
-                                <TextBlock Text="العروض" Style="{StaticResource TextBlockStyle}"/>
+                                <TextBlock Text="الباقات" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
                     </StackPanel>
@@ -188,16 +188,16 @@
                                 <TextBlock Text=" الغرف" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="العروض" Click="offer_window"  Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
+                        <Button Style="{StaticResource tabbtn}" Tag="الباقات" Click="offer_window"  Padding="10" Name="btn8" BorderThickness="0" Background="#00DDDDDD" >
                             <StackPanel>
                                 <Image Source="img/Offer icon.png" Width="40" Height="35" />
-                                <TextBlock Text="العروض" Style="{StaticResource TextBlockStyle}"/>
+                                <TextBlock Text="الباقات" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="عروض الاعضاء" Click="openUserControl"   Padding="10" Name="btn9" BorderThickness="0" Background="#00DDDDDD" Width="120" >
+                        <Button Style="{StaticResource tabbtn}" Tag="باقات الاعضاء" Click="openUserControl"   Padding="10" Name="btn9" BorderThickness="0" Background="#00DDDDDD" Width="120" >
                             <StackPanel>
                                 <Image Source="img/Offer_user.png" Width="40" Height="35" />
-                                <TextBlock Text="عروض الاعضاء" Style="{StaticResource TextBlockStyle}"/>
+                                <TextBlock Text="باقات الاعضاء" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource tabbtn}" Tag="الشيفتات" Click="openUserControl"   Padding="10" Name="btn10" BorderThickness="0" Background="#00DDDDDD" Width="120" >
