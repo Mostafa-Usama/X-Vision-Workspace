@@ -256,7 +256,9 @@ namespace Center_Maneger.UesrControls
 
             int chair = Convert.ToInt32(btn.Tag);
             int id = int.Parse(btn.Name.Remove(0, 4));
-            Add_Order addOrderWin = new Add_Order(id, chair);
+            Add_Order addOrderWin = new Add_Order("chair");
+            addOrderWin.user_id = id;
+            addOrderWin.chair_num = chair;
             addOrderWin.ShowDialog();
         }
 

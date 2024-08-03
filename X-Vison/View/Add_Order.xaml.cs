@@ -19,21 +19,30 @@ namespace Center_Maneger.View
     /// </summary>
     public partial class Add_Order : Window
     {
-        int user_id;
-        int chair_num;
+        public int user_id;
+        public string className;
+        public int chair_num;
         Dictionary<int, int> basket = new Dictionary<int, int>();
-
-        public Add_Order(int id, int chair)
+        List<Tuple<int, string, int, double>> products = databaseLoader.GetProductsData();
+        string window;
+            
+        public Add_Order(string win)
         {
             InitializeComponent();
-            user_id = id;
-            chair_num = chair;
+            window = win;
         }
         private void load_data(object sender, RoutedEventArgs e)
         {
             string userName = Convert.ToString(databaseLoader.SelectData("users", "name", String.Format("id = {0}", user_id))[0]);
             username_label.Text = userName;
-            chair.Text = chair_num.ToString();
+            if ( window == "chair") {
+                chair.Text = chair_num.ToString();
+                chair_class.Text = "رقم المقعد: ";
+            } 
+            else {
+                chair.Text = className;
+                chair_class.Text = "اسم الغرفة: ";
+            }
             CreateProductsGrid();
         }
 
@@ -57,7 +66,6 @@ namespace Center_Maneger.View
                 products_grid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            List<Tuple<int, string, int, double>> products = databaseLoader.GetProductsData();
 
             for (int i = 0; i < numberOfCells; i++)
             {
@@ -334,12 +342,35 @@ namespace Center_Maneger.View
 
         private void save_order(object sender, RoutedEventArgs e)
         {
+            foreach (var item in basket)
+            {
+                Tuple<int, string, int, double> product = products.FirstOrDefault(p => p.Item1 == item.Key);
+                if (item.Value > product.Item3)
+                {
+                    MessageBox.Show(String.Format(" لا يوجد كمية كافية من ({0})  ", product.Item2), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+            }
+            foreach (var item in basket)
+            {
+                double cost = (products.FirstOrDefault(p => p.Item1 == item.Key)).Item4;
+                int amount = (products.FirstOrDefault(p => p.Item1 == item.Key)).Item3;
+                Dictionary<string, object> data = new Dictionary<string, object>{
+                    {"user_id", user_id},
+                    {"product_id", item.Key},
+                    {"amount", item.Value},
+                    {"cost", cost * item.Value}
+                };
+                databaseLoader.InsertRecord("user_kitchen", data);
+                Dictionary<string, object> newAmount= new Dictionary<string, object>{
+                    {"amount", amount - item.Value}
+                };
+                databaseLoader.UpdateData("kitchen", newAmount, String.Format("id = {0}",item.Key));
+            }
+                this.Close();
 
         }
-
-
-
-
 
         private void MouseLeave_event(object sender, MouseEventArgs e)
         {

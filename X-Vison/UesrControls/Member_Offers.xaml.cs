@@ -56,7 +56,7 @@ namespace Center_Maneger.UesrControls
         {
             if (e.PropertyName == "name")
             {
-                e.Column.Header = "الاسم";
+                e.Column.Header = "اسم العضو";
             }
             else if (e.PropertyName == "offer_name")
             {
@@ -107,7 +107,7 @@ namespace Center_Maneger.UesrControls
                             {"last_hour", 0}
                         };
                         databaseLoader.UpdateData("active_users", resetLastHour, String.Format("user_id = {0}",user_id));
-                        MainWindow.timer_Elapsed(null, null);
+                         Task.Run(() => MainWindow.timer_ElapsedAsync(null, null));
                         load_data(Convert.ToBoolean(expired_offers.IsChecked));
                         return;
                     }
@@ -123,6 +123,26 @@ namespace Center_Maneger.UesrControls
             {
                 MessageBox.Show("برجاء اختيار العرض الذي تريد حذفه ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+
+        private void SearchUser(object sender, TextChangedEventArgs e)
+        {
+
+            string searchname = searchTB.Text.Trim();
+            if (string.IsNullOrEmpty(searchname))
+            {
+            DataView offersView = data_grid.ItemsSource as DataView;
+            offersView.RowFilter = string.Empty;
+            }
+
+        }
+
+        private void SearchUser(object sender, RoutedEventArgs e)
+        {
+            string searchname = searchTB.Text.Trim();
+            DataView offersView = data_grid.ItemsSource as DataView;
+            offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
         }
 
     }

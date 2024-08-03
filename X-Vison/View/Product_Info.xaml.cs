@@ -20,6 +20,7 @@ namespace Center_Maneger.View
     public partial class Product_Info : Window
     {
         int productId;
+        public bool isClicked = false;
         public Product_Info(int id)
         {
             InitializeComponent();
@@ -30,13 +31,26 @@ namespace Center_Maneger.View
         {
             Tuple<string, int, double, double> data = databaseLoader.GetProductData(productId);
             product_name_label.Text = data.Item1;
-            amount_label.Text = data.Item2.ToString();
+            amount_input.Text = data.Item2.ToString();
             purchase_cost_label.Text = data.Item3.ToString() + "  جنيه";
             sell_cost_label.Text = data.Item4.ToString() + "  جنيه";
         }
 
         private void save_product(object sender, RoutedEventArgs e)
         {
+            int numOfProducts;
+            bool isNumber = int.TryParse(amount_input.Text, out numOfProducts);
+            if (!isNumber || numOfProducts < 0)
+            {
+                MessageBox.Show("برجاء ادخال ارقام صحيحة ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Dictionary<string, object> data = new Dictionary<string, object>{
+                {"amount", numOfProducts},
+            };
+            databaseLoader.UpdateData("kitchen", data, String.Format("id = {0} ", productId));
+            isClicked = true;
+            this.Close();
 
         }
     }

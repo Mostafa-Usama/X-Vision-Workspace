@@ -19,7 +19,7 @@
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Width="100" Content="الكمية:" Margin="0 0 10 0" />
-            <TextBox FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_label"   />
+            <TextBox FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_input"   />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر الشراء:" Margin="0 0 10 0" />

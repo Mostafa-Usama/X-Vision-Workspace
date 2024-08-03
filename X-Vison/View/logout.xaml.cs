@@ -25,10 +25,10 @@ namespace Center_Maneger.View
         public string class_name;
 
         string name;
-        int price;
-        int kitchen_cost;
-        int total_cost;
-        int paid_money;
+        double price;
+        double kitchen_cost = 0;
+        double total_cost;
+        double paid_money;
         string start_date;
         string leave_date;
         int offer_id;
@@ -79,7 +79,9 @@ namespace Center_Maneger.View
                 //int classId = Convert.ToInt32(databaseLoader.SelectData("user_class", "class_id", String.Format("user_id = \"{0}\"", user_id))[0]);
                 price = total_hours* (Convert.ToInt32(databaseLoader.SelectData("classes", "cost", String.Format("class_name = \"{0}\"", class_name))[0]));
             }
-            kitchen_cost = 0;// لحد دلوقتي بس 
+             var value = databaseLoader.SelectData("user_kitchen", "SUM(cost)", String.Format("user_id = {0} AND is_logged_out = 0", user_id))[0];
+             kitchen_cost = value == DBNull.Value? 0 : Convert.ToDouble(value);
+             //= true ? 0 : Convert.ToDouble(kitCost[0]); // لحد دلوقتي بس 
             total_cost = price + kitchen_cost;
 
 
@@ -124,10 +126,10 @@ namespace Center_Maneger.View
                 offerLabel.Visibility = Visibility.Collapsed;
                 offer.Visibility = Visibility.Collapsed;
             }
-            cost.Text = price.ToString();
-            total_cost = price + kitchen_cost;
-            kitchen.Text = kitchen_cost.ToString(); // لحد دلوقتي بس
-            total.Text = total_cost.ToString();
+            cost.Text = price.ToString()+ " جنيه";
+            total_cost = price + kitchen_cost ;
+            kitchen.Text = kitchen_cost.ToString() + " جنيه"; // لحد دلوقتي بس
+            total.Text = total_cost.ToString() + " جنيه";
 
         }
 
@@ -140,19 +142,10 @@ namespace Center_Maneger.View
                 return; 
             }
 
-            bool isNumber = int.TryParse(paid.Text, out paid_money);
+            bool isNumber = double.TryParse(paid.Text, out paid_money);
             if (isNumber)
             {
-                Dictionary<string,object> data = new Dictionary<string,object>{
-                    {"user_id", user_id},
-                    {"enter_date", start_date},
-                    {"leave_date", leave_date},
-                    {"type", window == "chair"? "مقعد": "غرفة"},
-                    {"reservation_cost", price},
-                    {"kitchen", kitchen_cost},
-                    {"total", total_cost},
-                    {"paid", paid_money},
-                };
+               
                 if (window == "chair")
                 {
                     databaseLoader.DeleteRecord("active_users", "user_id", user_id.ToString());
@@ -169,7 +162,22 @@ namespace Center_Maneger.View
                     databaseLoader.DeleteRecord("user_class", "user_id", user_id.ToString());
 
                 }
+                Dictionary<string, object> data = new Dictionary<string, object>{
+                    {"user_id", user_id},
+                    {"enter_date", start_date},
+                    {"leave_date", leave_date},
+                    {"type", window == "chair"? "مقعد": "غرفة"},
+                    {"reservation_cost", price},
+                    {"kitchen", kitchen_cost},
+                    {"total", total_cost},
+                    {"paid", paid_money},
+                };
                 databaseLoader.InsertRecord("user_records", data);
+
+                Dictionary<string, object> logged_out = new Dictionary<string, object>{
+                    {"is_logged_out", 1}
+                };
+                databaseLoader.UpdateData("user_kitchen", logged_out, String.Format("user_id = {0} AND is_logged_out = 0", user_id));
                 isClicked = true;
                 // remove record from active users
                 // add record to user records 

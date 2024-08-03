@@ -11,7 +11,6 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
-
 using System.Timers;
 using System.Runtime.Remoting.Messaging;
 
@@ -45,11 +44,11 @@ namespace Center_Maneger
                 new Kitchen_Settings(),
                 new grid_of_products(),
             };
-            Timer timer = new Timer(500000);
-            timer.Elapsed += timer_Elapsed;
+            Timer timer = new Timer(60000);
+            timer.Elapsed += async (sender, e) => await timer_ElapsedAsync(sender, e);
             timer.AutoReset = true;
             timer.Enabled = true;
-            timer_Elapsed(null, null);   
+            Task.Run(() => timer_ElapsedAsync(null, null));  
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)
@@ -59,7 +58,7 @@ namespace Center_Maneger
             {
                 hwndSource.AddHook(WndProc);
             }
-        }
+        } 
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
@@ -74,15 +73,19 @@ namespace Center_Maneger
         
         }
 
-       public static void timer_Elapsed(object sender, ElapsedEventArgs e)
+        public static async Task timer_ElapsedAsync(object sender, ElapsedEventArgs e)
         {
+            List<Task> tasks = new List<Task>();
 
             List<Tuple<int, string, int, int, int, string>> userIds = databaseLoader.GetUserIdWithOffers();
 
             foreach (var userId in userIds)
             {
-                updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6);
+              tasks.Add(Task.Run(() => updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6)));
             }
+
+            await Task.WhenAll(tasks);
+
         }
 
         public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date)

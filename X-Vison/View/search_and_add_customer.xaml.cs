@@ -99,7 +99,7 @@ namespace Center_Maneger.View
             string enter_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             
             add_active_user(name, phone, enter_date);
-            MainWindow.timer_Elapsed(null, null);
+             Task.Run(() => MainWindow.timer_ElapsedAsync(null, null));
         }
 
         private void new_user(object sender, RoutedEventArgs e)

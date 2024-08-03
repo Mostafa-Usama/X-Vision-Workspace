@@ -216,7 +216,10 @@ namespace Center_Maneger.UesrControls
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
+                        Tag = activeUsers[idx].Item4,
+                        Name = "user" + activeUsers[idx].Item3.ToString(),
                     };
+                    kitchen.Click += kitchen_Click;
 
                     infoStack.Children.Add(info_member);
                     infoStack.Children.Add(notes);
@@ -260,6 +263,14 @@ namespace Center_Maneger.UesrControls
             userNoteWin.ShowDialog();
         }
 
+        private void kitchen_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            Add_Order addOrderWin = new Add_Order("class");
+            addOrderWin.user_id = int.Parse(btn.Name.Remove(0,4));
+            addOrderWin.className = btn.Tag.ToString();
+            addOrderWin.ShowDialog();
+        }
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;

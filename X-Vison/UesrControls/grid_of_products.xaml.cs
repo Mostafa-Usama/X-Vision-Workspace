@@ -134,6 +134,10 @@ namespace Center_Maneger.UesrControls
             int id = Convert.ToInt32(btn.Tag);
             Product_Info productInfoWin = new Product_Info(id);
             productInfoWin.ShowDialog();
+            if (productInfoWin.isClicked)
+            {
+                CreateDynamicGrid();
+            }
         }
     }
 }
