@@ -30,7 +30,7 @@ namespace Center_Maneger.UesrControls
            
         }
 
-        private void load_data(DataTable userTable, DataTable offers)
+        private void load_data(DataTable userTable, DataTable offers, DataTable kitchen)
         {   
             data_grid.ItemsSource = userTable.DefaultView;
             data_grid.Columns[3].Width = data_grid.Columns[4].Width = data_grid.Columns[0].Width = 200;
@@ -38,6 +38,8 @@ namespace Center_Maneger.UesrControls
            
             offers_grid.ItemsSource = offers.DefaultView;
             offers_grid.Columns[0].Width = offers_grid.Columns[2].Width = 200;
+
+            kitchen_grid.ItemsSource = kitchen.DefaultView;
 
             calculateCosts();
         }
@@ -48,9 +50,9 @@ namespace Center_Maneger.UesrControls
             DataTable userRecords = userView.Table;
 
             long reservationCost = 0;
-            long kitchenCost = 0;
-            long totalCost = 0;
-            long paidCost = 0;
+            double kitchenCost = 0;
+            double totalCost = 0;
+            double paidCost = 0;
             
             foreach (DataRow row in userRecords.Rows)
             {
@@ -80,7 +82,20 @@ namespace Center_Maneger.UesrControls
             }
             totalOffer.Text = "اجمالي الباقات = " + offerCost.ToString();
 
+
+            DataView kitchenView = kitchen_grid.ItemsSource as DataView;
+            DataTable kitchenRecords = kitchenView.Table;
+
+            double allKitchenCost = 0;
+
+            foreach (DataRow row in kitchenRecords.Rows)
+            {
+                allKitchenCost += Convert.ToInt64(row["total_cost"]);
+            }
+            totalKitchen.Text = "اجمالي البوفيه = " +  allKitchenCost.ToString();
         }
+
+
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName == "name")
@@ -131,6 +146,18 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "التكلفة";
             }
+            else if (e.PropertyName == "product_name")
+            {
+                e.Column.Header = "اسم المنتج";
+            }
+            else if (e.PropertyName == "total_cost")
+            {
+                e.Column.Header = "التكلفة";
+            }
+            else if (e.PropertyName == "total_amount")
+            {
+                e.Column.Header = "الكمية";
+            }
            
         }
 
@@ -162,9 +189,9 @@ namespace Center_Maneger.UesrControls
 
             DataTable userRecordsTable = databaseLoader.GetUserRecords(from, to);
             DataTable offers = databaseLoader.GetOffersData(from, to);
+            DataTable kitcen = databaseLoader.GetKitchenData(from, to);
 
-
-            load_data(userRecordsTable, offers);
+            load_data(userRecordsTable, offers, kitcen);
         }
 
         private void setStyle(object sender, RoutedEventArgs e)

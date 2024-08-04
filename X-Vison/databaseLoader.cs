@@ -364,7 +364,7 @@ namespace Center_Maneger
             return dataTable;
         }
 
-        public static DataTable GetOffersData(DateTime fromDate, DateTime toDate) // get user data in ألاعضاء
+        public static DataTable GetOffersData(DateTime fromDate, DateTime toDate) 
         {
             DataTable dataTable = new DataTable();
 
@@ -373,6 +373,35 @@ namespace Center_Maneger
                             JOIN user_offer uo ON u.id= uo.user_id
                             JOIN offers o ON o.id = uo.offer_id 
                             WHERE uo.start_date >= @fromDate AND uo.start_date <= @toDate ";
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    using (var adapter = new SQLiteDataAdapter(command))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
+
+
+        public static DataTable GetKitchenData(DateTime fromDate, DateTime toDate)
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"SELECT k.product_name, SUM(uk.amount) as total_amount , SUM(uk.cost) as total_cost
+                            FROM kitchen k
+                            JOIN user_kitchen uk ON k.id= uk.product_id
+                            
+                            WHERE uk.is_logged_out = 1 AND uk.user_id in (SELECT user_id FROM user_records  WHERE leave_date >= @fromDate AND leave_date <= @toDate )
+                            GROUP BY k.product_name";
             using (var connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
@@ -507,6 +536,38 @@ namespace Center_Maneger
         }
 
 
+        public static Dictionary<int, int> GetProductsDictionary(int userId)
+        {
+            Dictionary<int, int> data = new Dictionary<int, int>();
+
+
+            using (var connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                string query = @" SELECT 
+                                    product_id,                                     
+                                    amount
+                                FROM 
+                                    user_kitchen
+                                WHERE user_id = @user_id AND is_logged_out = 0";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@user_id", userId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int productId = reader.GetInt32(0);
+                            int amount = reader.GetInt32(1);
+                            data[productId] = amount;
+                        }
+                    }
+                }
+            }
+            return data;
+        }
 
     }
 }

@@ -24,12 +24,16 @@ namespace Center_Maneger.View
         public int chair_num;
         Dictionary<int, int> basket = new Dictionary<int, int>();
         List<Tuple<int, string, int, double>> products = databaseLoader.GetProductsData();
+        Dictionary<int, Tuple<int, string, int, double>> productDict;
+        Dictionary<int, int> lastOrder = null;
         string window;
             
         public Add_Order(string win)
         {
             InitializeComponent();
             window = win;
+            productDict = products.ToDictionary(p => p.Item1);
+
         }
         private void load_data(object sender, RoutedEventArgs e)
         {
@@ -44,7 +48,13 @@ namespace Center_Maneger.View
                 chair_class.Text = "اسم الغرفة: ";
             }
             CreateProductsGrid();
+            lastOrder = databaseLoader.GetProductsDictionary(user_id);
+            foreach (var item in lastOrder)
+            {
+                createBoughtGrid(item.Key, item.Value);
+            }
         }
+
 
         private void CreateProductsGrid()
         {
@@ -136,25 +146,23 @@ namespace Center_Maneger.View
                 Grid.SetRow(border, row);
                 Grid.SetColumn(border, column);
                 products_grid.Children.Add(border);
-
+               
 
             }
         }
 
-        private void add_product(object sender, RoutedEventArgs e)
+        private void createBoughtGrid(int productId, int am = 1)
         {
-            Button btn = sender as Button;
-            int productId = Convert.ToInt32(btn.Tag);
             if (!basket.ContainsKey(productId))
             {
-                basket.Add(productId, 1);
+                basket.Add(productId, am);
 
                 Tuple<string, int, double, double> products = databaseLoader.GetProductData(productId);
                 Button mainbtn = new Button();
                 mainbtn.Margin = new Thickness(1);
                 mainbtn.BorderThickness = new Thickness(0);
                 mainbtn.Background = Brushes.LightGreen;
-              
+
                 Border border = new Border
                 {
                     Height = 150,
@@ -164,7 +172,7 @@ namespace Center_Maneger.View
                     Margin = new Thickness(5),
                     CornerRadius = new CornerRadius(5),
                     HorizontalAlignment = HorizontalAlignment.Stretch,
-                    Name = "btn"+ productId.ToString(),
+                    Name = "btn" + productId.ToString(),
                 };
                 border.MouseEnter += MouseEnter_event;
                 border.MouseLeave += MouseLeave_event;
@@ -182,7 +190,7 @@ namespace Center_Maneger.View
                     Background = new SolidColorBrush(Color.FromArgb(200, 5, 5, 5)),
                     Visibility = Visibility.Hidden,
                     FlowDirection = FlowDirection.LeftToRight,
-                    
+
                 };
                 StackPanel btnStack = new StackPanel
                 {
@@ -252,16 +260,16 @@ namespace Center_Maneger.View
                     FontSize = 18,
                     Foreground = Brushes.Black,
                 };
-                
+
                 TextBlock product_amount = new TextBlock
                 {
-                    Text = "الكمية: " + Convert.ToString(1),
+                    Text = "الكمية: " + Convert.ToString(am),
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
                     FontSize = 18,
                     Foreground = Brushes.Black,
-                    
+
                 };
                 TextBlock product_cost = new TextBlock
                 {
@@ -288,7 +296,7 @@ namespace Center_Maneger.View
             }
             else
             {
-                
+
                 basket[productId]++;
                 Border border = findChildBorder(productId);
                 Grid inside = border.Child as Grid;
@@ -297,6 +305,13 @@ namespace Center_Maneger.View
                 TextBlock amount = stack.Children[2] as TextBlock;
                 amount.Text = "الكمية: " + basket[productId].ToString();
             }
+        }
+
+        private void add_product(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            int productId = Convert.ToInt32(btn.Tag);
+            createBoughtGrid(productId);
         }
 
         private void remove_product(object sender, RoutedEventArgs e)
@@ -339,37 +354,74 @@ namespace Center_Maneger.View
             }
             return null;
         }
+        //private async void save_order(object sender, RoutedEventArgs e)
+        //{
+        //    await save(sender, e);
+        //}
 
         private void save_order(object sender, RoutedEventArgs e)
         {
-            foreach (var item in basket)
+    
+        foreach (var item in basket)
+        {
+            Tuple<int, string, int, double> product = productDict[item.Key];
+            if (item.Value > product.Item3)
             {
-                Tuple<int, string, int, double> product = products.FirstOrDefault(p => p.Item1 == item.Key);
-                if (item.Value > product.Item3)
-                {
-                    MessageBox.Show(String.Format(" لا يوجد كمية كافية من ({0})  ", product.Item2), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                }
-
+                MessageBox.Show(String.Format(" لا يوجد كمية كافية من ({0})  ", product.Item2), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            foreach (var item in basket)
+
+        }
+
+        foreach (var item in lastOrder)
+        {
+            if (!basket.ContainsKey(item.Key))
             {
-                double cost = (products.FirstOrDefault(p => p.Item1 == item.Key)).Item4;
-                int amount = (products.FirstOrDefault(p => p.Item1 == item.Key)).Item3;
-                Dictionary<string, object> data = new Dictionary<string, object>{
-                    {"user_id", user_id},
-                    {"product_id", item.Key},
-                    {"amount", item.Value},
-                    {"cost", cost * item.Value}
-                };
-                databaseLoader.InsertRecord("user_kitchen", data);
-                Dictionary<string, object> newAmount= new Dictionary<string, object>{
-                    {"amount", amount - item.Value}
-                };
-                databaseLoader.UpdateData("kitchen", newAmount, String.Format("id = {0}",item.Key));
+                int amount = productDict[item.Key].Item3;
+                databaseLoader.DeleteRecord("user_kitchen", String.Format("is_logged_out  = 0 AND user_id = {0} AND product_id", user_id), item.Key.ToString());
+                Dictionary<string, object> newAmount = new Dictionary<string, object>{
+                            {"amount", amount + item.Value},
+                        };
+                databaseLoader.UpdateData("kitchen", newAmount, String.Format("id = {0}", item.Key));
             }
-                this.Close();
+            else if (basket[item.Key] != item.Value)
+            {
+                int amount = productDict[item.Key].Item3;
+                double cost = productDict[item.Key].Item4;
+                Dictionary<string, object> updatedAmount = new Dictionary<string, object>{
+                            {"amount", basket[item.Key]} ,
+                            {"cost", basket[item.Key] * cost},
+                        };
+                databaseLoader.UpdateData("user_kitchen", updatedAmount, String.Format("product_id = {0} AND user_id = {1} AND is_logged_out = 0", item.Key, user_id));
 
+                Dictionary<string, object> newAmount = new Dictionary<string, object>{
+                            {"amount", amount + (item.Value - basket[item.Key])},
+                        };
+                databaseLoader.UpdateData("kitchen", newAmount, String.Format("id = {0}", item.Key));
+            }
+        }
+        foreach (var item in basket)
+        {
+            if (!lastOrder.ContainsKey(item.Key))
+            {
+                double cost = productDict[item.Key].Item4;
+                int amount = productDict[item.Key].Item3;
+                Dictionary<string, object> order = new Dictionary<string, object>{
+                            {"user_id", user_id},
+                            {"product_id", item.Key},
+                            {"amount", item.Value},
+                            {"cost", cost * item.Value}
+                        };
+                databaseLoader.InsertRecord("user_kitchen", order);
+                Dictionary<string, object> newAmount = new Dictionary<string, object>{
+                            {"amount", amount - item.Value}
+                        };
+                databaseLoader.UpdateData("kitchen", newAmount, String.Format("id = {0}", item.Key));
+            }
+        }
+        this.Close();
+   
+           
         }
 
         private void MouseLeave_event(object sender, MouseEventArgs e)
