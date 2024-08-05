@@ -67,7 +67,7 @@ namespace Center_Maneger.UesrControls
             totalReservationCost.Text = "اجمالي التكلفة = " + reservationCost.ToString();
             totalKitchenCost.Text = "اجمالي البوفيه = " + kitchenCost.ToString(); 
             total.Text = "الاجمالي = " + totalCost.ToString();
-            totalPaid.Text = "اجمالي المدفوع = " + paidCost.ToString();
+            totalPaid.Text = "المدفوع = " + paidCost.ToString();
 
 
             DataView offersView = offers_grid.ItemsSource as DataView;
@@ -80,7 +80,7 @@ namespace Center_Maneger.UesrControls
                 row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
 
             }
-            totalOffer.Text = "اجمالي الباقات = " + offerCost.ToString();
+            totalOffer.Text = "الباقات = " + offerCost.ToString();
 
 
             DataView kitchenView = kitchen_grid.ItemsSource as DataView;
@@ -92,7 +92,7 @@ namespace Center_Maneger.UesrControls
             {
                 allKitchenCost += Convert.ToInt64(row["total_cost"]);
             }
-            totalKitchen.Text = "اجمالي البوفيه = " +  allKitchenCost.ToString();
+            totalKitchen.Text = "البوفيه = " +  allKitchenCost.ToString();
         }
 
 
@@ -199,5 +199,25 @@ namespace Center_Maneger.UesrControls
             //var datePickerButton = fromDate.Template.FindName("PART_Button", fromDate) as Button;
             //datePickerButton.Style = (Style)FindResource("DatePickerButtonStyle");
         }
+
+        private void SearchUser(object sender, TextChangedEventArgs e)
+        {
+
+            string searchname = searchTB.Text.Trim();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                DataView offersView = data_grid.ItemsSource as DataView;
+                offersView.RowFilter = string.Empty;
+            }
+
+        }
+
+        private void SearchUser(object sender, RoutedEventArgs e)
+        {
+            string searchname = searchTB.Text.Trim();
+            DataView offersView = data_grid.ItemsSource as DataView;
+            offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
+        }
+
     }
 }

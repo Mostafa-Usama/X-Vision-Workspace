@@ -15,11 +15,22 @@
             <RowDefinition Height="0.45*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical" >
-            <StackPanel>
-                <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
+            <Grid>
+                <StackPanel HorizontalAlignment="Center">
+                <Border  Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
                     <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
-            </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBox  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Padding="4"/>
+                    <Button Margin="0 0 20 0" IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/img/search (2).png" Height="40"/>
+                            <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
             <Grid Margin="0 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*"/>

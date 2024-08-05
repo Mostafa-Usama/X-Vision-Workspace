@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Row="0">
 
-            <Border Margin="0 5" Width="160" BorderBrush="{StaticResource Whitetext}" Background="#FFFF9A5C" CornerRadius="7" BorderThickness="5">
+            <Border Margin="0 5" Width="160" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الشيفتات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
             </Border>
 
@@ -39,8 +39,17 @@
                         <TextBlock Style="{StaticResource TextBlockStyle}" Text="عرض" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
+            
+                <TextBox Margin="50 0 0 0"  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Padding="4"/>
+                <Button Margin="0 0 20 0" IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/img/search (2).png" Height="40"/>
+                        <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        
         <Border Grid.Row="2" FlowDirection="RightToLeft" BorderBrush="Black" BorderThickness="1">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12"  Text="اجمالي التكلفة =" Name="totalReservationCost" VerticalAlignment="Center"/>

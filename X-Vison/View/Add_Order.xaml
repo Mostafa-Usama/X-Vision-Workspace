@@ -45,7 +45,8 @@
                 <ColumnDefinition Width="23*"/>
                 <ColumnDefinition Width="267*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" >
+            <ScrollViewer Grid.Column="0" FlowDirection="RightToLeft">
+            <StackPanel  >
                 <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/street-food.png" Height="40" />
@@ -76,16 +77,23 @@
                         <TextBlock TextWrapping="Wrap" Text="شيبسي" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-            </StackPanel>
+                    <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                        <StackPanel>
+                            <Image Source="/img/bread (3).png" Height="40" />
+                            <TextBlock TextWrapping="Wrap" Text="منتجات اخرى" Style="{StaticResource TextBlockStyle}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
             <GroupBox Header="المنتجات" Grid.Column="1" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2" Grid.ColumnSpan="2">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10">
+                <ScrollViewer FlowDirection="LeftToRight" VerticalScrollBarVisibility="Auto" Padding="10">
                     <Grid Name="products_grid" FlowDirection="LeftToRight" >
 
                     </Grid>
                 </ScrollViewer>
             </GroupBox>
             <GroupBox Header="المشتريات" Grid.Column="4" FlowDirection="RightToLeft" FontSize="16" FontWeight="Bold" BorderBrush="{StaticResource bgtab}"  BorderThickness="2">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ScrollViewer FlowDirection="LeftToRight" VerticalScrollBarVisibility="Auto">
                     <StackPanel Name="bought_stack">
 
 

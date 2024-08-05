@@ -34,7 +34,7 @@ namespace Center_Maneger.View
         int offer_id;
         string window;
         bool expired = false;
-
+        
         public logout(string win)
         {
             InitializeComponent();
@@ -44,6 +44,7 @@ namespace Center_Maneger.View
 
         private void load_data(object sender, RoutedEventArgs e)
         {
+            string note;
             if (window == "chair")
             {
                 Tuple<string, string> data = databaseLoader.GetUserDataByChairNum(chairNum);
@@ -51,7 +52,8 @@ namespace Center_Maneger.View
                 start_date = data.Item2;
                 List <object> offers = databaseLoader.SelectData("user_offer", "offer_id", String.Format("user_id = {0} AND is_logged_out = 0",user_id));
                 offer_id = offers.Count == 0 ? 0 : Convert.ToInt32(offers[0]);
-
+                note = Convert.ToString(databaseLoader.SelectData("active_users", "note", String.Format("user_id = {0} ", user_id))[0]);
+                
                 start_date = Convert.ToString(databaseLoader.SelectData("active_users", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
 
             }
@@ -59,6 +61,7 @@ namespace Center_Maneger.View
             {
                 name = Convert.ToString(databaseLoader.SelectData("users", "name", String.Format(" id = \"{0}\" ", user_id))[0]);
                 start_date = Convert.ToString(databaseLoader.SelectData("user_class", "enter_date", String.Format("user_id = {0} ", user_id))[0]);
+                note = Convert.ToString(databaseLoader.SelectData("user_class", "note", String.Format("user_id = {0} ", user_id))[0]);
 
             }
             leave_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
@@ -131,6 +134,14 @@ namespace Center_Maneger.View
             kitchen.Text = kitchen_cost.ToString() + " جنيه"; // لحد دلوقتي بس
             total.Text = total_cost.ToString() + " جنيه";
 
+            if (!string.IsNullOrEmpty(note))
+            {
+                note_btn.Visibility = Visibility.Visible;
+            }
+            //else
+            //{
+            //    note_btn.Visibility = Visibility.Visible;
+            //}
         }
 
         private void logout_user(object sender, RoutedEventArgs e)
@@ -187,6 +198,23 @@ namespace Center_Maneger.View
             else{
                  MessageBox.Show("برجاء ادخال ارقام صحيحة ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void show_note(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            User_Note userNoteWin = new User_Note(window);
+            if (window =="chair")
+            {
+                userNoteWin.chairNum = chairNum;
+            }
+            else 
+            { 
+                userNoteWin.userId = user_id;
+            }
+            
+            
+            userNoteWin.ShowDialog();
         }
     }
 }

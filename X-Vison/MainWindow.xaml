@@ -36,12 +36,12 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="lightgreen"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#0f292f"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter TargetName="Border" Property="Background" Value="#14a098"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="lightgreen"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -218,22 +218,17 @@
                     <StackPanel Orientation="Horizontal" Background="{StaticResource bgtab}">
                         <Button Style="{StaticResource tabbtn}" Tag="اعدادات البوفيه" Click="openUserControl"   Padding="10" Name="btn12" BorderThickness="0" Background="#00DDDDDD" Width="130" >
                             <StackPanel>
-                                <Image Source="img/shifts.png" Width="40" Height="35" />
+                                <Image Source="img/icons8-cafe-100.png" Width="40" Height="40" />
                                 <TextBlock Text="اعدادات البوفيه" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource tabbtn}" Tag="المخزن" Click="openUserControl"   Padding="10" Name="btn13" BorderThickness="0" Background="#00DDDDDD" Width="120" >
                             <StackPanel>
-                                <Image Source="img/shifts.png" Width="40" Height="35" />
+                                <Image Source="img/warehouse_2979650.png" Width="40" Height="40"/>
                                 <TextBlock Text="المخزن" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource tabbtn}" Tag="الشيفتات" Click="openUserControl"   Padding="10" Name="btn14" BorderThickness="0" Background="#00DDDDDD" Width="120" >
-                            <StackPanel>
-                                <Image Source="img/shifts.png" Width="40" Height="35" />
-                                <TextBlock Text="الشيفتات" Style="{StaticResource TextBlockStyle}"/>
-                            </StackPanel>
-                        </Button>
+                        
                     </StackPanel>
                 </TabItem>
             </TabControl>

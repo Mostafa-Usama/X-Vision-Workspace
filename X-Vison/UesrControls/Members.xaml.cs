@@ -181,5 +181,25 @@ namespace Center_Maneger.UesrControls
                 MessageBox.Show("برجاء اختيار الصف الذي تريد تعديله ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void SearchUser(object sender, TextChangedEventArgs e)
+        {
+
+            string searchname = searchTB.Text.Trim();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                DataView offersView = data_grid.ItemsSource as DataView;
+                offersView.RowFilter = string.Empty;
+            }
+
+        }
+
+        private void SearchUser(object sender, RoutedEventArgs e)
+        {
+            string searchname = searchTB.Text.Trim();
+            DataView offersView = data_grid.ItemsSource as DataView;
+            offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
+        }
+
     }
 }
