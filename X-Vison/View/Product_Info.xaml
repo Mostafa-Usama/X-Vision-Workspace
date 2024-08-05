@@ -19,7 +19,7 @@
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Width="100" Content="الكمية:" Margin="0 0 10 0" />
-            <TextBox FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_input"   />
+            <TextBox  FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_input"   />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر الشراء:" Margin="0 0 10 0" />
@@ -31,7 +31,7 @@
             <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="sell_cost_label"   />
         </StackPanel>
         
-        <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="save_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 10">
+        <Button Style="{StaticResource Roundedbtn}" IsDefault="True" FontWeight="Bold" Background="Transparent" Click="save_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 10">
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
                 <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
                 <Image Source="/img/save.png"/>

@@ -165,13 +165,13 @@ namespace Center_Maneger.UesrControls
         {
             string from_date = fromDate.Text;
             string to_date = toDate.Text;
-            DateTime from, to;
             if (from_date.Trim() == "" || to_date.Trim() == "")
             {
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            DateTime from, to;
             bool isFromDate = DateTime.TryParse(from_date, out from);
             bool isToDate = DateTime.TryParse(to_date, out to);
 
@@ -180,11 +180,13 @@ namespace Center_Maneger.UesrControls
                 MessageBox.Show("برجاء ادخال تواريخ صحيحة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+        
             if (from > to)
             {
                 MessageBox.Show("تاريخ البداية أكبر من تاريخ النهاية,  برجاء ادخال تواريخ صحيحة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            
             to = to.AddDays(1).AddSeconds(-1);
 
             DataTable userRecordsTable = databaseLoader.GetUserRecords(from, to);
@@ -214,6 +216,13 @@ namespace Center_Maneger.UesrControls
 
         private void SearchUser(object sender, RoutedEventArgs e)
         {
+            string from_date = fromDate.Text;
+            string to_date = toDate.Text;
+            if (from_date.Trim() == "" || to_date.Trim() == "")
+            {
+                MessageBox.Show("برجاء ادخال التواريخ أولا", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             string searchname = searchTB.Text.Trim();
             DataView offersView = data_grid.ItemsSource as DataView;
             offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
