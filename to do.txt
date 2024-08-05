@@ -12,7 +12,7 @@
 - حوار الدبل كليك done
 - الminimize done
 - style of scrollbar done
-- امسح منتج وواحد طالبه done
+- امسح منتج وواحد طالبه 
 - notes done
 - ابديت لل order done 
 - backup
