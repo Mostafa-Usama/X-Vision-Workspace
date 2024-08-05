@@ -291,7 +291,7 @@ namespace Center_Maneger
                 FROM 
                     prices 
                 WHERE 
-                    @Duration BETWEEN from_date AND to_date
+                    @Duration >= from_date AND  @Duration < to_date
                 LIMIT 1";
 
                 using (var command = new SQLiteCommand(query, connection))

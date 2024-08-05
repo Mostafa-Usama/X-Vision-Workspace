@@ -44,6 +44,7 @@ namespace Center_Maneger.View
 
         private void load_data(object sender, RoutedEventArgs e)
         {
+            paid.Focus();
             string note;
             if (window == "chair")
             {
@@ -73,7 +74,8 @@ namespace Center_Maneger.View
            // MessageBox.Show(duration);
             if (window == "chair")
             {
-                price = databaseLoader.GetPriceByDuration(int.Parse(hours));           
+                double x = duration.TotalHours;
+                price = databaseLoader.GetPriceByDuration( (x >= 0.5 && x<=1) ? 1 : int.Parse(hours));           
 
             }
             else

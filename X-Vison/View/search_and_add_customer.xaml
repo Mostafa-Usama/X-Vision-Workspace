@@ -49,7 +49,7 @@
 
 
                 <Label Style="{StaticResource labelStyle}" Content="رقم العميل :" Grid.Row="1" Grid.Column="0" Margin="5"/>
-                    <ComboBox  Tag="phone" Name="PhoneComboBox" Height="30" IsTextSearchEnabled="False"  Grid.Row="1" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
+                    <ComboBox FontSize="16" FontWeight="Bold" Tag="phone" Name="PhoneComboBox" Height="30" IsTextSearchEnabled="False"  Grid.Row="1" Grid.Column="1" IsEditable="True" KeyUp="UserComboBox_KeyUp"></ComboBox>
 
 
                 </Grid>
@@ -96,13 +96,13 @@
                     <TextBox Style="{StaticResource RoundedTextBox}"  FontSize="16" Height="30" Padding="4 2" FontWeight="Bold" Grid.Row="1" Grid.Column="1" Margin="5" Name="new_phoneTextBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="الكلية : " Grid.Row="2" Grid.Column="0" Margin="5"/>
-                    <ComboBox   Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyComboBox"/>
+                    <ComboBox FontSize="16" FontWeight="Bold"  Grid.Row="2" Grid.Column="1" Margin="5" Name="FacultyComboBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="السنة الدراسية:" Grid.Row="3" Grid.Column="0" Margin="5"/>
                     <TextBox  Style="{StaticResource RoundedTextBox}"  FontSize="16" Height="30" Padding="4 2" FontWeight="Bold" Grid.Row="3" Grid.Column="1" Margin="5" Name="LevelTextBox"/>
 
                 <Label Style="{StaticResource labelStyle}" Content="الوظيفة:" Grid.Row="4" Grid.Column="0" Margin="5"/>
-                    <ComboBox  Grid.Row="4" Grid.Column="1" Margin="5" Name="jobComboBox"/>
+                    <ComboBox FontSize="16" FontWeight="Bold"  Grid.Row="4" Grid.Column="1" Margin="5" Name="jobComboBox"/>
             </Grid>
                 <GroupBox Name="add_offer" BorderBrush="{StaticResource bgtab}" BorderThickness="3" Header="اضافة عرض" FontWeight="Bold" FontSize="16" Margin="15 0">
                     <Grid Grid.Row="2" FlowDirection="RightToLeft" Margin="10 0" Name="OfferSection">
@@ -117,7 +117,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="العرض" Style="{StaticResource labelStyle}" Margin="5"/>
-                        <ComboBox  Grid.Row="0" Grid.Column="1" Margin="5" Height="28" Name="offerComboBox"  SelectionChanged="offer_changed" />
+                        <ComboBox FontSize="16" FontWeight="Bold"  Grid.Row="0" Grid.Column="1" Margin="5" Height="28" Name="offerComboBox"  SelectionChanged="offer_changed" />
                         <Label Grid.Row="1" Grid.Column="1"  Name="hoursLabel"  Style="{StaticResource labelStyle}"/>
                         <Label Grid.Row="2" Grid.Column="1"  Name="costLabel" Style="{StaticResource labelStyle}"/>
                         <Label Grid.Row="1" Content="عدد الساعات:" Style="{StaticResource labelStyle}" Margin="5"/>

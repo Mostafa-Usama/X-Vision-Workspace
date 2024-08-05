@@ -14,23 +14,23 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Width="120" Content="اسم العضو:" Margin="0 0 10 0"/>
-            <TextBox Style="{StaticResource RoundedTextBox}" Width="200" Name="userNameTextBox"  />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold"  Width="200" Name="userNameTextBox"  />
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Width="120" Content="رقم الهاتف:" Margin="0 0 10 0" />
-            <TextBox Style="{StaticResource RoundedTextBox}" Width="200"  Name="phoneTextBox"   />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="phoneTextBox"   />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}" Width="120" Content="الكلية:" Margin="0 0 10 0" />
-            <ComboBox Name="FacultyComboBox" Width="200"  />
+            <ComboBox Name="FacultyComboBox" Width="200" FontSize="16" FontWeight="Bold"  />
         </StackPanel>
         <StackPanel  Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}" Width="120" Content="الوظيفة:" Margin="0 0 10 0" />
-            <ComboBox  Name="JobComboBox" Width="200"  />
+            <ComboBox  Name="JobComboBox" Width="200" FontSize="16" FontWeight="Bold"  />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Width="120" Content="السنة الدراسية :" Margin="0 0 10 0" />
-            <TextBox Style="{StaticResource RoundedTextBox}" Width="200"  Name="levelTextBox"   />
+            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="levelTextBox"   />
         </StackPanel>
         <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="edit_user" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 30">
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
