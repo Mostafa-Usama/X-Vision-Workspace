@@ -26,7 +26,15 @@ namespace Center_Maneger.UesrControls
         public void CreateDynamicGrid(string searchQuery = "")
         {
             x = 0;
-            numberOfCells = Convert.ToInt32(databaseLoader.SelectData("chairs", "num_chairs")[0]);
+            try
+            {
+                numberOfCells = Convert.ToInt32(databaseLoader.SelectData("chairs", "num_chairs")[0]);
+
+            }
+            catch (Exception)
+            {
+                numberOfCells = 0;
+            }
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
             DynamicGrid.ColumnDefinitions.Clear();

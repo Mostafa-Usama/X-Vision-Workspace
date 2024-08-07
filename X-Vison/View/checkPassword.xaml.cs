@@ -28,8 +28,10 @@ namespace Center_Maneger.View
 
         private void check_passowrd(object sender, RoutedEventArgs e)
         {
-            
-            if (password_input.Password == "osama")
+
+            string pass = databaseLoader.SelectData("admin", "password", "username = \"setting\"")[0].ToString();
+
+            if (password_input.Password == pass)
             {
                 correct = true;
                 this.Close();

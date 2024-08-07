@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SQLite;
+using System.Windows;
 
 namespace Center_Maneger
 {
@@ -14,59 +15,85 @@ namespace Center_Maneger
 
          public static DataTable LoadData(string tableName) // used to fill tabs in settings
         {
-            string query = String.Format("SELECT * FROM {0}",tableName);
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                dataAdapter.Fill(dataTable);
-
-                // Remove the 'id' column if it exists
-                if (dataTable.Columns.Contains("id"))
+                string query = String.Format("SELECT * FROM {0}",tableName);
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    dataTable.Columns.Remove("id");
+                    SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection);
+                    DataTable dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
+
+                    // Remove the 'id' column if it exists
+                    if (dataTable.Columns.Contains("id"))
+                    {
+                        dataTable.Columns.Remove("id");
+                    }
+
+                    return dataTable;
                 }
 
-                return dataTable;
+            }
+            catch (Exception)
+            {
+
+                return null;
             }
         }
 
 
         public static void InsertRecord(string tableName, Dictionary<string, object> columns) // insert new record
         {
-            
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SQLiteCommand(connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    string columnNames = string.Join(", ", columns.Keys);
-                    string parameterNames = string.Join(", ", columns.Keys.Select(k => "@" + k).ToArray());
-
-                    command.CommandText = String.Format("INSERT INTO {0} ({1}) VALUES ({2})",tableName, columnNames, parameterNames);
-                                                        // INSERT INTO classes (class_name, cost) VALUES (@class_name, @cost )
-                    foreach (var column in columns)
+                    connection.Open();
+                    using (var command = new SQLiteCommand(connection))
                     {
-                        command.Parameters.AddWithValue("@" + column.Key, column.Value);
-                    }
+                        string columnNames = string.Join(", ", columns.Keys);
+                        string parameterNames = string.Join(", ", columns.Keys.Select(k => "@" + k).ToArray());
 
-                    command.ExecuteNonQuery();
+                        command.CommandText = String.Format("INSERT INTO {0} ({1}) VALUES ({2})",tableName, columnNames, parameterNames);
+                                                            // INSERT INTO classes (class_name, cost) VALUES (@class_name, @cost )
+                        foreach (var column in columns)
+                        {
+                            command.Parameters.AddWithValue("@" + column.Key, column.Value);
+                        }
+
+                        command.ExecuteNonQuery();
+                    }
                 }
+
+            }
+            catch (Exception )
+            {
+
+                
             }
         }
 
         public static void DeleteRecord(string tableName, string keyColumn, string keyValue) // delete record
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SQLiteCommand(connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.CommandText = String.Format("DELETE FROM {0} WHERE {1} = @keyValue", tableName, keyColumn);
-                    command.Parameters.AddWithValue("@keyValue", keyValue);
+                    connection.Open();
+                    using (var command = new SQLiteCommand(connection))
+                    {
+                        command.CommandText = String.Format("DELETE FROM {0} WHERE {1} = @keyValue", tableName, keyColumn);
+                        command.Parameters.AddWithValue("@keyValue", keyValue);
 
-                    command.ExecuteNonQuery();
+                        command.ExecuteNonQuery();
+                    }
                 }
+
+            }
+            catch (Exception )
+            {
+
+                
             }
         }
         public static void UpdateData(string tableName, Dictionary<string, object> columnsValues, string whereClause)
@@ -98,84 +125,105 @@ namespace Center_Maneger
                     }
                 }
             }
-            catch 
+            catch (Exception)
             {
-                // Handle the exception (e.g., log it)
-                //Console.WriteLine("An error occurred: " + ex.Message);
-                //return false;
+                
+
             }
         }
 
         public static List<object> SelectData(string tableName, string column, string whereClause = "", string additionalInfo = "")
         {
            List <object> data = new List<object>();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string columnNames = string.Join(", ", column);
-                string query = String.Format("SELECT {0} FROM {1}",columnNames, tableName);
 
-                if (!string.IsNullOrEmpty(whereClause))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    query += String.Format(" WHERE {0}", whereClause);
-                }
-                query += additionalInfo;
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                    string columnNames = string.Join(", ", column);
+                    string query = String.Format("SELECT {0} FROM {1}",columnNames, tableName);
+
+                    if (!string.IsNullOrEmpty(whereClause))
                     {
-                        while (reader.Read())
+                        query += String.Format(" WHERE {0}", whereClause);
+                    }
+                    query += additionalInfo;
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
                         {
+                            while (reader.Read())
+                            {
                             
-                            data.Add(reader.GetValue(0));
+                                data.Add(reader.GetValue(0));
+                            }
                         }
                     }
                 }
-            }
 
-            return data;
+                return data;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
         }
 
         public static DataTable GetUserData() // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, u.level
-                             FROM users u
-                             LEFT JOIN faculties f ON u.faculty_id = f.id
-                             LEFT JOIN jobs j ON u.job_id = j.id";
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
-                adapter.Fill(dataTable);
-            }
 
-            return dataTable;
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT u.name, u.phone, f.faculty_name, j.job_name, u.level
+                                 FROM users u
+                                 LEFT JOIN faculties f ON u.faculty_id = f.id
+                                 LEFT JOIN jobs j ON u.job_id = j.id";
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                    adapter.Fill(dataTable);
+                }
+
+                return dataTable;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
         }
 
         public static DataTable GetOffersData(bool isExpired) // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string query = @"SELECT uo.user_id, u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours, o.cost, uo.is_expired
-                             FROM users u
-                             JOIN user_offer uo ON u.id= uo.user_id
-                             JOIN offers o ON o.id = uo.offer_id WHERE uo.is_expired = 0 ";
-                if (isExpired)
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    query += " OR uo.is_expired = 1";
-                }
+                    connection.Open();
+                    string query = @"SELECT uo.user_id, u.name, o.offer_name, uo.start_date, uo.end_date, o.hours, uo.left_hours, o.cost, uo.is_expired
+                                 FROM users u
+                                 JOIN user_offer uo ON u.id= uo.user_id
+                                 JOIN offers o ON o.id = uo.offer_id WHERE uo.is_expired = 0 ";
+                    if (isExpired)
+                    {
+                        query += " OR uo.is_expired = 1";
+                    }
                
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
-                adapter.Fill(dataTable);
-            }
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connection);
+                    adapter.Fill(dataTable);
+                }
 
-            return dataTable;
+                return dataTable;
+            }
+            catch (Exception  )
+            {
+
+                return null;
+            }
+           
         }
 
 
@@ -183,53 +231,67 @@ namespace Center_Maneger
         public static Dictionary<int, Tuple<string, string, int>> GetActiveUsers() // get active users data to fill grid of chairs
         {
             var activeUsers = new Dictionary<int, Tuple<string, string, int>>();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string query = "SELECT a.chair_num, u.name, a.enter_date, a.user_id FROM active_users a JOIN users u ON a.user_id = u.id";
-                SQLiteCommand command = new SQLiteCommand(query, connection);
-                SQLiteDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    int chairNum = reader.GetInt32(0);
-                    string userName = reader.GetString(1);
-                    string enterDate = reader.GetString(2);
-                    int user_id = reader.GetInt32(3);
-                    activeUsers.Add(chairNum, Tuple.Create(userName, enterDate, user_id));
+                    connection.Open();
+                    string query = "SELECT a.chair_num, u.name, a.enter_date, a.user_id FROM active_users a JOIN users u ON a.user_id = u.id";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int chairNum = reader.GetInt32(0);
+                        string userName = reader.GetString(1);
+                        string enterDate = reader.GetString(2);
+                        int user_id = reader.GetInt32(3);
+                        activeUsers.Add(chairNum, Tuple.Create(userName, enterDate, user_id));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-            }
+                return activeUsers;
 
-            return activeUsers;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public static List<Tuple<string, string, int, string>> GetActiveClasses() // get active users data to fill grid of chairs
         {
             var activeClasses = new List<Tuple<string, string, int, string>>();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string query = @"SELECT u.name, uc.enter_date, uc.user_id, c.class_name 
-                                FROM user_class uc
-                                JOIN users u ON uc.user_id = u.id
-                                JOIN classes c ON c.id = uc.class_id;";
-                SQLiteCommand command = new SQLiteCommand(query, connection);
-                SQLiteDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    
-                    string userName = reader.GetString(0);
-                    string enterDate = reader.GetString(1);
-                    int user_id = reader.GetInt32(2);
-                    string className = reader.GetString(3);
-                    activeClasses.Add(Tuple.Create(userName, enterDate, user_id, className));
-                }
-                reader.Close();
-            }
 
-            return activeClasses;
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT u.name, uc.enter_date, uc.user_id, c.class_name 
+                                    FROM user_class uc
+                                    JOIN users u ON uc.user_id = u.id
+                                    JOIN classes c ON c.id = uc.class_id;";
+                    SQLiteCommand command = new SQLiteCommand(query, connection);
+                    SQLiteDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                    
+                        string userName = reader.GetString(0);
+                        string enterDate = reader.GetString(1);
+                        int user_id = reader.GetInt32(2);
+                        string className = reader.GetString(3);
+                        activeClasses.Add(Tuple.Create(userName, enterDate, user_id, className));
+                    }
+                    reader.Close();
+                }
+
+                return activeClasses;
+            }
+            catch (Exception )
+            {
+                return null;
+
+            }
         }
 
 
@@ -239,40 +301,48 @@ namespace Center_Maneger
          {
             string userName = string.Empty;
             string enterDate = string.Empty;
-           
 
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();// افتكر عدد الساعات الباقية من الباقة
-                string query = @" SELECT 
-                                u.name, 
-                                a.enter_date
-                            FROM 
-                                active_users a
-                            JOIN 
-                                users u ON a.user_id = u.id    
-                            WHERE 
-                                a.chair_num = @ChairNum";
-
-                using (var command = new SQLiteCommand(query, connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.Parameters.AddWithValue("@ChairNum", chairNum);
+                    connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                    string query = @" SELECT 
+                                    u.name, 
+                                    a.enter_date
+                                FROM 
+                                    active_users a
+                                JOIN 
+                                    users u ON a.user_id = u.id    
+                                WHERE 
+                                    a.chair_num = @ChairNum";
 
-                    using (var reader = command.ExecuteReader())
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@ChairNum", chairNum);
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            userName = reader.GetString(0);
-                            enterDate = reader.GetString(1);
+                            if (reader.Read())
+                            {
+                                userName = reader.GetString(0);
+                                enterDate = reader.GetString(1);
                             
+                            }
                         }
                     }
                 }
-            }
             
-            Tuple<string, string> data = new Tuple<string, string>(userName, enterDate);
+                Tuple<string, string> data = new Tuple<string, string>(userName, enterDate);
 
-            return data;
+                return data;
+
+            }
+            catch (Exception )
+            {
+                return null;
+
+            }
         }
 
 
@@ -281,258 +351,341 @@ namespace Center_Maneger
         public static int GetPriceByDuration(int hours) // gets the price based on the time the uer spent
         {
             int price = 0;
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                string query = @"
-                SELECT 
-                    cost 
-                FROM 
-                    prices 
-                WHERE 
-                    @Duration >= from_date AND  @Duration < to_date
-                LIMIT 1";
 
-                using (var command = new SQLiteCommand(query, connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.Parameters.AddWithValue("@Duration", hours);
+                    connection.Open();
+                    string query = @"
+                    SELECT 
+                        cost 
+                    FROM 
+                        prices 
+                    WHERE 
+                        @Duration >= from_date AND  @Duration < to_date
+                    LIMIT 1";
 
-                    using (var reader = command.ExecuteReader())
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@Duration", hours);
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            price = reader.GetInt32(0);
+                            if (reader.Read())
+                            {
+                                price = reader.GetInt32(0);
+                            }
                         }
                     }
                 }
-            }
 
-            return price;
+                return price;
+            }
+            catch (Exception)
+            {
+                return 0;
+
+            }
         }
 
 
 
         public static List<string> GetUserNames(string filter,string table, string col,string join="") // used to filter combo boxes when searching for existing users
-    {
-        List<string> userNames = new List<string>();
-        
-        using (var connection = new SQLiteConnection(_connectionString))
         {
-            connection.Open();
-            string query = String.Format("SELECT {0} FROM {1} {2} WHERE {0} LIKE @filter LIMIT 5",col,table,join);
-            using (var command = new SQLiteCommand(query, connection))
+
+            List<string> userNames = new List<string>();
+            try
             {
-                command.Parameters.AddWithValue("@filter", String.Format("{0}%",filter));
-                using (var reader = command.ExecuteReader())
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    string query = String.Format("SELECT {0} FROM {1} {2} WHERE {0} LIKE @filter LIMIT 5",col,table,join);
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        userNames.Add(reader.GetString(0));
+                        command.Parameters.AddWithValue("@filter", String.Format("{0}%",filter));
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                userNames.Add(reader.GetString(0));
+                            }
+                        }
                     }
                 }
+                return userNames;
+
+            }
+            catch (Exception )
+            {
+                return null;
             }
         }
-        return userNames;
-    }
 
 
         public static DataTable GetUserRecords(DateTime fromDate, DateTime toDate) // get user data in ألاعضاء
         {
             DataTable dataTable = new DataTable();
-
-            string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
-                             FROM users u
-                             JOIN user_records ur ON u.id= ur.user_id
-                             WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate ";
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
 
-                using (var command = new SQLiteCommand(query, connection))
+                string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
+                                 FROM users u
+                                 JOIN user_records ur ON u.id= ur.user_id
+                                 WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate ";
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
-                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                    connection.Open();
 
-                    using (var adapter = new SQLiteDataAdapter(command))
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        adapter.Fill(dataTable);
+                        command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        using (var adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
-            }
             
-            return dataTable;
+                return dataTable;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
         }
 
         public static DataTable GetOffersData(DateTime fromDate, DateTime toDate) 
         {
-            DataTable dataTable = new DataTable();
-
-            string query = @"SELECT u.name, o.offer_name, uo.start_date, o.cost
-                            FROM users u
-                            JOIN user_offer uo ON u.id= uo.user_id
-                            JOIN offers o ON o.id = uo.offer_id 
-                            WHERE uo.start_date >= @fromDate AND uo.start_date <= @toDate ";
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
-                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                    using (var adapter = new SQLiteDataAdapter(command))
+                DataTable dataTable = new DataTable();
+
+                string query = @"SELECT u.name, o.offer_name, uo.start_date, o.cost
+                                FROM users u
+                                JOIN user_offer uo ON u.id= uo.user_id
+                                JOIN offers o ON o.id = uo.offer_id 
+                                WHERE uo.start_date >= @fromDate AND uo.start_date <= @toDate ";
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        adapter.Fill(dataTable);
+                        command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        using (var adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
-            }
 
-            return dataTable;
+                return dataTable;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
+          
         }
 
 
         public static DataTable GetKitchenData(DateTime fromDate, DateTime toDate)
         {
             DataTable dataTable = new DataTable();
-
-            string query = @"SELECT k.product_name, SUM(uk.amount) as total_amount , SUM(uk.cost) as total_cost
-                            FROM kitchen k
-                            JOIN user_kitchen uk ON k.id= uk.product_id
-                            
-                            WHERE uk.is_logged_out = 1 AND uk.user_id in (SELECT user_id FROM user_records  WHERE leave_date >= @fromDate AND leave_date <= @toDate )
-                            GROUP BY k.product_name";
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
-                    command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
 
-                    using (var adapter = new SQLiteDataAdapter(command))
+                string query = @"SELECT k.product_name, SUM(uk.amount) as total_amount , SUM(uk.cost) as total_cost
+                                FROM kitchen k
+                                JOIN user_kitchen uk ON k.id= uk.product_id
+                            
+                                WHERE uk.is_logged_out = 1 AND uk.user_id in (SELECT user_id FROM user_records  WHERE leave_date >= @fromDate AND leave_date <= @toDate )
+                                GROUP BY k.product_name";
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        adapter.Fill(dataTable);
+                        command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                        using (var adapter = new SQLiteDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
                     }
                 }
-            }
 
-            return dataTable;
+                return dataTable;
+            }
+            catch (Exception)
+            {
+            return null;
+                
+            }
         }
 
         public static List<Tuple <int, string, int, int, int, string>> GetUserIdWithOffers()
         {
             List<Tuple<int, string, int, int, int, string>> data = new List<Tuple<int, string, int, int, int, string>>();
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();
-                
-                string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours, uo.end_date FROM user_offer uo
-                                              LEFT JOIN active_users au on uo.user_id = au.user_id 
-                                              WHERE uo.is_expired = 0");
 
-                using (var command = new SQLiteCommand(query, connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    using (var reader = command.ExecuteReader())
+                    connection.Open();
+                
+                    string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours, uo.end_date FROM user_offer uo
+                                                  LEFT JOIN active_users au on uo.user_id = au.user_id 
+                                                  WHERE uo.is_expired = 0");
+
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        while (reader.Read())
+                        using (var reader = command.ExecuteReader())
                         {
-                            int user_id = reader.GetInt32(0);
-                            string enter_date = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                            int last_hour = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
-                            int left_hours = reader.GetInt32(3);
-                            int spent_hours = reader.GetInt32(4);
-                            string end_date = reader.GetString(5);
-                            data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours, end_date));
+                            while (reader.Read())
+                            {
+                                int user_id = reader.GetInt32(0);
+                                string enter_date = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                                int last_hour = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                                int left_hours = reader.GetInt32(3);
+                                int spent_hours = reader.GetInt32(4);
+                                string end_date = reader.GetString(5);
+                                data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours, end_date));
+                            }
                         }
                     }
                 }
-            }
 
-            return data;
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
 
-        public static List <Tuple<int, string, int, double>>GetProductsData()
+        public static List <Tuple<int, string, int, double,string>>GetProductsData(string product_type = "")
         {
-            List<Tuple<int, string, int, double>> data = new List<Tuple<int, string, int, double>>();
-            int productId = new int();
-            string productName= string.Empty;
-            int amount = new int();
-            double cost = new double();
-
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            List<Tuple<int, string, int, double,string>> data = new List<Tuple<int, string, int, double,string>>();
+            try
             {
-                connection.Open();// افتكر عدد الساعات الباقية من الباقة
-                string query = @" SELECT 
-                                    id,
+
+                int productId = new int();
+                string productName= string.Empty;
+                int amount = new int();
+                double cost = new double();
+                string product_t;
+
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                    string query = @" SELECT 
+                                        id,
+                                        product_name, 
+                                        amount,
+                                        sell_cost,
+                                        product_type
+                                    FROM 
+                                        kitchen
+                                    ";
+                    if (!string.IsNullOrEmpty(product_type))
+                    {
+                        query += " WHERE @value ORDER BY id";
+                    }
+                    else
+                    {
+                        query += " ORDER BY id";
+
+                    }
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        if (!string.IsNullOrEmpty(product_type))
+                        {
+                            command.Parameters.AddWithValue("@value", product_type);
+
+                        }
+                        using (SQLiteDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                productId = reader.GetInt32(0);
+                                productName = reader.GetString(1);
+                                amount = reader.GetInt32(2);
+                                cost = reader.GetDouble(3);
+                                product_t = reader.GetString(4);
+                                data.Add(Tuple.Create(productId, productName, amount, cost,product_t));
+                            }
+                        }
+                    }
+                }
+
+
+                return data;
+            }
+            catch (Exception )
+            {
+                return null;
+            }
+            
+        }
+
+
+        public static Tuple<string,int, double, double,string> GetProductData(int id) // gets data about user to fill logout window
+        {
+            try
+            {
+
+                Tuple<string, int, double, double,string> data = null;
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                    string query = @" SELECT 
                                     product_name, 
                                     amount,
-                                    sell_cost
+                                    purchase_cost,
+                                    sell_cost,
+                                    product_type
                                 FROM 
                                     kitchen
-                                ORDER BY id";
+                                WHERE 
+                                    id = @id";
 
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    using (var reader = command.ExecuteReader())
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        while (reader.Read())
+                        command.Parameters.AddWithValue("@id", id);
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            productId = reader.GetInt32(0);
-                            productName = reader.GetString(1);
-                            amount = reader.GetInt32(2);
-                            cost = reader.GetDouble(3);
-                            data.Add(Tuple.Create(productId, productName, amount, cost));
+                            if (reader.Read())
+                            {
+                                string productName = reader.GetString(0);
+                                int amount = reader.GetInt32(1);
+                                double purchaseCost = reader.GetDouble(2);
+                                double sellCost = reader.GetDouble(3);
+                                string product_t = reader.GetString(4);
+
+                                data = new Tuple<string, int, double, double,string>(productName, amount, purchaseCost, sellCost, product_t);
+
+                            }
                         }
                     }
                 }
+
+
+                return data;
             }
-
-
-            return data;
-        }
-
-
-        public static Tuple<string,int, double, double> GetProductData(int id) // gets data about user to fill logout window
-        {
-           
-            Tuple<string, int, double, double> data = null;
-            using (var connection = new SQLiteConnection(_connectionString))
+            catch (Exception )
             {
-                connection.Open();// افتكر عدد الساعات الباقية من الباقة
-                string query = @" SELECT 
-                                product_name, 
-                                amount,
-                                purchase_cost,
-                                sell_cost
-                            FROM 
-                                kitchen
-                            WHERE 
-                                id = @id";
-
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@id", id);
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string productName = reader.GetString(0);
-                            int amount = reader.GetInt32(1);
-                            double purchaseCost = reader.GetDouble(2);
-                            double sellCost = reader.GetDouble(3);
-                          data = new Tuple<string, int, double, double>(productName, amount, purchaseCost, sellCost);
-
-                        }
-                    }
-                }
+                return null;
             }
-
-
-            return data;
+           
         }
 
 
@@ -540,33 +693,41 @@ namespace Center_Maneger
         {
             Dictionary<int, int> data = new Dictionary<int, int>();
 
-
-            using (var connection = new SQLiteConnection(_connectionString))
+            try
             {
-                connection.Open();// افتكر عدد الساعات الباقية من الباقة
-                string query = @" SELECT 
-                                    product_id,                                     
-                                    amount
-                                FROM 
-                                    user_kitchen
-                                WHERE user_id = @user_id AND is_logged_out = 0";
 
-                using (var command = new SQLiteCommand(query, connection))
+                using (var connection = new SQLiteConnection(_connectionString))
                 {
-                    command.Parameters.AddWithValue("@user_id", userId);
+                    connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                    string query = @" SELECT 
+                                        product_id,                                     
+                                        amount
+                                    FROM 
+                                        user_kitchen
+                                    WHERE user_id = @user_id AND is_logged_out = 0";
 
-                    using (var reader = command.ExecuteReader())
+                    using (var command = new SQLiteCommand(query, connection))
                     {
-                        while (reader.Read())
+                        command.Parameters.AddWithValue("@user_id", userId);
+
+                        using (var reader = command.ExecuteReader())
                         {
-                            int productId = reader.GetInt32(0);
-                            int amount = reader.GetInt32(1);
-                            data[productId] = amount;
+                            while (reader.Read())
+                            {
+                                int productId = reader.GetInt32(0);
+                                int amount = reader.GetInt32(1);
+                                data[productId] = amount;
+                            }
                         }
                     }
                 }
+                return data;
             }
-            return data;
+            catch (Exception )
+            {
+                return null;
+            }
+            
         }
 
     }

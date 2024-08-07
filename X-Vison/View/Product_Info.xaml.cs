@@ -30,7 +30,7 @@ namespace Center_Maneger.View
         private void load_data(object sender, RoutedEventArgs e)
         {
            
-            Tuple<string, int, double, double> data = databaseLoader.GetProductData(productId);
+            Tuple<string, int, double, double,string> data = databaseLoader.GetProductData(productId);
             product_name_label.Text = data.Item1;
             amount_input.Text = data.Item2.ToString();
             purchase_cost_label.Text = data.Item3.ToString() + "  جنيه";

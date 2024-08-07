@@ -12,8 +12,9 @@ using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Timers;
-using System.Runtime.Remoting.Messaging;
-
+using Microsoft.Win32;
+using System.IO;
+using System.Diagnostics;
 namespace Center_Maneger
 {
     /// <summary>
@@ -76,16 +77,23 @@ namespace Center_Maneger
         public static async Task timer_ElapsedAsync(object sender, ElapsedEventArgs e)
         {
             List<Task> tasks = new List<Task>();
-
-            List<Tuple<int, string, int, int, int, string>> userIds = databaseLoader.GetUserIdWithOffers();
-
-            foreach (var userId in userIds)
+            try
             {
-              tasks.Add(Task.Run(() => updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6)));
+
+                List<Tuple<int, string, int, int, int, string>> userIds = databaseLoader.GetUserIdWithOffers();
+
+                foreach (var userId in userIds)
+                {
+                  tasks.Add(Task.Run(() => updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6)));
+                }
+
+                await Task.WhenAll(tasks);
+
             }
+            catch (Exception)
+            {
 
-            await Task.WhenAll(tasks);
-
+            }
         }
 
         public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date)
@@ -226,12 +234,71 @@ namespace Center_Maneger
 
         private void backup_data(object sender, RoutedEventArgs e)
         {
-
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.db");  
+            BackupDatabase(databasePath);
         }
 
         private void restore_data(object sender, RoutedEventArgs e)
         {
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.db"); 
+            RestoreDatabase(databasePath);
+        }
 
+
+
+        public void BackupDatabase(string databasePath)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Database files (*.db)|*.db",
+                Title = "حفظ النسخة الاحتياطية"
+            };
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string backupFilePath = saveFileDialog.FileName;
+                File.Copy(databasePath, backupFilePath, true);
+                MessageBox.Show("تم حفظ النسخة", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("خطأ", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+        public void RestoreDatabase(string databasePath)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Database files (*.db)|*.db",
+                Title = "تحديد ملف النسخة الاحتياطية"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                string backupFilePath = openFileDialog.FileName;
+                File.Copy(backupFilePath, databasePath, true);
+                MessageBox.Show("تم استرجاع الملف", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                restartapp();
+            }
+
+            else
+            {
+                MessageBox.Show("خطأ", "", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+        }
+
+        public void restartapp()
+        {
+            string excu = Process.GetCurrentProcess().MainModule.FileName;
+
+            Process.Start(excu);
+
+            Application.Current.Shutdown();
         }
     }
+   
+
 }

@@ -23,8 +23,8 @@ namespace Center_Maneger.View
         public string className;
         public int chair_num;
         Dictionary<int, int> basket = new Dictionary<int, int>();
-        List<Tuple<int, string, int, double>> products = databaseLoader.GetProductsData();
-        Dictionary<int, Tuple<int, string, int, double>> productDict;
+        List<Tuple<int, string, int, double,string>> products = databaseLoader.GetProductsData("");
+        Dictionary<int, Tuple<int, string, int, double,string>> productDict;
         Dictionary<int, int> lastOrder = null;
         string window;
             
@@ -56,9 +56,11 @@ namespace Center_Maneger.View
         }
 
 
-        private void CreateProductsGrid()
+        private void CreateProductsGrid(string product_type="")
         {
-            int numberOfCells = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id").Count);
+            string fliter = product_type == "" ? "" : String.Format("product_type = \"{0}\" ", product_type);
+
+            int numberOfCells = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id" ,fliter).Count);
             products_grid.Children.Clear();
             products_grid.RowDefinitions.Clear();
             products_grid.ColumnDefinitions.Clear();
@@ -157,7 +159,7 @@ namespace Center_Maneger.View
             {
                 basket.Add(productId, am);
 
-                Tuple<string, int, double, double> products = databaseLoader.GetProductData(productId);
+                Tuple<string, int, double, double,string> products = databaseLoader.GetProductData(productId);
                 Button mainbtn = new Button();
                 mainbtn.Margin = new Thickness(1);
                 mainbtn.BorderThickness = new Thickness(0);
@@ -364,7 +366,7 @@ namespace Center_Maneger.View
     
         foreach (var item in basket)
         {
-            Tuple<int, string, int, double> product = productDict[item.Key];
+            Tuple<int, string, int, double,string> product = productDict[item.Key];
             if (item.Value > product.Item3)
             {
                 MessageBox.Show(String.Format(" لا يوجد كمية كافية من ({0})  ", product.Item2), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -446,5 +448,44 @@ namespace Center_Maneger.View
             }
         }
 
+        private void all_products(object sender, RoutedEventArgs e)
+        {
+            CreateProductsGrid("");
+        }
+
+        private void hot_drink(object sender, RoutedEventArgs e)
+        {
+            products = databaseLoader.GetProductsData("مشروبات ساخنة");
+            CreateProductsGrid("مشروبات ساخنة");
+
+        }
+
+        private void cold_drink(object sender, RoutedEventArgs e)
+        {
+            products = databaseLoader.GetProductsData("مشروبات باردة");
+            CreateProductsGrid("مشروبات باردة");
+
+        }
+
+        private void snacks(object sender, RoutedEventArgs e)
+        {
+            products = databaseLoader.GetProductsData("باتيه و بسكوت");
+            CreateProductsGrid("باتيه و بسكوت");
+
+        }
+
+        private void chips(object sender, RoutedEventArgs e)
+        {
+            products = databaseLoader.GetProductsData("شيبسي");
+            CreateProductsGrid("شيبسي");
+
+        }
+
+        private void other_product(object sender, RoutedEventArgs e)
+        {
+            products = databaseLoader.GetProductsData("منتجات اخرى");
+            CreateProductsGrid("منتجات اخرى");
+
+        }
     }
 }

@@ -13,11 +13,22 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <StackPanel>
-                <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="اعدادات البوفيه" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
-                </Border>
-            </StackPanel>
+            <Grid FlowDirection="RightToLeft">
+                <StackPanel HorizontalAlignment="Center">
+                    <Border  Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
+                        <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBox  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Padding="2"/>
+                    <Button Margin="20 0" IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/img/search (2).png" Height="40"/>
+                            <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
             <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="اسم المنتج: "  DockPanel.Dock="Right" VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
@@ -36,6 +47,13 @@
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="sell_cost_input" Width="70"  HorizontalAlignment="Right"
                          FontSize="20" Padding="2 0" />
+                
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="نوع المنتج :"  VerticalAlignment="Center" 
+                           FontSize="20" FontWeight="Bold" Margin="30 0 20 0" />
+
+                <ComboBox Name="product_type_combo" Width="200">
+                    
+                </ComboBox>
 
             </StackPanel>
 

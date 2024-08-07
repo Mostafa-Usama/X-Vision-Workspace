@@ -34,7 +34,16 @@ namespace Center_Maneger.UesrControls
         }
         public void CreateDynamicGrid()
         {
-            numberOfCells = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id").Count);
+            try
+            {
+                numberOfCells = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id").Count);
+
+            }
+            catch (Exception)
+            {
+
+               numberOfCells = 0;
+            }
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
             DynamicGrid.ColumnDefinitions.Clear();
@@ -52,7 +61,7 @@ namespace Center_Maneger.UesrControls
                 DynamicGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            List<Tuple<int, string, int, double>> products = databaseLoader.GetProductsData();
+            List<Tuple<int, string, int, double,string>> products = databaseLoader.GetProductsData();
 
             for (int i = 0; i < numberOfCells; i++)
             {

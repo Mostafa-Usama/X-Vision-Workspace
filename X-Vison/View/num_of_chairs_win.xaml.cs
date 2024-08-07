@@ -29,9 +29,17 @@ namespace Center_Maneger.View
 
         private void load_old()
         {
-            num_chairs_input.Text = Convert.ToString(databaseLoader.SelectData("chairs", "num_chairs")[0]);
-            num_chairs_input.Focus();
-            num_chairs_input.CaretIndex = num_chairs_input.Text.Length;
+            try
+            {
+                num_chairs_input.Text = Convert.ToString(databaseLoader.SelectData("chairs", "num_chairs")[0]);
+                num_chairs_input.Focus();
+                num_chairs_input.CaretIndex = num_chairs_input.Text.Length;
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void Save_num_chairs(object sender, RoutedEventArgs e)

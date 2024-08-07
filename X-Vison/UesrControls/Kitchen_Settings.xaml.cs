@@ -22,7 +22,15 @@ namespace Center_Maneger.UesrControls
     public partial class Kitchen_Settings : UserControl
     {
         private DataRowView selectedRow;
-
+        List<string> type_of_product = new List<string>() 
+        {
+            "مشروبات ساخنة",
+            "مشروبات باردة",
+            "باتيه و بسكوت",
+            "شيبسي",
+            "منتجات اخرى",
+        };
+       
         public Kitchen_Settings()
         {
             InitializeComponent();
@@ -31,7 +39,16 @@ namespace Center_Maneger.UesrControls
 
         private void load_data()
         {
-            data_grid.ItemsSource = databaseLoader.LoadData("kitchen").DefaultView; ;
+            try
+            {
+                data_grid.ItemsSource = databaseLoader.LoadData("kitchen").DefaultView;
+
+                product_type_combo.ItemsSource = type_of_product;
+            }
+            catch (Exception)
+            {
+              
+            }
 
         }
         private void change_header_name(object sender, DataGridAutoGeneratingColumnEventArgs e) //Becuase the grid is dynamically generated in runtime (asynchronous) مقدرش أغير اسم العمود بالكود مباشرة لكن الفنكشن دي بتشتغل لما العمود يتم انشاءه وبعدها بقدر أغير الاسم 
@@ -52,7 +69,11 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "سعر البيع";
             }
-           
+            else if (e.PropertyName == "product_type")
+            {
+                e.Column.Header = "نوع المنتج";
+            }
+
         }
         private void change_selected_record(object sender, SelectionChangedEventArgs e) // this event is called whenever you select a record (row) from the grid
         {
@@ -73,14 +94,17 @@ namespace Center_Maneger.UesrControls
             string productName = product_name_input.Text;
             double purchaseCost;
             double sellCost;
+            string product_type;
 
-            if (product_name_input.Text.Trim() == "" || purchase_cost_input.Text.Trim() == "" || sell_cost_input.Text.Trim() == "")
+            if (product_name_input.Text.Trim() == "" || purchase_cost_input.Text.Trim() == "" || sell_cost_input.Text.Trim() == "" || product_type_combo.SelectedItem == null)
             {
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return; 
             }
             bool isNumber1 = double.TryParse(purchase_cost_input.Text, out purchaseCost);
             bool isNumber2 = double.TryParse(sell_cost_input.Text, out sellCost);
+            product_type = product_type_combo.SelectedItem.ToString();
+
             if (!isNumber1 || !isNumber2)
             {
                 MessageBox.Show("برجاء ادخال ارقام صحيحة ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -91,6 +115,7 @@ namespace Center_Maneger.UesrControls
                     {"product_name", product_name_input.Text},
                     {"purchase_cost", purchaseCost},
                     {"sell_cost", sellCost},
+                    {"product_type",product_type }
                 };
             try
             {
@@ -132,8 +157,9 @@ namespace Center_Maneger.UesrControls
                 string amount = Convert.ToString((selectedRow["amount"]));
                 string purchaseCost = Convert.ToString((selectedRow["purchase_cost"]));
                 string sellCost = Convert.ToString((selectedRow["sell_cost"]));
+                string product_type = Convert.ToString((selectedRow["product_type"]));
 
-                Edit_Product editWin = new Edit_Product(productName, amount, purchaseCost, sellCost);
+                Edit_Product editWin = new Edit_Product(productName, amount, purchaseCost, sellCost, product_type);
                 editWin.ShowDialog();
                 if (editWin.isClicked)
                 {
@@ -144,6 +170,25 @@ namespace Center_Maneger.UesrControls
             {
                 MessageBox.Show("برجاء اختيار الصف الذي تريد تعديله ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private void SearchUser(object sender, TextChangedEventArgs e)
+        {
+
+            string searchname = searchTB.Text.Trim();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                DataView offersView = data_grid.ItemsSource as DataView;
+                offersView.RowFilter = string.Empty;
+            }
+
+        }
+
+        private void SearchUser(object sender, RoutedEventArgs e)
+        {
+            string searchname = searchTB.Text.Trim();
+            DataView offersView = data_grid.ItemsSource as DataView;
+            offersView.RowFilter = string.Format("product_name LIKE '{0}%'", searchname);
+            offersView.RowFilter = string.Format("product_type LIKE '{0}%'", searchname);
         }
     }
 }

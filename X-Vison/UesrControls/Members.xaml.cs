@@ -32,8 +32,15 @@ namespace Center_Maneger.UesrControls
 
         public void load_data() // display classes data in grid
         {
-           
-            data_grid.ItemsSource = databaseLoader.GetUserData().DefaultView;
+            try
+            {
+                data_grid.ItemsSource = databaseLoader.GetUserData().DefaultView;
+
+            }
+            catch (Exception )
+            {
+                
+            }
         }
 
         private void change_selected_record(object sender, SelectionChangedEventArgs e) // this event is called whenever you select a record (row) from the grid

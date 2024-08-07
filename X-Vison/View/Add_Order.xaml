@@ -47,39 +47,39 @@
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="0" FlowDirection="RightToLeft">
             <StackPanel  >
-                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="allproduct_btn" Click="all_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/street-food.png" Height="40" />
                         <TextBlock TextWrapping="Wrap" Text="جميع المنتجات" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="hotdrink_btn" Click="hot_drink" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/icons8-hot-drink-100 (1).png" Height="45" />
                         <TextBlock TextWrapping="Wrap" Text="مشروبات ساخنة" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="colddrink_btn" Click="cold_drink" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/coca.png" Height="45" />
                         <TextBlock TextWrapping="Wrap" Text="مشروبات باردة" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="snacks_btn" Click="snacks" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/bread (3).png" Height="40" />
                         <TextBlock TextWrapping="Wrap" Text="باتيه و بسكوت" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-                <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="chips_btn" Click="chips" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
                         <Image Source="/img/chips.png" Height="50" />
                         <TextBlock TextWrapping="Wrap" Text="شيبسي" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
-                    <Button Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
+                    <Button Name="otherproduct_btn" Click="other_product" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                         <StackPanel>
-                            <Image Source="/img/bread (3).png" Height="40" />
+                            <Image Source="/img/snacks.png" Height="40" />
                             <TextBlock TextWrapping="Wrap" Text="منتجات اخرى" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Button>

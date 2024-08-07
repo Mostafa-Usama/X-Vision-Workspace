@@ -30,7 +30,15 @@ namespace Center_Maneger.UesrControls
 
         public void load_data() 
         {
-            data_grid.ItemsSource = databaseLoader.LoadData("faculties").DefaultView;
+            try
+            {
+                data_grid.ItemsSource = databaseLoader.LoadData("faculties").DefaultView;
+            }
+            catch (Exception)
+            {
+           
+            }
+            
         }
         
 

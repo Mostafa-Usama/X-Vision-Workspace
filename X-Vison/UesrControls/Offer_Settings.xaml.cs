@@ -32,7 +32,15 @@ namespace Center_Maneger.UesrControls
 
         public void load_data() // display classes data in grid
         {
-            data_grid.ItemsSource = databaseLoader.LoadData("offers").DefaultView;
+            try
+            {
+                data_grid.ItemsSource = databaseLoader.LoadData("offers").DefaultView;
+
+            }
+            catch (Exception)
+            {
+                
+            }
         }
 
 

@@ -491,6 +491,9 @@
   <ItemGroup>
     <Resource Include="img\note.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\snacks.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

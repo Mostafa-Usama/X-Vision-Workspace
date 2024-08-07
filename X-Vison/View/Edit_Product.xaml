@@ -6,35 +6,53 @@
         Title="Edit_User" Height="400" Width="450"
         Background="{StaticResource win}"
         Icon="/img/edit.ico">
-    <StackPanel Margin="8">
-        <StackPanel Margin="0 0 0 30">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0 0 0 30">
             <Border Margin="0 5" Width="200" Padding="3" BorderBrush="White" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
                 <TextBlock Text="تعديل منتج " FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
             </Border>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="120" Content="اسم المنتج:" Margin="0 0 10 0"/>
-            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200" Name="product_name_input"  />
-        </StackPanel>
-        <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="120" Content="الكمية:" Margin="0 0 10 0" />
-            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="amount_input"   />
-        </StackPanel>
+        <Grid Grid.Row="1" FlowDirection="RightToLeft">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.7*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Style="{StaticResource labelStyle}" VerticalAlignment="Center" Width="120" Content="اسم المنتج:" Margin="0 0 10 0"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Style="{StaticResource RoundedTextBox}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="200" Name="product_name_input"  />
+            <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource labelStyle}" VerticalAlignment="Center" Width="120" Content="الكمية:" Margin="0 0 10 0" />
+            <TextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource RoundedTextBox}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="200"  Name="amount_input"   />
 
-        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="120" Content="سعر الشراء :" Margin="0 0 10 0" />
-            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="purchase_cost_input"   />
-        </StackPanel>
-        
-        <StackPanel Margin="0 20 0 0" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="120" Content="سعر البيع :" Margin="0 0 10 0" />
-            <TextBox Style="{StaticResource RoundedTextBox}" FontSize="16" FontWeight="Bold" Width="200"  Name="sell_cost_input"   />
-        </StackPanel>
-        <Button Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="edit_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 30">
+            <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource labelStyle}" VerticalAlignment="Center" Width="120" Content="سعر الشراء :" Margin="0 0 10 0" />
+            <TextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource RoundedTextBox}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="200"  Name="purchase_cost_input"   />
+
+            <Label Grid.Column="0" Grid.Row="3" Style="{StaticResource labelStyle}" VerticalAlignment="Center" Width="120" Content="سعر البيع :" Margin="0 0 10 0" />
+            <TextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource RoundedTextBox}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Width="200"  Name="sell_cost_input"   />
+
+            <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource labelStyle}" VerticalAlignment="Center"  Width="120" Content="نوع المنتج :" Margin="0 0 10 0" />
+
+            <ComboBox HorizontalAlignment="Center"
+                VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Name="product_type_combo" Width="200">
+            
+        </ComboBox>
+        </Grid>
+
+        <Button Grid.Row="2" Style="{StaticResource Roundedbtn}" FontWeight="Bold" Background="Transparent" Click="edit_product" Height="50" HorizontalAlignment="Center" Padding="5" >
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
                 <TextBlock Text="حفظ" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>
                 <Image Source="/img/save.png"/>
             </StackPanel>
         </Button>
-    </StackPanel>
+    </Grid>
 </Window>

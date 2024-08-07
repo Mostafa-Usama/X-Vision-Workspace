@@ -30,19 +30,27 @@ namespace Center_Maneger.UesrControls
 
         public void load_data(bool isChecked = false) // display classes data in grid
         {
-            data_grid.ItemsSource = databaseLoader.GetOffersData(isChecked).DefaultView;
-            data_grid.Columns[0].Visibility = Visibility.Collapsed;
-            data_grid.Columns[8].Visibility = Visibility.Collapsed;
+            try
+            {
+                data_grid.ItemsSource = databaseLoader.GetOffersData(isChecked).DefaultView;
+                data_grid.Columns[0].Visibility = Visibility.Collapsed;
+                data_grid.Columns[8].Visibility = Visibility.Collapsed;
 
-            DataView offersView = data_grid.ItemsSource as DataView;
-            DataTable offersRecords = offersView.Table;
-            foreach (DataRow row in offersRecords.Rows)
+                DataView offersView = data_grid.ItemsSource as DataView;
+                DataTable offersRecords = offersView.Table;
+                foreach (DataRow row in offersRecords.Rows)
+                {
+
+                    row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+                    row["end_date"] = DateTime.Parse(row["end_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
+
+                }
+            }
+            catch (Exception)
             {
 
-                row["start_date"] = DateTime.Parse(row["start_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
-                row["end_date"] = DateTime.Parse(row["end_date"].ToString()).ToString("MM/dd/yyyy h:mm tt");
-
             }
+
 
         }
 

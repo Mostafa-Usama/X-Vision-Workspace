@@ -39,8 +39,16 @@ namespace Center_Maneger.UesrControls
 
         public void CreateDynamicGrid()
         {
-            List <object> classNames = databaseLoader.SelectData("classes", "class_name", "", " ORDER BY id");
-            numberOfCells = classNames.Count;
+                List <object> classNames = databaseLoader.SelectData("classes", "class_name", "", " ORDER BY id");
+            try
+            {
+
+                numberOfCells = classNames.Count;
+            }
+            catch (Exception)
+            {
+                numberOfCells = 0;
+            } 
             // Clear any existing children
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
