@@ -26,19 +26,11 @@ namespace Center_Maneger.UesrControls
         public void CreateDynamicGrid(string searchQuery = "")
         {
             x = 0;
-            try
-            {
-                numberOfCells = Convert.ToInt32(databaseLoader.SelectData("chairs", "num_chairs")[0]);
-
-            }
-            catch (Exception)
-            {
-                numberOfCells = 0;
-            }
+           
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
             DynamicGrid.ColumnDefinitions.Clear();
-
+            numberOfCells = Convert.ToInt32(databaseLoader.SelectData("chairs", "num_chairs")[0]);
             int columns = 4;
             int rows = (int)Math.Ceiling((double)numberOfCells / columns);
 
@@ -53,6 +45,7 @@ namespace Center_Maneger.UesrControls
             }
             
             Dictionary<int, Tuple<string, string, int>> activeUsers = databaseLoader.GetActiveUsers();
+           
             for (int i = 0; i < numberOfCells; i++)
             {
                 int row = i / columns;

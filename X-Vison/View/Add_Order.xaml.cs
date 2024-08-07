@@ -23,7 +23,7 @@ namespace Center_Maneger.View
         public string className;
         public int chair_num;
         Dictionary<int, int> basket = new Dictionary<int, int>();
-        List<Tuple<int, string, int, double,string>> products = databaseLoader.GetProductsData("");
+        List<Tuple<int, string, int, double,string>> products = databaseLoader.GetProductsData();
         Dictionary<int, Tuple<int, string, int, double,string>> productDict;
         Dictionary<int, int> lastOrder = null;
         string window;
@@ -56,11 +56,11 @@ namespace Center_Maneger.View
         }
 
 
-        private void CreateProductsGrid(string product_type="")
+        private void CreateProductsGrid()
         {
-            string fliter = product_type == "" ? "" : String.Format("product_type = \"{0}\" ", product_type);
 
-            int numberOfCells = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id" ,fliter).Count);
+
+            int numberOfCells = products.Count;
             products_grid.Children.Clear();
             products_grid.RowDefinitions.Clear();
             products_grid.ColumnDefinitions.Clear();
@@ -448,44 +448,13 @@ namespace Center_Maneger.View
             }
         }
 
-        private void all_products(object sender, RoutedEventArgs e)
+    
+        private void filter_products(object sender, RoutedEventArgs e)
         {
-            CreateProductsGrid("");
-        }
-
-        private void hot_drink(object sender, RoutedEventArgs e)
-        {
-            products = databaseLoader.GetProductsData("مشروبات ساخنة");
-            CreateProductsGrid("مشروبات ساخنة");
-
-        }
-
-        private void cold_drink(object sender, RoutedEventArgs e)
-        {
-            products = databaseLoader.GetProductsData("مشروبات باردة");
-            CreateProductsGrid("مشروبات باردة");
-
-        }
-
-        private void snacks(object sender, RoutedEventArgs e)
-        {
-            products = databaseLoader.GetProductsData("باتيه و بسكوت");
-            CreateProductsGrid("باتيه و بسكوت");
-
-        }
-
-        private void chips(object sender, RoutedEventArgs e)
-        {
-            products = databaseLoader.GetProductsData("شيبسي");
-            CreateProductsGrid("شيبسي");
-
-        }
-
-        private void other_product(object sender, RoutedEventArgs e)
-        {
-            products = databaseLoader.GetProductsData("منتجات اخرى");
-            CreateProductsGrid("منتجات اخرى");
-
+            Button btn = sender as Button;
+            string filter = btn.Tag.ToString();
+            products = databaseLoader.GetProductsData(filter);
+            CreateProductsGrid();
         }
     }
 }

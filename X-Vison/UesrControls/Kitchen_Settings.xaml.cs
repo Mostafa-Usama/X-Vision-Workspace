@@ -177,8 +177,8 @@ namespace Center_Maneger.UesrControls
             string searchname = searchTB.Text.Trim();
             if (string.IsNullOrEmpty(searchname))
             {
-                DataView offersView = data_grid.ItemsSource as DataView;
-                offersView.RowFilter = string.Empty;
+                DataView prodcutView = data_grid.ItemsSource as DataView;
+                prodcutView.RowFilter = string.Empty;
             }
 
         }
@@ -186,9 +186,9 @@ namespace Center_Maneger.UesrControls
         private void SearchUser(object sender, RoutedEventArgs e)
         {
             string searchname = searchTB.Text.Trim();
-            DataView offersView = data_grid.ItemsSource as DataView;
-            offersView.RowFilter = string.Format("product_name LIKE '{0}%'", searchname);
-            offersView.RowFilter = string.Format("product_type LIKE '{0}%'", searchname);
+            DataView prodcutView = data_grid.ItemsSource as DataView;
+            prodcutView.RowFilter = string.Format("product_name LIKE '{0}%'", searchname);
+          
         }
     }
 }

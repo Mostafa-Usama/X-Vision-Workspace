@@ -35,6 +35,7 @@ namespace Center_Maneger.View
             amount_input.Text = data.Item2.ToString();
             purchase_cost_label.Text = data.Item3.ToString() + "  جنيه";
             sell_cost_label.Text = data.Item4.ToString() + "  جنيه";
+            type_label.Text = data.Item5;
             amount_input.Focus();
             amount_input.CaretIndex = amount_input.Text.Length;
         }

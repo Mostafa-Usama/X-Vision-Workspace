@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         WindowStartupLocation="CenterScreen"
         Loaded="load_data"
-        Title="Edit_User" Height="400" Width="450"
+        Title="Edit_User" Height="430" Width="450"
         Background="{StaticResource win}"
         Icon="/img/edit.ico">
     <Grid Margin="8">
@@ -42,8 +42,8 @@
 
             <Label Grid.Column="0" Grid.Row="4" Style="{StaticResource labelStyle}" VerticalAlignment="Center"  Width="120" Content="نوع المنتج :" Margin="0 0 10 0" />
 
-            <ComboBox HorizontalAlignment="Center"
-                VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Name="product_type_combo" Width="200">
+            <ComboBox HorizontalAlignment="Center" 
+                VerticalAlignment="Center" Grid.Row="4" Grid.Column="1" Name="product_type_combo" Width="200" FontSize="16" FontWeight="Bold">
             
         </ComboBox>
         </Grid>

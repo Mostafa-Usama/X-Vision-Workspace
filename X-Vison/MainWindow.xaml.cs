@@ -46,7 +46,7 @@ namespace Center_Maneger
                 new grid_of_products(),
             };
             Timer timer = new Timer(60000);
-            timer.Elapsed += async (sender, e) => await timer_ElapsedAsync(sender, e);
+            timer.Elapsed += timer_ElapsedAsync;
             timer.AutoReset = true;
             timer.Enabled = true;
             Task.Run(() => timer_ElapsedAsync(null, null));  
@@ -74,29 +74,21 @@ namespace Center_Maneger
         
         }
 
-        public static async Task timer_ElapsedAsync(object sender, ElapsedEventArgs e)
+        public static void timer_ElapsedAsync(object sender, ElapsedEventArgs e)
         {
-            List<Task> tasks = new List<Task>();
-            try
-            {
-
-                List<Tuple<int, string, int, int, int, string>> userIds = databaseLoader.GetUserIdWithOffers();
+           
+                List<Tuple<int, string, int, int, int, string, int>> userIds = databaseLoader.GetUserIdWithOffers();
 
                 foreach (var userId in userIds)
                 {
-                  tasks.Add(Task.Run(() => updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6)));
+                 updateOffers(userId.Item1, userId.Item2, userId.Item3, userId.Item4, userId.Item5, userId.Item6, userId.Item7);
                 }
 
-                await Task.WhenAll(tasks);
+               
 
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
-        public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date)
+        public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date, int offerDuration)
         {
 
             // ميحسبش من التكلفة طول ما الباقة شغال
@@ -107,13 +99,14 @@ namespace Center_Maneger
 
             if (now >= endDate)
             {
-                MarkOfferAsExpired(user_id, string.IsNullOrEmpty(enter_date));
+                MarkOfferAsExpired(user_id, string.IsNullOrEmpty(enter_date), end_date);
                 return;
             }
+            // spent 3  last hour 4
             if (!string.IsNullOrEmpty(enter_date)) { 
                 int hours = Convert.ToInt32((now - DateTime.Parse(enter_date)).TotalHours);
                 int duration = hours - last_hour;
-
+                
                 if (hours > last_hour)
                 {
 
@@ -125,15 +118,16 @@ namespace Center_Maneger
 
 
                     Dictionary<string, object> newLeftHours = new Dictionary<string,object>{
-                        {"left_hours", left_hours - duration}
+                        {"left_hours", left_hours - duration < 0? 0 : left_hours - duration }
                     };
 
                     databaseLoader.UpdateData("user_offer", newLeftHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
 
 
+                   
 
                     Dictionary<string, object> newSpentHours = new Dictionary<string, object>{
-                        {"spent_hours", spent_hours + duration}
+                        {"spent_hours", spent_hours + duration > offerDuration? offerDuration : spent_hours + duration }
                     };
                     databaseLoader.UpdateData("user_offer", newSpentHours, String.Format("user_id = {0} AND is_expired = 0", user_id));
                 
@@ -141,19 +135,21 @@ namespace Center_Maneger
                 }
                 if (left_hours - duration <= 0)
                 {
-                    MarkOfferAsExpired(user_id, false);
+                    MarkOfferAsExpired(user_id, false, DateTime.Now.AddHours(-(hours - left_hours)).ToString("yyyy-MM-dd HH:mm:ss"));
                     return;
                 }
             
            }
         }
 
-        private static void MarkOfferAsExpired(int user_id, bool isLogout)
+        private static void MarkOfferAsExpired(int user_id, bool isLogout, string end_date)
         {
+           
+        
             Dictionary<string, object> expired = new Dictionary<string, object>
             {
                 { "is_expired", 1 },
-                { "expirey_date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }
+                { "expirey_date", end_date }
             };
 
             if (isLogout)
@@ -253,37 +249,42 @@ namespace Center_Maneger
                 Filter = "Database files (*.db)|*.db",
                 Title = "حفظ النسخة الاحتياطية"
             };
-
-            if (saveFileDialog.ShowDialog() == true)
+            try
             {
-                string backupFilePath = saveFileDialog.FileName;
-                File.Copy(databasePath, backupFilePath, true);
-                MessageBox.Show("تم حفظ النسخة", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string backupFilePath = saveFileDialog.FileName;
+                    File.Copy(databasePath, backupFilePath, true);
+                    MessageBox.Show("تم حفظ النسخة", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("خطأ", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.ToString(), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
 
             }
         }
 
         public void RestoreDatabase(string databasePath)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Filter = "Database files (*.db)|*.db",
-                Title = "تحديد ملف النسخة الاحتياطية"
-            };
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Filter = "Database files (*.db)|*.db",
+                    Title = "تحديد ملف النسخة الاحتياطية"
+                };
 
-            if (openFileDialog.ShowDialog() == true)
-            {
-                string backupFilePath = openFileDialog.FileName;
-                File.Copy(backupFilePath, databasePath, true);
-                MessageBox.Show("تم استرجاع الملف", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                restartapp();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string backupFilePath = openFileDialog.FileName;
+                    File.Copy(backupFilePath, databasePath, true);
+                    MessageBox.Show("تم استرجاع الملف", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                    restartapp();
+                }
+
             }
-
-            else
+            catch
             {
                 MessageBox.Show("خطأ", "", MessageBoxButton.OK, MessageBoxImage.Error);
 

@@ -530,18 +530,19 @@ namespace Center_Maneger
             }
         }
 
-        public static List<Tuple <int, string, int, int, int, string>> GetUserIdWithOffers()
+        public static List<Tuple<int, string, int, int, int, string, int>> GetUserIdWithOffers()
         {
-            List<Tuple<int, string, int, int, int, string>> data = new List<Tuple<int, string, int, int, int, string>>();
+            List<Tuple<int, string, int, int, int, string, int>> data = new List<Tuple<int, string, int, int, int, string, int>>();
             try
             {
 
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Open();
-                
-                    string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours, uo.end_date FROM user_offer uo
+
+                    string query = String.Format(@"SELECT uo.user_id, au.enter_date, au.last_hour, uo.left_hours, uo.spent_hours, uo.end_date , o.hours FROM user_offer uo
                                                   LEFT JOIN active_users au on uo.user_id = au.user_id 
+                                                  JOIN offers o ON uo.offer_id = o.id
                                                   WHERE uo.is_expired = 0");
 
                     using (var command = new SQLiteCommand(query, connection))
@@ -556,7 +557,8 @@ namespace Center_Maneger
                                 int left_hours = reader.GetInt32(3);
                                 int spent_hours = reader.GetInt32(4);
                                 string end_date = reader.GetString(5);
-                                data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours, end_date));
+                                int offerHours = reader.GetInt32(6);
+                                data.Add(Tuple.Create(user_id, enter_date, last_hour, left_hours, spent_hours, end_date, offerHours));
                             }
                         }
                     }
@@ -564,8 +566,9 @@ namespace Center_Maneger
 
                 return data;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 return null;
             }
             
@@ -593,22 +596,20 @@ namespace Center_Maneger
                                         sell_cost,
                                         product_type
                                     FROM 
-                                        kitchen
-                                    ";
+                                        kitchen ";
                     if (!string.IsNullOrEmpty(product_type))
                     {
-                        query += " WHERE @value ORDER BY id";
+                        query += " WHERE product_type = @product_type ";
                     }
-                    else
-                    {
-                        query += " ORDER BY id";
+                   
+                    query += " ORDER BY id";
 
-                    }
+                    
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         if (!string.IsNullOrEmpty(product_type))
                         {
-                            command.Parameters.AddWithValue("@value", product_type);
+                            command.Parameters.AddWithValue("@product_type", product_type);
 
                         }
                         using (SQLiteDataReader reader = command.ExecuteReader())

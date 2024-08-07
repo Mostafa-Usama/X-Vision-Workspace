@@ -218,7 +218,7 @@ namespace Center_Maneger.UesrControls
         {
             string from_date = fromDate.Text;
             string to_date = toDate.Text;
-            if (from_date.Trim() == "" || to_date.Trim() == "")
+            if (data_grid.ItemsSource == null)
             {
                 MessageBox.Show("برجاء ادخال التواريخ أولا", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

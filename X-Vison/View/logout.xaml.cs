@@ -72,15 +72,15 @@ namespace Center_Maneger.View
             string hours = ((int)duration.TotalHours).ToString();
             string mintues = ( (int)((duration.TotalHours - (int)duration.TotalHours) * 60) ).ToString();
            // MessageBox.Show(duration);
+            double x = duration.TotalHours;
             if (window == "chair")
             {
-                double x = duration.TotalHours;
                 price = databaseLoader.GetPriceByDuration( (x >= 0.5 && x<=1) ? 1 : int.Parse(hours));           
 
             }
             else
             {
-                int total_hours = int.Parse(hours) == 0 ? 1 : int.Parse(hours);
+                int total_hours =  (x >= 0.5 && x<=1) ? 1 : int.Parse(hours);
                 //int classId = Convert.ToInt32(databaseLoader.SelectData("user_class", "class_id", String.Format("user_id = \"{0}\"", user_id))[0]);
                 price = total_hours* (Convert.ToInt32(databaseLoader.SelectData("classes", "cost", String.Format("class_name = \"{0}\"", class_name))[0]));
             }
@@ -116,7 +116,7 @@ namespace Center_Maneger.View
                         string mintuesSinceExpirey = ((int)((durationSinceExpirey.TotalHours - (int)durationSinceExpirey.TotalHours) * 60)).ToString();
 
                         offer.Text = "تم استهلاك الباقة منذ  " + hoursSinceExpirey +"  ساعة  " + mintuesSinceExpirey + "  دقيقة";
-                        price = databaseLoader.GetPriceByDuration(int.Parse(hoursSinceExpirey));  
+                        price = databaseLoader.GetPriceByDuration((x >= 0.5 && x <= 1) ? 1 : int.Parse(hoursSinceExpirey));           
                     }
                 
                 }
