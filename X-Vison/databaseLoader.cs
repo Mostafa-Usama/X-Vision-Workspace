@@ -574,9 +574,9 @@ namespace Center_Maneger
             
         }
 
-        public static List <Tuple<int, string, int, double,string>>GetProductsData(string product_type = "")
+        public static List<Tuple<int, string, int, double, string, double>> GetProductsData(string product_type = "")
         {
-            List<Tuple<int, string, int, double,string>> data = new List<Tuple<int, string, int, double,string>>();
+            List<Tuple<int, string, int, double, string, double>> data = new List<Tuple<int, string, int, double, string, double>>();
             try
             {
 
@@ -594,7 +594,8 @@ namespace Center_Maneger
                                         product_name, 
                                         amount,
                                         sell_cost,
-                                        product_type
+                                        product_type,
+                                        purchase_cost
                                     FROM 
                                         kitchen ";
                     if (!string.IsNullOrEmpty(product_type))
@@ -621,7 +622,8 @@ namespace Center_Maneger
                                 amount = reader.GetInt32(2);
                                 cost = reader.GetDouble(3);
                                 product_t = reader.GetString(4);
-                                data.Add(Tuple.Create(productId, productName, amount, cost,product_t));
+                                double purchaseCost = reader.GetDouble(5);
+                                data.Add(Tuple.Create(productId, productName, amount, cost,product_t, purchaseCost));
                             }
                         }
                     }

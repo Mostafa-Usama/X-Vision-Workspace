@@ -297,7 +297,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\back-image.jpg" />
@@ -327,9 +329,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\Chair icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\meeting icon.png" />
@@ -469,18 +468,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\bread %282%29.png" />
-    <Resource Include="img\cocacola.png" />
-    <Resource Include="img\nachos.png" />
     <Resource Include="img\tea.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\street-food.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\bread %283%29.png" />
-    <Resource Include="img\chips.png" />
-    <Resource Include="img\coca.png" />
-    <Resource Include="img\icons8-hot-drink-100 %281%29.png" />
+    <Resource Include="img\باتيه و بسكوت.png" />
+    <Resource Include="img\شيبسي.png" />
+    <Resource Include="img\مشروبات باردة.png" />
+    <Resource Include="img\مشروبات ساخنة.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\icons8-cafe-100.png" />
@@ -492,7 +489,7 @@
     <Resource Include="img\note.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\snacks.png" />
+    <Resource Include="img\منتجات اخرى.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

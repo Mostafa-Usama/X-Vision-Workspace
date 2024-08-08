@@ -61,7 +61,6 @@ E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.D
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.xml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\bin\Debug\EntityFramework.SqlServer.xml
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\bin\Debug\System.Data.SQLite.xml
-E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csprojResolveAssemblyReference.cache
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\login.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\App.g.cs
 E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger_MarkupCompile.cache

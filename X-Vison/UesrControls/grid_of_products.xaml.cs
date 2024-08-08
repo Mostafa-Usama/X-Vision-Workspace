@@ -39,7 +39,7 @@ namespace Center_Maneger.UesrControls
             DynamicGrid.RowDefinitions.Clear();
             DynamicGrid.ColumnDefinitions.Clear();
 
-            List<Tuple<int, string, int, double, string>> products = databaseLoader.GetProductsData();
+            List<Tuple<int, string, int, double, string, double>> products = databaseLoader.GetProductsData();
             numberOfCells = products.Count;
             int columns = 5;
             int rows = (int)Math.Ceiling((double)numberOfCells / columns);
@@ -112,7 +112,7 @@ namespace Center_Maneger.UesrControls
                 {
                     Width = border.Width * 0.3,
                     Height = border.Height * 0.3,
-                    Source = new BitmapImage(new Uri("pack://application:,,,/img/kitchen icon2.png")),
+                    Source = new BitmapImage(new Uri(String.Format("pack://application:,,,/img/{0}.png",products[i].Item5))),
                 };
 
                 stackPanel.Children.Add(product_icon);

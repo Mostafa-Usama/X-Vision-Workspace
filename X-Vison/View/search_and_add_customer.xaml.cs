@@ -217,8 +217,28 @@ namespace Center_Maneger.View
                         return;
                     }
                     List<object> is_expired = databaseLoader.SelectData("user_offer", "is_expired", String.Format("user_id = {0} AND is_expired = 0", user_id));
+
                     if (is_expired.Count == 0)
                     {
+                       List<object> is_logged_out = databaseLoader.SelectData("user_offer", "is_logged_out", String.Format("user_id = {0} AND is_expired = 1 AND is_logged_out = 0", user_id));
+                        if (is_logged_out.Count == 1)
+                        {
+                            DateTime expireyDate = Convert.ToDateTime(databaseLoader.SelectData("user_offer", "expirey_date", String.Format("user_id = {0} AND is_logged_out = 0 AND is_expired = 1", user_id))[0]);
+                            int lastHour = Convert.ToInt32(databaseLoader.SelectData("active_users", "last_hour", String.Format("user_id = {0}", user_id))[0]);
+                            TimeSpan durationSinceExpirey = DateTime.Now - expireyDate;
+                            Dictionary<string, object> newLastHour = new Dictionary<string, object>
+                            {
+                                {"last_hour", lastHour - Convert.ToInt32(durationSinceExpirey.TotalHours)},
+                            };
+                            databaseLoader.UpdateData("active_users", newLastHour, String.Format("user_id = {0}", user_id));
+
+                            Dictionary<string, object> newOffer = new Dictionary<string, object>
+                            {
+                                {"is_logged_out", 1}
+                            };
+                            databaseLoader.UpdateData("user_offer", newOffer, String.Format("user_id = {0} AND is_expired = 1 AND is_logged_out = 0", user_id));
+                        }
+
                         int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                         int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                         string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss");
@@ -316,6 +336,24 @@ namespace Center_Maneger.View
                     List<object> is_expired = databaseLoader.SelectData("user_offer", "is_expired", String.Format("user_id = {0} AND is_expired = 0", user_id));
                     if (is_expired.Count == 0)
                     {
+                        List<object> is_logged_out = databaseLoader.SelectData("user_offer", "is_logged_out", String.Format("user_id = {0} AND is_expired = 1 AND is_logged_out = 0", user_id));
+                        if (is_logged_out.Count == 1)
+                        {
+                            DateTime expireyDate = Convert.ToDateTime(databaseLoader.SelectData("user_offer", "expirey_date", String.Format("user_id = {0} AND is_logged_out = 0 AND is_expired = 1", user_id))[0]);
+                            int lastHour = Convert.ToInt32(databaseLoader.SelectData("active_users", "last_hour", String.Format("user_id = {0}",user_id))[0]);
+                            TimeSpan durationSinceExpirey = DateTime.Now - expireyDate;
+                            Dictionary<string, object> newLastHour = new Dictionary<string, object>
+                            {
+                                {"last_hour", lastHour - Convert.ToInt32(durationSinceExpirey.TotalHours)},
+                            };
+                            databaseLoader.UpdateData("active_users", newLastHour,  String.Format("user_id = {0}",user_id));
+
+                            Dictionary<string, object> newOffer = new Dictionary<string, object>
+                            {
+                                {"is_logged_out", 1}
+                            };
+                            databaseLoader.UpdateData("user_offer", newOffer, String.Format("user_id = {0} AND is_expired = 1 AND is_logged_out = 0", user_id));
+                        }
                         int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                         int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                         string end_date = (DateTime.Parse(enter_date).AddDays(31)).ToString("yyyy-MM-dd HH:mm:ss");

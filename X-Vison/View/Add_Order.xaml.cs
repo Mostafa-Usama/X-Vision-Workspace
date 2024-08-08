@@ -23,21 +23,23 @@ namespace Center_Maneger.View
         public string className;
         public int chair_num;
         Dictionary<int, int> basket = new Dictionary<int, int>();
-        List<Tuple<int, string, int, double,string>> products = databaseLoader.GetProductsData();
-        Dictionary<int, Tuple<int, string, int, double,string>> productDict;
+        List<Tuple<int, string, int, double,string, double>> products = databaseLoader.GetProductsData();
+        Dictionary<int, Tuple<int, string, int, double, string, double>> productDict;
         Dictionary<int, int> lastOrder = null;
         string window;
+        bool isTeam ;
             
         public Add_Order(string win)
         {
             InitializeComponent();
             window = win;
             productDict = products.ToDictionary(p => p.Item1);
-
+       
         }
         private void load_data(object sender, RoutedEventArgs e)
         {
             string userName = Convert.ToString(databaseLoader.SelectData("users", "name", String.Format("id = {0}", user_id))[0]);
+            isTeam = userName == "تيم" ? true : false;
             username_label.Text = userName;
             if ( window == "chair") {
                 chair.Text = chair_num.ToString();
@@ -115,7 +117,7 @@ namespace Center_Maneger.View
                 };
                 TextBlock product_cost = new TextBlock
                 {
-                    Text = Convert.ToString(products[i].Item4) + " جنيه",
+                    Text = Convert.ToString(!isTeam ? products[i].Item4 : products[i].Item6) + " جنيه",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
@@ -135,7 +137,7 @@ namespace Center_Maneger.View
                 {
                     Width = border.Width * 0.3,
                     Height = border.Height * 0.3,
-                    Source = new BitmapImage(new Uri("pack://application:,,,/img/kitchen icon2.png")),
+                    Source = new BitmapImage(new Uri(String.Format("pack://application:,,,/img/{0}.png", products[i].Item5))),
                 };
 
                 stackPanel.Children.Add(product_icon);
@@ -275,7 +277,7 @@ namespace Center_Maneger.View
                 };
                 TextBlock product_cost = new TextBlock
                 {
-                    Text = Convert.ToString(products.Item4) + " جنيه",
+                    Text = Convert.ToString(!isTeam ? products.Item4 : products.Item3) + " جنيه",
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
@@ -286,7 +288,7 @@ namespace Center_Maneger.View
                 {
                     Width = border.Width * 0.25,
                     Height = border.Height * 0.25,
-                    Source = new BitmapImage(new Uri("pack://application:,,,/img/kitchen icon2.png")),
+                    Source = new BitmapImage(new Uri(String.Format("pack://application:,,,/img/{0}.png", products.Item5))),
                 };
                 stackPanel.Children.Add(product_icon);
                 stackPanel.Children.Add(product_name);
@@ -366,7 +368,7 @@ namespace Center_Maneger.View
     
         foreach (var item in basket)
         {
-            Tuple<int, string, int, double,string> product = productDict[item.Key];
+            Tuple<int, string, int, double, string, double> product = productDict[item.Key];
             if (item.Value > product.Item3)
             {
                 MessageBox.Show(String.Format(" لا يوجد كمية كافية من ({0})  ", product.Item2), "خطأ", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -389,7 +391,7 @@ namespace Center_Maneger.View
             else if (basket[item.Key] != item.Value)
             {
                 int amount = productDict[item.Key].Item3;
-                double cost = productDict[item.Key].Item4;
+                double cost = isTeam ? productDict[item.Key].Item6 : productDict[item.Key].Item4;
                 Dictionary<string, object> updatedAmount = new Dictionary<string, object>{
                             {"amount", basket[item.Key]} ,
                             {"cost", basket[item.Key] * cost},
@@ -406,7 +408,7 @@ namespace Center_Maneger.View
         {
             if (!lastOrder.ContainsKey(item.Key))
             {
-                double cost = productDict[item.Key].Item4;
+                double cost = isTeam ? productDict[item.Key].Item6 : productDict[item.Key].Item4;
                 int amount = productDict[item.Key].Item3;
                 Dictionary<string, object> order = new Dictionary<string, object>{
                             {"user_id", user_id},

@@ -149,7 +149,7 @@
                         </Button>
                         <Button Width="120" Style="{StaticResource tabbtn}" Tag="أسعار الزيارات" Click="openUserControl" Name="btn3" BorderThickness="0" Background="#00DDDDDD" Padding="5">
                             <StackPanel>
-                                <Image Source="img/price icon.png" Width="40" Height="35" />
+                                <Image Source="img/cash.png" Width="40" Height="35" />
                                 <TextBlock Text="أسعار الزيارات" Style="{StaticResource TextBlockStyle}"/>
                             </StackPanel>
                         </Button>

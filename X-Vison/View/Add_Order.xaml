@@ -55,31 +55,31 @@
                 </Button>
                     <Button Name="hotdrink_btn" Tag="مشروبات ساخنة" Click="filter_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
-                        <Image Source="/img/icons8-hot-drink-100 (1).png" Height="45" />
+                        <Image Source="/img/مشروبات ساخنة.png" Height="45" />
                         <TextBlock TextWrapping="Wrap" Text="مشروبات ساخنة" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
                     <Button Name="colddrink_btn"  Tag="مشروبات باردة" Click="filter_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
-                        <Image Source="/img/coca.png" Height="45" />
+                        <Image Source="/img/مشروبات باردة.png" Height="45" />
                         <TextBlock TextWrapping="Wrap" Text="مشروبات باردة" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
                     <Button Name="snacks_btn"  Tag="باتيه و بسكوت" Click="filter_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
-                        <Image Source="/img/bread (3).png" Height="40" />
+                        <Image Source="/img/باتيه و بسكوت.png" Height="40" />
                         <TextBlock TextWrapping="Wrap" Text="باتيه و بسكوت" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
                     <Button Name="chips_btn"  Tag="شيبسي" Click="filter_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                     <StackPanel>
-                        <Image Source="/img/chips.png" Height="50" />
+                        <Image Source="/img/شيبسي.png" Height="50" />
                         <TextBlock TextWrapping="Wrap" Text="شيبسي" Style="{StaticResource TextBlockStyle}"/>
                     </StackPanel>
                 </Button>
                     <Button Name="otherproduct_btn"  Tag="منتجات اخرى" Click="filter_products" Margin="5" Height="90" Style="{StaticResource Roundedbtn}">
                         <StackPanel>
-                            <Image Source="/img/snacks.png" Height="40" />
+                            <Image Source="/img/منتجات اخرى.png" Height="40" />
                             <TextBlock TextWrapping="Wrap" Text="منتجات اخرى" Style="{StaticResource TextBlockStyle}"/>
                         </StackPanel>
                     </Button>
