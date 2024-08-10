@@ -41,7 +41,7 @@
                 </Button>
             
                 <TextBox Margin="50 0 0 0"  Name="searchTB" Height="30" Width="200" TextChanged="SearchUser" Style="{StaticResource RoundedTextBox}" Padding="4"/>
-                <Button Margin="0 0 20 0" IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
+                <Button Margin="20 0" IsDefault="True" x:Name="searchbtn" Background="Transparent" Height="50" Width="100" Style="{StaticResource Roundedbtn}" Click="SearchUser">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/search (2).png" Height="40"/>
                         <TextBlock Text="بحث" Style="{StaticResource TextBlockStyle}" VerticalAlignment="Center"/>

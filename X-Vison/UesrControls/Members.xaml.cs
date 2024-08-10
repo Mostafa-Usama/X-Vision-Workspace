@@ -104,6 +104,11 @@ namespace Center_Maneger.UesrControls
                         MessageBox.Show("هذا العضو محجوز له مقعد او غرفة بالفعل", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
+                    Dictionary<string, object> data  = databaseLoader.AddDeletedRecord(user_id, "users");
+                    
+
+                    databaseLoader.InsertRecord("deleted_users", data);
+                    
                     databaseLoader.DeleteRecord("users", "phone", phone);
                     load_data();
                 }

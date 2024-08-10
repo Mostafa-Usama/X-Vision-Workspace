@@ -32,8 +32,8 @@ namespace Center_Maneger.UesrControls
         {
             try
             {
-                data_grid.ItemsSource = databaseLoader.LoadData("prices").DefaultView;
-
+                data_grid.ItemsSource = databaseLoader.LoadData("prices", "ORDER BY from_date").DefaultView;
+                
             }
             catch (Exception )
             {

@@ -254,7 +254,6 @@ namespace Center_Maneger.UesrControls
         private void kitchen_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
-
             int chair = Convert.ToInt32(btn.Tag);
             int id = int.Parse(btn.Name.Remove(0, 4));
             Add_Order addOrderWin = new Add_Order("chair");

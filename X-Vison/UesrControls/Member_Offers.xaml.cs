@@ -115,7 +115,7 @@ namespace Center_Maneger.UesrControls
                             {"last_hour", 0}
                         };
                         databaseLoader.UpdateData("active_users", resetLastHour, String.Format("user_id = {0}",user_id));
-                         Task.Run(() => MainWindow.timer_ElapsedAsync(null, null));
+                        MainWindow.timer_ElapsedAsync(null, null);
                         load_data(Convert.ToBoolean(expired_offers.IsChecked));
                         return;
                     }

@@ -13,11 +13,11 @@ namespace Center_Maneger
     {
         private static string _connectionString = "Data Source=database.db;Version=3;";
 
-         public static DataTable LoadData(string tableName) // used to fill tabs in settings
+         public static DataTable LoadData(string tableName, string additionalInfo = "") // used to fill tabs in settings
         {
             try
             {
-                string query = String.Format("SELECT * FROM {0}",tableName);
+                string query = String.Format("SELECT * FROM {0} ",tableName) + additionalInfo ;
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
                     SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(query, connection);
@@ -429,10 +429,18 @@ namespace Center_Maneger
             try
             {
 
-                string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
-                                 FROM users u
-                                 JOIN user_records ur ON u.id= ur.user_id
-                                 WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate ";
+               string query = @"SELECT u.name, u.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
+                                FROM users u
+                                JOIN user_records ur ON u.id= ur.user_id
+                                WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate
+
+                                UNION ALL
+
+                                SELECT du.name, du.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
+                                FROM deleted_users du
+                                JOIN user_records ur ON du.id = ur.user_id
+                                WHERE ur.leave_date >= @fromDate AND ur.leave_date <= @toDate";
+
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Open();
@@ -500,12 +508,23 @@ namespace Center_Maneger
             try
             {
 
-                string query = @"SELECT k.product_name, SUM(uk.amount) as total_amount , SUM(uk.cost) as total_cost
-                                FROM kitchen k
-                                JOIN user_kitchen uk ON k.id= uk.product_id
-                            
-                                WHERE uk.is_logged_out = 1 AND uk.user_id in (SELECT user_id FROM user_records  WHERE leave_date >= @fromDate AND leave_date <= @toDate )
-                                GROUP BY k.product_name";
+                string query = @" SELECT combined.product_name, SUM(combined.amount) as total_amount, SUM(combined.cost) as total_cost
+                                FROM (
+                                    SELECT k.product_name, uk.amount, uk.cost
+                                    FROM kitchen k
+                                    JOIN user_kitchen uk ON k.id = uk.product_id
+                                    WHERE uk.leave_date >= @fromDate AND uk.leave_date <= @toDate
+    
+                                    UNION ALL
+    
+                                    SELECT dk.product_name, uk.amount, uk.cost
+                                    FROM deleted_kitchen dk
+                                    JOIN user_kitchen uk ON dk.id = uk.product_id
+                                    WHERE uk.leave_date >= @fromDate AND uk.leave_date <= @toDate
+                                ) combined
+                                GROUP BY combined.product_name
+                                ORDER BY combined.product_name";
+
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Open();
@@ -525,7 +544,8 @@ namespace Center_Maneger
             }
             catch (Exception)
             {
-            return null;
+                MessageBox.Show("خطأ في تحميل بيانات البوفيه");
+                return dataTable;
                 
             }
         }
@@ -733,5 +753,78 @@ namespace Center_Maneger
             
         }
 
+
+        public static Dictionary<string, object> AddDeletedRecord(int tableId, string table)
+        {
+            Dictionary<string, object> data = null;
+
+            try
+            {
+
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();// افتكر عدد الساعات الباقية من الباقة
+                    string query = String.Format(" SELECT  * FROM {0} WHERE id = @id", table);
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", tableId);
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                if (table == "users")
+                                {
+                                    int id = reader.GetInt32(0);
+                                    string name = reader.GetString(1);
+                                    string phone = reader.GetString(2);
+                                    int fId = reader.GetInt32(3);
+                                    int jId = reader.GetInt32(4);
+                                    string level = reader.GetString(5);
+
+                                    data = new Dictionary<string, object> {
+                                        {"id", id},
+                                        {"name", name},
+                                        {"phone", phone},
+                                        {"faculty_id", fId},
+                                        {"job_id", jId},
+                                        {"level", level},
+                                   
+                                    };
+                                }
+                                else
+                                {
+                                    int id = reader.GetInt32(0);
+                                    string name = reader.GetString(1);
+                                    int amount= reader.GetInt32(2);
+                                    double purchase = reader.GetDouble(3);
+                                    double sell = reader.GetDouble(4);
+                                    string type = reader.GetString(5);
+                                    data = new Dictionary<string, object> {
+                                        {"id", id},
+                                        {"product_name", name},
+                                        {"amount", amount},
+                                        {"purchase_cost", purchase},
+                                        {"sell_cost", sell},
+                                        {"product_type", type},
+                                   
+                                    };
+                                }
+
+                               
+                            }
+                        }
+                    }
+                }
+                return data;
+              
+            }
+            catch (Exception)
+            {
+                return data;
+            }
+
+        }
     }
 }

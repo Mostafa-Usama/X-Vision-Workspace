@@ -49,7 +49,7 @@ namespace Center_Maneger
             timer.Elapsed += timer_ElapsedAsync;
             timer.AutoReset = true;
             timer.Enabled = true;
-            Task.Run(() => timer_ElapsedAsync(null, null));  
+            timer_ElapsedAsync(null, null);  
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)
@@ -90,10 +90,6 @@ namespace Center_Maneger
 
         public static void updateOffers(int user_id, string enter_date, int last_hour, int left_hours, int spent_hours, string end_date, int offerDuration)
         {
-
-            // ميحسبش من التكلفة طول ما الباقة شغال
-            // الباقة تخلص تاريخ
-
             DateTime now = DateTime.Now;
             DateTime endDate = DateTime.Parse(end_date);
 
@@ -135,7 +131,7 @@ namespace Center_Maneger
                 }
                 if (left_hours - duration <= 0)
                 {
-                    MarkOfferAsExpired(user_id, false, DateTime.Now.AddHours(-(hours - left_hours)).ToString("yyyy-MM-dd HH:mm:ss"));
+                    MarkOfferAsExpired(user_id, false, DateTime.Now.AddHours((last_hour + left_hours - hours)).ToString("yyyy-MM-dd HH:mm:ss"));
                     return;
                 }
             

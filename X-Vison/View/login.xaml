@@ -40,7 +40,7 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <TextBlock Text=" Login "
+                    <TextBlock Text=" تسجيل الدخول "
                                Foreground="#0df6f2"
                                VerticalAlignment="Center"
                                FontSize="18"
@@ -110,24 +110,16 @@
 
                 <StackPanel Width="300"
                             Grid.Row="1"
-                            Margin="30 10 0 0"
+                            Margin="30 50 0 0"
                             HorizontalAlignment="Left">
 
-                    <TextBlock Style="{StaticResource TextBlockStyle}"
-                                Text=" Welcome To "
-                               HorizontalAlignment="Center"
+                    
+                    <Image Source="/img/logo.png" Height="60" Margin="0 -15 0 20"/>
+                    <TextBlock Text="اسم المستخدم"
                                Foreground="#0df6f2"
-                               FontWeight="Bold"
-                               FontSize="18"
-                               Margin="0 20 0 0"
-                               FontFamily="Arial"/>
-                    <Image Source="/img/logo.png" Height="60" Margin="0 15"/>
-                    <TextBlock Text="Username"
-                               Foreground="#0df6f2"
-                               FontSize="12"
+                               FontSize="16"
                                FontWeight="Medium"
-                               FontFamily="Montserrat"                             
-                               Margin="0,5,0,0"/>
+                               Margin="0 5 0 0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="22.416"/>
@@ -137,8 +129,8 @@
                         <TextBox 
                              Style = "{StaticResource RoundedTextBox}"
                              x:Name = "txtUser"
+                            FontWeight="Bold"
                              FontSize="13"
-                             FontWeight="Medium"
                              FontFamily="Arial"                            
                              Foreground="Black"
                              CaretBrush="Black"
@@ -148,7 +140,7 @@
                              VerticalContentAlignment="Center"
                              Margin="0,11,0,1"
                              Padding="5,0,0,0"
-                            Grid.Column="2" TextChanged="txtUser_TextChanged">
+                            Grid.Column="2" >
                         </TextBox>
                         <Border Background="#EEE" CornerRadius="30"
                                 Grid.Column="0" Height="30"
@@ -161,15 +153,15 @@
                         </Border>
                     </Grid>
                     <!-- ///////////////////////////////////////////////////// -->
-                    <TextBlock Text="Password"
+                    <TextBlock Text="كلمة المرور"
                    Foreground="#0df6f2"
-                   FontSize="12"
+                   FontSize="16"
                    FontWeight="Medium"
-                   FontFamily="Arial"                             
                    Margin="0,35,0,0"/>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="15"/>
                             <ColumnDefinition Width="3*" />
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
@@ -177,7 +169,7 @@
                      Style = "{StaticResource RoundedPassBox}"
                      x:Name = "user_password"
                      FontSize="13"
-                     FontWeight="Medium"
+                     FontWeight="Bold"
                      FontFamily="Arial"                            
                      Foreground="Black"
                      CaretBrush="Black"
@@ -187,14 +179,14 @@
                      VerticalContentAlignment="Center"
                      Margin="0,11,0,1"
                      Padding="5,0,0,0"
-                     Grid.Column="1" Grid.ColumnSpan="2">
+                     Grid.Column="2" Grid.ColumnSpan="2">
                         </PasswordBox>
                         <Border Background="#EEE" CornerRadius="30"
                     Grid.Column="0" Height="30"
                     Width="30"
                     Margin="0 10 10 0"
                             BorderBrush="#1EA5AE"
-                            BorderThickness="2,2,2,2">
+                            BorderThickness="2,2,2,2" Grid.ColumnSpan="2">
                             <Image Source="/img/key-icon.png"                                      
                         Stretch="None" />
                         </Border>
@@ -205,11 +197,9 @@
                     <Button IsDefault="True"
                             Name="loginbtn"
                             Margin="0 30 0 0"
-                            Width="120"
                             Height="50"                        
                             Foreground="#0df6f2"
                             FontSize="18" 
-                            FontFamily="Arial"
                             Cursor="Hand" FontWeight="Bold" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"                                                       
@@ -217,7 +207,7 @@
                             Background="Transparent"
                             Style="{StaticResource Roundedbtn}">
                         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                            <TextBlock Style="{StaticResource TextBlockStyle}" Foreground="#0df6f2" Text="Login" VerticalAlignment="Center"/>
+                            <TextBlock Style="{StaticResource TextBlockStyle}" Foreground="#0df6f2" Text="تسجيل دخول" VerticalAlignment="Center"/>
                             <Image Source="/img/login2.png"/>
                         </StackPanel>
                     </Button>

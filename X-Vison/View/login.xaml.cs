@@ -61,7 +61,7 @@ namespace Center_Maneger.View
             }
             else
             {
-                MessageBox.Show("Invalid username or password","Falied", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("اسم المستخدم أو كلمة المرور خطأ","خطا", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
         private bool ValidateLogin(string username, string password)
@@ -80,9 +80,6 @@ namespace Center_Maneger.View
             }
         }
 
-        private void txtUser_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      
     }
 }

@@ -22,14 +22,7 @@ namespace Center_Maneger.UesrControls
     public partial class Kitchen_Settings : UserControl
     {
         private DataRowView selectedRow;
-        List<string> type_of_product = new List<string>() 
-        {
-            "مشروبات ساخنة",
-            "مشروبات باردة",
-            "باتيه و بسكوت",
-            "شيبسي",
-            "منتجات اخرى",
-        };
+       
        
         public Kitchen_Settings()
         {
@@ -42,7 +35,14 @@ namespace Center_Maneger.UesrControls
             try
             {
                 data_grid.ItemsSource = databaseLoader.LoadData("kitchen").DefaultView;
-
+                List<string> type_of_product = new List<string>() 
+                    {
+                        "مشروبات ساخنة",
+                        "مشروبات باردة",
+                        "باتيه و بسكوت",
+                        "شيبسي",
+                        "منتجات اخرى",
+                    };
                 product_type_combo.ItemsSource = type_of_product;
             }
             catch (Exception)
@@ -132,11 +132,24 @@ namespace Center_Maneger.UesrControls
         {
             if (selectedRow != null) // if a record is selected 
             {
-
+                
                 var result = MessageBox.Show("هل أنت متأكد من حذف هذا الصف؟", "تأكيد", MessageBoxButton.YesNo); // رسالة تأكيد
                 if (result == MessageBoxResult.Yes) // if he chooses YES
                 {
+
+
                     string productName = Convert.ToString((selectedRow["product_name"])); // بجيب اسم العمود اللي واقف عليه تقاطعا مع الصف اللي انا مختاره عشان اعرف أجيب اسم الكلاس
+                    int productId = Convert.ToInt32(databaseLoader.SelectData("kitchen", "id", String.Format("product_name = \"{0}\" ", productName))[0]);
+                    List<object> orders = databaseLoader.SelectData("user_kitchen", "product_id", String.Format("product_id = {0} AND is_logged_out = 0", productId));
+                    if (orders.Count != 0)
+                    {
+                        MessageBox.Show("لا يمكن حذف المنتج, يوجد طلبات بهذا المنتج  ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    Dictionary<string, object> data = databaseLoader.AddDeletedRecord(productId, "kitchen");
+
+
+                    databaseLoader.InsertRecord("deleted_kitchen", data);
                     databaseLoader.DeleteRecord("kitchen", "product_name", productName);
                     load_data();
                 }

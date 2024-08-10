@@ -14,21 +14,21 @@
             </Border>
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="100" Content="اسم المنتج:" Margin="0 0 10 0"/>
+            <Label Style="{StaticResource labelStyle}" Content="اسم المنتج:" Margin="0 0 10 0"/>
             <TextBlock Style="{StaticResource TextBlockStyle}"  Width="100" Name="product_name_label"  />
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Width="100" Content="الكمية:" Margin="0 0 10 0" />
+            <Label Style="{StaticResource labelStyle}"  Content="الكمية:" Margin="0 0 10 0" />
             <TextBox  FontSize="16" FontWeight="Bold" Style="{StaticResource RoundedTextBox}" Width="80"  Name="amount_input"   />
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}" Width="100" Content="نوع المنتج:" Margin="0 0 10 0" />
-            <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="type_label"   />
+            <Label Style="{StaticResource labelStyle}" Content="نوع المنتج:" Margin="0 0 10 0" />
+            <TextBlock Style="{StaticResource TextBlockStyle}" Name="type_label"   />
         </StackPanel>
         
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر الشراء:" Margin="0 0 10 0" />
-            <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="purchase_cost_label"   />
+            <Label Style="{StaticResource labelStyle}"  Content="سعر الشراء:" Margin="0 0 10 0" />
+            <TextBlock Style="{StaticResource TextBlockStyle}" Name="purchase_cost_label"   />
 
         </StackPanel>
         <StackPanel   Orientation="Horizontal" FlowDirection="RightToLeft">

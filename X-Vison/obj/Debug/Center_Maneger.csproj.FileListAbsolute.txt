@@ -191,3 +191,4 @@ D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\UesrControls\Kitchen_Settings.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Add_Order.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Edit_Product.g.cs
 D:\Share-Yard-WORKSPACE\X-Vison\obj\Debug\View\Product_Info.g.cs
+E:\Projects\My projects\X-Vision\Share-Yard-WORKSPACE\X-Vison\obj\Debug\Center_Maneger.csprojResolveAssemblyReference.cache

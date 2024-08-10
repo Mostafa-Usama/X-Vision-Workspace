@@ -99,7 +99,7 @@ namespace Center_Maneger.View
             string enter_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             
             add_active_user(name, phone, enter_date);
-             Task.Run(() => MainWindow.timer_ElapsedAsync(null, null));
+             MainWindow.timer_ElapsedAsync(null, null);
         }
 
         private void new_user(object sender, RoutedEventArgs e)
@@ -353,6 +353,14 @@ namespace Center_Maneger.View
                                 {"is_logged_out", 1}
                             };
                             databaseLoader.UpdateData("user_offer", newOffer, String.Format("user_id = {0} AND is_expired = 1 AND is_logged_out = 0", user_id));
+                        }
+                        else
+                        {
+                            Dictionary<string, object> newLastHour = new Dictionary<string, object>
+                            {
+                                {"last_hour", 0},
+                            };
+                            databaseLoader.UpdateData("active_users", newLastHour, String.Format("user_id = {0}", user_id));
                         }
                         int offer_id = Convert.ToInt32(databaseLoader.SelectData("offers", "id", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);
                         int hours = Convert.ToInt32(databaseLoader.SelectData("offers", "hours", String.Format("offer_name = \"{0}\" ", offerComboBox.SelectedItem.ToString()))[0]);

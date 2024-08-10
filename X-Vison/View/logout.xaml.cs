@@ -188,7 +188,8 @@ namespace Center_Maneger.View
                 databaseLoader.InsertRecord("user_records", data);
 
                 Dictionary<string, object> logged_out = new Dictionary<string, object>{
-                    {"is_logged_out", 1}
+                    {"is_logged_out", 1},
+                    {"leave_date", leave_date},
                 };
                 databaseLoader.UpdateData("user_kitchen", logged_out, String.Format("user_id = {0} AND is_logged_out = 0", user_id));
                 isClicked = true;
