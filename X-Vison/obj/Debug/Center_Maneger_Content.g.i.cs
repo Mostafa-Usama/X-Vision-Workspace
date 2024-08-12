@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/icons8-vending-machine-100.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/add.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("img/minus.png")]
 
 

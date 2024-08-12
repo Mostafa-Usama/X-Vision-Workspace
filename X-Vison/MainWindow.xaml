@@ -23,7 +23,7 @@
                             Background="Transparent"
                             BorderBrush="Transparent"
                             BorderThickness="1"
-                            CornerRadius="10"
+                            CornerRadius="5"
                             Margin="2">
                                 <ContentPresenter x:Name="ContentSite"
                                           VerticalAlignment="Center"
@@ -51,8 +51,8 @@
                 <Setter.Value>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding}" VerticalAlignment="Center"/>
-                            <Button Width="20" Height="20" Margin="5,0,0,0" Background="White" Style="{StaticResource Roundedbtn}" Click="close_tab" BorderBrush="#00707070">
+                            <TextBlock Text="{Binding}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button Width="20" Height="20" Margin="5,0,0,0" HorizontalAlignment="Right" Background="White" Style="{StaticResource Roundedbtn}" Click="close_tab" BorderBrush="#00707070">
                                 <Button.Content>
                                     <Image Source="/img/close.png"/>
                                 </Button.Content>

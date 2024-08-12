@@ -201,7 +201,7 @@ namespace Center_Maneger.UesrControls
             string searchname = searchTB.Text.Trim();
             DataView prodcutView = data_grid.ItemsSource as DataView;
             prodcutView.RowFilter = string.Format("product_name LIKE '{0}%'", searchname);
-          
+            
         }
     }
 }

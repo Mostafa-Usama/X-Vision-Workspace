@@ -201,11 +201,17 @@ namespace Center_Maneger.View
                     Orientation = Orientation.Horizontal,
                     Margin = new Thickness(5, 0, 5, 0),
                 };
+
+                Image add_icon = new Image
+                {
+                    Source = new BitmapImage(new Uri("pack://application:,,,/img/add.png")),
+                };
+
                 Button add = new Button
                 {
-                    Content = "+",
+                    Content = add_icon,
+                    Style = (Style)Application.Current.FindResource("Roundedbtn"),
                     VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold,
                     Background = Brushes.Transparent,
                     BorderBrush = Brushes.Transparent,
                     Foreground = Brushes.White,
@@ -213,15 +219,18 @@ namespace Center_Maneger.View
                 };
                 add.Click += add_product;
 
-
+                Image minus_icon = new Image
+                {
+                    Source = new BitmapImage(new Uri("pack://application:,,,/img/minus.png")),
+                };
                 Button subtract = new Button
                 {
-                    Content = "-",
+                    Content = minus_icon,
+                    Style = (Style)Application.Current.FindResource("Roundedbtn"),
                     VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold,
                     Background = Brushes.Transparent,
                     BorderBrush = Brushes.Transparent,
-                    Foreground = Brushes.White,
+                    Margin = new Thickness(5,0, 5, 0),
                     Tag = productId.ToString(),
                 };
                 subtract.Click += subtract_product;
@@ -229,17 +238,20 @@ namespace Center_Maneger.View
                 btnStack.Children.Add(add);
                 btnStack.Children.Add(subtract);
                 ///////////////////////////////////////////////////////
+                ///
+                Image remove_icon = new Image
+                {
+                    Source = new BitmapImage(new Uri("pack://application:,,,/img/close.png")),
+                };
                 Button remove = new Button
                 {
-                    Content = "x",
+                    Content = remove_icon,
+                    Style = (Style)Application.Current.FindResource("Roundedbtn"),
                     HorizontalAlignment = HorizontalAlignment.Right,
                     VerticalAlignment = VerticalAlignment.Center,
-                    FontWeight = FontWeights.Bold,
-                    Background = Brushes.IndianRed,
                     BorderBrush = Brushes.Transparent,
-                    Padding = new Thickness(5),
+                    Background = Brushes.Transparent,
                     Margin = new Thickness(5, 0, 5, 0),
-                    Foreground = Brushes.White,
                     Tag = productId.ToString(),
                 };
                 remove.Click += remove_product;

@@ -171,6 +171,7 @@ namespace Center_Maneger.UesrControls
                     Button info_member = new Button
                     {
                         Margin = new Thickness(5, 0, 0, 0),
+                        Style = (Style)Application.Current.FindResource("Roundedbtn"),
                         Content = infoIcon,
                         Height = infoStack.Height * .9,
                         Background = null,
@@ -182,6 +183,7 @@ namespace Center_Maneger.UesrControls
                     Button notes = new Button
                     {
                         Content = notesIcon,
+                        Style = (Style)Application.Current.FindResource("Roundedbtn"),
                         Height = infoStack.Height * .9,
                         Margin = new Thickness(5, 0, 5, 0),
                         Background = null,
@@ -193,6 +195,7 @@ namespace Center_Maneger.UesrControls
                     Button kitchen = new Button
                     {
                         Content = kitchenIcon,
+                        Style = (Style)Application.Current.FindResource("Roundedbtn"),
                         Height = infoStack.Height * .9,
                         Background = null,
                         BorderThickness = new Thickness(0),
