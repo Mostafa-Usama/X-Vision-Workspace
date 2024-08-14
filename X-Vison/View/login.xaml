@@ -21,8 +21,8 @@
 
         </Border.Background>
         <Border CornerRadius="30"
-            Background="#D809094A"
-            BorderBrush="#FF0F7394"
+            Background="#D8015249"
+            BorderBrush="{StaticResource bgtab}"
             BorderThickness="5"
                 Opacity="1">
 
@@ -41,7 +41,7 @@
 
 
                     <TextBlock Text=" تسجيل الدخول "
-                               Foreground="#0df6f2"
+                               Foreground="#ffffff"
                                VerticalAlignment="Center"
                                FontSize="18"
                                FontWeight="Bold"
@@ -86,10 +86,10 @@
                             Click="Close_Win">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#FF81AE"/>
+                                <Setter Property="Background" Value="#FF71BC57"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFEB1E9C"/>
+                                        <Setter Property="Background" Value="#FF3AC70A"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -114,9 +114,9 @@
                             HorizontalAlignment="Left">
 
                     
-                    <Image Source="/img/logo.png" Height="60" Margin="0 -15 0 20"/>
+                    <Image Source="/img/logo-.png" Height="100" Margin="0 -20 0 10"/>
                     <TextBlock Text="اسم المستخدم"
-                               Foreground="#0df6f2"
+                               Foreground="#ffffff"
                                FontSize="16"
                                FontWeight="Medium"
                                Margin="0 5 0 0"/>
@@ -148,13 +148,13 @@
                                 Margin="0 10 10 0"
                                 BorderBrush="#1EA5AE"
                                 BorderThickness="2,2,2,2" Grid.ColumnSpan="2">
-                            <Image Source="/img/user-icon.png"                                      
-                                    Stretch="None" />
+                            <Image Source="/img/members-icon.png"                                      
+                                   Height="20"  />
                         </Border>
                     </Grid>
                     <!-- ///////////////////////////////////////////////////// -->
                     <TextBlock Text="كلمة المرور"
-                   Foreground="#0df6f2"
+                   Foreground="#ffffff"
                    FontSize="16"
                    FontWeight="Medium"
                    Margin="0,35,0,0"/>
@@ -187,8 +187,8 @@
                     Margin="0 10 10 0"
                             BorderBrush="#1EA5AE"
                             BorderThickness="2,2,2,2" Grid.ColumnSpan="2">
-                            <Image Source="/img/key-icon.png"                                      
-                        Stretch="None" />
+                            <Image Source="/img/password.png"                                      
+                         />
                         </Border>
                     </Grid>
 
@@ -198,7 +198,7 @@
                             Name="loginbtn"
                             Margin="0 30 0 0"
                             Height="50"                        
-                            Foreground="#0df6f2"
+                            Foreground="#ffffff"
                             FontSize="18" 
                             Cursor="Hand" FontWeight="Bold" 
                             HorizontalAlignment="Center" 
@@ -207,13 +207,13 @@
                             Background="Transparent"
                             Style="{StaticResource Roundedbtn}">
                         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                            <TextBlock Style="{StaticResource TextBlockStyle}" Foreground="#0df6f2" Text="تسجيل دخول" VerticalAlignment="Center"/>
+                            <TextBlock Style="{StaticResource TextBlockStyle}" Foreground="#ffffff" Text="تسجيل دخول" VerticalAlignment="Center"/>
                             <Image Source="/img/login2.png"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
 
-                <Image Source="/img/Computer login-bro.png"
+                <Image Source="/img/Computer login-bro (2).png"
                        Grid.Row="1"
                        HorizontalAlignment="Right"
                        Margin="0 0 20 0"

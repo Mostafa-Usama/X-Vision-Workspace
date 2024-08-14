@@ -65,7 +65,7 @@ namespace Center_Maneger.UesrControls
                 mainbtn.Click += mainbtn_click;
                 mainbtn.Margin = new Thickness(1);
                 mainbtn.BorderThickness = new Thickness(0);
-                mainbtn.Background = Brushes.LightGray;
+                mainbtn.Background = new SolidColorBrush(Color.FromArgb(255, 195, 195, 205));
                 mainbtn.Tag = Convert.ToString(i + 1);
 
                 Border border = new Border

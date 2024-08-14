@@ -17,7 +17,7 @@
         <StackPanel Orientation="Vertical" >
             <Grid>
                 <StackPanel HorizontalAlignment="Center">
-                <Border  Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
+                <Border  Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
                     <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الاعضاء" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
                 </StackPanel>
@@ -56,7 +56,7 @@
                     FontSize="16" Height="30" Padding="4 2" />
 
                     <ComboBox Width="200" x:Name="member_college" HorizontalAlignment="Left" 
-                    FontSize="16" Height="30" Padding="2" Margin="0 20"/>
+                    FontSize="16" Height="30" Padding="2" Margin="0 20" Background="White"/>
 
                     <ComboBox Width="200" x:Name="member_job" HorizontalAlignment="Left"
                     FontSize="16" Height="30" Padding="2" />

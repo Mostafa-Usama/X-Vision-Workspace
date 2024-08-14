@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
-            <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
+            <Border Margin="0 5" Width="150" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
                     <TextBlock Style="{StaticResource TextBlockStyle}" Text="الوظائف" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
                 </Border>
             <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">

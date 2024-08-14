@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Row="0">
 
-            <Border Margin="0 5" Width="160" BorderBrush="{StaticResource Whitetext}" Background="#FF10D07C" CornerRadius="7" BorderThickness="5">
+            <Border Margin="0 5" Width="160" BorderBrush="{StaticResource Whitetext}" Background="{StaticResource hoverbtn}" CornerRadius="7" BorderThickness="5">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="بيانات الشيفتات" FontSize="18" FontWeight="Bold" Foreground="{StaticResource text}" HorizontalAlignment="Center"/>
             </Border>
 

@@ -34,12 +34,12 @@
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="lightgreen"/>
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource hoverbtn}"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="#0f292f"/>
                                 <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
-                                <Setter TargetName="Border" Property="Background" Value="#14a098"/>
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource Whitetext}"/>
                                 <Setter TargetName="Border" Property="BorderBrush" Value="lightgreen"/>
                                 <Setter Property="Foreground" Value="Black"/>
                             </Trigger>
@@ -74,9 +74,9 @@
 
 
             <TabControl Name="settings_tab"  Padding="0" Grid.Row="0" BorderBrush="{StaticResource win}" >
-                <TabItem Tag="0"  Style="{StaticResource roundedtabitem}" BorderThickness="0" HorizontalAlignment="Right" 
-                         Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked" Margin="-3 -3 -3 0" 
-                         Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC" >
+                <TabItem Tag="0"  Style="{StaticResource roundedtabitem}"  HorizontalAlignment="Right" 
+                         Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked"  
+                         Padding="8" BorderThickness="1 1 1 0" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC" >
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/admin.png" Width="40" Height="40"/>
@@ -88,27 +88,27 @@
                     <StackPanel Orientation="Horizontal" Background="{StaticResource bgtab}"  >
                         <Button Width="120" Style="{StaticResource tabbtn}" BorderThickness="0" Background="#00DDDDDD" Tag="تغير كلمة المرور"  Name="btn11" Click="openUserControl">
                                 <StackPanel>
-                                    <Image Source="img/Chair.png" Width="40" Height="35" RenderTransformOrigin="0.562,0.5" />
+                                    <Image Source="img/password.png" Width="40" Height="40" RenderTransformOrigin="0.562,0.5" />
                                 <TextBlock  FontSize="12"  Text="تغير كلمة مرور " Style="{StaticResource TextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
                         <Button Width="120" Style="{StaticResource tabbtn}" Tag="اعدادات الغرف" BorderThickness="0" Background="#00DDDDDD" Click="backup_data">
                                 <StackPanel>
-                                    <Image Source="img/meeting-icon.png" Width="40" Height="35" />
+                                    <Image Source="img/backup.png" Width="40" Height="35" />
                                 <TextBlock  TextWrapping="Wrap" FontSize="12" Text="حفظ نسخة احتياطية" Style="{StaticResource TextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
                             <Button Width="140" Style="{StaticResource tabbtn}" Tag="الكليات"  BorderThickness="0" Background="#00DDDDDD" Padding="5" Click="restore_data">
                                 <StackPanel>
-                                    <Image Source="img/faculty icon.png" Width="40" Height="35" />
+                                <Image Source="img/sync.png" Width="40" Height="35" />
                                     <TextBlock FontSize="12" TextWrapping="Wrap" Text="استرجاع النسخة الاحتياظية" Style="{StaticResource TextBlockStyle}"/>
                                 </StackPanel>
                             </Button>
                     </StackPanel>
 
                 </TabItem>
-                
-                <TabItem Tag="1" Style="{StaticResource roundedtabitem}" BorderThickness="0" Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+
+                <TabItem Tag="1" Style="{StaticResource roundedtabitem}" BorderThickness="1 1 1 0" Background="{StaticResource bgtab}"  MouseLeftButtonUp="settings_clicked"  Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/setting.png" Width="40" Height="40"/>
@@ -162,7 +162,7 @@
                     </StackPanel>
 
                 </TabItem>
-                <TabItem BorderThickness="0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}" IsSelected="True" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+                <TabItem BorderThickness="1 1 1 0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}" IsSelected="True"  Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/employee (2).png" Width="40" Height="40"/>
@@ -208,7 +208,7 @@
                         </Button>
                     </StackPanel>
                 </TabItem>
-                <TabItem BorderThickness="0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}" Margin="-3 -3 -3 0" Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
+                <TabItem BorderThickness="1 1 1 0" Style="{StaticResource roundedtabitem}" Background="{StaticResource bgtab}"  Padding="8" FontWeight="Bold" FontSize="14" BorderBrush="#00ACACAC">
                     <TabItem.Header>
                         <StackPanel>
                             <Image Source="img/kitchen icon2.png" Width="40" Height="40"/>
