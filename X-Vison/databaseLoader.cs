@@ -826,5 +826,43 @@ namespace Center_Maneger
             }
 
         }
+
+        public static Dictionary<string,Tuple<double,double>> getprofit(List<string> names)
+        {
+            Dictionary<string, Tuple<double, double>> data = new Dictionary<string, Tuple<double, double>>();
+            double purchase = 0 , sell = 0  ;
+            string name;
+            
+            try
+            {
+
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string productNamesForQuery = string.Join("','", names);
+
+                    string query = String.Format("Select purchase_cost , sell_cost ,product_name FROM kitchen WHERE product_name IN ('{0}')", productNamesForQuery);
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                purchase=reader.GetDouble(0);
+                                sell=reader.GetDouble(1);
+                                name = reader.GetString(2);
+                                data[name] = (Tuple.Create(purchase,sell));
+                            }
+                        }
+                    }
+                }
+
+                return data;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

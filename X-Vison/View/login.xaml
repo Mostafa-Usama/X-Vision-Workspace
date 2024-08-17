@@ -166,21 +166,46 @@
                             <ColumnDefinition Width="10*"/>
                         </Grid.ColumnDefinitions>
                         <PasswordBox 
-                     Style = "{StaticResource RoundedPassBox}"
-                     x:Name = "user_password"
-                     FontSize="13"
-                     FontWeight="Bold"
-                     FontFamily="Arial"                            
-                     Foreground="Black"
-                     CaretBrush="Black"
-                     BorderBrush="#FF81AE"
-                     BorderThickness="2,2,2,2"
-                     Height="28"
-                     VerticalContentAlignment="Center"
-                     Margin="0,11,0,1"
-                     Padding="5,0,0,0"
-                     Grid.Column="2" Grid.ColumnSpan="2">
+                            Style = "{StaticResource RoundedPassBox}"
+                            x:Name = "user_password"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            FontFamily="Arial"                            
+                            Foreground="Black"
+                            CaretBrush="Black"
+                            BorderBrush="#FF81AE"
+                            BorderThickness="2,2,2,2"
+                            Height="28"
+                            VerticalContentAlignment="Center"
+                            Margin="0,5,0,1"
+                            Padding="5,0,0,0"
+                            Grid.Column="2" Grid.ColumnSpan="2">
                         </PasswordBox>
+                        <TextBox 
+                            Style = "{StaticResource RoundedTextBox}"
+                            x:Name = "user_password_tb"
+                            FontSize="13"
+                            FontWeight="Bold"
+                            FontFamily="Arial"                            
+                            Foreground="Black"
+                            CaretBrush="Black"
+                            BorderBrush="#FF81AE"
+                            BorderThickness="2,2,2,2"
+                            Height="28"
+                            Visibility="Collapsed"
+                            VerticalContentAlignment="Center"
+                            Margin="0,5,0,1"
+                            Padding="5,0,0,0"
+                            Grid.Column="2" Grid.ColumnSpan="2">
+                        </TextBox>
+                        <Button Name="b0" Click="showpass" VerticalAlignment="Center" 
+                                HorizontalAlignment="Right" Style="{StaticResource showpassbtn}" 
+                                Grid.Column="2" Grid.ColumnSpan="2" Padding="2 0" Width="30" Height="25" 
+                                Background="Transparent" Margin="5 5" BorderThickness="0">
+                            <Button.Content>
+                                <Image Source="/img/showpass.png" />
+                            </Button.Content>
+                        </Button>
                         <Border Background="#EEE" CornerRadius="30"
                     Grid.Column="0" Height="30"
                     Width="30"

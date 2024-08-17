@@ -22,6 +22,7 @@ namespace Center_Maneger.UesrControls
     {
 
         public string PasswordText { get; set; }
+
         public admin_setting()
         {
             InitializeComponent();
@@ -52,18 +53,20 @@ namespace Center_Maneger.UesrControls
 
         private void change_pass(object sender, RoutedEventArgs e)
         {
+
             if (cp_setting_grid.IsEnabled)
             {
-                string old_pass = pass0.Password;
+                string old_pass = pass0.Visibility == Visibility.Visible ? pass0.Password : box0.Text;
+
                 if (!string.IsNullOrEmpty(old_pass))
                 {
                     string pass = databaseLoader.SelectData("admin", "password", "username = \"setting\"")[0].ToString();
                     if (pass == old_pass)
                     {
-                        string new_pass = pass1.Password;
+                        string new_pass = pass1.Visibility == Visibility.Visible ? pass1.Password : box1.Text;
                         if (!string.IsNullOrEmpty(new_pass))
                         {
-                            string confirm_pass = pass2.Password;
+                            string confirm_pass = pass2.Visibility == Visibility.Visible ? pass2.Password : box2.Text;
                             if (!string.IsNullOrEmpty(confirm_pass))
                             {
                                 if (confirm_pass == new_pass)
@@ -72,54 +75,63 @@ namespace Center_Maneger.UesrControls
                                     {"password", new_pass} };
                                     databaseLoader.UpdateData("admin", data, "username = \"setting\"");
                                     MessageBox.Show("تم تغيير كلمة السر ", "", MessageBoxButton.OK, MessageBoxImage.Information);
-                                    pass0.Clear();
-                                    pass1.Clear();
-                                    pass2.Clear();
+
+
+
+                                    clearsetting();
+
+
                                 }
                                 else
                                 {
                                     MessageBox.Show("كلمة السر غير متطابقة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    clearsetting();
 
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("ادخل تأكيد كلمة السر", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                                clearsetting();
 
                             }
                         }
                         else
                         {
                             MessageBox.Show("ادخل كلمة السر الجديدة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                            clearsetting();
 
                         }
                     }
                     else
                     {
                         MessageBox.Show("كلمة السر القديمة غير صحيحة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        clearsetting();
 
                     }
                 }
                 else
                 {
                     MessageBox.Show("ادخل كلمة السر القديمة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    clearsetting();
+
                 }
 
 
             }
             if (cp_login_grid.IsEnabled)
             {
-                string userdb = databaseLoader.SelectData("admin", "username", "id = 1")[0].ToString();
                 string pass = databaseLoader.SelectData("admin", "password", "id = 1")[0].ToString();
-                string old_pass = op_login.Password;
+                string old_pass = pass3.Visibility == Visibility.Visible ? pass3.Password : box3.Text;
+
                 if (!string.IsNullOrEmpty(old_pass))
                 {
                     if (pass == old_pass)
                     {
-                        string new_pass = np_login.Password;
+                        string new_pass = pass4.Visibility == Visibility.Visible ? pass4.Password : box4.Text;
                         if (!string.IsNullOrEmpty(new_pass))
                         {
-                            string confirm_pass = cnp_login.Password;
+                            string confirm_pass = pass5.Visibility == Visibility.Visible ? pass5.Password : box5.Text;
                             if (!string.IsNullOrEmpty(confirm_pass))
                             {
                                 if (confirm_pass == new_pass)
@@ -130,84 +142,102 @@ namespace Center_Maneger.UesrControls
                                     databaseLoader.UpdateData("admin", data, "id = 1");
                                     MessageBox.Show("تم تغيير كلمة السر ", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                                    cnp_login.Clear();
-                                    np_login.Clear();
-                                    op_login.Clear();
+                                    clearlogin();
+
+
+
                                 }
                                 else
                                 {
                                     MessageBox.Show("كلمة السر غير متطابقة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                                    clearlogin();
                                 }
                             }
                             else
                             {
                                 MessageBox.Show("ادخل تأكيد كلمة السر", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                                clearlogin();
                             }
                         }
                         else
                         {
                             MessageBox.Show("ادخل كلمة السر الجديدة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                            clearlogin();
 
                         }
                     }
                     else
                     {
                         MessageBox.Show("كلمة السر القديمة غير صحيحة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        clearlogin();
 
                     }
                 }
                 else
                 {
                     MessageBox.Show("ادخل كلمة السر القديمة", "خظأ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    clearlogin();
+
                 }
             }
 
         }
-        
+
         private void showpass(object sender, RoutedEventArgs e)
         {
-                 Image show = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/img/showpass.png")),
-                }; 
-                Image hide = new Image
-                {
-                    Source = new BitmapImage(new Uri("pack://application:,,,/img/blind.png")),
-                };   
-                Button showbtn = sender as Button;
+            Image show = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/showpass.png")),
+            };
+            Image hide = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/blind.png")),
+            };
+            Button showbtn = sender as Button;
 
-                string btn = showbtn.Name;
-                int index = int.Parse(btn.Substring(btn.Length - 1));
+            string btn = showbtn.Name;
+            int index = int.Parse(btn.Substring(btn.Length - 1));
 
-                PasswordBox passBox = (PasswordBox)FindName("pass" + index);
-                TextBox showBox = (TextBox)FindName("box" + index);
-
-
-                if (passBox.Visibility == Visibility.Visible)
-                {
-                    //showBox.Text = passBox.Password;
-                    passBox.Visibility = Visibility.Collapsed;
-                    showBox.Visibility = Visibility.Visible;
-                    showbtn.Content = hide;
-                }
-                else
-                {
-                    //passBox.Password = showBox.Text;
-                    passBox.Visibility = Visibility.Visible;
-                    showBox.Visibility = Visibility.Collapsed;
-                    showbtn.Content = show;
-                }
+            PasswordBox passBox = (PasswordBox)FindName("pass" + index);
+            TextBox showBox = (TextBox)FindName("box" + index);
 
 
-            
+            if (passBox.Visibility == Visibility.Visible)
+            {
+                showBox.Text = passBox.Password;
+                passBox.Visibility = Visibility.Collapsed;
+                showBox.Visibility = Visibility.Visible;
+                showbtn.Content = hide;
+            }
+            else
+            {
+                passBox.Password = showBox.Text;
+                passBox.Visibility = Visibility.Visible;
+                showBox.Visibility = Visibility.Collapsed;
+                showbtn.Content = show;
+            }
+
+
+
         }
 
-        private void passwordevent(object sender, RoutedEventArgs e)
+        void clearsetting()
         {
-            PasswordText = pass0.Password;
-            box0.Text = PasswordText;
+            pass0.Clear();
+            pass1.Clear();
+            pass2.Clear();
+            box0.Clear();
+            box1.Clear();
+            box2.Clear();
+        }
+        void clearlogin()
+        {
+            pass3.Clear();
+            pass4.Clear();
+            pass5.Clear();
+            box3.Clear();
+            box4.Clear();
+            box5.Clear();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Center_Maneger.View
         private void loginbtn_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUser.Text.Trim().ToLower();
-            string password = user_password.Password;
+            string password = user_password.Visibility == Visibility.Visible ? user_password.Password : user_password_tb.Text; ;
 
             if (ValidateLogin(username, password))
             {
@@ -80,6 +80,34 @@ namespace Center_Maneger.View
             }
         }
 
-      
+        private void showpass(object sender, RoutedEventArgs e)
+        {
+            Image show = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/showpass.png")),
+            };
+            Image hide = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/blind.png")),
+            };
+
+            if (user_password.Visibility == Visibility.Visible)
+            {
+                user_password_tb.Text = user_password.Password;
+                user_password.Visibility = Visibility.Collapsed;
+                user_password_tb.Visibility = Visibility.Visible;
+                b0.Content = hide;
+            }
+            else
+            {
+                user_password.Password = user_password_tb.Text;
+                user_password.Visibility = Visibility.Visible;
+                user_password_tb.Visibility = Visibility.Collapsed;
+                b0.Content = show;
+            }
+
+
+
+        }
     }
 }

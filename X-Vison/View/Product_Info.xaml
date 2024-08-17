@@ -15,7 +15,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}" Content="اسم المنتج:" Margin="0 0 10 0"/>
-            <TextBlock Style="{StaticResource TextBlockStyle}"  Width="100" Name="product_name_label"  />
+            <TextBlock Style="{StaticResource TextBlockStyle}"   Name="product_name_label"  />
         </StackPanel>
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
             <Label Style="{StaticResource labelStyle}"  Content="الكمية:" Margin="0 0 10 0" />
@@ -27,13 +27,13 @@
         </StackPanel>
         
         <StackPanel Margin="0 20" Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}"  Content="سعر الشراء:" Margin="0 0 10 0" />
+            <Label Style="{StaticResource labelStyle}"  Content="سعر البيع للتيم :" Margin="0 0 10 0" />
             <TextBlock Style="{StaticResource TextBlockStyle}" Name="purchase_cost_label"   />
 
         </StackPanel>
         <StackPanel   Orientation="Horizontal" FlowDirection="RightToLeft">
-            <Label Style="{StaticResource labelStyle}" Width="100" Content="سعر البيع:" Margin="0 0 10 0" />
-            <TextBlock Style="{StaticResource TextBlockStyle}" Width="100"  Name="sell_cost_label"   />
+            <Label Style="{StaticResource labelStyle}" Content="سعر البيع للعضو :" Margin="0 0 10 0" />
+            <TextBlock Style="{StaticResource TextBlockStyle}"  Name="sell_cost_label" />
         </StackPanel>
         
         <Button Style="{StaticResource Roundedbtn}" IsDefault="True" FontWeight="Bold" Background="Transparent" Click="save_product" Height="50" HorizontalAlignment="Center" Padding="5" Margin="0 20">

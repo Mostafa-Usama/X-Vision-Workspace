@@ -28,10 +28,13 @@ namespace Center_Maneger.View
 
         private void check_passowrd(object sender, RoutedEventArgs e)
         {
-
+            Image show = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/showpass.png")),
+            };
             string pass = databaseLoader.SelectData("admin", "password", "username = \"setting\"")[0].ToString();
-
-            if (password_input.Password == pass)
+            string check = password_input.Visibility == Visibility.Visible ? password_input.Password : passwordsetting.Text;
+            if (check == pass)
             {
                 correct = true;
                 this.Close();
@@ -40,9 +43,42 @@ namespace Center_Maneger.View
                 MessageBox.Show("كلمة المرور خطأ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 password_input.Clear();
                 password_input.Focus();
-
+                passwordsetting.Clear();
+                passwordsetting.Visibility = Visibility.Collapsed;
+                password_input.Visibility = Visibility.Visible;
+                b0.Content = show;
             }
           
+        }
+
+        private void showpass(object sender, RoutedEventArgs e)
+        {
+            Image show = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/showpass.png")),
+            };
+            Image hide = new Image
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/img/blind.png")),
+            };
+
+            if (password_input.Visibility == Visibility.Visible)
+            {
+                passwordsetting.Text = password_input.Password;
+                password_input.Visibility = Visibility.Collapsed;
+                passwordsetting.Visibility = Visibility.Visible;
+                b0.Content = hide;
+            }
+            else
+            {
+                password_input.Password = passwordsetting.Text;
+                password_input.Visibility = Visibility.Visible;
+                passwordsetting.Visibility = Visibility.Collapsed;
+                b0.Content = show;
+            }
+
+
+
         }
     }
 }

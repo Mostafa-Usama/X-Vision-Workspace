@@ -87,12 +87,24 @@ namespace Center_Maneger.UesrControls
             DataTable kitchenRecords = kitchenView.Table;
 
             double allKitchenCost = 0;
-
+            List<string> product_names= new List<string>();
             foreach (DataRow row in kitchenRecords.Rows)
             {
+                product_names.Add(row["product_name"].ToString());
                 allKitchenCost += Convert.ToInt64(row["total_cost"]);
             }
             totalKitchen.Text = "البوفيه = " +  allKitchenCost.ToString();
+            Dictionary<string, Tuple<double, double>> data = databaseLoader.getprofit(product_names);
+            double profit = 0;
+            foreach (DataRow row in kitchenRecords.Rows)
+            {
+                string name = row["product_name"].ToString();
+                row["ارباح المنتج"] = (data[name].Item2 - data[name].Item1) * Convert.ToInt32(row["total_amount"]);
+                profit += Convert.ToDouble(row["ارباح المنتج"]);
+
+
+            }
+            totalprofit.Text= "اجمالي الارباح = " + profit.ToString();
         }
 
 
@@ -158,7 +170,6 @@ namespace Center_Maneger.UesrControls
             {
                 e.Column.Header = "الكمية";
             }
-           
         }
 
         private void showRecords(object sender, RoutedEventArgs e)
@@ -192,6 +203,10 @@ namespace Center_Maneger.UesrControls
             DataTable userRecordsTable = databaseLoader.GetUserRecords(from, to);
             DataTable offers = databaseLoader.GetOffersData(from, to);
             DataTable kitcen = databaseLoader.GetKitchenData(from, to);
+            DataColumn profit_col = new DataColumn("ارباح المنتج");
+            kitcen.Columns.Add(profit_col);
+
+
 
             load_data(userRecordsTable, offers, kitcen);
         }
@@ -210,6 +225,8 @@ namespace Center_Maneger.UesrControls
             {
                 DataView offersView = data_grid.ItemsSource as DataView;
                 offersView.RowFilter = string.Empty;
+                DataView filteroffers = offers_grid.ItemsSource as DataView;
+                filteroffers.RowFilter = string.Empty;
             }
 
         }
@@ -225,7 +242,9 @@ namespace Center_Maneger.UesrControls
             }
             string searchname = searchTB.Text.Trim();
             DataView offersView = data_grid.ItemsSource as DataView;
+            DataView filteroffers = offers_grid.ItemsSource as DataView;
             offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
+            filteroffers.RowFilter = string.Format("name LIKE '{0}%'", searchname);
         }
 
     }

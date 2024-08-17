@@ -28,9 +28,23 @@
             <StackPanel  Margin="0 25" Orientation="Horizontal" HorizontalAlignment="Center" FlowDirection="RightToLeft" >
 
                 <TextBlock Margin="0 0 20 0" Style="{StaticResource TextBlockStyle}"  Text="من تاريخ" VerticalAlignment="Center" />
-                <DatePicker BorderThickness="2" BorderBrush="{StaticResource bgtab}"  FontSize="16" Width="180" FlowDirection="RightToLeft" Name="fromDate" VerticalAlignment="Center" />
+                <DatePicker BorderThickness="2" BorderBrush="{StaticResource bgtab}"  FontSize="16" Width="200" FlowDirection="RightToLeft" Name="fromDate" VerticalAlignment="Center"  >
+                    <DatePicker.Resources>
+                        <Style TargetType="Calendar">
+                            <Setter Property="FontSize" Value="16"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
                 <TextBlock  Style="{StaticResource TextBlockStyle}"  VerticalAlignment="Center"  Margin="30 0" Text="الي تاريخ" />
-                <DatePicker BorderThickness="2" BorderBrush="{StaticResource bgtab}" Width="180"  VerticalAlignment="Center" Name="toDate" FontSize="16" Margin="0 0 30 0" />
+                <DatePicker BorderThickness="2" BorderBrush="{StaticResource bgtab}" Width="200"  VerticalAlignment="Center" Name="toDate" FontSize="16" Margin="0 0 30 0" >
+                    <DatePicker.Resources>
+                        <Style TargetType="CalendarDayButton">
+                            <Setter Property="Width" Value="10"/>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>
+
+
 
 
                 <Button Style="{StaticResource Roundedbtn}" BorderThickness="0" Width="100" Height="40" Click="showRecords"  FontSize="16" FontWeight="Bold" Background="Transparent" >
@@ -83,7 +97,10 @@
                   FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="kitchen_grid"  ColumnWidth="*" />
             <Border Grid.Row="1" Grid.Column="2" FlowDirection="RightToLeft" BorderBrush="Black" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+
                     <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي البوفيه =" Name="totalKitchen" VerticalAlignment="Center" Margin="30 0"/>
+                    <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي الارباح = " Name="totalprofit" VerticalAlignment="Center" Margin="30 0"/>
+
                 </StackPanel>
             </Border>
         </Grid>

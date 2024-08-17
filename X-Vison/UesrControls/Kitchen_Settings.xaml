@@ -36,13 +36,13 @@
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="product_name_input" Width="150"  HorizontalAlignment="Right" 
                          FontSize="20"  Padding="2 0" />
 
-                <TextBlock Style="{StaticResource TextBlockStyle}" Text="سعر الشراء:"  VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="سعر البيع للتيم:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="purchase_cost_input" Width="70"  HorizontalAlignment="Right"
                          FontSize="20"  Padding="2 0" />
 
-                <TextBlock Style="{StaticResource TextBlockStyle}" Text="سعر البيع:"  VerticalAlignment="Center" 
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="سعر البيع للعضو:"  VerticalAlignment="Center" 
                            FontSize="20" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="sell_cost_input" Width="70"  HorizontalAlignment="Right"
