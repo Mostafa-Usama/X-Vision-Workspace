@@ -306,21 +306,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\back-image.jpg" />
-    <Resource Include="img\key-icon.png" />
     <Resource Include="img\user-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\Computer login-bro.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\BackGround.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\Computer login.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\Computer login-bro %281%29.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -335,17 +324,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\meeting icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\faculty icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\job icon.png" />
     <Resource Include="img\offer icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\price icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\delete.png" />
@@ -361,14 +344,10 @@
     <Resource Include="img\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\info.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\grid chair icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\user info.png" />
-    <Resource Include="img\kitchen icon.png" />
     <Resource Include="img\user notes.png" />
   </ItemGroup>
   <ItemGroup>
@@ -378,12 +357,8 @@
     <Resource Include="img\class chair.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\cafe.png" />
     <Resource Include="img\employee.png" />
     <Resource Include="img\setting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\Login-admin.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\Login-admin1.png" />
@@ -420,9 +395,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\login2.png" />
@@ -471,7 +443,6 @@
     <Resource Include="img\search %282%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\bread %282%29.png" />
     <Resource Include="img\tea.png" />
   </ItemGroup>
   <ItemGroup>

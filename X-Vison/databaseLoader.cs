@@ -11,7 +11,7 @@ namespace Center_Maneger
 {
     public static class databaseLoader
     {
-        private static string _connectionString = "Data Source=database.db;Version=3;";
+        private static string _connectionString = "Data Source=Center_Manager.dll;Version=3;";
 
          public static DataTable LoadData(string tableName, string additionalInfo = "") // used to fill tabs in settings
         {
@@ -127,8 +127,9 @@ namespace Center_Maneger
             }
             catch (Exception)
             {
-                
 
+                MessageBox.Show("خطأ في عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 
@@ -433,13 +434,15 @@ namespace Center_Maneger
                                 FROM users u
                                 JOIN user_records ur ON u.id= ur.user_id
                                 WHERE ur.leave_date >= @fromDate AND ur.leave_date<= @toDate
-
+                               
                                 UNION ALL
 
                                 SELECT du.name, du.phone, ur.type, ur.enter_date, ur.leave_date, ur.reservation_cost, ur.kitchen, ur.total, ur.paid
                                 FROM deleted_users du
                                 JOIN user_records ur ON du.id = ur.user_id
-                                WHERE ur.leave_date >= @fromDate AND ur.leave_date <= @toDate";
+                                WHERE ur.leave_date >= @fromDate AND ur.leave_date <= @toDate
+                                ORDER BY ur.leave_date
+                                ";
 
                 using (var connection = new SQLiteConnection(_connectionString))
                 {
@@ -461,7 +464,8 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-                return null;
+                MessageBox.Show("خطأ في تحميل بيانات الاعضاء");
+                return new DataTable();
             }
         }
 
@@ -496,7 +500,7 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-                return null;
+                return new DataTable();
             }
           
         }
@@ -545,7 +549,7 @@ namespace Center_Maneger
             catch (Exception)
             {
                 MessageBox.Show("خطأ في تحميل بيانات البوفيه");
-                return dataTable;
+                return new DataTable();
                 
             }
         }

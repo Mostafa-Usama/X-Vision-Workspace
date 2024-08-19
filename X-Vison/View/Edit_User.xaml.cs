@@ -39,14 +39,17 @@ namespace Center_Maneger.View
 
         private void edit_user(object sender, RoutedEventArgs e)
         {
-            if (userNameTextBox.Text.Trim() == "" || phoneTextBox.Text.Trim() == "" || levelTextBox.Text.Trim() == "")
+            string job = JobComboBox.SelectedItem == null ? "" : JobComboBox.SelectedItem.ToString();
+            string fac = FacultyComboBox.SelectedItem == null ? "" : FacultyComboBox.SelectedItem.ToString();
+          
+            if (userNameTextBox.Text.Trim() == "" || phoneTextBox.Text.Trim() == "" || levelTextBox.Text.Trim() == "" || string.IsNullOrEmpty(job) || string.IsNullOrEmpty(fac) )
             {
                 MessageBox.Show("برجاء ادخال جميع الحقول ", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            int x;
-            bool isNumber = int.TryParse(phone, out x);
-            if (!isNumber || phone.Length != 11)
+            long x;
+            bool isNumber = long.TryParse(phoneTextBox.Text.Trim(), out x);
+            if (!isNumber || phoneTextBox.Text.Trim().Length != 11)
             {
                 MessageBox.Show("برجاء ادخال رقم هاتف صحيح", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -61,7 +64,10 @@ namespace Center_Maneger.View
             {"job_id", jobId},
             {"level", levelTextBox.Text.Trim()}
             };
+            
             databaseLoader.UpdateData("users", data, String.Format("phone = \"{0}\" ", phone));
+            
+           
             isClicked = true;
             this.Close();
         }

@@ -20,7 +20,7 @@ namespace Center_Maneger.View
     /// </summary>
     public partial class login : Window
     {
-        private string _connectionString = "Data Source=database.db;Version=3;";
+        private string _connectionString = "Data Source=Center_Manager.dll;Version=3;";
 
         public login()
         {
