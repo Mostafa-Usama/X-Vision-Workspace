@@ -226,13 +226,13 @@ namespace Center_Maneger
 
         private void backup_data(object sender, RoutedEventArgs e)
         {
-            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.db");  
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Center_Manager.sf");  
             BackupDatabase(databasePath);
         }
 
         private void restore_data(object sender, RoutedEventArgs e)
         {
-            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database.db"); 
+            string databasePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Center_Manager.sf"); 
             RestoreDatabase(databasePath);
         }
 
@@ -242,7 +242,7 @@ namespace Center_Maneger
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "Database files (*.db)|*.db",
+                Filter = "Database files (*.sf)|*.sf",
                 Title = "حفظ النسخة الاحتياطية"
             };
             try
@@ -267,7 +267,7 @@ namespace Center_Maneger
             {
                 OpenFileDialog openFileDialog = new OpenFileDialog
                 {
-                    Filter = "Database files (*.db)|*.db",
+                    Filter = "Database files (*.sf)|*.sf",
                     Title = "تحديد ملف النسخة الاحتياطية"
                 };
 

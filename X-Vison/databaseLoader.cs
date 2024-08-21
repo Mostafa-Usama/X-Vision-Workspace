@@ -11,7 +11,7 @@ namespace Center_Maneger
 {
     public static class databaseLoader
     {
-        private static string _connectionString = "Data Source=Center_Manager.dll;Version=3;";
+        private static string _connectionString = "Data Source=Center_Manager.sf;Version=3;";
 
          public static DataTable LoadData(string tableName, string additionalInfo = "") // used to fill tabs in settings
         {
