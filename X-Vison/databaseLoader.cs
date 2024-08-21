@@ -68,7 +68,7 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-
+                MessageBox.Show("خطأ في عملية الادخال", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
                 
             }
         }
@@ -92,6 +92,7 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
+                MessageBox.Show("خطأ في عملية الحذف", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 
             }
@@ -167,7 +168,9 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-                return null;
+               
+
+                return data;
             }
         }
 
@@ -192,7 +195,7 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-                return null;
+                return dataTable;
             }
         }
 
@@ -222,7 +225,7 @@ namespace Center_Maneger
             catch (Exception  )
             {
 
-                return null;
+                return dataTable;
             }
            
         }
@@ -465,16 +468,16 @@ namespace Center_Maneger
             catch (Exception )
             {
                 MessageBox.Show("خطأ في تحميل بيانات الاعضاء");
-                return new DataTable();
+                return dataTable;
             }
         }
 
         public static DataTable GetOffersData(DateTime fromDate, DateTime toDate) 
         {
+            DataTable dataTable = new DataTable();
             try
             {
 
-                DataTable dataTable = new DataTable();
 
                 string query = @"SELECT u.name, o.offer_name, uo.start_date, o.cost
                                 FROM users u
@@ -500,7 +503,7 @@ namespace Center_Maneger
             }
             catch (Exception )
             {
-                return new DataTable();
+                return dataTable;
             }
           
         }
@@ -549,7 +552,7 @@ namespace Center_Maneger
             catch (Exception)
             {
                 MessageBox.Show("خطأ في تحميل بيانات البوفيه");
-                return new DataTable();
+                return dataTable;
                 
             }
         }
