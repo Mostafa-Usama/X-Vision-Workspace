@@ -243,13 +243,15 @@ namespace Center_Maneger
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Database files (*.sf)|*.sf",
-                Title = "حفظ النسخة الاحتياطية"
+                Title = "حفظ النسخة الاحتياطية",
+                FileName = "Center_Manager.sf",
             };
             try
             {
                 if (saveFileDialog.ShowDialog() == true)
                 {
-                    string backupFilePath = saveFileDialog.FileName;
+                    string backupDirectory = System.IO.Path.GetDirectoryName(saveFileDialog.FileName);
+                    string backupFilePath = System.IO.Path.Combine(backupDirectory, "Center_Manager.sf");
                     File.Copy(databasePath, backupFilePath, true);
                     MessageBox.Show("تم حفظ النسخة", "", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -273,8 +275,11 @@ namespace Center_Maneger
 
                 if (openFileDialog.ShowDialog() == true)
                 {
-                    string backupFilePath = openFileDialog.FileName;
-                    File.Copy(backupFilePath, databasePath, true);
+                    string directory = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
+                    string newFilePath = System.IO.Path.Combine(directory, "Center_Manager.sf");
+                    File.Move(openFileDialog.FileName, newFilePath);
+                    File.Copy(newFilePath, databasePath, true);
+                    
                     MessageBox.Show("تم استرجاع الملف", "", MessageBoxButton.OK, MessageBoxImage.Information);
                     restartapp();
                 }

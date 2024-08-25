@@ -93,13 +93,22 @@ namespace Center_Maneger.UesrControls
 
         private void remove_class_record(object sender, RoutedEventArgs e) // reomve class record from grid and database
         {
+
             if (selectedRow != null) // if a record is selected 
             {
+
 
                 var result = MessageBox.Show("هل أنت متأكد من حذف هذا الصف؟", "تأكيد", MessageBoxButton.YesNo); // رسالة تأكيد
                 if (result == MessageBoxResult.Yes) // if he chooses YES
                 {
                     string className = Convert.ToString((selectedRow["class_name"])); // بجيب اسم العمود اللي واقف عليه تقاطعا مع الصف اللي انا مختاره عشان اعرف أجيب اسم الكلاس
+                    int id = Convert.ToInt32(databaseLoader.SelectData("classes", "id", String.Format("class_name = \"{0}\" ", className))[0]);
+                    List<object> class_user_id = databaseLoader.SelectData("user_class", "user_id", String.Format("class_id= {0}", id));
+                    if (class_user_id.Count != 0 )
+                    {
+                        MessageBox.Show("لا يمكن الحذف, الغرفة محجوزة", " خطأ ", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
                     databaseLoader.DeleteRecord("classes", "class_name", className);
                     load_data();
                 }
