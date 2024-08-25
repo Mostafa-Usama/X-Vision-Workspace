@@ -20,22 +20,22 @@
             </StackPanel>
             <StackPanel Margin="0 35" Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="بداية الفترة: "  DockPanel.Dock="Right" VerticalAlignment="Center" 
-                           FontSize="20" FontWeight="Bold" Margin="20 0" />
+                           FontSize="16" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="start_date_price_input" Width="70"  HorizontalAlignment="Right" 
-                         FontSize="20"  Padding="2 0" />
+                         FontSize="16"  Padding="2 0" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="نهاية الفترة:"  VerticalAlignment="Center" 
-                           FontSize="20" FontWeight="Bold" Margin="20 0" />
+                           FontSize="16" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="end_date_price_input" Width="70"  HorizontalAlignment="Right"
-                         FontSize="20" Padding="2 0" />
+                         FontSize="16" Padding="2 0" />
 
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="تكلفة الفترة:"  VerticalAlignment="Center" 
-                           FontSize="20" FontWeight="Bold" Margin="20 0" />
+                           FontSize="16" FontWeight="Bold" Margin="20 0" />
 
                 <TextBox Style="{StaticResource RoundedTextBox}" Name="cost_price_input" Width="150"  HorizontalAlignment="Right"
-                         FontSize="20"  Padding="2 0" />
+                         FontSize="16"  Padding="2 0" />
 
             </StackPanel>
 

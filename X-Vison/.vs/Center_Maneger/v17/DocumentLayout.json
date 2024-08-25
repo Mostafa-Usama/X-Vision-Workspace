@@ -3,52 +3,48 @@
   "WorkspaceRootPath": "D:\\Share-Yard-WORKSPACE\\X-Vison\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\view\\checkpassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\checkpassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\kitchen_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\kitchen_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\view\\checkpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:view\\checkpassword.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\member_offers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\member_offers.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\user_records.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\user_records.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\job_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\job_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\user_records.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\faculty_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\faculty_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\grid_of_products.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\grid_of_products.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\offer_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\offer_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\user_records.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\user_records.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\admin_setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\admin_setting.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\prices_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\prices_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\admin_setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\admin_setting.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|d:\\share-yard-workspace\\x-vison\\uesrcontrols\\grid_of_products.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\grid_of_products.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\grid_of_chairs.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\grid_of_chairs.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\class_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\class_settings.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\members.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\members.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:uesrcontrols\\members.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55955C51-33F3-4C1F-B805-F7AD8DFFD16A}|Center_Maneger.csproj|D:\\Share-Yard-WORKSPACE\\X-Vison\\uesrcontrols\\grid_of_chairs.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -62,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,157 +66,149 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "checkPassword.xaml.cs",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml.cs",
-              "RelativeDocumentMoniker": "View\\checkPassword.xaml.cs",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml.cs",
-              "RelativeToolTip": "View\\checkPassword.xaml.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAA4wC4AAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T21:31:23.384Z",
+              "DocumentIndex": 3,
+              "Title": "Faculty_Settings.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Faculty_Settings.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Faculty_Settings.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Faculty_Settings.xaml",
+              "RelativeToolTip": "UesrControls\\Faculty_Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T21:14:26.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "User_Records.xaml.cs",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml.cs",
-              "RelativeDocumentMoniker": "UesrControls\\User_Records.xaml.cs",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml.cs",
-              "RelativeToolTip": "UesrControls\\User_Records.xaml.cs",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAgwGoAAABGAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-17T20:29:38.951Z",
+              "Title": "Job_Settings.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Job_Settings.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Job_Settings.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Job_Settings.xaml",
+              "RelativeToolTip": "UesrControls\\Job_Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T21:14:06.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Kitchen_Settings.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Kitchen_Settings.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Kitchen_Settings.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Kitchen_Settings.xaml",
+              "RelativeToolTip": "UesrControls\\Kitchen_Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T21:01:55.781Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "checkPassword.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml",
-              "RelativeDocumentMoniker": "View\\checkPassword.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\View\\checkPassword.xaml",
-              "RelativeToolTip": "View\\checkPassword.xaml",
+              "Title": "Member_Offers.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Member_Offers.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Member_Offers.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Member_Offers.xaml",
+              "RelativeToolTip": "UesrControls\\Member_Offers.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-13T23:50:07.779Z",
+              "WhenOpened": "2024-08-24T21:01:50.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User_Records.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml",
-              "RelativeDocumentMoniker": "UesrControls\\User_Records.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml",
-              "RelativeToolTip": "UesrControls\\User_Records.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-14T22:25:17.217Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Members.xaml.cs",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml.cs",
-              "RelativeDocumentMoniker": "UesrControls\\Members.xaml.cs",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml.cs",
-              "RelativeToolTip": "UesrControls\\Members.xaml.cs",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAmwBMAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-14T20:30:54.407Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "Members.xaml",
               "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml",
               "RelativeDocumentMoniker": "UesrControls\\Members.xaml",
               "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Members.xaml",
               "RelativeToolTip": "UesrControls\\Members.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-14T00:55:37.385Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "admin_setting.xaml.cs",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\admin_setting.xaml.cs",
-              "RelativeDocumentMoniker": "UesrControls\\admin_setting.xaml.cs",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\admin_setting.xaml.cs",
-              "RelativeToolTip": "UesrControls\\admin_setting.xaml.cs",
-              "ViewState": "AQIAAN0AAAAAAAAAAAAwwLMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T22:18:41.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "admin_setting.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\admin_setting.xaml",
-              "RelativeDocumentMoniker": "UesrControls\\admin_setting.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\admin_setting.xaml",
-              "RelativeToolTip": "UesrControls\\admin_setting.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-13T21:53:47.788Z",
+              "WhenOpened": "2024-08-24T20:49:38.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Offer_Settings.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Offer_Settings.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Offer_Settings.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Offer_Settings.xaml",
+              "RelativeToolTip": "UesrControls\\Offer_Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T20:49:16.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "User_Records.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\User_Records.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\User_Records.xaml",
+              "RelativeToolTip": "UesrControls\\User_Records.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T20:48:53.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Prices_Settings.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Prices_Settings.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\Prices_Settings.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Prices_Settings.xaml",
+              "RelativeToolTip": "UesrControls\\Prices_Settings.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-24T20:47:56.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "grid_of_products.xaml.cs",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_products.xaml.cs",
+              "RelativeDocumentMoniker": "UesrControls\\grid_of_products.xaml.cs",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_products.xaml.cs",
+              "RelativeToolTip": "UesrControls\\grid_of_products.xaml.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAcwCUAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-24T20:28:06.481Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "grid_of_products.xaml",
+              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_products.xaml",
+              "RelativeDocumentMoniker": "UesrControls\\grid_of_products.xaml",
+              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_products.xaml",
+              "RelativeToolTip": "UesrControls\\grid_of_products.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-08-19T20:43:25.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "grid_of_chairs.xaml.cs",
               "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_chairs.xaml.cs",
               "RelativeDocumentMoniker": "UesrControls\\grid_of_chairs.xaml.cs",
               "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_chairs.xaml.cs",
               "RelativeToolTip": "UesrControls\\grid_of_chairs.xaml.cs",
-              "ViewState": "AQIAAIoAAAAAAAAAAAAowEMAAABZAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T22:19:01.655Z"
+              "WhenOpened": "2024-08-13T22:19:01.655Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "grid_of_chairs.xaml",
               "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_chairs.xaml",
               "RelativeDocumentMoniker": "UesrControls\\grid_of_chairs.xaml",
               "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\grid_of_chairs.xaml",
               "RelativeToolTip": "UesrControls\\grid_of_chairs.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-13T21:12:35Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\App.xaml",
-              "RelativeToolTip": "App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-11T15:21:40.851Z",
+              "WhenOpened": "2024-08-13T21:12:35Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-12T21:10:16.72Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Class_Settings.xaml",
-              "DocumentMoniker": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Class_Settings.xaml",
-              "RelativeDocumentMoniker": "UesrControls\\Class_Settings.xaml",
-              "ToolTip": "D:\\Share-Yard-WORKSPACE\\X-Vison\\UesrControls\\Class_Settings.xaml",
-              "RelativeToolTip": "UesrControls\\Class_Settings.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-08-13T23:06:53.714Z"
             }
           ]
         }

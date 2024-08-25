@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace Center_Maneger.UesrControls
     public partial class grid_of_products : UserControl
     {
         int numberOfCells;
+        int x = 0;
 
         public grid_of_products()
         {
@@ -32,9 +35,9 @@ namespace Center_Maneger.UesrControls
         {
             CreateDynamicGrid();
         }
-        public void CreateDynamicGrid()
+        public void CreateDynamicGrid(string searchQuery = "")
         {
-            
+            x = 0;
             DynamicGrid.Children.Clear();
             DynamicGrid.RowDefinitions.Clear();
             DynamicGrid.ColumnDefinitions.Clear();
@@ -58,8 +61,12 @@ namespace Center_Maneger.UesrControls
 
             for (int i = 0; i < numberOfCells; i++)
             {
+
+                
                 int row = i / columns;
                 int column = i % columns;
+                int row2 = x / columns;
+                int col2 = x % columns;
                 Button mainbtn = new Button();
                 mainbtn.Click += mainbtn_click;
                 mainbtn.Margin = new Thickness(1);
@@ -80,10 +87,10 @@ namespace Center_Maneger.UesrControls
                 };
 
                 StackPanel stackPanel = new StackPanel();
-
+                string NameOfProduct = products[i].Item2;
                 TextBlock product_name = new TextBlock
                 {
-                    Text = products[i].Item2,
+                    Text = NameOfProduct,
                     HorizontalAlignment = HorizontalAlignment.Center,
                     VerticalAlignment = VerticalAlignment.Center,
                     FontWeight = FontWeights.Bold,
@@ -115,6 +122,32 @@ namespace Center_Maneger.UesrControls
                     Source = new BitmapImage(new Uri(String.Format("pack://application:,,,/img/{0}.png",products[i].Item5))),
                 };
 
+                if (!string.IsNullOrEmpty(searchQuery))
+                {
+                    if (!NameOfProduct.ToLower().StartsWith(searchQuery))
+                    {
+                        border.Visibility = Visibility.Collapsed;
+
+                        continue;
+                    }
+                    else
+                    {
+                        stackPanel.Children.Add(product_icon);
+                        stackPanel.Children.Add(product_name);
+                        stackPanel.Children.Add(product_amount);
+                        stackPanel.Children.Add(product_cost);
+                        mainbtn.Content = stackPanel;
+                        border.Child = mainbtn;
+
+                        Grid.SetRow(border, row2);
+                        Grid.SetColumn(border, col2);
+                        DynamicGrid.Children.Add(border);
+                        x++;
+                        continue;
+                    }
+
+                }
+
                 stackPanel.Children.Add(product_icon);
                 stackPanel.Children.Add(product_name);
                 stackPanel.Children.Add(product_amount);
@@ -125,11 +158,27 @@ namespace Center_Maneger.UesrControls
                 Grid.SetRow(border, row);
                 Grid.SetColumn(border, column);
                 DynamicGrid.Children.Add(border);
-                
-                
+
             }
+
+
+        }
+        private void SearchUser(object sender, TextChangedEventArgs e)
+        {
+
+            string searchname = searchTB.Text.Trim();
+            if (string.IsNullOrEmpty(searchname))
+            {
+                CreateDynamicGrid(searchname);
+            }
+
         }
 
+        private void SearchUser(object sender, RoutedEventArgs e)
+        {
+            string searchname = searchTB.Text.Trim();
+            CreateDynamicGrid(searchname);
+        }
         private void mainbtn_click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;

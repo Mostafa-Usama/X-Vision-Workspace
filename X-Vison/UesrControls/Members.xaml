@@ -40,13 +40,13 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="0" >
-                    <TextBlock Text="اسم العضو :" Style="{StaticResource TextBlockStyle}"
-                    FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
+                    <TextBlock Text="اسم العضو :" Margin="0 13 0 0" Style="{StaticResource TextBlockStyle}"
+                    FontSize="16" FontWeight="Bold" Height="30"  HorizontalAlignment="Right" />
 
                     <TextBlock Text="الكلية : "    Style="{StaticResource TextBlockStyle}"
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" HorizontalAlignment="Right"/>
+                    FontSize="16" FontWeight="Bold" Height="30" Margin="0 20" HorizontalAlignment="Right"/>
                     <TextBlock Text="الوظيفة :"      Style="{StaticResource TextBlockStyle}"
-                    FontSize="20" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
+                    FontSize="16" FontWeight="Bold" Height="30"  HorizontalAlignment="Right"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical"  Margin="0 20" Grid.Column="1">
@@ -64,10 +64,10 @@
 
                 <StackPanel Orientation="Vertical" Margin="10" Grid.Column="2" >
                     <TextBlock Text="رقم الهاتف :"     
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right"/>
+                    FontSize="16" FontWeight="Bold" Height="30" Margin="0 23" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right"/>
 
                     <TextBlock Text="السنة الدراسية :"    
-                    FontSize="20" FontWeight="Bold" Height="30" Margin="0 20" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right" />
+                    FontSize="16" FontWeight="Bold" Height="30" Margin="0 20" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right" />
                     
                     
 
