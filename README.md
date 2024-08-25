@@ -23,7 +23,7 @@
 
 1. **Clone the repository** to your local machine:
    ```bash
-   git clone https://github.com/your-username/workspace-management-system.git
+   git clone https://github.com/Mostafa-Usama/X-Vision-Workspace.git
 2. Open the solution file (.sln) in Visual Studio.
 3. Restore NuGet packages to install dependencies.
 4. Build the solution to compile the project.
