@@ -33,7 +33,8 @@ Or if you want to start using the application, you can you just run the installe
 
 **NOTE**
 
-- The applications contains some data that was used for testing.
+- The application is only available in Arabic.
+- The application contains some data that was used for testing.
 - The username and password to log in are "456" and "123" respectively, and the password to access admin and system settings is "123", (you can change these passwords if you want but these passwords were used for testing purposes and ease of use)
 
 ## 💡 Usage
@@ -43,6 +44,16 @@ Or if you want to start using the application, you can you just run the installe
 - **📅 Historical Records**: Retain historical information.
 - **🍽️ Kitchen Management**: Full kitchen system to keep track of all products, their amount and cost while having the ability to edit any of them.
 - **👨‍💼 Admin Settings**: Change your password if you need, and save a backup version of the data. 
+
+## 🖼 Screenshots
+ <p align='center'> <img src=https://github.com/AbanoubAtef4/Share-Yard-WORKSPACE/blob/main/Screenshots/Screenshot%202024-08-25%20045017.png></p>
+
+
+<p align='center'> <img src=https://github.com/AbanoubAtef4/Share-Yard-WORKSPACE/blob/main/Screenshots/Screenshot%20(436).png></p>
+<p align='center'> <img src=https://github.com/AbanoubAtef4/Share-Yard-WORKSPACE/blob/main/Screenshots/Screenshot%20(437).png></p>
+<p align='center'> <img src=https://github.com/AbanoubAtef4/Share-Yard-WORKSPACE/blob/main/Screenshots/Screenshot%20(438).png></p>
+<p align='center'> <img src=https://github.com/AbanoubAtef4/Share-Yard-WORKSPACE/blob/main/Screenshots/Screenshot%20(439).png></p>
+
 
 ## 🤝 Contributing
 
