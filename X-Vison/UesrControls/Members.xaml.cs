@@ -22,6 +22,8 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class Members : UserControl
     {
+        private DataGridColumn col = null;
+        int counter = 0;
         private DataRowView selectedRow;
 
         public Members()
@@ -211,6 +213,43 @@ namespace Center_Maneger.UesrControls
             string searchname = searchTB.Text.Trim();
             DataView offersView = data_grid.ItemsSource as DataView;
             offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
+        }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+            data_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+               
+        }
+
+        private void grid_sort(object sender, DataGridSortingEventArgs e)
+        {
+            if (col == null || col != e.Column)
+            {
+                col = e.Column;
+                counter = 1;
+                return;
+            }
+            else
+            {
+                counter++;
+                if (counter % 2 == 0)
+                {
+                    defualtSort(e.Column);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void defualtSort(DataGridColumn c)
+        {
+            c.SortDirection = null;
+            System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(data_grid.ItemsSource);
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();  // Clear any sort descriptions
+                view.Refresh();  // Refresh the view to reset to the original order
+            }
         }
 
     }

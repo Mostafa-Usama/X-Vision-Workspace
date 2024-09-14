@@ -23,7 +23,8 @@ namespace Center_Maneger.UesrControls
     public partial class Class_Settings : UserControl
     {
         
-
+          private DataGridColumn col = null;
+        int counter = 0;
         private DataRowView selectedRow; // store cuurent selected row if i wanted to delete
 
         public Class_Settings()
@@ -137,6 +138,43 @@ namespace Center_Maneger.UesrControls
                 e.Column.Header = "تكلفة الساعة";
             }
         }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+            data_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+        }
+
+        private void grid_sort(object sender, DataGridSortingEventArgs e)
+        {
+            if (col == null || col != e.Column)
+            {
+                col = e.Column;
+                counter = 1;
+                return;
+            }
+            else
+            {
+                counter++;
+                if (counter % 2 == 0)
+                {
+                    defualtSort(e.Column);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void defualtSort(DataGridColumn c)
+        {
+            c.SortDirection = null;
+            System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(data_grid.ItemsSource);
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();  // Clear any sort descriptions
+                view.Refresh();  // Refresh the view to reset to the original order
+            }
+        }
+
 
     }
 }

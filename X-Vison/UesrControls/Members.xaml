@@ -114,6 +114,17 @@
             </Button>
         </StackPanel>
 
-        <DataGrid Grid.Row="2" SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"   ColumnWidth="0.5*"/>
+        <DataGrid Grid.Row="2" Sorting="grid_sort"  LoadingRow="DataGrid_LoadingRow" SelectionChanged="change_selected_record" AutoGeneratingColumn="change_header_name"  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"   ColumnWidth="0.5*">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="#" IsReadOnly="True" Width="40">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Auto-generated columns will be added after the numbering column -->
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

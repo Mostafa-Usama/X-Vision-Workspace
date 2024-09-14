@@ -88,8 +88,19 @@
                 <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي المدفوع =" Name="totalPaid" VerticalAlignment="Center" Margin="30 0"/>
             </StackPanel>
         </Border>
-        <DataGrid AutoGeneratingColumn="change_header_name"  
-                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"  Grid.Row="1" ColumnWidth="*" />
+        <DataGrid Sorting="grid_sort" LoadingRow="DataGrid_LoadingRow" AutoGeneratingColumn="change_header_name"  
+                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="data_grid"  Grid.Row="1" ColumnWidth="*" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="#" IsReadOnly="True" Width="40">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!-- Auto-generated columns will be added after the numbering column -->
+            </DataGrid.Columns>
+        </DataGrid>
         <Grid Grid.Row="3" FlowDirection="RightToLeft">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="37*"/>
@@ -102,15 +113,37 @@
                 <RowDefinition Height="0.14*"/>
             </Grid.RowDefinitions>
 
-            <DataGrid  AutoGeneratingColumn="change_header_name" Grid.Row="0" Grid.Column="0"  
-                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="offers_grid" ColumnWidth="*" Grid.ColumnSpan="2" />
+            <DataGrid Sorting="grid_sort" LoadingRow="DataGrid_LoadingRow"  AutoGeneratingColumn="change_header_name" Grid.Row="0" Grid.Column="0"  
+                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="offers_grid" ColumnWidth="*" Grid.ColumnSpan="2" >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="#" IsReadOnly="True" Width="40">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- Auto-generated columns will be added after the numbering column -->
+                </DataGrid.Columns>
+            </DataGrid>
             <Border Grid.Row="1" Grid.Column="0" FlowDirection="RightToLeft" BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                     <TextBlock Style="{StaticResource TextBlockStyle}" FontSize="12" Text="اجمالي الباقات =" Name="totalOffer" VerticalAlignment="Center" Margin="30 0"/>
                 </StackPanel>
             </Border>
-            <DataGrid AutoGeneratingColumn="change_header_name"  Grid.Row="0" Grid.Column="2" 
-                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="kitchen_grid"  ColumnWidth="*" />
+            <DataGrid Sorting="grid_sort" LoadingRow="DataGrid_LoadingRow" AutoGeneratingColumn="change_header_name"  Grid.Row="0" Grid.Column="2" 
+                  FlowDirection="RightToLeft" IsReadOnly="True" FontSize="16" x:Name="kitchen_grid"  ColumnWidth="*" >
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="#" IsReadOnly="True" Width="40">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=Header}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!-- Auto-generated columns will be added after the numbering column -->
+                </DataGrid.Columns>
+            </DataGrid>
             <Border Grid.Row="1" Grid.Column="2" FlowDirection="RightToLeft" BorderBrush="Black" BorderThickness="1">
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
 

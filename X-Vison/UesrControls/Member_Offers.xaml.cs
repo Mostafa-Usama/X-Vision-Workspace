@@ -16,12 +16,13 @@ using System.Data;
 namespace Center_Maneger.UesrControls
 {
     /// <summary>
-    /// Interaction logic for Member_Offers.xaml
+    /// Interaction logic for Member_Offers.xaml`
     /// </summary>
     public partial class Member_Offers : UserControl
     {
         private DataRowView selectedRow;
-
+        private DataGridColumn col = null;
+        int counter = 0;
         public Member_Offers()
         {
             InitializeComponent();
@@ -33,8 +34,8 @@ namespace Center_Maneger.UesrControls
             try
             {
                 data_grid.ItemsSource = databaseLoader.GetOffersData(isChecked).DefaultView;
-                data_grid.Columns[0].Visibility = Visibility.Collapsed;
-                data_grid.Columns[8].Visibility = Visibility.Collapsed;
+                data_grid.Columns[1].Visibility = Visibility.Collapsed;
+                data_grid.Columns[9].Visibility = Visibility.Collapsed;
 
                 DataView offersView = data_grid.ItemsSource as DataView;
                 DataTable offersRecords = offersView.Table;
@@ -152,6 +153,43 @@ namespace Center_Maneger.UesrControls
             DataView offersView = data_grid.ItemsSource as DataView;
             offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
         }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+            data_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+        }
+
+        private void grid_sort(object sender, DataGridSortingEventArgs e)
+        {
+            if (col == null || col != e.Column)
+            {
+                col = e.Column;
+                counter = 1;
+                return;
+            }
+            else
+            {
+                counter++;
+                if (counter % 2 == 0)
+                {
+                    defualtSort(e.Column);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void defualtSort(DataGridColumn c)
+        {
+            c.SortDirection = null;
+            System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(data_grid.ItemsSource);
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();  // Clear any sort descriptions
+                view.Refresh();  // Refresh the view to reset to the original order
+            }
+        }
+
 
     }
 }

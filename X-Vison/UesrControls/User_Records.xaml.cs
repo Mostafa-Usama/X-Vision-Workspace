@@ -20,7 +20,8 @@ namespace Center_Maneger.UesrControls
     /// </summary>
     public partial class User_Records : UserControl
     {
-      
+        private DataGridColumn col = null;
+        int counter = 0;
         public User_Records()
         {
             InitializeComponent();
@@ -33,11 +34,11 @@ namespace Center_Maneger.UesrControls
         private void load_data(DataTable userTable, DataTable offers, DataTable kitchen)
         {   
             data_grid.ItemsSource = userTable.DefaultView;
-            data_grid.Columns[3].Width = data_grid.Columns[4].Width = data_grid.Columns[0].Width = 200;
+            data_grid.Columns[4].Width = data_grid.Columns[5].Width = data_grid.Columns[1].Width = 200;
 
            
             offers_grid.ItemsSource = offers.DefaultView;
-            offers_grid.Columns[0].Width = offers_grid.Columns[2].Width = 200;
+            offers_grid.Columns[1].Width = offers_grid.Columns[3].Width = 200;
 
             kitchen_grid.ItemsSource = kitchen.DefaultView;
 
@@ -95,11 +96,20 @@ namespace Center_Maneger.UesrControls
             }
             totalKitchen.Text = "البوفيه = " +  allKitchenCost.ToString();
             Dictionary<string, Tuple<double, double>> data = databaseLoader.getprofit(product_names);
+
+            string from_date = fromDate.Text;
+            string to_date = toDate.Text;
+            DateTime from, to;
+            bool isFromDate = DateTime.TryParse(from_date, out from);
+            bool isToDate = DateTime.TryParse(to_date, out to);
+
+            Dictionary<string, int> teamAmounts = databaseLoader.getTeamAmount(product_names, from, to);
+
             double profit = 0;
             foreach (DataRow row in kitchenRecords.Rows)
             {
                 string name = row["product_name"].ToString();
-                row["ارباح المنتج"] = (data[name].Item2 - data[name].Item1) * Convert.ToInt32(row["total_amount"]);
+                row["ارباح المنتج"] = (data[name].Item2 - data[name].Item1) * (Convert.ToInt32(row["total_amount"]) - (teamAmounts.ContainsKey(name)? teamAmounts[name] : 0));
                 profit += Convert.ToDouble(row["ارباح المنتج"]);
 
 
@@ -246,6 +256,46 @@ namespace Center_Maneger.UesrControls
             offersView.RowFilter = string.Format("name LIKE '{0}%'", searchname);
             filteroffers.RowFilter = string.Format("name LIKE '{0}%'", searchname);
         }
+
+        private void DataGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+            data_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+            offers_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+            kitchen_grid.HeadersVisibility = DataGridHeadersVisibility.Column;
+        }
+
+        private void grid_sort(object sender, DataGridSortingEventArgs e)
+        {
+            if (col == null || col != e.Column)
+            {
+                col = e.Column;
+                counter = 1;
+                return;
+            }
+            else
+            {
+                counter++;
+                if (counter % 2 == 0)
+                {
+                    DataGrid data = sender as DataGrid;
+                    defualtSort(e.Column, data);
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void defualtSort(DataGridColumn c, DataGrid data)
+        {
+            c.SortDirection = null;
+            System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(data.ItemsSource);
+            if (view != null)
+            {
+                view.SortDescriptions.Clear();  // Clear any sort descriptions
+                view.Refresh();  // Refresh the view to reset to the original order
+            }
+        }
+
 
     }
 }

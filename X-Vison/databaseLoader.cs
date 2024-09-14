@@ -601,6 +601,81 @@ namespace Center_Maneger
             
         }
 
+        public static Dictionary<string, int> getTeamAmount(List<string> names, DateTime fromDate, DateTime toDate)
+        {
+            Dictionary<string, int> data = new Dictionary<string, int>();
+            Dictionary<int, string> ids = teamProductsId(names);
+            string teamID = databaseLoader.SelectData("users", "id", ("name = \"تيم\" "))[0].ToString();
+            using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+
+                    string productNamesForQuery = string.Join(",", ids.Keys);
+
+                    string query = @"SELECT amount, product_id 
+                         FROM user_kitchen 
+                         WHERE user_id = @teamID 
+                         AND product_id IN (" + productNamesForQuery + @")
+                         AND leave_date >= @fromDate 
+                         AND leave_date <= @toDate";
+
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        // Set SQL parameters
+                        command.Parameters.AddWithValue("@teamID", teamID);
+                        command.Parameters.AddWithValue("@fromDate", fromDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                        command.Parameters.AddWithValue("@toDate", toDate.ToString("yyyy-MM-dd HH:mm:ss"));
+
+
+                        using (var reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                data[ids[reader.GetInt32(1)]] = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
+            return data;
+            }
+
+
+        public static Dictionary<int, string> teamProductsId(List<string> names)
+        {
+            Dictionary<int, string> data = new Dictionary<int, string>();
+
+            try
+            {
+
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    connection.Open();
+                    string productNamesForQuery = string.Join("','", names);
+
+                    string query = String.Format("Select id FROM kitchen WHERE product_name IN ('{0}')", productNamesForQuery);
+                    using (var command = new SQLiteCommand(query, connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            int i = 0;
+                            while (reader.Read())
+                            {
+                                data[reader.GetInt32(0)] = names[i];
+                                i++;
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return data;
+            }
+
+            return data;
+        }
+
         public static List<Tuple<int, string, int, double, string, double>> GetProductsData(string product_type = "")
         {
             List<Tuple<int, string, int, double, string, double>> data = new List<Tuple<int, string, int, double, string, double>>();
@@ -848,7 +923,18 @@ namespace Center_Maneger
                     connection.Open();
                     string productNamesForQuery = string.Join("','", names);
 
-                    string query = String.Format("Select purchase_cost , sell_cost ,product_name FROM kitchen WHERE product_name IN ('{0}')", productNamesForQuery);
+                     string query = String.Format(@"
+                        SELECT purchase_cost, sell_cost, product_name 
+                        FROM kitchen 
+                        WHERE product_name IN ('{0}')
+
+                        UNION ALL
+
+                        SELECT purchase_cost, sell_cost, product_name 
+                        FROM deleted_kitchen 
+                        WHERE product_name IN ('{0}')
+                    ", productNamesForQuery);
+ 
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         using (var reader = command.ExecuteReader())
